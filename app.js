@@ -236,7 +236,6 @@ const drawSelectedService = (service) => {
 };
 
 const resetSelection = () => {
-  serviceSearch.value = '';
   selectedServiceIds = new Set();
   document.body.classList.remove('service-selected');
   routeElements.forEach((route) => route.classList.remove('selected-route'));
