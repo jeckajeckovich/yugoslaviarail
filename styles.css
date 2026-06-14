@@ -87,3 +87,18 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .transfer-stop { stroke-width: 6; }
 .service-train-label { fill: #111827; stroke: #fffaf1; stroke-width: 7; paint-order: stroke; font-size: 30px; font-weight: 950; letter-spacing: .02em; }
 @media (max-width: 1040px) { .atlas-shell { grid-template-columns: 1fr; } .services-panel { position: static; max-height: none; } }
+.show-all-services { width: 100%; margin-top: 8px; border: 2px solid var(--ink); border-radius: 12px; background: var(--ink); color: var(--paper); padding: 9px 12px; font-weight: 950; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.service-selected .service-card:not(.selected) { opacity: .15; }
+.service-selected .routes .route { opacity: .15; }
+.service-selected .routes .route.selected-route { opacity: .15; }
+.service-path { opacity: .92; stroke: #111827; stroke-width: 16; }
+.terminal-label { fill: #111827; stroke: #fffaf1; stroke-width: 7; paint-order: stroke; font-size: 24px; font-weight: 950; }
+.map-frame { overflow: hidden; }
+.rail-map { min-width: 0; max-height: min(78vh, 940px); object-fit: contain; }
+.service-card .service-name { font-size: 1.02rem; }
+.service-card .service-number { color: var(--muted); font-size: .92rem; }
+.hidden { display: none !important; }
+.clear-search, .find-route { width: 100%; margin-top: 8px; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); color: var(--ink); padding: 9px 12px; font-weight: 950; letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
+.journey-tab select { width: 100%; margin: 0 0 10px; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); padding: 10px 12px; font: inherit; font-weight: 750; }
+.journey-result { border-top: 3px solid var(--ink); margin-top: 14px; padding-top: 12px; }
+.journey-result h3 { margin: 0 0 8px; }

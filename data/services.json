@@ -5,12 +5,42 @@
     "name": "Zemun – Pančevo corridor",
     "origin": "Zemun",
     "destination": "Pančevo",
-    "route_ids": ["r7"],
-    "stops": [{"station":"Zemun","time":null},{"station":"Novi Beograd","time":null},{"station":"Beograd Centar","time":null},{"station":"Pančevački Most","time":null},{"station":"Pančevo","time":null}],
+    "route_ids": [
+      "r7"
+    ],
+    "stops": [
+      {
+        "station": "Zemun",
+        "time": null
+      },
+      {
+        "station": "Novi Beograd",
+        "time": null
+      },
+      {
+        "station": "Beograd Centar",
+        "time": null
+      },
+      {
+        "station": "Pančevački Most",
+        "time": null
+      },
+      {
+        "station": "Pančevo",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Zemun",
+      "Novi Beograd",
+      "Beograd Centar",
+      "Pančevački Most",
+      "Pančevo"
+    ]
   },
   {
     "service_id": "rex821",
@@ -70,12 +100,52 @@
     "name": "Zemun – Prijepolje Teretna",
     "origin": "Zemun",
     "destination": "Prijepolje Teretna",
-    "route_ids": ["r9"],
-    "stops": [{"station":"Zemun","time":null},{"station":"Novi Beograd","time":null},{"station":"Beograd Centar","time":null},{"station":"Požega","time":null},{"station":"Užice","time":null},{"station":"Prijepolje","time":null},{"station":"Prijepolje Teretna","time":null}],
+    "route_ids": [
+      "r9"
+    ],
+    "stops": [
+      {
+        "station": "Zemun",
+        "time": null
+      },
+      {
+        "station": "Novi Beograd",
+        "time": null
+      },
+      {
+        "station": "Beograd Centar",
+        "time": null
+      },
+      {
+        "station": "Požega",
+        "time": null
+      },
+      {
+        "station": "Užice",
+        "time": null
+      },
+      {
+        "station": "Prijepolje",
+        "time": null
+      },
+      {
+        "station": "Prijepolje Teretna",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Zemun",
+      "Novi Beograd",
+      "Beograd Centar",
+      "Požega",
+      "Užice",
+      "Prijepolje",
+      "Prijepolje Teretna"
+    ]
   },
   {
     "service_id": "re4813",
@@ -83,12 +153,27 @@
     "name": "Požega – Kraljevo",
     "origin": "Požega",
     "destination": "Kraljevo",
-    "route_ids": ["r13"],
-    "stops": [{"station":"Požega","time":null},{"station":"Kraljevo","time":null}],
+    "route_ids": [
+      "r13"
+    ],
+    "stops": [
+      {
+        "station": "Požega",
+        "time": null
+      },
+      {
+        "station": "Kraljevo",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Požega",
+      "Kraljevo"
+    ]
   },
   {
     "service_id": "re4811",
@@ -96,12 +181,32 @@
     "name": "Kraljevo – Jagodina",
     "origin": "Kraljevo",
     "destination": "Jagodina",
-    "route_ids": ["r10"],
-    "stops": [{"station":"Kraljevo","time":null},{"station":"Lapovo","time":null},{"station":"Jagodina","time":null}],
+    "route_ids": [
+      "r10"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "time": null
+      },
+      {
+        "station": "Lapovo",
+        "time": null
+      },
+      {
+        "station": "Jagodina",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Lapovo",
+      "Jagodina"
+    ]
   },
   {
     "service_id": "re3831",
@@ -109,12 +214,32 @@
     "name": "Kraljevo – Rudnica",
     "origin": "Kraljevo",
     "destination": "Rudnica",
-    "route_ids": ["r13"],
-    "stops": [{"station":"Kraljevo","time":null},{"station":"Kosovska Mitrovica","time":null},{"station":"Rudnica","time":null}],
+    "route_ids": [
+      "r13"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "time": null
+      },
+      {
+        "station": "Kosovska Mitrovica",
+        "time": null
+      },
+      {
+        "station": "Rudnica",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Kosovska Mitrovica",
+      "Rudnica"
+    ]
   },
   {
     "service_id": "re3810",
@@ -122,12 +247,27 @@
     "name": "Kraljevo – Lapovo",
     "origin": "Kraljevo",
     "destination": "Lapovo",
-    "route_ids": ["r10"],
-    "stops": [{"station":"Kraljevo","time":null},{"station":"Lapovo","time":null}],
+    "route_ids": [
+      "r10"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "time": null
+      },
+      {
+        "station": "Lapovo",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Lapovo"
+    ]
   },
   {
     "service_id": "re2740",
@@ -135,12 +275,38 @@
     "name": "Niš – Zaječar",
     "origin": "Niš",
     "destination": "Zaječar",
-    "route_ids": ["r11"],
-    "stops": [{"station":"Niš","time":null},{"station":"Lapovo","time":null},{"station":"Bor","time":null},{"station":"Zaječar","time":null}],
+    "route_ids": [
+      "r1",
+      "r11"
+    ],
+    "stops": [
+      {
+        "station": "Niš",
+        "time": null
+      },
+      {
+        "station": "Lapovo",
+        "time": null
+      },
+      {
+        "station": "Bor",
+        "time": null
+      },
+      {
+        "station": "Zaječar",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Niš",
+      "Lapovo",
+      "Bor",
+      "Zaječar"
+    ]
   },
   {
     "service_id": "re2771",
@@ -148,12 +314,27 @@
     "name": "Prahovo Pristanište – Zaječar",
     "origin": "Prahovo Pristanište",
     "destination": "Zaječar",
-    "route_ids": ["r11"],
-    "stops": [{"station":"Prahovo Pristanište","time":null},{"station":"Zaječar","time":null}],
+    "route_ids": [
+      "r11"
+    ],
+    "stops": [
+      {
+        "station": "Prahovo Pristanište",
+        "time": null
+      },
+      {
+        "station": "Zaječar",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Prahovo Pristanište",
+      "Zaječar"
+    ]
   },
   {
     "service_id": "re6751",
@@ -161,12 +342,27 @@
     "name": "Smederevo – Požarevac",
     "origin": "Smederevo",
     "destination": "Požarevac",
-    "route_ids": ["r6"],
-    "stops": [{"station":"Smederevo","time":null},{"station":"Požarevac","time":null}],
+    "route_ids": [
+      "r6"
+    ],
+    "stops": [
+      {
+        "station": "Smederevo",
+        "time": null
+      },
+      {
+        "station": "Požarevac",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Smederevo",
+      "Požarevac"
+    ]
   },
   {
     "service_id": "ir620",
@@ -174,12 +370,37 @@
     "name": "Šabac – Beograd Centar",
     "origin": "Šabac",
     "destination": "Beograd Centar",
-    "route_ids": ["r8"],
-    "stops": [{"station":"Šabac","time":null},{"station":"Obrenovac","time":null},{"station":"Novi Beograd","time":null},{"station":"Beograd Centar","time":null}],
+    "route_ids": [
+      "r8"
+    ],
+    "stops": [
+      {
+        "station": "Šabac",
+        "time": null
+      },
+      {
+        "station": "Obrenovac",
+        "time": null
+      },
+      {
+        "station": "Novi Beograd",
+        "time": null
+      },
+      {
+        "station": "Beograd Centar",
+        "time": null
+      }
+    ],
     "service_type": "interregio",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Šabac",
+      "Obrenovac",
+      "Novi Beograd",
+      "Beograd Centar"
+    ]
   },
   {
     "service_id": "hs_bg_ns_su",
@@ -187,12 +408,37 @@
     "name": "Beograd – Novi Sad – Subotica high-speed",
     "origin": "Beograd Centar",
     "destination": "Subotica",
-    "route_ids": ["r1"],
-    "stops": [{"station":"Beograd Centar","time":null},{"station":"Stara Pazova","time":null},{"station":"Novi Sad","time":null},{"station":"Subotica","time":null}],
+    "route_ids": [
+      "r1"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "time": null
+      },
+      {
+        "station": "Stara Pazova",
+        "time": null
+      },
+      {
+        "station": "Novi Sad",
+        "time": null
+      },
+      {
+        "station": "Subotica",
+        "time": null
+      }
+    ],
     "service_type": "high-speed",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Stara Pazova",
+      "Novi Sad",
+      "Subotica"
+    ]
   },
   {
     "service_id": "reg_bg_ns_su",
@@ -200,11 +446,99 @@
     "name": "Beograd – Novi Sad – Subotica regional",
     "origin": "Beograd Centar",
     "destination": "Subotica",
-    "route_ids": ["r2"],
-    "stops": [{"station":"Beograd Centar","time":null},{"station":"Stara Pazova","time":null},{"station":"Inđija","time":null},{"station":"Novi Sad","time":null},{"station":"Vrbas","time":null},{"station":"Bačka Topola","time":null},{"station":"Subotica","time":null}],
+    "route_ids": [
+      "r2"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "time": null
+      },
+      {
+        "station": "Stara Pazova",
+        "time": null
+      },
+      {
+        "station": "Inđija",
+        "time": null
+      },
+      {
+        "station": "Novi Sad",
+        "time": null
+      },
+      {
+        "station": "Vrbas",
+        "time": null
+      },
+      {
+        "station": "Bačka Topola",
+        "time": null
+      },
+      {
+        "station": "Subotica",
+        "time": null
+      }
+    ],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Stara Pazova",
+      "Inđija",
+      "Novi Sad",
+      "Vrbas",
+      "Bačka Topola",
+      "Subotica"
+    ]
+  },
+  {
+    "service_id": "reg_ni_bg",
+    "train_number": "REG-NI-BG",
+    "name": "Niš – Beograd Centar regional",
+    "origin": "Niš",
+    "destination": "Beograd Centar",
+    "route_ids": [
+      "r1"
+    ],
+    "stops": [
+      {
+        "station": "Niš",
+        "time": null
+      },
+      {
+        "station": "Aleksinac",
+        "time": null
+      },
+      {
+        "station": "Stalać",
+        "time": null
+      },
+      {
+        "station": "Lapovo",
+        "time": null
+      },
+      {
+        "station": "Mladenovac",
+        "time": null
+      },
+      {
+        "station": "Beograd Centar",
+        "time": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Niš",
+      "Aleksinac",
+      "Stalać",
+      "Lapovo",
+      "Mladenovac",
+      "Beograd Centar"
+    ]
   }
 ]

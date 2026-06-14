@@ -127,19 +127,33 @@
     </svg>
     </div>
       <aside class="services-panel" aria-labelledby="services-heading">
-        <div class="tab-header">
-          <button class="tab active" type="button">Services</button>
+        <div class="tab-header" role="tablist" aria-label="Search mode">
+          <button class="tab active" type="button" data-mode="services">Services</button>
+          <button class="tab" type="button" data-mode="journey">Journey</button>
         </div>
-        <section class="services-tab">
+        <section class="services-tab" data-panel="services">
           <h2 id="services-heading">Passenger services</h2>
-          <label class="service-search-label" for="service-search">Search by train number</label>
-          <input id="service-search" type="search" placeholder="e.g. Re2101" autocomplete="off" />
+          <label class="service-search-label" for="service-search">Find a train, city, or route</label>
+          <input id="service-search" type="search" placeholder="Search train, city or route..." autocomplete="off" />
+          <button class="clear-search" type="button">× Clear search</button>
+          <button class="show-all-services" type="button">Show all services</button>
           <div class="service-count" aria-live="polite"></div>
           <ul class="service-list" aria-label="Scheduled services"></ul>
-          <article class="service-detail" aria-live="polite">
-            <p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>
+        </section>
+        <section class="journey-tab hidden" data-panel="journey">
+          <h2>Journey finder</h2>
+          <label class="service-search-label" for="from-station">From station</label>
+          <select id="from-station"></select>
+          <label class="service-search-label" for="to-station">To station</label>
+          <select id="to-station"></select>
+          <button class="find-route" type="button">Find route</button>
+          <article class="journey-result" aria-live="polite">
+            <p>Choose two stations to find direct trains or transfer journeys.</p>
           </article>
         </section>
+        <article class="service-detail" aria-live="polite">
+          <p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>
+        </article>
       </aside>
     </div>
   </main>
