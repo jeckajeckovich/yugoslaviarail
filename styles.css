@@ -102,3 +102,6 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .journey-tab select { width: 100%; margin: 0 0 10px; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); padding: 10px 12px; font: inherit; font-weight: 750; }
 .journey-result { border-top: 3px solid var(--ink); margin-top: 14px; padding-top: 12px; }
 .journey-result h3 { margin: 0 0 8px; }
+.journey-card { border: 2px solid #d8cdb7; border-radius: 14px; background: #fff; padding: 12px; }
+.journey-card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+.tab:not(.active) { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-bottom: 0; }
