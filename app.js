@@ -75,6 +75,8 @@ export const getServiceStops = (service) => service.stops.map((stop) => ({
   coordinates: stationCoordinates[stop.station] || null
 }));
 
+// Use service path points instead of SVG route lengths so partial services do not
+// accidentally highlight an entire shared corridor.
 export const getServicePath = (service) => (service.path_points || service.stops.map((stop) => stop.station))
   .map((station) => ({ station, coordinates: stationCoordinates[station] || null }))
   .filter((point) => point.coordinates);
