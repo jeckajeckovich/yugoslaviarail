@@ -14,7 +14,8 @@
       <p class="subtitle">A manually drafted transit diagram prioritising transfers, shared corridors, and direct service termini.</p>
     </header>
 
-    <div class="map-frame" data-zoom="100">
+    <div class="atlas-shell">
+      <div class="map-frame" data-zoom="100">
       <div class="zoom-controls" aria-label="Map detail controls">
         <label for="map-zoom">Map zoom</label>
         <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
@@ -40,21 +41,21 @@
       <text class="river-label" x="195" y="570">Sava</text>
 
       <g class="routes">
-        <path class="route r1" d="M520 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r2" d="M542 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r3" d="M498 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r4" d="M476 330 H335 H210" />
-        <path class="route r5" d="M564 330 H690 V205" />
-        <path class="route r6" d="M586 520 H765 V350" />
-        <path class="route r7" d="M608 650 H780 V505" />
-        <path class="route r8" d="M454 650 H330 L220 760" />
-        <path class="route r9" d="M432 650 L360 800 V1060 L260 1160 V1340" />
-        <path class="route r10" d="M476 900 H350 V1045 L250 1145" />
-        <path class="route r11" d="M564 900 H705 V1070 H850" />
-        <path class="route r12" d="M542 1150 H690 V1235 H820" />
-        <path class="route r13" d="M498 1150 H345 V1288 H250" />
-        <path class="route r14" d="M520 1450 V1580" />
-        <path class="route r15" d="M542 1450 H685 L790 1555" />
+        <path class="route r1" data-route-id="r1" d="M520 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r2" data-route-id="r2" d="M542 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r3" data-route-id="r3" d="M498 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r4" data-route-id="r4" d="M476 330 H335 H210" />
+        <path class="route r5" data-route-id="r5" d="M564 330 H690 V205" />
+        <path class="route r6" data-route-id="r6" d="M586 520 H765 V350" />
+        <path class="route r7" data-route-id="r7" d="M608 650 H780 V505" />
+        <path class="route r8" data-route-id="r8" d="M454 650 H330 L220 760" />
+        <path class="route r9" data-route-id="r9" d="M432 650 L360 800 V1060 L260 1160 V1340" />
+        <path class="route r10" data-route-id="r10" d="M476 900 H350 V1045 L250 1145" />
+        <path class="route r11" data-route-id="r11" d="M564 900 H705 V1070 H850" />
+        <path class="route r12" data-route-id="r12" d="M542 1150 H690 V1235 H820" />
+        <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
+        <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
+        <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
       </g>
 
       <g class="intl">
@@ -63,6 +64,12 @@
         <text x="250" y="1390">↙ Bar</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
+      </g>
+
+      <g class="service-overlay" aria-hidden="true">
+        <path class="service-path" />
+        <g class="service-stop-markers"></g>
+        <text class="service-train-label"></text>
       </g>
 
       <g class="stations">
@@ -119,18 +126,24 @@
       </g>
     </svg>
     </div>
+      <aside class="services-panel" aria-labelledby="services-heading">
+        <div class="tab-header">
+          <button class="tab active" type="button">Services</button>
+        </div>
+        <section class="services-tab">
+          <h2 id="services-heading">Passenger services</h2>
+          <label class="service-search-label" for="service-search">Search by train number</label>
+          <input id="service-search" type="search" placeholder="e.g. Re2101" autocomplete="off" />
+          <div class="service-count" aria-live="polite"></div>
+          <ul class="service-list" aria-label="Scheduled services"></ul>
+          <article class="service-detail" aria-live="polite">
+            <p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>
+          </article>
+        </section>
+      </aside>
+    </div>
   </main>
-  <script>
-    const frame = document.querySelector('.map-frame');
-    const readout = document.querySelector('.zoom-readout');
-    const zoomControl = document.querySelector('#map-zoom');
-    const setZoomDetail = (value) => {
-      const zoom = Number(value);
-      frame.dataset.zoom = zoom >= 160 ? '160' : zoom >= 120 ? '120' : '100';
-      readout.value = zoom >= 160 ? '160% · all stations' : zoom >= 120 ? '120% · secondary stations' : '100% · core labels';
-    };
-    setZoomDetail(zoomControl.value);
-    zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
-  </script>
+  <script type="module" src="app.js"></script>
+
 </body>
 </html>

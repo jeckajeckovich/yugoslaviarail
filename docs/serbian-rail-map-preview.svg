@@ -60,6 +60,35 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .legend text { fill: var(--ink); font-size: 22px; font-weight: 700; }
 .legend .legend-title { font-size: 28px; font-weight: 900; }
 @media (max-width: 720px) { .poster { padding: 22px 14px 30px; } .zoom-controls { align-items: flex-start; border-radius: 16px; flex-direction: column; font-size: .72rem; } }
+.atlas-shell { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; align-items: start; }
+.services-panel { position: sticky; top: 18px; max-height: calc(100vh - 36px); overflow: auto; border: 3px solid var(--ink); border-radius: 22px; background: #fffaf1; padding: 18px; box-shadow: 0 10px 30px #0000001f; }
+.tab-header { display: flex; border-bottom: 3px solid var(--ink); margin: -4px -4px 16px; }
+.tab { border: 0; border-radius: 14px 14px 0 0; background: var(--ink); color: var(--paper); padding: 10px 16px; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+.services-tab h2 { margin: 0 0 12px; font-size: 1.45rem; letter-spacing: -.03em; }
+.service-search-label { display: block; margin-bottom: 6px; color: var(--muted); font-size: .82rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+#service-search { width: 100%; border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); padding: 10px 12px; font: inherit; font-weight: 750; }
+.service-count { margin: 10px 0; color: var(--muted); font-size: .9rem; font-weight: 800; }
+.service-list { display: grid; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+.service-card { width: 100%; display: grid; gap: 3px; text-align: left; border: 2px solid #d8cdb7; border-radius: 14px; background: #fff; color: var(--ink); padding: 10px 12px; cursor: pointer; }
+.service-card:hover, .service-card.selected { border-color: #d3382f; box-shadow: inset 5px 0 0 #d3382f; }
+.service-number { font-size: 1.1rem; font-weight: 950; }
+.service-name { font-weight: 800; }
+.service-meta { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .84rem; font-weight: 800; }
+.badge { display: inline-block; border-radius: 999px; background: #1f2933; color: var(--paper); padding: 3px 8px; font-size: .72rem; font-weight: 950; letter-spacing: .04em; text-transform: uppercase; }
+.service-detail { border-top: 3px solid var(--ink); padding-top: 14px; }
+.service-detail h3 { margin: 0 0 4px; font-size: 1.55rem; }
+.detail-route { margin: 0 0 10px; font-weight: 900; }
+.stop-list { margin: 12px 0; padding-left: 22px; }
+.stop-list li { margin: 6px 0; font-weight: 850; }
+.stop-list span { display: block; color: var(--muted); font-size: .78rem; font-weight: 700; }
+.service-note { color: var(--muted); font-size: .82rem; font-weight: 800; }
+.service-selected .routes .route { opacity: .18; }
+.service-selected .routes .route.selected-route { opacity: 1; stroke-width: 15; }
+.service-path { fill: none; stroke: #111827; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; opacity: .18; pointer-events: none; }
+.service-stop { fill: #fffaf1; stroke: #111827; stroke-width: 4; filter: drop-shadow(0 2px 0 #ffffff); }
+.transfer-stop { stroke-width: 6; }
+.service-train-label { fill: #111827; stroke: #fffaf1; stroke-width: 7; paint-order: stroke; font-size: 30px; font-weight: 950; letter-spacing: .02em; }
+@media (max-width: 1040px) { .atlas-shell { grid-template-columns: 1fr; } .services-panel { position: static; max-height: none; } }
 
 .zoom-secondary,.zoom-all{opacity:1;pointer-events:auto;}
   ]]></style>
@@ -82,21 +111,21 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
       <text class="river-label" x="195" y="570">Sava</text>
 
       <g class="routes">
-        <path class="route r1" d="M520 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r2" d="M542 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r3" d="M498 80 V330 V520 V650 V900 V1150 V1450" />
-        <path class="route r4" d="M476 330 H335 H210" />
-        <path class="route r5" d="M564 330 H690 V205" />
-        <path class="route r6" d="M586 520 H765 V350" />
-        <path class="route r7" d="M608 650 H780 V505" />
-        <path class="route r8" d="M454 650 H330 L220 760" />
-        <path class="route r9" d="M432 650 L360 800 V1060 L260 1160 V1340" />
-        <path class="route r10" d="M476 900 H350 V1045 L250 1145" />
-        <path class="route r11" d="M564 900 H705 V1070 H850" />
-        <path class="route r12" d="M542 1150 H690 V1235 H820" />
-        <path class="route r13" d="M498 1150 H345 V1288 H250" />
-        <path class="route r14" d="M520 1450 V1580" />
-        <path class="route r15" d="M542 1450 H685 L790 1555" />
+        <path class="route r1" data-route-id="r1" d="M520 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r2" data-route-id="r2" d="M542 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r3" data-route-id="r3" d="M498 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r4" data-route-id="r4" d="M476 330 H335 H210" />
+        <path class="route r5" data-route-id="r5" d="M564 330 H690 V205" />
+        <path class="route r6" data-route-id="r6" d="M586 520 H765 V350" />
+        <path class="route r7" data-route-id="r7" d="M608 650 H780 V505" />
+        <path class="route r8" data-route-id="r8" d="M454 650 H330 L220 760" />
+        <path class="route r9" data-route-id="r9" d="M432 650 L360 800 V1060 L260 1160 V1340" />
+        <path class="route r10" data-route-id="r10" d="M476 900 H350 V1045 L250 1145" />
+        <path class="route r11" data-route-id="r11" d="M564 900 H705 V1070 H850" />
+        <path class="route r12" data-route-id="r12" d="M542 1150 H690 V1235 H820" />
+        <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
+        <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
+        <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
       </g>
 
       <g class="intl">
@@ -105,6 +134,12 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
         <text x="250" y="1390">↙ Bar</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
+      </g>
+
+      <g class="service-overlay" aria-hidden="true">
+        <path class="service-path" />
+        <g class="service-stop-markers"></g>
+        <text class="service-train-label"></text>
       </g>
 
       <g class="stations">
