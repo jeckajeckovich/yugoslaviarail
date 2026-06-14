@@ -1,0 +1,48 @@
+:root {
+  --paper: #f8f5ec;
+  --ink: #1f2933;
+  --muted: #69737d;
+  --water: #8bbbd9;
+  --border: #d6cab3;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #ded7c8; color: var(--ink); font-family: Inter, "Segoe UI", system-ui, sans-serif; }
+.poster { width: min(100vw, 1100px); margin: 0 auto; min-height: 100vh; background: var(--paper); box-shadow: 0 20px 80px #0003; padding: 34px 42px 48px; }
+.masthead { display: grid; grid-template-columns: 1fr; gap: 6px; border-bottom: 5px solid var(--ink); padding-bottom: 18px; margin-bottom: 18px; }
+.kicker { margin: 0; color: #a33d2e; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-spacing: -.06em; }
+.subtitle { margin: 0; color: var(--muted); max-width: 760px; font-size: 1.05rem; }
+.rail-map { width: 100%; height: auto; display: block; background: var(--paper); }
+.country { fill: #fbf8f0; stroke: var(--border); stroke-width: 5; }
+.river { fill: none; stroke: var(--water); stroke-width: 8; stroke-linecap: round; opacity: .65; }
+.river-label { fill: #6b9dbb; font-size: 23px; font-style: italic; font-weight: 700; opacity: .8; }
+.route { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+.routes .route { filter: drop-shadow(0 1px 0 #fff); }
+.r1 { stroke: #d3382f; }
+.r2 { stroke: #245fbe; }
+.r3 { stroke: #f2a900; }
+.r4 { stroke: #7b4bb2; }
+.r5 { stroke: #008c72; }
+.r6 { stroke: #e46c2f; }
+.r7 { stroke: #00a0c6; }
+.r8 { stroke: #b04a78; }
+.r9 { stroke: #5c8f2d; }
+.r10 { stroke: #7c6b52; }
+.r11 { stroke: #c23b73; }
+.r12 { stroke: #2d8bd4; }
+.r13 { stroke: #7463b6; }
+.r14 { stroke: #009f5d; }
+.r15 { stroke: #cc7a00; }
+.stations circle { fill: var(--paper); stroke: var(--ink); stroke-width: 5; }
+.stations text { fill: var(--ink); font-size: 24px; font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 7px; stroke-linejoin: round; filter: url(#label-halo); }
+.stations .tier1 text { font-size: 36px; font-weight: 900; letter-spacing: -.025em; }
+.stations .tier1 circle { stroke-width: 7; }
+.stations .tier2 text { font-size: 30px; font-weight: 850; }
+.stations .tier2 circle { stroke-width: 6; }
+.intl text { fill: #57616b; font-size: 30px; font-weight: 900; letter-spacing: .02em; }
+.legend rect { fill: #fffaf1; stroke: var(--ink); stroke-width: 3; }
+.legend path { fill: none; stroke-width: 10; stroke-linecap: round; }
+.legend text { fill: var(--ink); font-size: 22px; font-weight: 700; }
+.legend .legend-title { font-size: 28px; font-weight: 900; }
+@media (max-width: 720px) { .poster { padding: 22px 14px 30px; } }

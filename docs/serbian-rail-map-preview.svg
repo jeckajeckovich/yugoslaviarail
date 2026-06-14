@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="rail-map" viewBox="0 0 1200 1600" width="1200" height="1600" role="img" aria-labelledby="svg-title svg-desc">
+  <style><![CDATA[
+:root {
+  --paper: #f8f5ec;
+  --ink: #1f2933;
+  --muted: #69737d;
+  --water: #8bbbd9;
+  --border: #d6cab3;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #ded7c8; color: var(--ink); font-family: Inter, "Segoe UI", system-ui, sans-serif; }
+.poster { width: min(100vw, 1100px); margin: 0 auto; min-height: 100vh; background: var(--paper); box-shadow: 0 20px 80px #0003; padding: 34px 42px 48px; }
+.masthead { display: grid; grid-template-columns: 1fr; gap: 6px; border-bottom: 5px solid var(--ink); padding-bottom: 18px; margin-bottom: 18px; }
+.kicker { margin: 0; color: #a33d2e; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-spacing: -.06em; }
+.subtitle { margin: 0; color: var(--muted); max-width: 760px; font-size: 1.05rem; }
+.rail-map { width: 100%; height: auto; display: block; background: var(--paper); }
+.country { fill: #fbf8f0; stroke: var(--border); stroke-width: 5; }
+.river { fill: none; stroke: var(--water); stroke-width: 8; stroke-linecap: round; opacity: .65; }
+.river-label { fill: #6b9dbb; font-size: 23px; font-style: italic; font-weight: 700; opacity: .8; }
+.route { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+.routes .route { filter: drop-shadow(0 1px 0 #fff); }
+.r1 { stroke: #d3382f; }
+.r2 { stroke: #245fbe; }
+.r3 { stroke: #f2a900; }
+.r4 { stroke: #7b4bb2; }
+.r5 { stroke: #008c72; }
+.r6 { stroke: #e46c2f; }
+.r7 { stroke: #00a0c6; }
+.r8 { stroke: #b04a78; }
+.r9 { stroke: #5c8f2d; }
+.r10 { stroke: #7c6b52; }
+.r11 { stroke: #c23b73; }
+.r12 { stroke: #2d8bd4; }
+.r13 { stroke: #7463b6; }
+.r14 { stroke: #009f5d; }
+.r15 { stroke: #cc7a00; }
+.stations circle { fill: var(--paper); stroke: var(--ink); stroke-width: 5; }
+.stations text { fill: var(--ink); font-size: 24px; font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 7px; stroke-linejoin: round; filter: url(#label-halo); }
+.stations .tier1 text { font-size: 36px; font-weight: 900; letter-spacing: -.025em; }
+.stations .tier1 circle { stroke-width: 7; }
+.stations .tier2 text { font-size: 30px; font-weight: 850; }
+.stations .tier2 circle { stroke-width: 6; }
+.intl text { fill: #57616b; font-size: 30px; font-weight: 900; letter-spacing: .02em; }
+.legend rect { fill: #fffaf1; stroke: var(--ink); stroke-width: 3; }
+.legend path { fill: none; stroke-width: 10; stroke-linecap: round; }
+.legend text { fill: var(--ink); font-size: 22px; font-weight: 700; }
+.legend .legend-title { font-size: 28px; font-weight: 900; }
+@media (max-width: 720px) { .poster { padding: 22px 14px 30px; } }
+
+  ]]></style>
+      <title id="svg-title">Schematic map of passenger railway routes in Serbia</title>
+      <desc id="svg-desc">The Serbian railway network is organised around a dominant north-south spine from Subotica through Novi Sad, Belgrade, Lapovo, and Niš, with branches to Šid, Vršac, Kikinda, Prijepolje, Kraljevo, Zaječar, and international directions.</desc>
+
+      <defs>
+        <filter id="label-halo" x="-30%" y="-30%" width="160%" height="160%">
+          <feFlood flood-color="#f8f5ec" flood-opacity="0.95" result="bg" />
+          <feComposite in="bg" in2="SourceAlpha" operator="in" />
+          <feMorphology operator="dilate" radius="3" />
+          <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <path class="country" d="M519 58 L650 70 L720 128 L805 128 L870 210 L855 330 L918 430 L884 532 L943 641 L902 754 L956 860 L895 980 L920 1105 L830 1210 L800 1358 L682 1444 L572 1422 L462 1480 L352 1420 L310 1285 L232 1212 L260 1080 L210 972 L240 860 L188 742 L238 632 L204 510 L278 416 L270 292 L370 220 L405 112 Z" />
+      <path class="river danube" d="M180 360 H392 L452 420 H600 L710 360 H945" />
+      <path class="river sava" d="M112 586 H338 L435 640 H560" />
+      <text class="river-label" x="730" y="344">Danube</text>
+      <text class="river-label" x="195" y="570">Sava</text>
+
+      <g class="routes">
+        <path class="route r1" d="M520 80 V330 V520 V650 V820 V1050 V1320" />
+        <path class="route r2" d="M538 80 V330 V520 V650 V820 V1050 V1320" />
+        <path class="route r3" d="M502 80 V330 V520 V650 V820 V1050 V1320" />
+        <path class="route r4" d="M484 330 H335 H210" />
+        <path class="route r5" d="M556 330 H690 V205" />
+        <path class="route r6" d="M574 520 H765 V350" />
+        <path class="route r7" d="M592 650 H780 V505" />
+        <path class="route r8" d="M466 650 H330 L220 760" />
+        <path class="route r9" d="M448 650 L360 780 V1010 L260 1110 V1260" />
+        <path class="route r10" d="M484 820 H350 V965 L250 1065" />
+        <path class="route r11" d="M556 820 H705 V990 H850" />
+        <path class="route r12" d="M538 1050 H690 V1135 H820" />
+        <path class="route r13" d="M502 1050 H345 V1188 H250" />
+        <path class="route r14" d="M520 1320 V1450" />
+        <path class="route r15" d="M538 1320 H685 L790 1425" />
+      </g>
+
+      <g class="intl">
+        <text x="520" y="42">↑ Budapest</text>
+        <text x="690" y="165">↑ Szeged</text>
+        <text x="250" y="1308">↙ Bar</text>
+        <text x="520" y="1500">↓ Skopje</text>
+        <text x="802" y="1464">↘ Sofia</text>
+      </g>
+
+      <g class="stations">
+        <g class="tier1"><circle cx="520" cy="80" r="16"/><text x="552" y="88">Subotica</text></g>
+        <g><circle cx="520" cy="190" r="8"/><text x="552" y="198">Bačka Topola</text></g>
+        <g><circle cx="520" cy="250" r="8"/><text x="552" y="258">Vrbas</text></g>
+        <g class="tier1"><circle cx="520" cy="330" r="18"/><text x="552" y="338">Novi Sad</text></g>
+        <g><circle cx="520" cy="430" r="8"/><text x="552" y="438">Inđija</text></g>
+        <g class="tier2"><circle cx="520" cy="520" r="14"/><text x="552" y="528">Stara Pazova</text></g>
+        <g class="tier1"><circle cx="520" cy="650" r="20"/><text x="548" y="612">Beograd</text></g>
+        <g><circle cx="520" cy="740" r="8"/><text x="552" y="748">Mladenovac</text></g>
+        <g class="tier2"><circle cx="520" cy="820" r="14"/><text x="552" y="828">Lapovo</text></g>
+        <g><circle cx="520" cy="940" r="8"/><text x="552" y="948">Jagodina</text></g>
+        <g><circle cx="520" cy="1050" r="8"/><text x="552" y="1058">Stalać</text></g>
+        <g><circle cx="520" cy="1180" r="8"/><text x="552" y="1188">Aleksinac</text></g>
+        <g class="tier1"><circle cx="520" cy="1320" r="18"/><text x="552" y="1328">Niš</text></g>
+
+        <g class="tier2"><circle cx="210" cy="330" r="13"/><text x="150" y="306">Šid</text></g>
+        <g><circle cx="335" cy="330" r="8"/><text x="302" y="306">Ruma</text></g>
+        <g class="tier2"><circle cx="690" cy="205" r="13"/><text x="722" y="213">Kikinda</text></g>
+        <g><circle cx="690" cy="270" r="8"/><text x="722" y="278">Zrenjanin</text></g>
+        <g class="tier2"><circle cx="765" cy="350" r="13"/><text x="797" y="358">Vršac</text></g>
+        <g><circle cx="765" cy="430" r="8"/><text x="797" y="438">Plandište</text></g>
+        <g><circle cx="780" cy="505" r="8"/><text x="812" y="513">Pančevo</text></g>
+
+        <g><circle cx="470" cy="650" r="7"/><text x="386" y="628">Zemun</text></g>
+        <g><circle cx="490" cy="650" r="7"/><text x="400" y="674">Novi Beograd</text></g>
+        <g><circle cx="520" cy="650" r="8"/><text x="548" y="656">Beograd Centar</text></g>
+        <g><circle cx="548" cy="650" r="7"/><text x="570" y="684">Karađorđev Park</text></g>
+        <g><circle cx="575" cy="650" r="7"/><text x="602" y="628">Pančevački Most</text></g>
+        <g><circle cx="470" cy="690" r="7"/><text x="374" y="714">Rakovica</text></g>
+
+        <g><circle cx="330" cy="650" r="8"/><text x="265" y="630">Obrenovac</text></g>
+        <g><circle cx="220" cy="760" r="8"/><text x="148" y="768">Loznica</text></g>
+        <g class="tier2"><circle cx="360" cy="1010" r="13"/><text x="392" y="1018">Požega</text></g>
+        <g><circle cx="260" cy="1110" r="8"/><text x="182" y="1118">Užice</text></g>
+        <g><circle cx="260" cy="1260" r="8"/><text x="154" y="1268">Prijepolje</text></g>
+        <g class="tier2"><circle cx="250" cy="1065" r="13"/><text x="128" y="1073">Kraljevo</text></g>
+        <g class="tier2"><circle cx="850" cy="990" r="13"/><text x="882" y="998">Zaječar</text></g>
+        <g><circle cx="705" cy="990" r="8"/><text x="730" y="970">Bor</text></g>
+        <g><circle cx="820" cy="1135" r="8"/><text x="852" y="1143">Pirot</text></g>
+        <g><circle cx="250" cy="1188" r="8"/><text x="145" y="1196">Kosovska Mitrovica</text></g>
+      </g>
+
+      <g class="legend" transform="translate(765 1220)">
+        <rect width="330" height="245" rx="20" />
+        <text class="legend-title" x="24" y="38">Passenger services</text>
+        <path class="r1" d="M28 68 H92"/><text x="110" y="75">Subotica – Niš spine</text>
+        <path class="r4" d="M28 98 H92"/><text x="110" y="105">Šid corridor</text>
+        <path class="r5" d="M28 128 H92"/><text x="110" y="135">Kikinda / Banat</text>
+        <path class="r6" d="M28 158 H92"/><text x="110" y="165">Vršac corridor</text>
+        <path class="r9" d="M28 188 H92"/><text x="110" y="195">Požega – Prijepolje</text>
+        <path class="r11" d="M28 218 H92"/><text x="110" y="225">Zaječar / eastern Serbia</text>
+      </g>
+    </svg>
