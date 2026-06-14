@@ -58,6 +58,22 @@ const serviceDetail = document.querySelector('.service-detail');
 const servicePath = document.querySelector('.service-path');
 const serviceStopMarkers = document.querySelector('.service-stop-markers');
 const serviceTrainLabel = document.querySelector('.service-train-label');
-const routeElements = new Map([...document.querySelectorAll('[data-route-id]')].map((route) => [route.dataset.routeId, route]));
+const routeElements = new Map(
+  [...document.querySelectorAll('[data-route-id]')].map((route) => [route.dataset.routeId, route])
+);
+
 const svg = document.querySelector('.rail-map');
-const fullViewBox = svg.getAttribute('viewBox
+const fullViewBox = svg?.getAttribute('viewBox') || '0 0 1200 1680';
+
+let services = [];
+let selectedService = null;
+
+const setZoomDetail = (value) => {
+  const zoom = Number(value);
+  frame.dataset.zoom = zoom >= 160 ? '160' : zoom >= 120 ? '120' : '100';
+  readout.value = zoom >= 160
+    ? '160% · all stations'
+    : zoom >= 120
+      ? '120% · secondary stations'
+      : '100% · core labels';
+};
