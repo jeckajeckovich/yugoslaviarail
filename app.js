@@ -132,16 +132,40 @@ const zoomToPoints = (points) => {
 
 const zoomToService = (service) => zoomToPoints(getServicePath(service).map((point) => point.coordinates));
 
+
+const aliasPhrases = [
+  ['novi belgrade', 'novi beograd'],
+  ['new belgrade', 'novi beograd'],
+  ['belgrade', 'beograd'],
+  ['belgrad', 'beograd'],
+  ['nish', 'nis'],
+  ['pozega', 'pozega'],
+  ['uzice', 'uzice'],
+  ['zajecar', 'zajecar'],
+  ['subotica', 'subotica']
+];
+
+export const normalizeSearch = (text) => {
+  let normalized = String(text ?? '')
+    .toLowerCase()
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  for (const [alias, canonical] of aliasPhrases) {
+    normalized = normalized.replace(new RegExp(`\\b${alias}\\b`, 'g'), canonical);
+  }
+  return normalized.replace(/\bbg\b/g, 'beograd').replace(/\s+/g, ' ');
+};
+
 const typeLabel = (type) => type.replace(/\b\w/g, (letter) => letter.toUpperCase());
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 
 const serviceMatches = (service, query) => {
-  if (!query) return true;
-  const haystack = [service.train_number, service.origin, service.destination, service.name, ...stopNames(service)]
-    .join(' ')
-    .toLowerCase();
-  return haystack.includes(query.toLowerCase());
+  const normalizedQuery = normalizeSearch(query);
+  if (!normalizedQuery) return true;
+  const haystack = normalizeSearch([service.train_number, service.origin, service.destination, service.name, ...stopNames(service)].join(' '));
+  return haystack.includes(normalizedQuery);
 };
 
 const renderDetail = (service) => {
@@ -172,7 +196,10 @@ const renderServices = () => {
     </li>
   `).join('');
   if (visible.length === 1 && !selectedServiceIds.size) renderDetail(visible[0]);
-  if (!visible.length) serviceDetail.innerHTML = '<p>No services match that search. Try a train number, city, or stop name.</p>';
+  if (!visible.length) {
+    serviceList.innerHTML = '<li class="no-results">No services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</li>';
+    serviceDetail.innerHTML = '<p>No services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</p>';
+  }
 };
 
 const drawServices = (legs, { zoom = true } = {}) => {
