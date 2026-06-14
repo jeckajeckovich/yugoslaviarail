@@ -89,8 +89,9 @@ const getSegmentPathD = (service, from, to) => {
   const path = getServicePath(service);
   const start = path.findIndex((point) => point.station === from);
   const end = path.findIndex((point) => point.station === to);
-  if (start === -1 || end === -1 || end < start) return getPathD(service);
-  return path.slice(start, end + 1)
+  if (start === -1 || end === -1) return getPathD(service);
+  const segment = start <= end ? path.slice(start, end + 1) : path.slice(end, start + 1).reverse();
+  return segment
     .map((point, index) => `${index === 0 ? 'M' : 'L'}${point.coordinates.x} ${point.coordinates.y}`)
     .join(' ');
 };
@@ -132,16 +133,40 @@ const zoomToPoints = (points) => {
 
 const zoomToService = (service) => zoomToPoints(getServicePath(service).map((point) => point.coordinates));
 
+
+const aliasPhrases = [
+  ['novi belgrade', 'novi beograd'],
+  ['new belgrade', 'novi beograd'],
+  ['belgrade', 'beograd'],
+  ['belgrad', 'beograd'],
+  ['nish', 'nis'],
+  ['pozega', 'pozega'],
+  ['uzice', 'uzice'],
+  ['zajecar', 'zajecar'],
+  ['subotica', 'subotica']
+];
+
+export const normalizeSearch = (text) => {
+  let normalized = String(text ?? '')
+    .toLowerCase()
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  for (const [alias, canonical] of aliasPhrases) {
+    normalized = normalized.replace(new RegExp(`\\b${alias}\\b`, 'g'), canonical);
+  }
+  return normalized.replace(/\bbg\b/g, 'beograd').replace(/\s+/g, ' ');
+};
+
 const typeLabel = (type) => type.replace(/\b\w/g, (letter) => letter.toUpperCase());
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 
 const serviceMatches = (service, query) => {
-  if (!query) return true;
-  const haystack = [service.train_number, service.origin, service.destination, service.name, ...stopNames(service)]
-    .join(' ')
-    .toLowerCase();
-  return haystack.includes(query.toLowerCase());
+  const normalizedQuery = normalizeSearch(query);
+  if (!normalizedQuery) return true;
+  const haystack = normalizeSearch([service.train_number, service.origin, service.destination, service.name, ...stopNames(service)].join(' '));
+  return haystack.includes(normalizedQuery);
 };
 
 const renderDetail = (service) => {
@@ -172,10 +197,13 @@ const renderServices = () => {
     </li>
   `).join('');
   if (visible.length === 1 && !selectedServiceIds.size) renderDetail(visible[0]);
-  if (!visible.length) serviceDetail.innerHTML = '<p>No services match that search. Try a train number, city, or stop name.</p>';
+  if (!visible.length) {
+    serviceList.innerHTML = '<li class="no-results">No services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</li>';
+    serviceDetail.innerHTML = '<p>No services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</p>';
+  }
 };
 
-const drawServices = (legs, { zoom = true } = {}) => {
+const drawServices = (legs, { zoom = true, stationPath = null } = {}) => {
   selectedServiceIds = new Set(legs.map((leg) => leg.service.service_id));
   document.body.classList.toggle('service-selected', selectedServiceIds.size > 0);
   routeElements.forEach((route) => route.classList.toggle('selected-route', legs.some((leg) => leg.service.route_ids.includes(route.dataset.routeId))));
@@ -188,7 +216,7 @@ const drawServices = (legs, { zoom = true } = {}) => {
   }
   const terminalNames = [legs[0].from, legs.at(-1).to];
   const transferNames = legs.slice(0, -1).map((leg) => leg.to);
-  const markerNames = [...new Set([...terminalNames, ...transferNames, ...legs.flatMap((leg) => [leg.from, leg.to])])];
+  const markerNames = [...new Set([...(stationPath || []), ...terminalNames, ...transferNames, ...legs.flatMap((leg) => [leg.from, leg.to])])];
   serviceStopMarkers.innerHTML = markerNames
     .filter((station) => stationCoordinates[station])
     .map((station) => {
@@ -220,75 +248,104 @@ const resetSelection = () => {
   renderServices();
 };
 
-const findDirectJourney = (from, to) => services
-  .map((service) => ({ service, fromIndex: stopNames(service).indexOf(from), toIndex: stopNames(service).indexOf(to) }))
-  .filter((match) => match.fromIndex !== -1 && match.toIndex !== -1 && match.toIndex > match.fromIndex)
-  .sort((a, b) => (a.toIndex - a.fromIndex) - (b.toIndex - b.fromIndex))[0];
-
-const findTransferJourney = (from, to) => {
-  const queue = [{ station: from, legs: [], stopCost: 0 }];
-  const best = new Map([[from, 0]]);
-  const results = [];
-  while (queue.length) {
-    const state = queue.shift();
-    for (const service of services) {
-      const names = stopNames(service);
-      const fromIndex = names.indexOf(state.station);
-      if (fromIndex === -1) continue;
-      for (let toIndex = fromIndex + 1; toIndex < names.length; toIndex += 1) {
-        const nextStation = names[toIndex];
-        const nextLegs = [...state.legs, { service, from: state.station, to: nextStation, stops: toIndex - fromIndex }];
-        const nextCost = state.stopCost + (toIndex - fromIndex);
-        const transferCount = nextLegs.length - 1;
-        const key = `${nextStation}:${transferCount}`;
-        if ((best.get(key) ?? Infinity) <= nextCost) continue;
-        best.set(key, nextCost);
-        if (nextStation === to) results.push({ legs: nextLegs, stopCost: nextCost });
-        else if (nextLegs.length < 4) queue.push({ station: nextStation, legs: nextLegs, stopCost: nextCost });
-      }
+const buildServiceGraph = () => {
+  const graph = new Map();
+  const addEdge = (from, to, service) => {
+    if (!graph.has(from)) graph.set(from, []);
+    graph.get(from).push({ to, service });
+  };
+  for (const service of services) {
+    const names = stopNames(service);
+    for (let index = 0; index < names.length - 1; index += 1) {
+      addEdge(names[index], names[index + 1], service);
+      addEdge(names[index + 1], names[index], service);
     }
   }
-  return results.sort((a, b) => (a.legs.length - b.legs.length) || (a.stopCost - b.stopCost))[0] || null;
+  return graph;
 };
+
+const groupEdgesIntoSegments = (edges) => {
+  if (!edges.length) return [];
+  const segments = [];
+  for (const edge of edges) {
+    const previous = segments.at(-1);
+    if (previous && previous.service.service_id === edge.service.service_id && previous.to === edge.from) {
+      previous.to = edge.to;
+      previous.stations.push(edge.to);
+    } else {
+      segments.push({ service: edge.service, from: edge.from, to: edge.to, stations: [edge.from, edge.to] });
+    }
+  }
+  return segments;
+};
+
+const stationPathFromEdges = (edges) => edges.reduce((stations, edge, index) => {
+  if (index === 0) stations.push(edge.from);
+  stations.push(edge.to);
+  return stations;
+}, []);
+
+const findJourneyOptions = (from, to, limit = 3) => {
+  const graph = buildServiceGraph();
+  const queue = [{ station: from, serviceId: null, transfers: 0, stopCount: 0, edges: [], visited: new Set([from]) }];
+  const results = [];
+  while (queue.length && results.length < limit) {
+    queue.sort((a, b) => (a.transfers - b.transfers) || (a.stopCount - b.stopCount));
+    const state = queue.shift();
+    if (state.station === to && state.edges.length) {
+      const segments = groupEdgesIntoSegments(state.edges);
+      results.push({ ...state, segments, stations: stationPathFromEdges(state.edges) });
+      continue;
+    }
+    for (const edge of graph.get(state.station) || []) {
+      if (state.visited.has(edge.to)) continue;
+      const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
+      const nextVisited = new Set(state.visited);
+      nextVisited.add(edge.to);
+      queue.push({
+        station: edge.to,
+        serviceId: edge.service.service_id,
+        transfers: nextTransfers,
+        stopCount: state.stopCount + 1,
+        edges: [...state.edges, { from: state.station, to: edge.to, service: edge.service }],
+        visited: nextVisited
+      });
+    }
+  }
+  return results.sort((a, b) => (a.transfers - b.transfers) || (a.stopCount - b.stopCount)).slice(0, limit);
+};
+
+let currentJourneyOptions = [];
+
+const renderJourneyOption = (option, index) => `
+  <button class="journey-card${index === 0 ? ' selected' : ''}" type="button" data-option-index="${index}">
+    <h3>Option ${String.fromCharCode(65 + index)}</h3>
+    <p><strong>Transfers:</strong> ${option.transfers}</p>
+    <p><strong>Estimated segments:</strong> ${option.segments.length}</p>
+    <ol class="stop-list">
+      ${option.segments.map((segment, segmentIndex) => `<li>Segment ${segmentIndex + 1}<span>Train: ${segment.service.train_number}</span><span>${segment.from} → ${segment.to}</span></li>`).join('')}
+    </ol>
+  </button>
+`;
 
 const renderJourneyResult = (from, to) => {
   if (from === to) {
     document.querySelector('.journey-result').innerHTML = '<p>Choose two different stations.</p>';
     return;
   }
-  const direct = findDirectJourney(from, to);
-  if (direct) {
-    const leg = { service: direct.service, from, to, stops: direct.toIndex - direct.fromIndex };
-    drawServices([leg]);
-    document.querySelector('.journey-result').innerHTML = `
-      <div class="journey-card">
-        <h3>${from} → ${to}</h3>
-        <p><strong>Direct service:</strong> ${direct.service.train_number}</p>
-        <p>Transfers: 0</p>
-      </div>
-    `;
-    renderDetail(direct.service);
-    return;
-  }
-  const transfer = findTransferJourney(from, to);
-  if (!transfer) {
+  currentJourneyOptions = findJourneyOptions(from, to, 3);
+  if (!currentJourneyOptions.length) {
     document.querySelector('.journey-result').innerHTML = '<p>No scheduled connection found in the static service layer.</p>';
     resetSelection();
     return;
   }
-  drawServices(transfer.legs);
+  drawServices(currentJourneyOptions[0].segments, { stationPath: currentJourneyOptions[0].stations });
   document.querySelector('.journey-result').innerHTML = `
-    <div class="journey-card">
-      <h3>${from} → ${to}</h3>
-      <p class="service-note">No direct train</p>
-      <strong>Recommended</strong>
-      <ol class="stop-list">
-        ${transfer.legs.map((leg) => `<li>${leg.from} → ${leg.to}<span>${leg.service.train_number}</span></li>`).join('')}
-      </ol>
-      <p>Transfers: ${transfer.legs.length - 1}</p>
-    </div>
+    <h3>${from} → ${to}</h3>
+    <p><strong>Journey found</strong></p>
+    ${currentJourneyOptions.map(renderJourneyOption).join('')}
   `;
-  serviceDetail.innerHTML = '<p>Transfer journey highlighted. Select an individual service card for its full stop list.</p>';
+  serviceDetail.innerHTML = '<p>Journey highlighted. Select an option for alternate routes, or select an individual service card for its full stop list.</p>';
 };
 
 const populateJourneySelectors = () => {
@@ -328,6 +385,14 @@ document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('
 }));
 document.querySelector('.find-route').addEventListener('click', () => {
   renderJourneyResult(document.querySelector('#from-station').value, document.querySelector('#to-station').value);
+});
+document.querySelector('.journey-result').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-option-index]');
+  if (!button) return;
+  const option = currentJourneyOptions[Number(button.dataset.optionIndex)];
+  if (!option) return;
+  document.querySelectorAll('[data-option-index]').forEach((item) => item.classList.toggle('selected', item === button));
+  drawServices(option.segments, { stationPath: option.stations });
 });
 
 loadServices();

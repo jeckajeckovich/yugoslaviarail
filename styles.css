@@ -105,3 +105,6 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .journey-card { border: 2px solid #d8cdb7; border-radius: 14px; background: #fff; padding: 12px; }
 .journey-card h3 { margin: 0 0 8px; font-size: 1.2rem; }
 .tab:not(.active) { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); border-bottom: 0; }
+.no-results { border: 2px dashed #d8cdb7; border-radius: 14px; background: #fff; color: var(--muted); padding: 12px; font-weight: 850; }
+.journey-card { display: block; width: 100%; text-align: left; margin-top: 10px; color: var(--ink); cursor: pointer; }
+.journey-card.selected { border-color: #d3382f; box-shadow: inset 5px 0 0 #d3382f; }

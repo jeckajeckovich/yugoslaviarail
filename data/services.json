@@ -635,5 +635,77 @@
       "Mladenovac",
       "Beograd Centar"
     ]
+  },
+  {
+    "service_id": "reg_lo_sa",
+    "train_number": "REG-LO-SA",
+    "name": "Loznica – Šabac regional",
+    "origin": "Loznica",
+    "destination": "Šabac",
+    "route_ids": [
+      "r8"
+    ],
+    "stops": [
+      {
+        "station": "Loznica",
+        "time": null
+      },
+      {
+        "station": "Šabac",
+        "time": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Loznica",
+      "Šabac"
+    ]
+  },
+  {
+    "service_id": "reg_bg_vr",
+    "train_number": "REG-BG-VR",
+    "name": "Beograd Centar – Vršac regional",
+    "origin": "Beograd Centar",
+    "destination": "Vršac",
+    "route_ids": [
+      "r7",
+      "r6"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "time": null
+      },
+      {
+        "station": "Pančevački Most",
+        "time": null
+      },
+      {
+        "station": "Pančevo",
+        "time": null
+      },
+      {
+        "station": "Plandište",
+        "time": null
+      },
+      {
+        "station": "Vršac",
+        "time": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Pančevački Most",
+      "Pančevo",
+      "Plandište",
+      "Vršac"
+    ]
   }
 ]
