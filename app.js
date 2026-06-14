@@ -29,8 +29,8 @@ const stationCoordinates = {
   'Plandište': { x: 765, y: 430 },
   'Pančevo': { x: 780, y: 505 },
   'Obrenovac': { x: 330, y: 650 },
-  'Šabac': { x: 220, y: 760 },
-  'Loznica': { x: 220, y: 760 },
+  'Šabac': { x: 220, y: 700 },
+  'Loznica': { x: 220, y: 820 },
   'Požega': { x: 360, y: 1060 },
   'Užice': { x: 260, y: 1160 },
   'Prijepolje': { x: 260, y: 1340 },
@@ -58,14 +58,25 @@ const serviceDetail = document.querySelector('.service-detail');
 const servicePath = document.querySelector('.service-path');
 const serviceStopMarkers = document.querySelector('.service-stop-markers');
 const serviceTrainLabel = document.querySelector('.service-train-label');
-const routeElements = new Map([...document.querySelectorAll('[data-route-id]')].map((route) => [route.dataset.routeId, route]));
+
+const routeElements = new Map(
+  [...document.querySelectorAll('[data-route-id]')].map((route) => [route.dataset.routeId, route])
+);
+
+const svg = document.querySelector('.rail-map');
+const fullViewBox = svg?.getAttribute('viewBox') || '0 0 1200 1680';
+
 let services = [];
 let selectedService = null;
 
 const setZoomDetail = (value) => {
   const zoom = Number(value);
   frame.dataset.zoom = zoom >= 160 ? '160' : zoom >= 120 ? '120' : '100';
-  readout.value = zoom >= 160 ? '160% · all stations' : zoom >= 120 ? '120% · secondary stations' : '100% · core labels';
+  readout.value = zoom >= 160
+    ? '160% · all stations'
+    : zoom >= 120
+      ? '120% · secondary stations'
+      : '100% · core labels';
 };
 
 export const getServiceStops = (service) => service.stops.map((stop) => ({
@@ -73,40 +84,90 @@ export const getServiceStops = (service) => service.stops.map((stop) => ({
   coordinates: stationCoordinates[stop.station] || null
 }));
 
-export const getServicePath = (service) => service.route_ids
-  .map((routeId) => routeElements.get(routeId))
-  .filter(Boolean);
+export const getServicePath = (service) => (
+  service.path_points || service.stops.map((stop) => stop.station)
+)
+  .map((station) => ({
+    station,
+    coordinates: stationCoordinates[station] || null
+  }))
+  .filter((point) => point.coordinates);
+
+const getPathD = (service) => getServicePath(service)
+  .map((point, index) => `${index === 0 ? 'M' : 'L'}${point.coordinates.x} ${point.coordinates.y}`)
+  .join(' ');
 
 export const getServiceProgressPoint = (service, progress) => {
-  const paths = getServicePath(service);
-  if (!paths.length) return null;
-  const totalLength = paths.reduce((sum, path) => sum + path.getTotalLength(), 0);
-  const target = Math.max(0, Math.min(1, progress)) * totalLength;
-  let travelled = 0;
-  for (const path of paths) {
-    const length = path.getTotalLength();
-    if (travelled + length >= target) {
-      const point = path.getPointAtLength(target - travelled);
-      return { x: point.x, y: point.y };
+  const points = getServicePath(service).map((point) => point.coordinates);
+  if (!points.length) return null;
+  if (points.length === 1) return points[0];
+
+  const segments = points.slice(1).map((point, index) => {
+    const previous = points[index];
+    return {
+      previous,
+      point,
+      length: Math.hypot(point.x - previous.x, point.y - previous.y)
+    };
+  });
+
+  const totalLength = segments.reduce((sum, segment) => sum + segment.length, 0);
+  let target = Math.max(0, Math.min(1, progress)) * totalLength;
+
+  for (const segment of segments) {
+    if (target <= segment.length) {
+      const ratio = segment.length ? target / segment.length : 0;
+      return {
+        x: segment.previous.x + ((segment.point.x - segment.previous.x) * ratio),
+        y: segment.previous.y + ((segment.point.y - segment.previous.y) * ratio)
+      };
     }
-    travelled += length;
+    target -= segment.length;
   }
-  const last = paths.at(-1);
-  const point = last.getPointAtLength(last.getTotalLength());
-  return { x: point.x, y: point.y };
+
+  return points.at(-1);
 };
 
-const typeLabel = (type) => type.replace(/\b\w/g, (letter) => letter.toUpperCase());
+const zoomToService = (service) => {
+  if (!svg) return;
+
+  const points = getServicePath(service).map((point) => point.coordinates);
+  if (!points.length) return;
+
+  const xs = points.map((point) => point.x);
+  const ys = points.map((point) => point.y);
+  const padding = 150;
+
+  const minX = Math.max(0, Math.min(...xs) - padding);
+  const minY = Math.max(0, Math.min(...ys) - padding);
+  const maxX = Math.min(1200, Math.max(...xs) + padding);
+  const maxY = Math.min(1680, Math.max(...ys) + padding);
+
+  svg.setAttribute(
+    'viewBox',
+    `${minX} ${minY} ${Math.max(360, maxX - minX)} ${Math.max(320, maxY - minY)}`
+  );
+};
+
+const typeLabel = (type) => (
+  type || 'service'
+).replace(/\b\w/g, (letter) => letter.toUpperCase());
 
 const renderServices = () => {
   const query = serviceSearch.value.trim().toLowerCase();
-  const visible = services.filter((service) => service.train_number.toLowerCase().includes(query));
+  const visible = services.filter((service) => (
+    service.train_number.toLowerCase().includes(query)
+    || service.origin.toLowerCase().includes(query)
+    || service.destination.toLowerCase().includes(query)
+  ));
+
   serviceCount.textContent = `${visible.length} scheduled services`;
+
   serviceList.innerHTML = visible.map((service) => `
     <li>
       <button class="service-card${selectedService?.service_id === service.service_id ? ' selected' : ''}" type="button" data-service-id="${service.service_id}">
-        <span class="service-number">${service.train_number}</span>
         <span class="service-name">${service.origin} → ${service.destination}</span>
+        <span class="service-number">${service.train_number}</span>
         <span class="service-meta"><span class="badge">${typeLabel(service.service_type)}</span>${service.stops.length} stops</span>
       </button>
     </li>
@@ -116,23 +177,47 @@ const renderServices = () => {
 const drawSelectedService = (service) => {
   selectedService = service;
   document.body.classList.add('service-selected');
-  routeElements.forEach((route) => route.classList.toggle('selected-route', service.route_ids.includes(route.dataset.routeId)));
 
-  const paths = getServicePath(service);
-  servicePath.setAttribute('d', paths.map((path) => path.getAttribute('d')).join(' '));
+  routeElements.forEach((route) => {
+    route.classList.toggle('selected-route', service.route_ids.includes(route.dataset.routeId));
+  });
+
+  servicePath.setAttribute('d', getPathD(service));
   serviceTrainLabel.textContent = service.train_number;
+
   const labelPoint = getServiceProgressPoint(service, 0.55);
   if (labelPoint) {
     serviceTrainLabel.setAttribute('x', labelPoint.x + 18);
     serviceTrainLabel.setAttribute('y', labelPoint.y - 18);
   }
 
-  serviceStopMarkers.innerHTML = getServiceStops(service)
-    .filter((stop) => stop.coordinates)
-    .map((stop) => `<circle class="service-stop${transferHubs.has(stop.station) ? ' transfer-stop' : ''}" cx="${stop.coordinates.x}" cy="${stop.coordinates.y}" r="${transferHubs.has(stop.station) ? 15 : 10}"><title>${stop.station}</title></circle>`)
+  zoomToService(service);
+
+  const stops = getServiceStops(service).filter((stop) => stop.coordinates);
+  serviceStopMarkers.innerHTML = stops
+    .map((stop, index) => `
+      <g>
+        <circle
+          class="service-stop${transferHubs.has(stop.station) ? ' transfer-stop' : ''}"
+          cx="${stop.coordinates.x}"
+          cy="${stop.coordinates.y}"
+          r="${transferHubs.has(stop.station) ? 15 : 10}"
+        >
+          <title>${stop.station}</title>
+        </circle>
+        ${
+          index === 0 || index === stops.length - 1
+            ? `<text class="terminal-label" x="${stop.coordinates.x + 16}" y="${stop.coordinates.y - 16}">${index === 0 ? 'Start' : 'Destination'}: ${stop.station}</text>`
+            : ''
+        }
+      </g>
+    `)
     .join('');
 
-  const hubs = service.stops.map((stop) => stop.station).filter((station) => transferHubs.has(station));
+  const hubs = service.stops
+    .map((stop) => stop.station)
+    .filter((station) => transferHubs.has(station));
+
   serviceDetail.innerHTML = `
     <h3>${service.train_number}</h3>
     <p class="detail-route">${service.origin} → ${service.destination}</p>
@@ -143,6 +228,25 @@ const drawSelectedService = (service) => {
     </ol>
     <p class="service-note">Static scheduled service layer. Real-time animation is not enabled.</p>
   `;
+
+  renderServices();
+};
+
+const resetServiceSelection = () => {
+  selectedService = null;
+  document.body.classList.remove('service-selected');
+
+  routeElements.forEach((route) => route.classList.remove('selected-route'));
+  servicePath.removeAttribute('d');
+  serviceStopMarkers.innerHTML = '';
+  serviceTrainLabel.textContent = '';
+
+  if (svg) {
+    svg.setAttribute('viewBox', fullViewBox);
+  }
+
+  serviceDetail.innerHTML = '<p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>';
+
   renderServices();
 };
 
@@ -153,13 +257,18 @@ const loadServices = async () => {
 };
 
 setZoomDetail(zoomControl.value);
+
 zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
 serviceSearch.addEventListener('input', renderServices);
+
 serviceList.addEventListener('click', (event) => {
   const button = event.target.closest('[data-service-id]');
   if (!button) return;
+
   const service = services.find((item) => item.service_id === button.dataset.serviceId);
   if (service) drawSelectedService(service);
 });
+
+document.querySelector('.show-all-services')?.addEventListener('click', resetServiceSelection);
 
 loadServices();
