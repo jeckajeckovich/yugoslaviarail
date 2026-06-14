@@ -48,32 +48,12 @@
     "name": "Novi Sad – Sremska Mitrovica",
     "origin": "Novi Sad",
     "destination": "Sremska Mitrovica",
-    "route_ids": [
-      "r4"
-    ],
-    "stops": [
-      {
-        "station": "Novi Sad",
-        "time": null
-      },
-      {
-        "station": "Ruma",
-        "time": null
-      },
-      {
-        "station": "Sremska Mitrovica",
-        "time": null
-      }
-    ],
+    "route_ids": ["r4"],
+    "stops": [{"station":"Novi Sad","time":null},{"station":"Ruma","time":null},{"station":"Sremska Mitrovica","time":null}],
     "service_type": "regional express",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false,
-    "path_points": [
-      "Novi Sad",
-      "Ruma",
-      "Sremska Mitrovica"
-    ]
+    "is_realtime": false
   },
   {
     "service_id": "re2515",
@@ -81,39 +61,12 @@
     "name": "Subotica – Zrenjanin",
     "origin": "Subotica",
     "destination": "Zrenjanin",
-    "route_ids": [
-      "r1",
-      "r5"
-    ],
-    "stops": [
-      {
-        "station": "Subotica",
-        "time": null
-      },
-      {
-        "station": "Bačka Topola",
-        "time": null
-      },
-      {
-        "station": "Vrbas",
-        "time": null
-      },
-      {
-        "station": "Zrenjanin",
-        "time": null
-      }
-    ],
+    "route_ids": ["r5"],
+    "stops": [{"station":"Subotica","time":null},{"station":"Novi Sad","time":null},{"station":"Zrenjanin","time":null}],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false,
-    "path_points": [
-      "Subotica",
-      "Bačka Topola",
-      "Vrbas",
-      "Novi Sad",
-      "Zrenjanin"
-    ]
+    "is_realtime": false
   },
   {
     "service_id": "re4501",
@@ -121,40 +74,12 @@
     "name": "Subotica – Kikinda",
     "origin": "Subotica",
     "destination": "Kikinda",
-    "route_ids": [
-      "r1",
-      "r5"
-    ],
-    "stops": [
-      {
-        "station": "Subotica",
-        "time": null
-      },
-      {
-        "station": "Novi Sad",
-        "time": null
-      },
-      {
-        "station": "Zrenjanin",
-        "time": null
-      },
-      {
-        "station": "Kikinda",
-        "time": null
-      }
-    ],
+    "route_ids": ["r5"],
+    "stops": [{"station":"Subotica","time":null},{"station":"Novi Sad","time":null},{"station":"Zrenjanin","time":null},{"station":"Kikinda","time":null}],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false,
-    "path_points": [
-      "Subotica",
-      "Bačka Topola",
-      "Vrbas",
-      "Novi Sad",
-      "Zrenjanin",
-      "Kikinda"
-    ]
+    "is_realtime": false
   },
   {
     "service_id": "re25440",
@@ -162,32 +87,12 @@
     "name": "Novi Sad Ranžirna – Karavukovo",
     "origin": "Novi Sad Ranžirna",
     "destination": "Karavukovo",
-    "route_ids": [
-      "r4"
-    ],
-    "stops": [
-      {
-        "station": "Novi Sad Ranžirna",
-        "time": null
-      },
-      {
-        "station": "Novi Sad",
-        "time": null
-      },
-      {
-        "station": "Karavukovo",
-        "time": null
-      }
-    ],
+    "route_ids": ["r4"],
+    "stops": [{"station":"Novi Sad Ranžirna","time":null},{"station":"Novi Sad","time":null},{"station":"Karavukovo","time":null}],
     "service_type": "regional",
     "operator": "Srbija Voz",
     "source": "manual_screenshots",
-    "is_realtime": false,
-    "path_points": [
-      "Novi Sad Ranžirna",
-      "Novi Sad",
-      "Karavukovo"
-    ]
+    "is_realtime": false
   },
   {
     "service_id": "re2101",
