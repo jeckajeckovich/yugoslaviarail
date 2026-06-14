@@ -96,7 +96,10 @@ export const getServiceProgressPoint = (service, progress) => {
   for (const segment of segments) {
     if (target <= segment.length) {
       const ratio = segment.length ? target / segment.length : 0;
-      return { x: segment.previous.x + ((segment.point.x - segment.previous.x) * ratio), y: segment.previous.y + ((segment.point.y - segment.previous.y) * ratio) };
+      return {
+        x: segment.previous.x + ((segment.point.x - segment.previous.x) * ratio),
+        y: segment.previous.y + ((segment.point.y - segment.previous.y) * ratio)
+      };
     }
     target -= segment.length;
   }
