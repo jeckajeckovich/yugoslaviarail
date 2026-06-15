@@ -771,16 +771,34 @@ const attachUiHandlers = () => {
     document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
   }));
-  document.querySelectorAll('[data-date-shortcut]').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-date-shortcut]').forEach((button) =>
+  button.addEventListener('click', () => {
     const dateInput = document.querySelector('#journey-date');
     const shortcut = button.dataset.dateShortcut;
-    console.log('date shortcut clicked', { shortcut, previousDate: dateInput.value });
-    if (shortcut === 'today') dateInput.value = todayIsoDate();
-    if (shortcut === 'tomorrow') dateInput.value = addDays(todayIsoDate(), 1);
-    if (shortcut === 'next') dateInput.value = nearestAvailableDates(dateInput.value || todayIsoDate(), 1)[0] || dateInput.value || todayIsoDate();
-    console.log('date shortcut updated date', { shortcut, date: dateInput.value });
-    runJourneySearch();
-  }));
+
+    if (shortcut === 'today')
+      dateInput.value = todayIsoDate();
+
+    if (shortcut === 'tomorrow')
+      dateInput.value = addDays(todayIsoDate(), 1);
+
+    if (shortcut === 'next')
+      dateInput.value =
+        nearestAvailableDates(
+          dateInput.value || todayIsoDate(),
+          1
+        )[0] ||
+        dateInput.value ||
+        todayIsoDate();
+
+    renderJourneyResult(
+      document.querySelector('#from-station').value,
+      document.querySelector('#to-station').value,
+      document.querySelector('#journey-search-mode').value,
+      dateInput.value
+    );
+  })
+);
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.journey-result').addEventListener('click', (event) => {
     const button = event.target.closest('[data-option-index]');
