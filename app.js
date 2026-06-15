@@ -780,7 +780,10 @@ const attachUiHandlers = () => {
       dateInput.value = todayIsoDate();
 
     if (shortcut === 'tomorrow')
-      dateInput.value = addDays(todayIsoDate(), 1);
+  dateInput.value = addDays(
+    dateInput.value || todayIsoDate(),
+    1
+  );
 
     if (shortcut === 'next')
       dateInput.value =
