@@ -413,12 +413,19 @@ const populateJourneySelectors = () => {
 };
 
 const loadServices = async () => {
-  const sources = ['data/generated/services.json', 'data/services.json'];
+  const sources = [
+    { url: 'data/generated/services.json', label: 'GTFS generated services' },
+    { url: 'data/services.json', label: 'Demo services fallback' }
+  ];
   for (const source of sources) {
-    const response = await fetch(source);
-    if (response.ok) {
+    try {
+      const response = await fetch(source.url);
+      if (!response.ok) continue;
       services = await response.json();
+      console.info(`Loaded ${source.label}`, { source: source.url, count: services.length });
       break;
+    } catch (error) {
+      console.warn(`Unable to load ${source.label}`, { source: source.url, error });
     }
   }
   populateJourneySelectors();
