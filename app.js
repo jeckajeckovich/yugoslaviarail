@@ -452,7 +452,7 @@ document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('
   document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
   document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
 }));
-document.querySelector('#find-route-button').addEventListener('click', () => {
+document.querySelector('.find-route').addEventListener('click', () => {
   renderJourneyResult(document.querySelector('#from-station').value, document.querySelector('#to-station').value);
 });
 document.querySelector('.journey-result').addEventListener('click', (event) => {
