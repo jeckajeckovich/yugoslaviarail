@@ -802,6 +802,7 @@ const attachUiHandlers = () => {
     document.querySelectorAll('[data-option-index]').forEach((item) => item.classList.toggle('selected', item === button));
     drawServices(option.segments, { stationPath: option.stations });
   });
+});
 
   loadServices();
 };
