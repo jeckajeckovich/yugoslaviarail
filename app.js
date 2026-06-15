@@ -788,7 +788,9 @@ const attachUiHandlers = () => {
         newDate;
     }
 
-    dateInput.value = newDate;
+    console.log('DATE BUTTON', shortcut, dateInput.value, '=>', newDate);
+dateInput.value = newDate;
+alert(`DATE ${shortcut}: ${newDate}`);
     runJourneySearch();
   });
 });
