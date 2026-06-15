@@ -62,6 +62,7 @@ const routeElements = new Map([...document.querySelectorAll('[data-route-id]')].
 const svg = document.querySelector('.rail-map');
 const fullViewBox = svg.getAttribute('viewBox');
 let services = [];
+let calendarDates = [];
 let selectedServiceIds = new Set();
 
 const setZoomDetail = (value) => {
@@ -186,6 +187,36 @@ const minutesBetween = (departure, arrival, { allowOvernight = false } = {}) => 
 };
 const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
 const nowMs = () => (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
+const todayIsoDate = () => new Date().toISOString().slice(0, 10);
+const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
+const displayJourneyDate = (dateValue) => {
+  const date = new Date(`${dateValue}T00:00:00`);
+  const weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
+  return `${weekday}, ${dateValue}`;
+};
+
+const calendarInfoForDate = (dateValue) => {
+  if (!calendarDates.length) {
+    return {
+      activeServiceIds: null,
+      activeServicesOnDate: services.length,
+      filteredServices: 0,
+      calendarMatches: 0
+    };
+  }
+  const dateKey = gtfsDateKey(dateValue);
+  const matches = calendarDates.filter((entry) => entry.date === dateKey);
+  const added = new Set(matches.filter((entry) => String(entry.exception_type) === '1').map((entry) => entry.service_id));
+  const cancelled = new Set(matches.filter((entry) => String(entry.exception_type) === '2').map((entry) => entry.service_id));
+  const activeServiceIds = new Set([...added].filter((serviceId) => !cancelled.has(serviceId)));
+  const activeServicesOnDate = services.filter((service) => activeServiceIds.has(service.service_calendar_id)).length;
+  return {
+    activeServiceIds,
+    activeServicesOnDate,
+    filteredServices: Math.max(0, services.length - activeServicesOnDate),
+    calendarMatches: matches.length
+  };
+};
 
 const serviceMatches = (service, query) => {
   const normalizedQuery = normalizeSearch(query);
@@ -376,7 +407,7 @@ const rankJourneyStates = (modeConfig) => (a, b) => modeConfig.rankBy === 'time'
   ? (a.elapsedMinutes - b.elapsedMinutes) || (a.transfers - b.transfers) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount)
   : (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount);
 
-const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest' } = {}) => {
+const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {} } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
   const modeConfig = journeySearchModes[mode] || journeySearchModes.fastest;
@@ -460,6 +491,9 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mo
       resultCount: results.length,
       discardedTransferLimit,
       discardedSearchLimit,
+      activeServicesOnDate: calendarStats.activeServicesOnDate,
+      filteredServices: calendarStats.filteredServices,
+      calendarMatches: calendarStats.calendarMatches,
       searchTimeMs,
       truncated
     });
@@ -488,14 +522,19 @@ const renderJourneyOption = (option, index) => `
   </button>
 `;
 
-const renderJourneyResult = (from, to, mode = 'fastest') => {
+const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDate()) => {
   if (from === to) {
     document.querySelector('.journey-result').innerHTML = '<p>Choose two different stations.</p>';
     return;
   }
-  currentJourneyOptions = findJourneyOptions(from, to, 3, { mode });
+  const calendarInfo = calendarInfoForDate(dateValue);
+  currentJourneyOptions = findJourneyOptions(from, to, 3, {
+    mode,
+    serviceCalendarIds: calendarInfo.activeServiceIds,
+    calendarStats: calendarInfo
+  });
   if (!currentJourneyOptions.length) {
-    document.querySelector('.journey-result').innerHTML = '<p>No scheduled connection found in the static timetable layer.</p>';
+    document.querySelector('.journey-result').innerHTML = `<p>No valid journey found for the selected date.</p><p><strong>Date:</strong> ${displayJourneyDate(dateValue)}</p>`;
     resetSelection();
     return;
   }
@@ -503,6 +542,7 @@ const renderJourneyResult = (from, to, mode = 'fastest') => {
   document.querySelector('.journey-result').innerHTML = `
     <h3>${from} → ${to}</h3>
     <p><strong>Journey found</strong></p>
+    <p><strong>Date:</strong> ${displayJourneyDate(dateValue)}</p>
     <p><strong>Search mode:</strong> ${mode === 'all' ? 'All valid routes' : 'Fastest'}</p>
     ${currentJourneyOptions.map(renderJourneyOption).join('')}
   `;
@@ -516,6 +556,18 @@ const populateJourneySelectors = () => {
   document.querySelector('#to-station').innerHTML = options;
   document.querySelector('#from-station').value = stations.includes('Niš') ? 'Niš' : stations[0];
   document.querySelector('#to-station').value = stations.includes('Subotica') ? 'Subotica' : stations.at(-1);
+  document.querySelector('#journey-date').value ||= todayIsoDate();
+};
+
+const loadCalendar = async () => {
+  try {
+    const response = await fetch('data/generated/calendar.json');
+    if (!response.ok) return;
+    calendarDates = await response.json();
+    console.info('Loaded GTFS calendar dates', { count: calendarDates.length });
+  } catch (error) {
+    console.warn('Unable to load GTFS calendar dates', { error });
+  }
 };
 
 const loadServices = async () => {
@@ -534,6 +586,7 @@ const loadServices = async () => {
       console.warn(`Unable to load ${source.label}`, { source: source.url, error });
     }
   }
+  await loadCalendar();
   populateJourneySelectors();
   renderServices();
 };
@@ -561,7 +614,8 @@ document.querySelector('#find-route-button').addEventListener('click', () => {
   renderJourneyResult(
     document.querySelector('#from-station').value,
     document.querySelector('#to-station').value,
-    document.querySelector('#journey-search-mode').value
+    document.querySelector('#journey-search-mode').value,
+    document.querySelector('#journey-date').value || todayIsoDate()
   );
 });
 document.querySelector('.journey-result').addEventListener('click', (event) => {
