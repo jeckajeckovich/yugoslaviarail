@@ -166,8 +166,14 @@ const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
 const journeySearchModes = {
-  fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, allowOvernight: false, allowStationRevisits: false, rankBy: 'time' },
-  all: { maxTransfers: 8, maxStates: 100000, maxQueueSize: 50000, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' }
+all: {
+  maxTransfers: 12,
+  maxStates: 200000,
+  maxQueueSize: 100000,
+  allowOvernight: true,
+  allowStationRevisits: true,
+  rankBy: 'transfers'
+}
 };
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
