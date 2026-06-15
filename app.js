@@ -161,6 +161,16 @@ export const normalizeSearch = (text) => {
 const typeLabel = (type) => type.replace(/\b\w/g, (letter) => letter.toUpperCase());
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
+const minimumTransferMinutes = 5;
+const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
+const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
+const formatTime = (time) => time || 'time unknown';
+const minutesFromMidnight = (time) => {
+  if (!time) return null;
+  const [hours, minutes] = time.split(':').map(Number);
+  return Number.isFinite(hours) && Number.isFinite(minutes) ? (hours * 60) + minutes : null;
+};
+const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
 
 const serviceMatches = (service, query) => {
   const normalizedQuery = normalizeSearch(query);
@@ -177,7 +187,7 @@ const renderDetail = (service) => {
     <p><span class="badge">${typeLabel(service.service_type)}</span> ${service.operator}</p>
     <p><strong>Transfers on route:</strong> ${hubs.length ? hubs.join(', ') : 'None shown on schematic'}</p>
     <ol class="stop-list">
-      ${service.stops.map((stop) => `<li>${stop.station}<span>${stop.time ?? 'time unknown'}</span></li>`).join('')}
+      ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
     </ol>
     <p class="service-note">Static scheduled service layer. Real-time animation is not enabled.</p>
   `;
@@ -237,6 +247,7 @@ const drawSelectedService = (service) => {
 };
 
 const resetSelection = () => {
+  serviceSearch.value = '';
   selectedServiceIds = new Set();
   document.body.classList.remove('service-selected');
   routeElements.forEach((route) => route.classList.remove('selected-route'));
@@ -248,20 +259,35 @@ const resetSelection = () => {
   renderServices();
 };
 
-const buildServiceGraph = () => {
+const buildTimetableGraph = () => {
   const graph = new Map();
-  const addEdge = (from, to, service) => {
+  const addEdge = (from, edge) => {
     if (!graph.has(from)) graph.set(from, []);
-    graph.get(from).push({ to, service });
+    graph.get(from).push(edge);
   };
   for (const service of services) {
-    const names = stopNames(service);
-    for (let index = 0; index < names.length - 1; index += 1) {
-      addEdge(names[index], names[index + 1], service);
-      addEdge(names[index + 1], names[index], service);
+    for (let index = 0; index < service.stops.length - 1; index += 1) {
+      const fromStop = service.stops[index];
+      const toStop = service.stops[index + 1];
+      const departure = stopDeparture(fromStop);
+      const arrival = stopArrival(toStop);
+      const travelMinutes = minutesFromMidnight(arrival) !== null && minutesFromMidnight(departure) !== null
+        ? Math.max(0, minutesFromMidnight(arrival) - minutesFromMidnight(departure))
+        : null;
+      const edge = { from: fromStop.station, to: toStop.station, service, departure, arrival, travelMinutes };
+      const reverseEdge = { from: toStop.station, to: fromStop.station, service, departure: stopDeparture(toStop), arrival: stopArrival(fromStop), travelMinutes };
+      addEdge(fromStop.station, edge);
+      addEdge(toStop.station, reverseEdge);
     }
   }
   return graph;
+};
+
+const transferIsAllowed = (previousEdge, nextEdge) => {
+  if (!previousEdge || previousEdge.service.service_id === nextEdge.service.service_id) return true;
+  const arrival = minutesFromMidnight(previousEdge.arrival);
+  const departure = minutesFromMidnight(nextEdge.departure);
+  return arrival === null || departure === null || departure - arrival >= minimumTransferMinutes;
 };
 
 const groupEdgesIntoSegments = (edges) => {
@@ -271,9 +297,17 @@ const groupEdgesIntoSegments = (edges) => {
     const previous = segments.at(-1);
     if (previous && previous.service.service_id === edge.service.service_id && previous.to === edge.from) {
       previous.to = edge.to;
+      previous.arrival = edge.arrival;
       previous.stations.push(edge.to);
     } else {
-      segments.push({ service: edge.service, from: edge.from, to: edge.to, stations: [edge.from, edge.to] });
+      segments.push({
+        service: edge.service,
+        from: edge.from,
+        to: edge.to,
+        departure: edge.departure,
+        arrival: edge.arrival,
+        stations: [edge.from, edge.to]
+      });
     }
   }
   return segments;
@@ -285,34 +319,53 @@ const stationPathFromEdges = (edges) => edges.reduce((stations, edge, index) => 
   return stations;
 }, []);
 
+const journeyTiming = (edges) => {
+  const firstDeparture = edges.map((edge) => edge.departure).find(Boolean) || null;
+  const lastArrival = [...edges].reverse().map((edge) => edge.arrival).find(Boolean) || null;
+  const departureMinutes = minutesFromMidnight(firstDeparture);
+  const arrivalMinutes = minutesFromMidnight(lastArrival);
+  return {
+    firstDeparture,
+    lastArrival,
+    totalMinutes: departureMinutes !== null && arrivalMinutes !== null ? Math.max(0, arrivalMinutes - departureMinutes) : null
+  };
+};
+
 const findJourneyOptions = (from, to, limit = 3) => {
-  const graph = buildServiceGraph();
-  const queue = [{ station: from, serviceId: null, transfers: 0, stopCount: 0, edges: [], visited: new Set([from]) }];
+  const graph = buildTimetableGraph();
+  const queue = [{ station: from, previousEdge: null, serviceId: null, transfers: 0, stopCount: 0, elapsedMinutes: 0, arrivalMinutes: null, edges: [], visited: new Set([from]) }];
   const results = [];
   while (queue.length && results.length < limit) {
-    queue.sort((a, b) => (a.transfers - b.transfers) || (a.stopCount - b.stopCount));
+    queue.sort((a, b) => (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount));
     const state = queue.shift();
     if (state.station === to && state.edges.length) {
+      const timing = journeyTiming(state.edges);
       const segments = groupEdgesIntoSegments(state.edges);
-      results.push({ ...state, segments, stations: stationPathFromEdges(state.edges) });
+      results.push({ ...state, ...timing, segments, stations: stationPathFromEdges(state.edges) });
       continue;
     }
     for (const edge of graph.get(state.station) || []) {
-      if (state.visited.has(edge.to)) continue;
+      if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge)) continue;
       const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
+      const edgeMinutes = edge.travelMinutes ?? 30;
       const nextVisited = new Set(state.visited);
       nextVisited.add(edge.to);
       queue.push({
         station: edge.to,
+        previousEdge: edge,
         serviceId: edge.service.service_id,
         transfers: nextTransfers,
         stopCount: state.stopCount + 1,
-        edges: [...state.edges, { from: state.station, to: edge.to, service: edge.service }],
+        elapsedMinutes: state.elapsedMinutes + edgeMinutes,
+        arrivalMinutes: minutesFromMidnight(edge.arrival),
+        edges: [...state.edges, edge],
         visited: nextVisited
       });
     }
   }
-  return results.sort((a, b) => (a.transfers - b.transfers) || (a.stopCount - b.stopCount)).slice(0, limit);
+  return results
+    .sort((a, b) => (a.transfers - b.transfers) || ((a.totalMinutes ?? Infinity) - (b.totalMinutes ?? Infinity)) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount))
+    .slice(0, limit);
 };
 
 let currentJourneyOptions = [];
@@ -321,9 +374,11 @@ const renderJourneyOption = (option, index) => `
   <button class="journey-card${index === 0 ? ' selected' : ''}" type="button" data-option-index="${index}">
     <h3>Option ${String.fromCharCode(65 + index)}</h3>
     <p><strong>Transfers:</strong> ${option.transfers}</p>
+    <p><strong>Total travel time:</strong> ${durationLabel(option.totalMinutes)}</p>
+    <p><strong>Departure:</strong> ${formatTime(option.firstDeparture)} · <strong>Arrival:</strong> ${formatTime(option.lastArrival)}</p>
     <p><strong>Estimated segments:</strong> ${option.segments.length}</p>
     <ol class="stop-list">
-      ${option.segments.map((segment, segmentIndex) => `<li>Segment ${segmentIndex + 1}<span>Train: ${segment.service.train_number}</span><span>${segment.from} → ${segment.to}</span></li>`).join('')}
+      ${option.segments.map((segment, segmentIndex) => `<li>Segment ${segmentIndex + 1}<span>Train: ${segment.service.train_number}</span><span>${segment.from} ${formatTime(segment.departure)} → ${segment.to} ${formatTime(segment.arrival)}</span>${segmentIndex < option.segments.length - 1 ? `<span>Transfer at ${segment.to}: duration unknown</span>` : ''}</li>`).join('')}
     </ol>
   </button>
 `;
@@ -335,7 +390,7 @@ const renderJourneyResult = (from, to) => {
   }
   currentJourneyOptions = findJourneyOptions(from, to, 3);
   if (!currentJourneyOptions.length) {
-    document.querySelector('.journey-result').innerHTML = '<p>No scheduled connection found in the static service layer.</p>';
+    document.querySelector('.journey-result').innerHTML = '<p>No scheduled connection found in the static timetable layer.</p>';
     resetSelection();
     return;
   }
@@ -345,7 +400,7 @@ const renderJourneyResult = (from, to) => {
     <p><strong>Journey found</strong></p>
     ${currentJourneyOptions.map(renderJourneyOption).join('')}
   `;
-  serviceDetail.innerHTML = '<p>Journey highlighted. Select an option for alternate routes, or select an individual service card for its full stop list.</p>';
+  serviceDetail.innerHTML = '<p>Journey highlighted. Select an option for alternate itineraries, or select an individual service card for its full stop list.</p>';
 };
 
 const populateJourneySelectors = () => {

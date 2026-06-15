@@ -11,23 +11,28 @@
     "stops": [
       {
         "station": "Zemun",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Beograd",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Pančevački Most",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Pančevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -40,7 +45,17 @@
       "Beograd Centar",
       "Pančevački Most",
       "Pančevo"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Zemun",
+        "Novi Beograd",
+        "Beograd Centar",
+        "Pančevački Most",
+        "Pančevo"
+      ]
+    }
   },
   {
     "service_id": "rex821",
@@ -54,15 +69,18 @@
     "stops": [
       {
         "station": "Novi Sad",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Ruma",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Sremska Mitrovica",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional express",
@@ -73,7 +91,15 @@
       "Novi Sad",
       "Ruma",
       "Sremska Mitrovica"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Novi Sad",
+        "Ruma",
+        "Sremska Mitrovica"
+      ]
+    }
   },
   {
     "service_id": "re2515",
@@ -88,19 +114,23 @@
     "stops": [
       {
         "station": "Subotica",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Bačka Topola",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Vrbas",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Zrenjanin",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -113,7 +143,17 @@
       "Vrbas",
       "Novi Sad",
       "Zrenjanin"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Subotica",
+        "Bačka Topola",
+        "Vrbas",
+        "Novi Sad",
+        "Zrenjanin"
+      ]
+    }
   },
   {
     "service_id": "re4501",
@@ -128,19 +168,23 @@
     "stops": [
       {
         "station": "Subotica",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Sad",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Zrenjanin",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Kikinda",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -154,7 +198,18 @@
       "Novi Sad",
       "Zrenjanin",
       "Kikinda"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Subotica",
+        "Bačka Topola",
+        "Vrbas",
+        "Novi Sad",
+        "Zrenjanin",
+        "Kikinda"
+      ]
+    }
   },
   {
     "service_id": "re25440",
@@ -168,15 +223,18 @@
     "stops": [
       {
         "station": "Novi Sad Ranžirna",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Sad",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Karavukovo",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -187,7 +245,15 @@
       "Novi Sad Ranžirna",
       "Novi Sad",
       "Karavukovo"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Novi Sad Ranžirna",
+        "Novi Sad",
+        "Karavukovo"
+      ]
+    }
   },
   {
     "service_id": "re2101",
@@ -201,31 +267,38 @@
     "stops": [
       {
         "station": "Zemun",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Beograd",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Požega",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Užice",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Prijepolje",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Prijepolje Teretna",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -240,7 +313,19 @@
       "Užice",
       "Prijepolje",
       "Prijepolje Teretna"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Zemun",
+        "Novi Beograd",
+        "Beograd Centar",
+        "Požega",
+        "Užice",
+        "Prijepolje",
+        "Prijepolje Teretna"
+      ]
+    }
   },
   {
     "service_id": "re4813",
@@ -254,11 +339,13 @@
     "stops": [
       {
         "station": "Požega",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Kraljevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -268,7 +355,14 @@
     "path_points": [
       "Požega",
       "Kraljevo"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Požega",
+        "Kraljevo"
+      ]
+    }
   },
   {
     "service_id": "re4811",
@@ -282,15 +376,18 @@
     "stops": [
       {
         "station": "Kraljevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Lapovo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Jagodina",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -301,7 +398,15 @@
       "Kraljevo",
       "Lapovo",
       "Jagodina"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Lapovo",
+        "Jagodina"
+      ]
+    }
   },
   {
     "service_id": "re3831",
@@ -315,15 +420,18 @@
     "stops": [
       {
         "station": "Kraljevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Kosovska Mitrovica",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Rudnica",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -334,7 +442,15 @@
       "Kraljevo",
       "Kosovska Mitrovica",
       "Rudnica"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Kosovska Mitrovica",
+        "Rudnica"
+      ]
+    }
   },
   {
     "service_id": "re3810",
@@ -348,11 +464,13 @@
     "stops": [
       {
         "station": "Kraljevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Lapovo",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -362,7 +480,14 @@
     "path_points": [
       "Kraljevo",
       "Lapovo"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Lapovo"
+      ]
+    }
   },
   {
     "service_id": "re2740",
@@ -377,19 +502,23 @@
     "stops": [
       {
         "station": "Niš",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Lapovo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Bor",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Zaječar",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -401,7 +530,16 @@
       "Lapovo",
       "Bor",
       "Zaječar"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Niš",
+        "Lapovo",
+        "Bor",
+        "Zaječar"
+      ]
+    }
   },
   {
     "service_id": "re2771",
@@ -415,11 +553,13 @@
     "stops": [
       {
         "station": "Prahovo Pristanište",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Zaječar",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -429,7 +569,14 @@
     "path_points": [
       "Prahovo Pristanište",
       "Zaječar"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Prahovo Pristanište",
+        "Zaječar"
+      ]
+    }
   },
   {
     "service_id": "re6751",
@@ -443,11 +590,13 @@
     "stops": [
       {
         "station": "Smederevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Požarevac",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -457,7 +606,14 @@
     "path_points": [
       "Smederevo",
       "Požarevac"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Smederevo",
+        "Požarevac"
+      ]
+    }
   },
   {
     "service_id": "ir620",
@@ -471,19 +627,23 @@
     "stops": [
       {
         "station": "Šabac",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Obrenovac",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Beograd",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "interregio",
@@ -495,7 +655,16 @@
       "Obrenovac",
       "Novi Beograd",
       "Beograd Centar"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Šabac",
+        "Obrenovac",
+        "Novi Beograd",
+        "Beograd Centar"
+      ]
+    }
   },
   {
     "service_id": "hs_bg_ns_su",
@@ -509,19 +678,23 @@
     "stops": [
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Stara Pazova",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Sad",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Subotica",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "high-speed",
@@ -533,7 +706,16 @@
       "Stara Pazova",
       "Novi Sad",
       "Subotica"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Stara Pazova",
+        "Novi Sad",
+        "Subotica"
+      ]
+    }
   },
   {
     "service_id": "reg_bg_ns_su",
@@ -547,31 +729,38 @@
     "stops": [
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Stara Pazova",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Inđija",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Novi Sad",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Vrbas",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Bačka Topola",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Subotica",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -586,7 +775,19 @@
       "Vrbas",
       "Bačka Topola",
       "Subotica"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Stara Pazova",
+        "Inđija",
+        "Novi Sad",
+        "Vrbas",
+        "Bačka Topola",
+        "Subotica"
+      ]
+    }
   },
   {
     "service_id": "reg_ni_bg",
@@ -600,27 +801,33 @@
     "stops": [
       {
         "station": "Niš",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Aleksinac",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Stalać",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Lapovo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Mladenovac",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -634,7 +841,18 @@
       "Lapovo",
       "Mladenovac",
       "Beograd Centar"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Niš",
+        "Aleksinac",
+        "Stalać",
+        "Lapovo",
+        "Mladenovac",
+        "Beograd Centar"
+      ]
+    }
   },
   {
     "service_id": "reg_lo_sa",
@@ -648,11 +866,13 @@
     "stops": [
       {
         "station": "Loznica",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Šabac",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -662,7 +882,14 @@
     "path_points": [
       "Loznica",
       "Šabac"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Loznica",
+        "Šabac"
+      ]
+    }
   },
   {
     "service_id": "reg_bg_vr",
@@ -677,23 +904,28 @@
     "stops": [
       {
         "station": "Beograd Centar",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Pančevački Most",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Pančevo",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Plandište",
-        "time": null
+        "arrival": null,
+        "departure": null
       },
       {
         "station": "Vršac",
-        "time": null
+        "arrival": null,
+        "departure": null
       }
     ],
     "service_type": "regional",
@@ -706,6 +938,16 @@
       "Pančevo",
       "Plandište",
       "Vršac"
-    ]
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Pančevački Most",
+        "Pančevo",
+        "Plandište",
+        "Vršac"
+      ]
+    }
   }
 ]
