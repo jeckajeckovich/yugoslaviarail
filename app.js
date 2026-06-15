@@ -206,19 +206,10 @@ const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
 const addDays = (dateValue, days) => {
   const [y, m, d] = dateValue.split('-').map(Number);
 
-  const date = new Date(y, m - 1, d);
-  date.setDate(date.getDate() + days);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  date.setUTCDate(date.getUTCDate() + days);
 
-  return [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2, '0'),
-    String(date.getDate()).padStart(2, '0')
-  ].join('-');
-};
-const displayJourneyDate = (dateValue) => {
-  const date = new Date(`${dateValue}T00:00:00`);
-  const weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
-  return `${weekday}, ${dateValue}`;
+  return date.toISOString().slice(0, 10);
 };
 
 const calendarIndexKey = (serviceId, dateKey) => `${serviceId}|${dateKey}`;
