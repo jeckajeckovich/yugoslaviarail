@@ -63,6 +63,7 @@ const svg = document.querySelector('.rail-map');
 const fullViewBox = svg.getAttribute('viewBox');
 let services = [];
 let calendarDates = [];
+let calendarDateIndex = new Map();
 let selectedServiceIds = new Set();
 
 const setZoomDetail = (value) => {
@@ -165,8 +166,14 @@ const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
 const journeySearchModes = {
-  fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, allowOvernight: false, rankBy: 'time' },
-  all: { maxTransfers: 8, maxStates: 50000, maxQueueSize: 25000, allowOvernight: true, rankBy: 'transfers' }
+all: {
+  maxTransfers: 12,
+  maxStates: 200000,
+  maxQueueSize: 100000,
+  allowOvernight: true,
+  allowStationRevisits: true,
+  rankBy: 'transfers'
+}
 };
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
@@ -189,10 +196,33 @@ const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minu
 const nowMs = () => (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
 const todayIsoDate = () => new Date().toISOString().slice(0, 10);
 const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
+const addDays = (dateValue, days) => {
+  const date = new Date(`${dateValue}T00:00:00`);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+};
 const displayJourneyDate = (dateValue) => {
   const date = new Date(`${dateValue}T00:00:00`);
   const weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
   return `${weekday}, ${dateValue}`;
+};
+
+const calendarIndexKey = (serviceId, dateKey) => `${serviceId}|${dateKey}`;
+const indexCalendarDates = () => {
+  calendarDateIndex = new Map();
+  for (const entry of calendarDates) {
+    const key = calendarIndexKey(entry.service_id, entry.date);
+    if (!calendarDateIndex.has(key)) calendarDateIndex.set(key, []);
+    calendarDateIndex.get(key).push(entry);
+  }
+};
+
+const serviceOperatesOnDate = (service, dateValue) => {
+  if (!calendarDates.length) return true;
+  const entries = calendarDateIndex.get(calendarIndexKey(service.service_calendar_id, gtfsDateKey(dateValue))) || [];
+  const isCancelled = entries.some((entry) => String(entry.exception_type) === '2');
+  const isAdded = entries.some((entry) => String(entry.exception_type) === '1');
+  return isAdded && !isCancelled;
 };
 
 const calendarInfoForDate = (dateValue) => {
@@ -343,6 +373,10 @@ const alignedDepartureMinutes = (departureMinutes, minimumAbsoluteMinutes, allow
   return aligned >= minimumAbsoluteMinutes ? aligned : null;
 };
 
+const visitKey = (station, serviceId, absoluteMinutes, allowStationRevisits) => allowStationRevisits
+  ? `${station}|${serviceId || 'start'}|${Math.floor((absoluteMinutes || 0) / 1440)}`
+  : station;
+
 const transferIsAllowed = (previousEdge, nextEdge, { allowOvernight = false } = {}) => {
   if (!previousEdge) return true;
   const previousArrival = previousEdge.absoluteArrivalMinutes ?? minutesFromMidnight(previousEdge.arrival);
@@ -361,6 +395,7 @@ const groupEdgesIntoSegments = (edges) => {
     if (previous && previous.service.service_id === edge.service.service_id && previous.to === edge.from) {
       previous.to = edge.to;
       previous.arrival = edge.arrival;
+      previous.absoluteArrivalMinutes = edge.absoluteArrivalMinutes;
       previous.stations.push(edge.to);
     } else {
       segments.push({
@@ -369,6 +404,8 @@ const groupEdgesIntoSegments = (edges) => {
         to: edge.to,
         departure: edge.departure,
         arrival: edge.arrival,
+        absoluteDepartureMinutes: edge.absoluteDepartureMinutes,
+        absoluteArrivalMinutes: edge.absoluteArrivalMinutes,
         stations: [edge.from, edge.to]
       });
     }
@@ -407,18 +444,20 @@ const rankJourneyStates = (modeConfig) => (a, b) => modeConfig.rankBy === 'time'
   ? (a.elapsedMinutes - b.elapsedMinutes) || (a.transfers - b.transfers) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount)
   : (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount);
 
-const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {} } = {}) => {
+const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate() } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
   const modeConfig = journeySearchModes[mode] || journeySearchModes.fastest;
-  const graph = buildTimetableGraph({ serviceCalendarIds, allowOvernight: modeConfig.allowOvernight });
-  const queue = [{ station: from, previousEdge: null, serviceId: null, transfers: 0, stopCount: 0, elapsedMinutes: 0, arrivalMinutes: null, firstDepartureMinutes: null, edges: [], visited: new Set([from]) }];
+  const graph = buildTimetableGraph({ allowOvernight: modeConfig.allowOvernight });
+  const queue = [{ station: from, previousEdge: null, serviceId: null, transfers: 0, stopCount: 0, elapsedMinutes: 0, arrivalMinutes: null, firstDepartureMinutes: null, edges: [], visited: new Set([visitKey(from, null, 0, modeConfig.allowStationRevisits)]) }];
   const results = [];
   let statesExplored = 0;
   let maxQueueSize = queue.length;
   let transfersUsed = 0;
   let discardedTransferLimit = 0;
   let discardedSearchLimit = 0;
+  let discardedOvernightAlignment = 0;
+  let discardedCalendarFiltering = 0;
   let truncated = false;
   try {
     while (queue.length && results.length < limit && statesExplored < modeConfig.maxStates) {
@@ -439,7 +478,10 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mo
         continue;
       }
       for (const edge of graph.get(state.station) || []) {
-        if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge, { allowOvernight: modeConfig.allowOvernight })) continue;
+        if (!transferIsAllowed(state.previousEdge, edge, { allowOvernight: modeConfig.allowOvernight })) {
+          discardedOvernightAlignment += 1;
+          continue;
+        }
         const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
         if (nextTransfers > modeConfig.maxTransfers) {
           discardedTransferLimit += 1;
@@ -450,14 +492,24 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mo
           ? state.arrivalMinutes + (state.serviceId && state.serviceId !== edge.service.service_id ? minimumTransferMinutes : 0)
           : edge.departureMinutes;
         const edgeDepartureMinutes = alignedDepartureMinutes(edge.departureMinutes, requiredDeparture, modeConfig.allowOvernight);
-        if (edgeDepartureMinutes === null) continue;
+        if (edgeDepartureMinutes === null) {
+          discardedOvernightAlignment += 1;
+          continue;
+        }
         const edgeArrivalMinutes = edgeDepartureMinutes + edge.travelMinutes;
+        const serviceDate = addDays(dateValue, Math.floor(edgeDepartureMinutes / 1440));
+        if (!serviceOperatesOnDate(edge.service, serviceDate)) {
+          discardedCalendarFiltering += 1;
+          continue;
+        }
         const firstDepartureMinutes = state.firstDepartureMinutes ?? edgeDepartureMinutes;
         if (firstDepartureMinutes === null) continue;
         const elapsedMinutes = edgeArrivalMinutes - firstDepartureMinutes;
         if (elapsedMinutes < 0) continue;
         const nextVisited = new Set(state.visited);
-        nextVisited.add(edge.to);
+        const nextVisitKey = visitKey(edge.to, edge.service.service_id, edgeArrivalMinutes, modeConfig.allowStationRevisits);
+        if (nextVisited.has(nextVisitKey)) continue;
+        nextVisited.add(nextVisitKey);
         const absoluteEdge = { ...edge, absoluteDepartureMinutes: edgeDepartureMinutes, absoluteArrivalMinutes: edgeArrivalMinutes };
         queue.push({
           station: edge.to,
@@ -491,6 +543,8 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mo
       resultCount: results.length,
       discardedTransferLimit,
       discardedSearchLimit,
+      discardedOvernightAlignment,
+      discardedCalendarFiltering,
       activeServicesOnDate: calendarStats.activeServicesOnDate,
       filteredServices: calendarStats.filteredServices,
       calendarMatches: calendarStats.calendarMatches,
@@ -531,7 +585,8 @@ const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDat
   currentJourneyOptions = findJourneyOptions(from, to, 3, {
     mode,
     serviceCalendarIds: calendarInfo.activeServiceIds,
-    calendarStats: calendarInfo
+    calendarStats: calendarInfo,
+    dateValue
   });
   if (!currentJourneyOptions.length) {
     document.querySelector('.journey-result').innerHTML = `<p>No valid journey found for the selected date.</p><p><strong>Date:</strong> ${displayJourneyDate(dateValue)}</p>`;
@@ -564,6 +619,7 @@ const loadCalendar = async () => {
     const response = await fetch('data/generated/calendar.json');
     if (!response.ok) return;
     calendarDates = await response.json();
+    indexCalendarDates();
     console.info('Loaded GTFS calendar dates', { count: calendarDates.length });
   } catch (error) {
     console.warn('Unable to load GTFS calendar dates', { error });
