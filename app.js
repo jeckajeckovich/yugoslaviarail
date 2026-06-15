@@ -771,30 +771,7 @@ const attachUiHandlers = () => {
     document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
   }));
-  document.querySelectorAll('[data-date-shortcut]').forEach((button) => {
-  button.addEventListener('click', () => {
-    const dateInput = document.querySelector('#journey-date');
-    const shortcut = button.dataset.dateShortcut;
-
-    let newDate = dateInput.value || todayIsoDate();
-
-    if (shortcut === 'today') {
-      newDate = todayIsoDate();
-    } else if (shortcut === 'tomorrow') {
-      newDate = addDays(newDate, 1);
-    } else if (shortcut === 'next') {
-      newDate =
-        nearestAvailableDates(newDate, 1)[0] ||
-        newDate;
-    }
-
-    dateInput.value = newDate;
-
-    console.log('Shortcut:', shortcut, 'New date:', newDate);
-
-    runJourneySearch();
   });
-});
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.journey-result').addEventListener('click', (event) => {
     const button = event.target.closest('[data-option-index]');
