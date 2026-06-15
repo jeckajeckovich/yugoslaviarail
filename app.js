@@ -281,9 +281,18 @@ const buildTimetableGraph = () => {
       const toStop = service.stops[index + 1];
       const departure = stopDeparture(fromStop);
       const arrival = stopArrival(toStop);
-      const travelMinutes = minutesBetween(departure, arrival);
-      const edge = { from: fromStop.station, to: toStop.station, service, departure, arrival, travelMinutes };
-      addEdge(fromStop.station, edge);
+const travelMinutes = minutesBetween(departure, arrival);
+
+const edge = {
+  from: fromStop.station,
+  to: toStop.station,
+  service,
+  departure,
+  arrival,
+  travelMinutes
+};
+
+addEdge(fromStop.station, edge);
     }
   }
   return graph;
