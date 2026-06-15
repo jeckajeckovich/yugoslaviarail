@@ -809,6 +809,12 @@ const attachUiHandlers = () => {
 
     console.log('DATE BUTTON', shortcut, dateInput.value, '=>', newDate);
 dateInput.value = newDate;
+    console.log(
+  'BUTTON',
+  shortcut,
+  'INPUT DATE',
+  dateInput.value
+);
     runJourneySearch();
   });
 });
