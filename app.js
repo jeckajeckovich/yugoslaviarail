@@ -784,6 +784,12 @@ const attachUiHandlers = () => {
     dateInput.value || todayIsoDate(),
     1
   );
+    renderJourneyResult(
+  document.querySelector('#from-station').value,
+  document.querySelector('#to-station').value,
+  document.querySelector('#journey-search-mode').value,
+  dateInput.value
+);
 
     if (shortcut === 'next')
       dateInput.value =
