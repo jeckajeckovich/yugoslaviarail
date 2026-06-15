@@ -189,7 +189,19 @@ const minutesBetween = (departure, arrival, { allowOvernight = false } = {}) => 
 };
 const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
 const nowMs = () => (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
-const todayIsoDate = () => new Date().toISOString().slice(0, 10);
+const todayIsoDate = () => {
+  const belgradeDate = new Intl.DateTimeFormat(
+    'sv-SE',
+    {
+      timeZone: 'Europe/Belgrade',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }
+  ).format(new Date());
+
+  return belgradeDate;
+};
 const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
 const addDays = (dateValue, days) => {
   const [y, m, d] = dateValue.split('-').map(Number);
