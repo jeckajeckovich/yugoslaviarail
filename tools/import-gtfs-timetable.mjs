@@ -152,6 +152,59 @@ export const convertTripsToServices = ({ agency, stops, routes, trips, stopTimes
   }).filter((service) => service.stops.length >= 2);
 };
 
+export const convertStopsToStations = ({ stops }) => stops.map((stop) => ({
+  station_id: stop.stop_id,
+  gtfs_stop_id: stop.stop_id,
+  name: stop.stop_name,
+  latitude: parseCoordinate(stop.stop_lat),
+  longitude: parseCoordinate(stop.stop_lon)
+}));
+
+export const convertRoutesToMetadata = ({ routes }) => routes.map((route) => ({
+  route_id: route.route_id,
+  agency_id: route.agency_id || null,
+  short_name: route.route_short_name || null,
+  long_name: route.route_long_name || null,
+  route_type: route.route_type || null,
+  color: route.route_color || null,
+  text_color: route.route_text_color || null
+}));
+
+export const convertCalendarDates = ({ calendarDates }) => calendarDates.map((calendarDate) => ({
+  service_id: calendarDate.service_id,
+  date: calendarDate.date,
+  exception_type: calendarDate.exception_type
+}));
+
+export const buildMetadata = (gtfs, services) => ({
+  generated_at: new Date().toISOString(),
+  source: 'gtfs',
+  summary: {
+    ...summarizeGtfs(gtfs),
+    generated_services: services.length
+  }
+});
+
+export const writeGeneratedGtfsArtifacts = async (gtfs, outputServicesPath) => {
+  const services = convertTripsToServices(gtfs);
+  const outputDir = path.dirname(outputServicesPath);
+  const artifacts = {
+    'services.json': services,
+    'stations.json': convertStopsToStations(gtfs),
+    'routes.json': convertRoutesToMetadata(gtfs),
+    'calendar.json': convertCalendarDates(gtfs),
+    'metadata.json': buildMetadata(gtfs, services)
+  };
+
+  await fs.mkdir(outputDir, { recursive: true });
+  await Promise.all(Object.entries(artifacts).map(([fileName, data]) => {
+    const targetPath = fileName === 'services.json' ? outputServicesPath : path.join(outputDir, fileName);
+    return fs.writeFile(targetPath, `${JSON.stringify(data, null, 2)}\n`);
+  }));
+
+  return { services, outputDir, artifacts: Object.keys(artifacts).map((fileName) => (fileName === 'services.json' ? outputServicesPath : path.join(outputDir, fileName))) };
+};
+
 const main = async () => {
   const [gtfsDir, outputPath = 'data/generated/services.json'] = process.argv.slice(2);
   if (!gtfsDir) {
@@ -159,10 +212,8 @@ const main = async () => {
     process.exit(1);
   }
   const gtfs = await loadGtfs(gtfsDir);
-  const services = convertTripsToServices(gtfs);
-  await fs.mkdir(path.dirname(outputPath), { recursive: true });
-  await fs.writeFile(outputPath, `${JSON.stringify(services, null, 2)}\n`);
-  console.log(JSON.stringify({ ...summarizeGtfs(gtfs), imported_services: services.length, outputPath }, null, 2));
+  const { services, artifacts } = await writeGeneratedGtfsArtifacts(gtfs, outputPath);
+  console.log(JSON.stringify({ ...summarizeGtfs(gtfs), imported_services: services.length, outputPath, artifacts }, null, 2));
 };
 
 if (import.meta.url === `file://${process.argv[1]}`) main().catch((error) => {

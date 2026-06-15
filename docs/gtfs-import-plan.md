@@ -20,7 +20,7 @@ The importer expects a standard extracted GTFS directory containing:
 node tools/import-gtfs-timetable.mjs ./srbijavoz_merged_gtfs data/generated/services.json
 ```
 
-The importer currently reads an extracted directory. ZIP extraction should happen before import so the parser can remain dependency-free.
+The importer writes `services.json`, `stations.json`, `routes.json`, `calendar.json`, and `metadata.json` into the generated data directory. It currently reads an extracted directory. ZIP extraction should happen before import so the parser can remain dependency-free.
 
 ## Validation routines
 

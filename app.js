@@ -413,8 +413,14 @@ const populateJourneySelectors = () => {
 };
 
 const loadServices = async () => {
-  const response = await fetch('data/services.json');
-  services = await response.json();
+  const sources = ['data/generated/services.json', 'data/services.json'];
+  for (const source of sources) {
+    const response = await fetch(source);
+    if (response.ok) {
+      services = await response.json();
+      break;
+    }
+  }
   populateJourneySelectors();
   renderServices();
 };
