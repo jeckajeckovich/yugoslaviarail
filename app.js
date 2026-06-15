@@ -771,43 +771,30 @@ const attachUiHandlers = () => {
     document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
   }));
-  document.querySelectorAll('[data-date-shortcut]').forEach((button) =>
+  document.querySelectorAll('[data-date-shortcut]').forEach((button) => {
   button.addEventListener('click', () => {
     const dateInput = document.querySelector('#journey-date');
     const shortcut = button.dataset.dateShortcut;
 
-    if (shortcut === 'today')
-      dateInput.value = todayIsoDate();
+    let newDate = dateInput.value || todayIsoDate();
 
-    if (shortcut === 'tomorrow')
-  dateInput.value = addDays(
-    dateInput.value || todayIsoDate(),
-    1
-  );
-    renderJourneyResult(
-  document.querySelector('#from-station').value,
-  document.querySelector('#to-station').value,
-  document.querySelector('#journey-search-mode').value,
-  dateInput.value
-);
+    if (shortcut === 'today') {
+      newDate = todayIsoDate();
+    } else if (shortcut === 'tomorrow') {
+      newDate = addDays(newDate, 1);
+    } else if (shortcut === 'next') {
+      newDate =
+        nearestAvailableDates(newDate, 1)[0] ||
+        newDate;
+    }
 
-    if (shortcut === 'next')
-      dateInput.value =
-        nearestAvailableDates(
-          dateInput.value || todayIsoDate(),
-          1
-        )[0] ||
-        dateInput.value ||
-        todayIsoDate();
+    dateInput.value = newDate;
 
-    renderJourneyResult(
-      document.querySelector('#from-station').value,
-      document.querySelector('#to-station').value,
-      document.querySelector('#journey-search-mode').value,
-      dateInput.value
-    );
-  })
-);
+    console.log('Shortcut:', shortcut, 'New date:', newDate);
+
+    runJourneySearch();
+  });
+});
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.journey-result').addEventListener('click', (event) => {
     const button = event.target.closest('[data-option-index]');
