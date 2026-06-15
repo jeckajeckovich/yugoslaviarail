@@ -791,6 +791,8 @@ const attachUiHandlers = () => {
     dateInput.value = newDate;
     runJourneySearch();
   });
+});
+    
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.journey-result').addEventListener('click', (event) => {
     const button = event.target.closest('[data-option-index]');
