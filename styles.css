@@ -112,5 +112,5 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .journey-date-control { margin: 0 0 10px; }
 .date-shortcuts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
 .date-shortcuts button { border: 2px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); padding: 7px 8px; font-size: .72rem; font-weight: 950; letter-spacing: .03em; text-transform: uppercase; cursor: pointer; }
-.date-summary { border: 2px solid #d8cdb7; border-radius: 14px; background: #fff; margin: 10px 0; padding: 10px 12px; }
-.date-summary p { margin: 4px 0; color: var(--muted); font-size: .86rem; font-weight: 800; }
+.date-summary, .search-stats { border: 2px solid #d8cdb7; border-radius: 14px; background: #fff; margin: 10px 0; padding: 10px 12px; }
+.date-summary p, .search-stats p { margin: 4px 0; color: var(--muted); font-size: .86rem; font-weight: 800; }

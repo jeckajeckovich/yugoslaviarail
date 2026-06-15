@@ -168,7 +168,7 @@ const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames
 const minimumTransferMinutes = 5;
 const journeySearchModes = {
   fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, timeoutMs: 1500, allowOvernight: false, allowStationRevisits: false, rankBy: 'time' },
-  all: { maxTransfers: 8, maxStates: 100000, maxQueueSize: 50000, timeoutMs: 5000, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' }
+  all: { maxTransfers: 10, maxStates: 150000, maxQueueSize: 75000, timeoutMs: 5000, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' }
 };
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
@@ -262,6 +262,15 @@ const routeDateSummary = (calendarInfo, dateValue) => `
     <p><strong>Calendar filtering:</strong> ${calendarDates.length ? 'active' : 'not available'}</p>
   </div>
 `;
+
+const searchStatsSummary = () => lastJourneySearchStats ? `
+  <div class="search-stats">
+    <p><strong>States explored:</strong> ${lastJourneySearchStats.statesExplored}</p>
+    <p><strong>Queue size:</strong> ${lastJourneySearchStats.queueSize}</p>
+    <p><strong>Timeout reached:</strong> ${lastJourneySearchStats.timedOut ? 'yes' : 'no'}</p>
+    <p><strong>Truncation reason:</strong> ${lastJourneySearchStats.truncationReason || 'none'}</p>
+  </div>
+` : '';
 
 const serviceMatches = (service, query) => {
   const normalizedQuery = normalizeSearch(query);
@@ -475,12 +484,14 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
   let discardedCalendarFiltering = 0;
   let truncated = false;
   let timedOut = false;
+  let truncationReason = null;
   try {
     while (queue.length && results.length < limit && statesExplored < modeConfig.maxStates) {
       if (nowMs() - searchStartMs >= modeConfig.timeoutMs) {
         discardedSearchLimit += queue.length;
         truncated = true;
         timedOut = true;
+        truncationReason = 'timeout';
         break;
       }
       queue.sort(rankJourneyStates(modeConfig));
@@ -488,10 +499,18 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
         discardedSearchLimit += queue.length - modeConfig.maxQueueSize;
         queue.length = modeConfig.maxQueueSize;
         truncated = true;
+        truncationReason ||= 'queue-size';
       }
       maxQueueSize = Math.max(maxQueueSize, queue.length);
       const state = queue.shift();
       statesExplored += 1;
+      if (statesExplored % 2500 === 0) {
+        console.debug('journey-search progress', {
+          statesExplored,
+          routesFound: results.length,
+          truncationReason
+        });
+      }
       if (state.station === to && state.edges.length) {
         const segments = groupEdgesIntoSegments(state.edges);
         const summary = journeySummary(state.edges, segments, { totalMinutes: state.elapsedMinutes, allowOvernight: modeConfig.allowOvernight });
@@ -504,6 +523,7 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
           discardedSearchLimit += queue.length;
           truncated = true;
           timedOut = true;
+          truncationReason = 'timeout';
           break;
         }
         if (!transferIsAllowed(state.previousEdge, edge, { allowOvernight: modeConfig.allowOvernight })) {
@@ -556,6 +576,7 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
     if (queue.length && statesExplored >= modeConfig.maxStates) {
       discardedSearchLimit += queue.length;
       truncated = true;
+      truncationReason ||= 'state-limit';
     }
     return results
       .sort(rankJourneyStates(modeConfig))
@@ -578,7 +599,8 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
       calendarMatches: calendarStats.calendarMatches,
       searchTimeMs,
       truncated,
-      timedOut
+      timedOut,
+      truncationReason
     };
     console.info('journey-search stats', lastJourneySearchStats);
     console.timeEnd('journey-search');
@@ -630,12 +652,13 @@ const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDat
     dateValue
   });
   if (!currentJourneyOptions.length) {
-    const timeoutMessage = lastJourneySearchStats?.timedOut
-      ? '<p>Search stopped because the route is too complex. Try another date or mode.</p>'
+    const limitMessage = lastJourneySearchStats?.truncated
+      ? '<p>No route found within search limits.</p>'
       : '<p>No valid journey found for this date.</p><p>Try All valid routes, another date, or nearby stations.</p>';
     resultPanel.innerHTML = `
-      ${timeoutMessage}
+      ${limitMessage}
       ${routeDateSummary(calendarInfo, dateValue)}
+      ${searchStatsSummary()}
     `;
     resetSelection();
     return;
@@ -645,8 +668,9 @@ const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDat
     <h3>${from} → ${to}</h3>
     <p><strong>Journey found</strong></p>
     <p><strong>Search mode:</strong> ${mode === 'all' ? 'All valid routes' : 'Fastest'}</p>
-    ${lastJourneySearchStats?.timedOut ? '<p>Search stopped because the route is too complex; showing partial results.</p>' : ''}
+    ${lastJourneySearchStats?.truncated ? '<p>Search limits were reached; showing partial results found so far.</p>' : ''}
     ${routeDateSummary(calendarInfo, dateValue)}
+    ${searchStatsSummary()}
     ${currentJourneyOptions.map(renderJourneyOption).join('')}
   `;
   serviceDetail.innerHTML = '<p>Journey highlighted. Select an option for alternate itineraries, or select an individual service card for its full stop list.</p>';
@@ -714,21 +738,21 @@ document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('
   document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
   document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
 }));
+const runJourneySearch = () => renderJourneyResult(
+  document.querySelector('#from-station').value,
+  document.querySelector('#to-station').value,
+  document.querySelector('#journey-search-mode').value,
+  document.querySelector('#journey-date').value || todayIsoDate()
+);
 document.querySelectorAll('[data-date-shortcut]').forEach((button) => button.addEventListener('click', () => {
   const dateInput = document.querySelector('#journey-date');
   const shortcut = button.dataset.dateShortcut;
   if (shortcut === 'today') dateInput.value = todayIsoDate();
   if (shortcut === 'tomorrow') dateInput.value = addDays(todayIsoDate(), 1);
   if (shortcut === 'next') dateInput.value = nearestAvailableDates(dateInput.value || todayIsoDate(), 1)[0] || dateInput.value || todayIsoDate();
+  runJourneySearch();
 }));
-document.querySelector('#find-route-button').addEventListener('click', () => {
-  renderJourneyResult(
-    document.querySelector('#from-station').value,
-    document.querySelector('#to-station').value,
-    document.querySelector('#journey-search-mode').value,
-    document.querySelector('#journey-date').value || todayIsoDate()
-  );
-});
+document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
 document.querySelector('.journey-result').addEventListener('click', (event) => {
   const button = event.target.closest('[data-option-index]');
   if (!button) return;
