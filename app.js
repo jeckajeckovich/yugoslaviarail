@@ -719,47 +719,83 @@ const loadServices = async () => {
   renderServices();
 };
 
-setZoomDetail(zoomControl.value);
-zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
-serviceSearch.addEventListener('input', renderServices);
-document.querySelector('.clear-search').addEventListener('click', () => {
-  serviceSearch.value = '';
-  renderServices();
-  serviceSearch.focus();
-});
-document.querySelector('.show-all-services').addEventListener('click', resetSelection);
-serviceList.addEventListener('click', (event) => {
-  const button = event.target.closest('[data-service-id]');
-  if (!button) return;
-  const service = services.find((item) => item.service_id === button.dataset.serviceId);
-  if (service) drawSelectedService(service);
-});
-document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('click', () => {
-  document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
-  document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
-}));
-const runJourneySearch = () => renderJourneyResult(
-  document.querySelector('#from-station').value,
-  document.querySelector('#to-station').value,
-  document.querySelector('#journey-search-mode').value,
-  document.querySelector('#journey-date').value || todayIsoDate()
-);
-document.querySelectorAll('[data-date-shortcut]').forEach((button) => button.addEventListener('click', () => {
-  const dateInput = document.querySelector('#journey-date');
-  const shortcut = button.dataset.dateShortcut;
-  if (shortcut === 'today') dateInput.value = todayIsoDate();
-  if (shortcut === 'tomorrow') dateInput.value = addDays(todayIsoDate(), 1);
-  if (shortcut === 'next') dateInput.value = nearestAvailableDates(dateInput.value || todayIsoDate(), 1)[0] || dateInput.value || todayIsoDate();
-  runJourneySearch();
-}));
-document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
-document.querySelector('.journey-result').addEventListener('click', (event) => {
-  const button = event.target.closest('[data-option-index]');
-  if (!button) return;
-  const option = currentJourneyOptions[Number(button.dataset.optionIndex)];
-  if (!option) return;
-  document.querySelectorAll('[data-option-index]').forEach((item) => item.classList.toggle('selected', item === button));
-  drawServices(option.segments, { stationPath: option.stations });
-});
+const setSearchLoading = (isLoading) => {
+  const findButton = document.querySelector('#find-route-button');
+  const resultPanel = document.querySelector('.journey-result');
+  findButton.disabled = isLoading;
+  findButton.textContent = isLoading ? 'Searching…' : 'Find route';
+  findButton.setAttribute('aria-busy', String(isLoading));
+  if (isLoading) {
+    resultPanel.innerHTML = `
+      <div class="journey-loading" role="status">
+        <p>Searching routes...</p>
+        <p>Checking timetable...</p>
+        <p>Please wait...</p>
+      </div>
+    `;
+  }
+};
 
-loadServices();
+const runJourneySearch = async () => {
+  setSearchLoading(true);
+  await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+  try {
+    renderJourneyResult(
+      document.querySelector('#from-station').value,
+      document.querySelector('#to-station').value,
+      document.querySelector('#journey-search-mode').value,
+      document.querySelector('#journey-date').value || todayIsoDate()
+    );
+  } finally {
+    setSearchLoading(false);
+  }
+};
+
+const attachUiHandlers = () => {
+  setZoomDetail(zoomControl.value);
+  zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
+  serviceSearch.addEventListener('input', renderServices);
+  document.querySelector('.clear-search').addEventListener('click', () => {
+    serviceSearch.value = '';
+    renderServices();
+    serviceSearch.focus();
+  });
+  document.querySelector('.show-all-services').addEventListener('click', resetSelection);
+  serviceList.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-service-id]');
+    if (!button) return;
+    const service = services.find((item) => item.service_id === button.dataset.serviceId);
+    if (service) drawSelectedService(service);
+  });
+  document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('click', () => {
+    document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
+    document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
+  }));
+  document.querySelectorAll('[data-date-shortcut]').forEach((button) => button.addEventListener('click', () => {
+    const dateInput = document.querySelector('#journey-date');
+    const shortcut = button.dataset.dateShortcut;
+    console.log('date shortcut clicked', { shortcut, previousDate: dateInput.value });
+    if (shortcut === 'today') dateInput.value = todayIsoDate();
+    if (shortcut === 'tomorrow') dateInput.value = addDays(todayIsoDate(), 1);
+    if (shortcut === 'next') dateInput.value = nearestAvailableDates(dateInput.value || todayIsoDate(), 1)[0] || dateInput.value || todayIsoDate();
+    console.log('date shortcut updated date', { shortcut, date: dateInput.value });
+    runJourneySearch();
+  }));
+  document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
+  document.querySelector('.journey-result').addEventListener('click', (event) => {
+    const button = event.target.closest('[data-option-index]');
+    if (!button) return;
+    const option = currentJourneyOptions[Number(button.dataset.optionIndex)];
+    if (!option) return;
+    document.querySelectorAll('[data-option-index]').forEach((item) => item.classList.toggle('selected', item === button));
+    drawServices(option.segments, { stationPath: option.stations });
+  });
+
+  loadServices();
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', attachUiHandlers, { once: true });
+} else {
+  attachUiHandlers();
+}
