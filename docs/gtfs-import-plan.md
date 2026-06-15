@@ -33,6 +33,17 @@ The importer currently reads an extracted directory. ZIP extraction should happe
 - `stop_times.txt`: `trip_id`, `arrival_time`, `departure_time`, `stop_id`, `stop_sequence`
 - `calendar_dates.txt`: `service_id`, `date`, `exception_type`
 
+
+## Validation report command
+
+Once the root GTFS files are available, generate the validation report and converted timetable services with:
+
+```sh
+node tools/report-gtfs-feed.mjs . docs/gtfs-validation-report.md data/generated/services.json
+```
+
+The report confirms that `stops.txt`, `routes.txt`, `trips.txt`, and `stop_times.txt` parsed successfully, prints feed counts and service date range, lists 20 sample generated services, compares the output against the 19-service demo fixture, and flags station-name normalization issues before UI migration.
+
 ## Data model output
 
 Each GTFS trip becomes one generated service:
