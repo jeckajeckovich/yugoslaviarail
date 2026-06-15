@@ -146,8 +146,15 @@
           <select id="from-station"></select>
           <label class="service-search-label" for="to-station">To station</label>
           <select id="to-station"></select>
-          <label class="service-search-label" for="journey-date">Journey date</label>
-          <input id="journey-date" type="date" />
+          <div class="journey-date-control">
+            <label class="service-search-label" for="journey-date">Journey date</label>
+            <input id="journey-date" type="date" />
+            <div class="date-shortcuts" aria-label="Journey date shortcuts">
+              <button type="button" data-date-shortcut="today">Today</button>
+              <button type="button" data-date-shortcut="tomorrow">Tomorrow</button>
+              <button type="button" data-date-shortcut="next">Next available</button>
+            </div>
+          </div>
           <label class="service-search-label" for="journey-search-mode">Search mode</label>
           <select id="journey-search-mode">
             <option value="fastest">Fastest</option>
