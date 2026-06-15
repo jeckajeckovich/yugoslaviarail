@@ -173,6 +173,13 @@ const minutesFromMidnight = (time) => {
   const [hours, minutes] = time.split(':').map(Number);
   return Number.isFinite(hours) && Number.isFinite(minutes) ? (hours * 60) + minutes : null;
 };
+const minutesBetween = (departure, arrival) => {
+  const departureMinutes = minutesFromMidnight(departure);
+  const arrivalMinutes = minutesFromMidnight(arrival);
+  if (departureMinutes === null || arrivalMinutes === null) return null;
+  const duration = arrivalMinutes - departureMinutes;
+  return duration >= 0 ? duration : null;
+};
 const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
 
 const serviceMatches = (service, query) => {
@@ -274,13 +281,18 @@ const buildTimetableGraph = () => {
       const toStop = service.stops[index + 1];
       const departure = stopDeparture(fromStop);
       const arrival = stopArrival(toStop);
-      const travelMinutes = minutesFromMidnight(arrival) !== null && minutesFromMidnight(departure) !== null
-        ? Math.max(0, minutesFromMidnight(arrival) - minutesFromMidnight(departure))
-        : null;
-      const edge = { from: fromStop.station, to: toStop.station, service, departure, arrival, travelMinutes };
-      const reverseEdge = { from: toStop.station, to: fromStop.station, service, departure: stopDeparture(toStop), arrival: stopArrival(fromStop), travelMinutes };
-      addEdge(fromStop.station, edge);
-      addEdge(toStop.station, reverseEdge);
+const travelMinutes = minutesBetween(departure, arrival);
+
+const edge = {
+  from: fromStop.station,
+  to: toStop.station,
+  service,
+  departure,
+  arrival,
+  travelMinutes
+};
+
+addEdge(fromStop.station, edge);
     }
   }
   return graph;
@@ -323,14 +335,12 @@ const stationPathFromEdges = (edges) => edges.reduce((stations, edge, index) => 
 }, []);
 
 const journeyTiming = (edges) => {
-  const firstDeparture = edges.map((edge) => edge.departure).find(Boolean) || null;
-  const lastArrival = [...edges].reverse().map((edge) => edge.arrival).find(Boolean) || null;
-  const departureMinutes = minutesFromMidnight(firstDeparture);
-  const arrivalMinutes = minutesFromMidnight(lastArrival);
+  const firstDeparture = edges[0]?.departure || null;
+  const lastArrival = edges.at(-1)?.arrival || null;
   return {
     firstDeparture,
     lastArrival,
-    totalMinutes: departureMinutes !== null && arrivalMinutes !== null ? Math.max(0, arrivalMinutes - departureMinutes) : null
+    totalMinutes: minutesBetween(firstDeparture, lastArrival)
   };
 };
 
