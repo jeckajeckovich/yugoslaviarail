@@ -192,9 +192,16 @@ const nowMs = () => (typeof performance !== 'undefined' && performance.now ? per
 const todayIsoDate = () => new Date().toISOString().slice(0, 10);
 const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
 const addDays = (dateValue, days) => {
-  const date = new Date(`${dateValue}T00:00:00`);
+  const [y, m, d] = dateValue.split('-').map(Number);
+
+  const date = new Date(y, m - 1, d);
   date.setDate(date.getDate() + days);
-  return date.toISOString().slice(0, 10);
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, '0'),
+    String(date.getDate()).padStart(2, '0')
+  ].join('-');
 };
 const displayJourneyDate = (dateValue) => {
   const date = new Date(`${dateValue}T00:00:00`);
@@ -790,7 +797,6 @@ const attachUiHandlers = () => {
 
     console.log('DATE BUTTON', shortcut, dateInput.value, '=>', newDate);
 dateInput.value = newDate;
-alert(`DATE ${shortcut}: ${newDate}`);
     runJourneySearch();
   });
 });
