@@ -459,7 +459,7 @@ const rankJourneyStates = (modeConfig) => (a, b) => modeConfig.rankBy === 'time'
   ? (a.elapsedMinutes - b.elapsedMinutes) || (a.transfers - b.transfers) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount)
   : (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount);
 
-const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate() } = {}) => {
+const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate() } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
   const modeConfig = journeySearchModes[mode] || journeySearchModes.fastest;
