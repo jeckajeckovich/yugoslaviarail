@@ -66,6 +66,7 @@ let calendarDates = [];
 let calendarDateIndex = new Map();
 let selectedServiceIds = new Set();
 let lastJourneySearchStats = null;
+let isJourneySearchRunning = false;
 
 const setZoomDetail = (value) => {
   const zoom = Number(value);
@@ -167,8 +168,9 @@ const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
 const journeySearchModes = {
-  fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, timeoutMs: 1500, allowOvernight: false, allowStationRevisits: false, rankBy: 'time' },
-  all: { maxTransfers: 10, maxStates: 150000, maxQueueSize: 75000, timeoutMs: 5000, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' }
+  fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, timeoutMs: 1500, maxJourneyMinutes: Infinity, yieldEvery: 2500, allowOvernight: false, allowStationRevisits: false, rankBy: 'time' },
+  all: { maxTransfers: 10, maxStates: 150000, maxQueueSize: 75000, timeoutMs: 5000, maxJourneyMinutes: Infinity, yieldEvery: 2500, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' },
+  exhaustive: { maxTransfers: 12, maxStates: 1000000, maxQueueSize: 300000, timeoutMs: 30000, maxJourneyMinutes: 4320, yieldEvery: 1000, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' }
 };
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
@@ -189,27 +191,22 @@ const minutesBetween = (departure, arrival, { allowOvernight = false } = {}) => 
 };
 const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
 const nowMs = () => (typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now());
-const todayIsoDate = () => {
-  const belgradeDate = new Intl.DateTimeFormat(
-    'sv-SE',
-    {
-      timeZone: 'Europe/Belgrade',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }
-  ).format(new Date());
-
-  return belgradeDate;
-};
+const yieldToBrowser = () => new Promise((resolve) => {
+  if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => resolve());
+  else setTimeout(resolve, 0);
+});
+const searchModeLabel = (mode) => ({ fastest: 'Fastest', all: 'All valid routes', exhaustive: 'Exhaustive search' })[mode] || 'Fastest';
+const todayIsoDate = () => new Date().toISOString().slice(0, 10);
 const gtfsDateKey = (dateValue) => dateValue.replaceAll('-', '');
 const addDays = (dateValue, days) => {
-  const [y, m, d] = dateValue.split('-').map(Number);
-
-  const date = new Date(Date.UTC(y, m - 1, d));
-  date.setUTCDate(date.getUTCDate() + days);
-
+  const date = new Date(`${dateValue}T00:00:00`);
+  date.setDate(date.getDate() + days);
   return date.toISOString().slice(0, 10);
+};
+const displayJourneyDate = (dateValue) => {
+  const date = new Date(`${dateValue}T00:00:00`);
+  const weekday = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
+  return `${weekday}, ${dateValue}`;
 };
 
 const calendarIndexKey = (serviceId, dateKey) => `${serviceId}|${dateKey}`;
@@ -478,7 +475,7 @@ const rankJourneyStates = (modeConfig) => (a, b) => modeConfig.rankBy === 'time'
   ? (a.elapsedMinutes - b.elapsedMinutes) || (a.transfers - b.transfers) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount)
   : (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount);
 
-const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate() } = {}) => {
+const findJourneyOptions = async (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate(), onProgress = null } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
   const modeConfig = journeySearchModes[mode] || journeySearchModes.fastest;
@@ -514,12 +511,16 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
       maxQueueSize = Math.max(maxQueueSize, queue.length);
       const state = queue.shift();
       statesExplored += 1;
-      if (statesExplored % 2500 === 0) {
-        console.debug('journey-search progress', {
+      if (statesExplored % modeConfig.yieldEvery === 0) {
+        const progress = {
           statesExplored,
           routesFound: results.length,
+          queueSize: queue.length,
           truncationReason
-        });
+        };
+        console.debug('journey-search progress', progress);
+        onProgress?.(progress);
+        await yieldToBrowser();
       }
       if (state.station === to && state.edges.length) {
         const segments = groupEdgesIntoSegments(state.edges);
@@ -563,7 +564,7 @@ const findJourneyOptions = (from, to, limit = 10, { serviceCalendarIds = null, m
         const firstDepartureMinutes = state.firstDepartureMinutes ?? edgeDepartureMinutes;
         if (firstDepartureMinutes === null) continue;
         const elapsedMinutes = edgeArrivalMinutes - firstDepartureMinutes;
-        if (elapsedMinutes < 0) continue;
+        if (elapsedMinutes < 0 || elapsedMinutes > modeConfig.maxJourneyMinutes) continue;
         const nextVisited = new Set(state.visited);
         const nextVisitKey = visitKey(edge.to, edge.service.service_id, edgeArrivalMinutes, modeConfig.allowStationRevisits);
         if (nextVisited.has(nextVisitKey)) continue;
@@ -638,7 +639,7 @@ const renderJourneyOption = (option, index) => `
   </button>
 `;
 
-const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDate()) => {
+const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = todayIsoDate()) => {
   const resultPanel = document.querySelector('.journey-result');
   if (from === to) {
     resultPanel.innerHTML = '<p>Choose two different stations.</p>';
@@ -655,11 +656,24 @@ const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDat
     resetSelection();
     return;
   }
-  currentJourneyOptions = findJourneyOptions(from, to, 3, {
+  const resultLimit = mode === 'exhaustive' ? 10 : 3;
+  currentJourneyOptions = await findJourneyOptions(from, to, resultLimit, {
     mode,
     serviceCalendarIds: calendarInfo.activeServiceIds,
     calendarStats: calendarInfo,
-    dateValue
+    dateValue,
+    onProgress: ({ statesExplored, routesFound, queueSize }) => {
+      resultPanel.innerHTML = `
+        <div class="journey-loading" role="status">
+          <p>Searching routes...</p>
+          <p>Checking timetable...</p>
+          <p>Please wait...</p>
+          <p>States explored: ${statesExplored}</p>
+          <p>Routes found: ${routesFound}</p>
+          <p>Queue size: ${queueSize}</p>
+        </div>
+      `;
+    }
   });
   if (!currentJourneyOptions.length) {
     const limitMessage = lastJourneySearchStats?.truncated
@@ -677,7 +691,7 @@ const renderJourneyResult = (from, to, mode = 'fastest', dateValue = todayIsoDat
   resultPanel.innerHTML = `
     <h3>${from} → ${to}</h3>
     <p><strong>Journey found</strong></p>
-    <p><strong>Search mode:</strong> ${mode === 'all' ? 'All valid routes' : 'Fastest'}</p>
+    <p><strong>Search mode:</strong> ${searchModeLabel(mode)}</p>
     ${lastJourneySearchStats?.truncated ? '<p>Search limits were reached; showing partial results found so far.</p>' : ''}
     ${routeDateSummary(calendarInfo, dateValue)}
     ${searchStatsSummary()}
@@ -747,10 +761,12 @@ const setSearchLoading = (isLoading) => {
 };
 
 const runJourneySearch = async () => {
+  if (isJourneySearchRunning) return;
+  isJourneySearchRunning = true;
   setSearchLoading(true);
-  await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+  await yieldToBrowser();
   try {
-    renderJourneyResult(
+    await renderJourneyResult(
       document.querySelector('#from-station').value,
       document.querySelector('#to-station').value,
       document.querySelector('#journey-search-mode').value,
@@ -758,6 +774,7 @@ const runJourneySearch = async () => {
     );
   } finally {
     setSearchLoading(false);
+    isJourneySearchRunning = false;
   }
 };
 
@@ -781,35 +798,16 @@ const attachUiHandlers = () => {
     document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
   }));
-  document.querySelectorAll('[data-date-shortcut]').forEach((button) => {
-  button.addEventListener('click', () => {
+  document.querySelectorAll('[data-date-shortcut]').forEach((button) => button.addEventListener('click', () => {
     const dateInput = document.querySelector('#journey-date');
     const shortcut = button.dataset.dateShortcut;
-
-    let newDate = dateInput.value || todayIsoDate();
-
-    if (shortcut === 'today') {
-      newDate = todayIsoDate();
-    } else if (shortcut === 'tomorrow') {
-      newDate = addDays(newDate, 1);
-    } else if (shortcut === 'next') {
-      newDate =
-        nearestAvailableDates(newDate, 1)[0] ||
-        newDate;
-    }
-
-    console.log('DATE BUTTON', shortcut, dateInput.value, '=>', newDate);
-dateInput.value = newDate;
-    console.log(
-  'BUTTON',
-  shortcut,
-  'INPUT DATE',
-  dateInput.value
-);
+    console.log('date shortcut clicked', { shortcut, previousDate: dateInput.value });
+    if (shortcut === 'today') dateInput.value = todayIsoDate();
+    if (shortcut === 'tomorrow') dateInput.value = addDays(todayIsoDate(), 1);
+    if (shortcut === 'next') dateInput.value = nearestAvailableDates(dateInput.value || todayIsoDate(), 1)[0] || dateInput.value || todayIsoDate();
+    console.log('date shortcut updated date', { shortcut, date: dateInput.value });
     runJourneySearch();
-  });
-});
-    
+  }));
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.journey-result').addEventListener('click', (event) => {
     const button = event.target.closest('[data-option-index]');
@@ -819,6 +817,7 @@ dateInput.value = newDate;
     document.querySelectorAll('[data-option-index]').forEach((item) => item.classList.toggle('selected', item === button));
     drawServices(option.segments, { stationPath: option.stations });
   });
+
   loadServices();
 };
 
