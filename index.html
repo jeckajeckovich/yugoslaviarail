@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serbian Passenger Railway Map</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="poster" aria-labelledby="map-title">
+    <header class="masthead">
+      <p class="kicker">Srbija Voz · schematic passenger rail</p>
+      <h1 id="map-title">Serbian Railway Network</h1>
+      <p class="subtitle">A manually drafted transit diagram prioritising transfers, shared corridors, and direct service termini.</p>
+    </header>
+
+    <div class="atlas-shell">
+      <div class="map-frame" data-zoom="100">
+      <div class="zoom-controls" aria-label="Map detail controls">
+        <label for="map-zoom">Map zoom</label>
+        <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
+        <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
+      </div>
+      <svg class="rail-map" viewBox="0 0 1200 1680" role="img" aria-labelledby="svg-title svg-desc">
+      <title id="svg-title">Schematic map of passenger railway routes in Serbia</title>
+      <desc id="svg-desc">The Serbian railway network is organised around a dominant north-south spine from Subotica through Novi Sad, Belgrade, Lapovo, and Niš, with branches to Šid, Vršac, Kikinda, Prijepolje, Kraljevo, Zaječar, and international directions.</desc>
+
+      <defs>
+        <filter id="label-halo" x="-30%" y="-30%" width="160%" height="160%">
+          <feFlood flood-color="#f8f5ec" flood-opacity="0.95" result="bg" />
+          <feComposite in="bg" in2="SourceAlpha" operator="in" />
+          <feMorphology operator="dilate" radius="3" />
+          <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <path class="country" d="M519 58 L650 70 L720 128 L805 128 L870 210 L855 330 L918 430 L884 532 L943 641 L902 754 L956 860 L895 980 L920 1105 L830 1210 L800 1358 L682 1444 L572 1422 L462 1480 L352 1420 L310 1285 L232 1212 L260 1080 L210 972 L240 860 L188 742 L238 632 L204 510 L278 416 L270 292 L370 220 L405 112 Z" />
+      <path class="river danube" d="M180 360 H392 L452 420 H600 L710 360 H945" />
+      <path class="river sava" d="M112 586 H338 L435 640 H560" />
+      <text class="river-label" x="730" y="344">Danube</text>
+      <text class="river-label" x="195" y="570">Sava</text>
+
+      <g class="routes">
+        <path class="route r1" data-route-id="r1" d="M520 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r2" data-route-id="r2" d="M542 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r3" data-route-id="r3" d="M498 80 V330 V520 V650 V900 V1150 V1450" />
+        <path class="route r4" data-route-id="r4" d="M476 330 H335 H210" />
+        <path class="route r5" data-route-id="r5" d="M564 330 H690 V205" />
+        <path class="route r6" data-route-id="r6" d="M586 520 H765 V350" />
+        <path class="route r7" data-route-id="r7" d="M608 650 H780 V505" />
+        <path class="route r8" data-route-id="r8" d="M454 650 H330 L220 760" />
+        <path class="route r9" data-route-id="r9" d="M432 650 L360 800 V1060 L260 1160 V1340" />
+        <path class="route r10" data-route-id="r10" d="M476 900 H350 V1045 L250 1145" />
+        <path class="route r11" data-route-id="r11" d="M564 900 H705 V1070 H850" />
+        <path class="route r12" data-route-id="r12" d="M542 1150 H690 V1235 H820" />
+        <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
+        <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
+        <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
+      </g>
+
+      <g class="intl">
+        <text x="520" y="42">↑ Budapest</text>
+        <text x="690" y="165">↑ Szeged</text>
+        <text x="250" y="1390">↙ Bar</text>
+        <text x="520" y="1630">↓ Skopje</text>
+        <text x="802" y="1594">↘ Sofia</text>
+      </g>
+
+      <g class="service-overlay" aria-hidden="true">
+        <path class="service-path" />
+        <g class="service-stop-markers"></g>
+        <text class="service-train-label"></text>
+      </g>
+
+      <g class="stations">
+        <g class="tier1"><circle cx="520" cy="80" r="20"/><text x="562" y="91">Subotica</text></g>
+        <g><circle cx="520" cy="190" r="8"/><text x="552" y="198">Bačka Topola</text></g>
+        <g><circle cx="520" cy="250" r="8"/><text x="552" y="258">Vrbas</text></g>
+        <g class="tier1 transfer"><circle class="halo" cx="520" cy="330" r="27"/><circle cx="520" cy="330" r="20"/><text x="562" y="341">Novi Sad</text></g>
+        <g><circle cx="520" cy="430" r="8"/><text x="552" y="438">Inđija</text></g>
+        <g class="tier3 transfer"><circle class="halo" cx="520" cy="520" r="22"/><circle cx="520" cy="520" r="11"/><text x="552" y="528">Stara Pazova</text></g>
+        <g class="tier1 transfer"><circle class="halo" cx="520" cy="650" r="30"/><circle cx="520" cy="650" r="22"/><text x="557" y="610">Beograd</text></g>
+        <g class="zoom-all belgrade-label"><line class="leader" x1="520" y1="780" x2="610" y2="800"/><circle cx="520" cy="780" r="7"/><text x="620" y="808">Mladenovac</text></g>
+        <g class="tier2 transfer"><circle class="halo" cx="520" cy="900" r="25"/><circle cx="520" cy="900" r="16"/><text x="562" y="910">Lapovo</text></g>
+        <g class="zoom-all"><circle cx="520" cy="1020" r="7"/><text x="552" y="1028">Jagodina</text></g>
+        <g><circle cx="520" cy="1150" r="7"/><text x="552" y="1158">Stalać</text></g>
+        <g class="zoom-all"><circle cx="520" cy="1310" r="7"/><text x="552" y="1318">Aleksinac</text></g>
+        <g class="tier1"><circle cx="520" cy="1450" r="20"/><text x="562" y="1461">Niš</text></g>
+
+        <g class="tier2"><circle cx="210" cy="330" r="13"/><text x="150" y="306">Šid</text></g>
+        <g><circle cx="335" cy="330" r="8"/><text x="302" y="306">Ruma</text></g>
+        <g class="tier2"><circle cx="690" cy="205" r="13"/><text x="722" y="213">Kikinda</text></g>
+        <g><circle cx="690" cy="270" r="8"/><text x="722" y="278">Zrenjanin</text></g>
+        <g class="tier2"><circle cx="765" cy="350" r="13"/><text x="797" y="358">Vršac</text></g>
+        <g><circle cx="765" cy="430" r="8"/><text x="797" y="438">Plandište</text></g>
+        <g><circle cx="780" cy="505" r="8"/><text x="812" y="513">Pančevo</text></g>
+
+        <g class="belgrade-label core"><line class="leader" x1="470" y1="650" x2="360" y2="606"/><circle cx="470" cy="650" r="7"/><text x="250" y="602">Zemun</text></g>
+        <g class="belgrade-label core"><line class="leader" x1="490" y1="650" x2="358" y2="668"/><circle cx="490" cy="650" r="7"/><text x="194" y="676">Novi Beograd</text></g>
+        <g class="belgrade-label core"><line class="leader" x1="520" y1="650" x2="618" y2="650"/><circle cx="520" cy="650" r="9"/><text x="630" y="658">Beograd Centar</text></g>
+        <g class="belgrade-label zoom-secondary"><line class="leader" x1="548" y1="650" x2="668" y2="700"/><circle cx="548" cy="650" r="7"/><text x="680" y="708">Karađorđev Park</text></g>
+        <g class="belgrade-label zoom-secondary"><line class="leader" x1="575" y1="650" x2="700" y2="608"/><circle cx="575" cy="650" r="7"/><text x="710" y="604">Pančevački Most</text></g>
+        <g class="belgrade-label zoom-secondary"><line class="leader" x1="470" y1="690" x2="350" y2="746"/><circle cx="470" cy="690" r="7"/><text x="248" y="754">Rakovica</text></g>
+
+        <g><circle cx="330" cy="650" r="8"/><text x="265" y="630">Obrenovac</text></g>
+        <g><circle cx="220" cy="760" r="8"/><text x="148" y="768">Loznica</text></g>
+        <g class="tier2 transfer"><circle class="halo" cx="360" cy="1060" r="24"/><circle cx="360" cy="1060" r="16"/><text x="402" y="1070">Požega</text></g>
+        <g><circle cx="260" cy="1160" r="7"/><text x="182" y="1168">Užice</text></g>
+        <g><circle cx="260" cy="1340" r="7"/><text x="154" y="1348">Prijepolje</text></g>
+        <g class="tier2 transfer"><circle class="halo" cx="250" cy="1145" r="24"/><circle cx="250" cy="1145" r="16"/><text x="128" y="1155">Kraljevo</text></g>
+        <g class="tier2"><circle cx="850" cy="1070" r="16"/><text x="892" y="1080">Zaječar</text></g>
+        <g class="zoom-all"><circle cx="705" cy="1070" r="7"/><text x="730" y="1050">Bor</text></g>
+        <g><circle cx="820" cy="1235" r="7"/><text x="852" y="1243">Pirot</text></g>
+        <g class="zoom-all"><circle cx="250" cy="1288" r="7"/><text x="145" y="1296">Kosovska Mitrovica</text></g>
+      </g>
+
+      <g class="legend" transform="translate(765 1220)">
+        <rect width="330" height="245" rx="20" />
+        <text class="legend-title" x="24" y="38">Passenger services</text>
+        <path class="r1" d="M28 68 H92"/><text x="110" y="75">Subotica – Niš spine</text>
+        <path class="r4" d="M28 98 H92"/><text x="110" y="105">Šid corridor</text>
+        <path class="r5" d="M28 128 H92"/><text x="110" y="135">Kikinda / Banat</text>
+        <path class="r6" d="M28 158 H92"/><text x="110" y="165">Vršac corridor</text>
+        <path class="r9" d="M28 188 H92"/><text x="110" y="195">Požega – Prijepolje</text>
+        <path class="r11" d="M28 218 H92"/><text x="110" y="225">Zaječar / eastern Serbia</text>
+      </g>
+    </svg>
+    </div>
+      <aside class="services-panel" aria-labelledby="services-heading">
+        <div class="tab-header" role="tablist" aria-label="Search mode">
+          <button class="tab active" type="button" data-mode="services">Services</button>
+          <button class="tab" type="button" data-mode="journey">Journey</button>
+        </div>
+        <section class="services-tab" data-panel="services">
+          <h2 id="services-heading">Passenger services</h2>
+          <label class="service-search-label" for="service-search">Find a train, city, or route</label>
+          <input id="service-search" type="search" placeholder="Search train, city or route..." autocomplete="off" />
+          <button class="clear-search" type="button">× Clear search</button>
+          <button class="show-all-services" type="button">Show all services</button>
+          <div class="service-count" aria-live="polite"></div>
+          <ul class="service-list" aria-label="Scheduled services"></ul>
+        </section>
+        <section class="journey-tab hidden" data-panel="journey">
+          <h2>Journey finder</h2>
+          <label class="service-search-label" for="from-station">From station</label>
+          <select id="from-station"></select>
+          <label class="service-search-label" for="to-station">To station</label>
+          <select id="to-station"></select>
+          <button id="find-route-button" class="find-route" type="button">Find route</button>
+          <article class="journey-result" aria-live="polite">
+            <p>Choose two stations to find direct trains or transfer journeys.</p>
+          </article>
+        </section>
+        <article class="service-detail" aria-live="polite">
+          <p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>
+        </article>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
