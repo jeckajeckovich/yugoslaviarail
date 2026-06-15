@@ -163,6 +163,8 @@ const serviceType = (service) => service.service_type || service.route_short_nam
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
+const maxJourneyStates = 2500;
+const maxJourneyQueueSize = 5000;
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
 const formatTime = (time) => time || 'time unknown';
@@ -333,40 +335,63 @@ const journeyTiming = (edges) => {
 };
 
 const findJourneyOptions = (from, to, limit = 3) => {
+  console.time('journey-search');
   const graph = buildTimetableGraph();
   const queue = [{ station: from, previousEdge: null, serviceId: null, transfers: 0, stopCount: 0, elapsedMinutes: 0, arrivalMinutes: null, edges: [], visited: new Set([from]) }];
   const results = [];
-  while (queue.length && results.length < limit) {
-    queue.sort((a, b) => (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount));
-    const state = queue.shift();
-    if (state.station === to && state.edges.length) {
-      const timing = journeyTiming(state.edges);
-      const segments = groupEdgesIntoSegments(state.edges);
-      results.push({ ...state, ...timing, segments, stations: stationPathFromEdges(state.edges) });
-      continue;
+  let statesExplored = 0;
+  let maxQueueSize = queue.length;
+  let truncated = false;
+  try {
+    while (queue.length && results.length < limit && statesExplored < maxJourneyStates) {
+      queue.sort((a, b) => (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount));
+      if (queue.length > maxJourneyQueueSize) {
+        queue.length = maxJourneyQueueSize;
+        truncated = true;
+      }
+      maxQueueSize = Math.max(maxQueueSize, queue.length);
+      const state = queue.shift();
+      statesExplored += 1;
+      if (state.station === to && state.edges.length) {
+        const timing = journeyTiming(state.edges);
+        const segments = groupEdgesIntoSegments(state.edges);
+        results.push({ ...state, ...timing, segments, stations: stationPathFromEdges(state.edges) });
+        continue;
+      }
+      for (const edge of graph.get(state.station) || []) {
+        if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge)) continue;
+        const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
+        const edgeMinutes = edge.travelMinutes ?? 30;
+        const nextVisited = new Set(state.visited);
+        nextVisited.add(edge.to);
+        queue.push({
+          station: edge.to,
+          previousEdge: edge,
+          serviceId: edge.service.service_id,
+          transfers: nextTransfers,
+          stopCount: state.stopCount + 1,
+          elapsedMinutes: state.elapsedMinutes + edgeMinutes,
+          arrivalMinutes: minutesFromMidnight(edge.arrival),
+          edges: [...state.edges, edge],
+          visited: nextVisited
+        });
+      }
     }
-    for (const edge of graph.get(state.station) || []) {
-      if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge)) continue;
-      const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
-      const edgeMinutes = edge.travelMinutes ?? 30;
-      const nextVisited = new Set(state.visited);
-      nextVisited.add(edge.to);
-      queue.push({
-        station: edge.to,
-        previousEdge: edge,
-        serviceId: edge.service.service_id,
-        transfers: nextTransfers,
-        stopCount: state.stopCount + 1,
-        elapsedMinutes: state.elapsedMinutes + edgeMinutes,
-        arrivalMinutes: minutesFromMidnight(edge.arrival),
-        edges: [...state.edges, edge],
-        visited: nextVisited
-      });
-    }
+    if (queue.length && statesExplored >= maxJourneyStates) truncated = true;
+    return results
+      .sort((a, b) => (a.transfers - b.transfers) || ((a.totalMinutes ?? Infinity) - (b.totalMinutes ?? Infinity)) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount))
+      .slice(0, limit);
+  } finally {
+    console.info('journey-search stats', {
+      graphNodeCount: graph.size,
+      queueSize: queue.length,
+      maxQueueSize,
+      statesExplored,
+      resultCount: results.length,
+      truncated
+    });
+    console.timeEnd('journey-search');
   }
-  return results
-    .sort((a, b) => (a.transfers - b.transfers) || ((a.totalMinutes ?? Infinity) - (b.totalMinutes ?? Infinity)) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount))
-    .slice(0, limit);
 };
 
 let currentJourneyOptions = [];
@@ -452,13 +477,8 @@ document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('
   document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === tab));
   document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
 }));
-const findRouteButton = document.querySelector('#find-route-button') || document.querySelector('.find-route');
-
-findRouteButton?.addEventListener('click', () => {
-  renderJourneyResult(
-    document.querySelector('#from-station').value,
-    document.querySelector('#to-station').value
-  );
+document.querySelector('#find-route-button').addEventListener('click', () => {
+  renderJourneyResult(document.querySelector('#from-station').value, document.querySelector('#to-station').value);
 });
 document.querySelector('.journey-result').addEventListener('click', (event) => {
   const button = event.target.closest('[data-option-index]');
