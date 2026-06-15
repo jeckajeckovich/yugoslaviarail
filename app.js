@@ -158,7 +158,8 @@ export const normalizeSearch = (text) => {
   return normalized.replace(/\bbg\b/g, 'beograd').replace(/\s+/g, ' ');
 };
 
-const typeLabel = (type) => type.replace(/\b\w/g, (letter) => letter.toUpperCase());
+const typeLabel = (type = 'scheduled') => String(type || 'scheduled').replace(/\b\w/g, (letter) => letter.toUpperCase());
+const serviceType = (service) => service.service_type || service.route_short_name || service.route_long_name || service.source || 'scheduled';
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
@@ -184,7 +185,7 @@ const renderDetail = (service) => {
   serviceDetail.innerHTML = `
     <h3>${service.train_number}</h3>
     <p class="detail-route">${service.origin} → ${service.destination}</p>
-    <p><span class="badge">${typeLabel(service.service_type)}</span> ${service.operator}</p>
+    <p><span class="badge">${typeLabel(serviceType(service))}</span> ${service.operator}</p>
     <p><strong>Transfers on route:</strong> ${hubs.length ? hubs.join(', ') : 'None shown on schematic'}</p>
     <ol class="stop-list">
       ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
@@ -202,7 +203,7 @@ const renderServices = () => {
       <button class="service-card${selectedServiceIds.has(service.service_id) ? ' selected' : ''}" type="button" data-service-id="${service.service_id}">
         <span class="service-name">${service.origin} → ${service.destination}</span>
         <span class="service-number">${service.train_number}</span>
-        <span class="service-meta"><span class="badge">${typeLabel(service.service_type)}</span>${service.stops.length} stops</span>
+        <span class="service-meta"><span class="badge">${typeLabel(serviceType(service))}</span>${service.stops.length} stops</span>
       </button>
     </li>
   `).join('');
@@ -216,7 +217,7 @@ const renderServices = () => {
 const drawServices = (legs, { zoom = true, stationPath = null } = {}) => {
   selectedServiceIds = new Set(legs.map((leg) => leg.service.service_id));
   document.body.classList.toggle('service-selected', selectedServiceIds.size > 0);
-  routeElements.forEach((route) => route.classList.toggle('selected-route', legs.some((leg) => leg.service.route_ids.includes(route.dataset.routeId))));
+  routeElements.forEach((route) => route.classList.toggle('selected-route', legs.some((leg) => (leg.service.route_ids || [leg.service.route_id]).filter(Boolean).includes(route.dataset.routeId))));
   servicePath.setAttribute('d', legs.map((leg) => getSegmentPathD(leg.service, leg.from, leg.to)).join(' '));
   serviceTrainLabel.textContent = legs.map((leg) => leg.service.train_number).join(' + ');
   const labelPoint = getServiceProgressPoint(legs[0].service, 0.55);
