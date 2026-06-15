@@ -163,9 +163,10 @@ const serviceType = (service) => service.service_type || service.route_short_nam
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
-const maxJourneyTransfers = 3;
-const maxJourneyStates = 7500;
-const maxJourneyQueueSize = 7500;
+const journeySearchModes = {
+  fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, allowOvernight: false, rankBy: 'time' },
+  all: { maxTransfers: 8, maxStates: 50000, maxQueueSize: 25000, allowOvernight: true, rankBy: 'transfers' }
+};
 const stopDeparture = (stop) => stop.departure ?? stop.time ?? null;
 const stopArrival = (stop) => stop.arrival ?? stop.time ?? null;
 const formatTime = (time) => time || 'time unknown';
@@ -174,11 +175,13 @@ const minutesFromMidnight = (time) => {
   const [hours, minutes] = time.split(':').map(Number);
   return Number.isFinite(hours) && Number.isFinite(minutes) ? (hours * 60) + minutes : null;
 };
-const minutesBetween = (departure, arrival) => {
+const minutesBetween = (departure, arrival, { allowOvernight = false } = {}) => {
   const departureMinutes = minutesFromMidnight(departure);
   const arrivalMinutes = minutesFromMidnight(arrival);
   if (departureMinutes === null || arrivalMinutes === null) return null;
-  const duration = arrivalMinutes - departureMinutes;
+  const duration = arrivalMinutes >= departureMinutes || !allowOvernight
+    ? arrivalMinutes - departureMinutes
+    : (arrivalMinutes + 1440) - departureMinutes;
   return duration >= 0 ? duration : null;
 };
 const durationLabel = (minutes) => Number.isFinite(minutes) ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : 'time unknown';
@@ -271,7 +274,7 @@ const resetSelection = () => {
   renderServices();
 };
 
-const buildTimetableGraph = ({ serviceCalendarIds = null } = {}) => {
+const buildTimetableGraph = ({ serviceCalendarIds = null, allowOvernight = false } = {}) => {
   const graph = new Map();
   const addEdge = (from, edge) => {
     if (!graph.has(from)) graph.set(from, []);
@@ -284,31 +287,39 @@ const buildTimetableGraph = ({ serviceCalendarIds = null } = {}) => {
       const toStop = service.stops[index + 1];
       const departure = stopDeparture(fromStop);
       const arrival = stopArrival(toStop);
-const travelMinutes = minutesBetween(departure, arrival);
-if (travelMinutes === null) continue;
-
-const edge = {
-  from: fromStop.station,
-  to: toStop.station,
-  service,
-  departure,
-  arrival,
-  travelMinutes
-};
-
-addEdge(fromStop.station, edge);
+      const travelMinutes = minutesBetween(departure, arrival, { allowOvernight });
+      if (travelMinutes === null) continue;
+      const edge = {
+        from: fromStop.station,
+        to: toStop.station,
+        service,
+        departure,
+        arrival,
+        departureMinutes: minutesFromMidnight(departure),
+        arrivalMinutes: minutesFromMidnight(arrival),
+        travelMinutes
+      };
+      addEdge(fromStop.station, edge);
     }
   }
   return graph;
 };
 
-const transferIsAllowed = (previousEdge, nextEdge) => {
+const alignedDepartureMinutes = (departureMinutes, minimumAbsoluteMinutes, allowOvernight) => {
+  if (departureMinutes === null || minimumAbsoluteMinutes === null) return null;
+  let aligned = departureMinutes;
+  while (allowOvernight && aligned < minimumAbsoluteMinutes) aligned += 1440;
+  return aligned >= minimumAbsoluteMinutes ? aligned : null;
+};
+
+const transferIsAllowed = (previousEdge, nextEdge, { allowOvernight = false } = {}) => {
   if (!previousEdge) return true;
-  const arrivalMinutes = minutesFromMidnight(previousEdge.arrival);
-  const departureMinutes = minutesFromMidnight(nextEdge.departure);
-  if (arrivalMinutes === null || departureMinutes === null) return false;
-  if (previousEdge.service.service_id === nextEdge.service.service_id) return departureMinutes >= arrivalMinutes;
-  return departureMinutes >= arrivalMinutes + minimumTransferMinutes;
+  const previousArrival = previousEdge.absoluteArrivalMinutes ?? minutesFromMidnight(previousEdge.arrival);
+  if (previousArrival === null) return false;
+  const requiredDeparture = previousEdge.service.service_id === nextEdge.service.service_id
+    ? previousArrival
+    : previousArrival + minimumTransferMinutes;
+  return alignedDepartureMinutes(nextEdge.departureMinutes, requiredDeparture, allowOvernight) !== null;
 };
 
 const groupEdgesIntoSegments = (edges) => {
@@ -340,41 +351,50 @@ const stationPathFromEdges = (edges) => edges.reduce((stations, edge, index) => 
   return stations;
 }, []);
 
-const journeyTiming = (edges) => {
+const journeyTiming = (edges, { allowOvernight = false } = {}) => {
   const firstDeparture = edges[0]?.departure || null;
   const lastArrival = edges.at(-1)?.arrival || null;
   return {
     firstDeparture,
     lastArrival,
-    totalMinutes: minutesBetween(firstDeparture, lastArrival)
+    totalMinutes: minutesBetween(firstDeparture, lastArrival, { allowOvernight })
   };
 };
 
-const journeySummary = (edges, segments) => {
-  const timing = journeyTiming(edges);
+const journeySummary = (edges, segments, { totalMinutes = null, allowOvernight = false } = {}) => {
+  const timing = journeyTiming(edges, { allowOvernight });
   return {
     ...timing,
+    totalMinutes: totalMinutes ?? timing.totalMinutes,
     transferStations: segments.slice(0, -1).map((segment) => segment.to),
     trainNumbers: segments.map((segment) => segment.service.train_number),
     transfers: Math.max(0, segments.length - 1)
   };
 };
 
-const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null } = {}) => {
+const rankJourneyStates = (modeConfig) => (a, b) => modeConfig.rankBy === 'time'
+  ? (a.elapsedMinutes - b.elapsedMinutes) || (a.transfers - b.transfers) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount)
+  : (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount);
+
+const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest' } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
-  const graph = buildTimetableGraph({ serviceCalendarIds });
+  const modeConfig = journeySearchModes[mode] || journeySearchModes.fastest;
+  const graph = buildTimetableGraph({ serviceCalendarIds, allowOvernight: modeConfig.allowOvernight });
   const queue = [{ station: from, previousEdge: null, serviceId: null, transfers: 0, stopCount: 0, elapsedMinutes: 0, arrivalMinutes: null, firstDepartureMinutes: null, edges: [], visited: new Set([from]) }];
   const results = [];
   let statesExplored = 0;
   let maxQueueSize = queue.length;
   let transfersUsed = 0;
+  let discardedTransferLimit = 0;
+  let discardedSearchLimit = 0;
   let truncated = false;
   try {
-    while (queue.length && results.length < limit && statesExplored < maxJourneyStates) {
-      queue.sort((a, b) => (a.transfers - b.transfers) || (a.elapsedMinutes - b.elapsedMinutes) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount));
-      if (queue.length > maxJourneyQueueSize) {
-        queue.length = maxJourneyQueueSize;
+    while (queue.length && results.length < limit && statesExplored < modeConfig.maxStates) {
+      queue.sort(rankJourneyStates(modeConfig));
+      if (queue.length > modeConfig.maxQueueSize) {
+        discardedSearchLimit += queue.length - modeConfig.maxQueueSize;
+        queue.length = modeConfig.maxQueueSize;
         truncated = true;
       }
       maxQueueSize = Math.max(maxQueueSize, queue.length);
@@ -382,40 +402,52 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null } =
       statesExplored += 1;
       if (state.station === to && state.edges.length) {
         const segments = groupEdgesIntoSegments(state.edges);
-        const summary = journeySummary(state.edges, segments);
+        const summary = journeySummary(state.edges, segments, { totalMinutes: state.elapsedMinutes, allowOvernight: modeConfig.allowOvernight });
         transfersUsed = Math.max(transfersUsed, summary.transfers);
         results.push({ ...state, ...summary, segments, stations: stationPathFromEdges(state.edges) });
         continue;
       }
       for (const edge of graph.get(state.station) || []) {
-        if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge)) continue;
+        if (state.visited.has(edge.to) || !transferIsAllowed(state.previousEdge, edge, { allowOvernight: modeConfig.allowOvernight })) continue;
         const nextTransfers = state.serviceId && state.serviceId !== edge.service.service_id ? state.transfers + 1 : state.transfers;
-        if (nextTransfers > maxJourneyTransfers) continue;
-        const edgeArrivalMinutes = minutesFromMidnight(edge.arrival);
-        const edgeDepartureMinutes = minutesFromMidnight(edge.departure);
+        if (nextTransfers > modeConfig.maxTransfers) {
+          discardedTransferLimit += 1;
+          continue;
+        }
+        if (state.previousEdge && state.arrivalMinutes === null) continue;
+        const requiredDeparture = state.previousEdge
+          ? state.arrivalMinutes + (state.serviceId && state.serviceId !== edge.service.service_id ? minimumTransferMinutes : 0)
+          : edge.departureMinutes;
+        const edgeDepartureMinutes = alignedDepartureMinutes(edge.departureMinutes, requiredDeparture, modeConfig.allowOvernight);
+        if (edgeDepartureMinutes === null) continue;
+        const edgeArrivalMinutes = edgeDepartureMinutes + edge.travelMinutes;
         const firstDepartureMinutes = state.firstDepartureMinutes ?? edgeDepartureMinutes;
-        if (edgeArrivalMinutes === null || firstDepartureMinutes === null) continue;
+        if (firstDepartureMinutes === null) continue;
         const elapsedMinutes = edgeArrivalMinutes - firstDepartureMinutes;
         if (elapsedMinutes < 0) continue;
         const nextVisited = new Set(state.visited);
         nextVisited.add(edge.to);
+        const absoluteEdge = { ...edge, absoluteDepartureMinutes: edgeDepartureMinutes, absoluteArrivalMinutes: edgeArrivalMinutes };
         queue.push({
           station: edge.to,
-          previousEdge: edge,
+          previousEdge: absoluteEdge,
           serviceId: edge.service.service_id,
           transfers: nextTransfers,
           stopCount: state.stopCount + 1,
           elapsedMinutes,
           arrivalMinutes: edgeArrivalMinutes,
           firstDepartureMinutes,
-          edges: [...state.edges, edge],
+          edges: [...state.edges, absoluteEdge],
           visited: nextVisited
         });
       }
     }
-    if (queue.length && statesExplored >= maxJourneyStates) truncated = true;
+    if (queue.length && statesExplored >= modeConfig.maxStates) {
+      discardedSearchLimit += queue.length;
+      truncated = true;
+    }
     return results
-      .sort((a, b) => (a.transfers - b.transfers) || ((a.totalMinutes ?? Infinity) - (b.totalMinutes ?? Infinity)) || ((a.arrivalMinutes ?? Infinity) - (b.arrivalMinutes ?? Infinity)) || (a.stopCount - b.stopCount))
+      .sort(rankJourneyStates(modeConfig))
       .slice(0, limit);
   } finally {
     const searchTimeMs = Math.round((nowMs() - searchStartMs) * 10) / 10;
@@ -426,6 +458,8 @@ const findJourneyOptions = (from, to, limit = 3, { serviceCalendarIds = null } =
       statesExplored,
       transfersUsed,
       resultCount: results.length,
+      discardedTransferLimit,
+      discardedSearchLimit,
       searchTimeMs,
       truncated
     });
@@ -447,19 +481,19 @@ const renderJourneyOption = (option, index) => `
     <ol class="stop-list">
       ${option.segments.map((segment, segmentIndex) => {
         const nextSegment = option.segments[segmentIndex + 1];
-        const transferMinutes = nextSegment ? minutesBetween(segment.arrival, nextSegment.departure) : null;
+        const transferMinutes = nextSegment ? minutesBetween(segment.arrival, nextSegment.departure, { allowOvernight: true }) : null;
         return `<li>Segment ${segmentIndex + 1}<span>Train: ${segment.service.train_number}</span><span>${segment.from} ${formatTime(segment.departure)} → ${segment.to} ${formatTime(segment.arrival)}</span>${nextSegment ? `<span>Transfer at ${segment.to}: ${durationLabel(transferMinutes)}</span>` : ''}</li>`;
       }).join('')}
     </ol>
   </button>
 `;
 
-const renderJourneyResult = (from, to) => {
+const renderJourneyResult = (from, to, mode = 'fastest') => {
   if (from === to) {
     document.querySelector('.journey-result').innerHTML = '<p>Choose two different stations.</p>';
     return;
   }
-  currentJourneyOptions = findJourneyOptions(from, to, 3);
+  currentJourneyOptions = findJourneyOptions(from, to, 3, { mode });
   if (!currentJourneyOptions.length) {
     document.querySelector('.journey-result').innerHTML = '<p>No scheduled connection found in the static timetable layer.</p>';
     resetSelection();
@@ -469,6 +503,7 @@ const renderJourneyResult = (from, to) => {
   document.querySelector('.journey-result').innerHTML = `
     <h3>${from} → ${to}</h3>
     <p><strong>Journey found</strong></p>
+    <p><strong>Search mode:</strong> ${mode === 'all' ? 'All valid routes' : 'Fastest'}</p>
     ${currentJourneyOptions.map(renderJourneyOption).join('')}
   `;
   serviceDetail.innerHTML = '<p>Journey highlighted. Select an option for alternate itineraries, or select an individual service card for its full stop list.</p>';
@@ -523,7 +558,11 @@ document.querySelectorAll('[data-mode]').forEach((tab) => tab.addEventListener('
   document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('hidden', panel.dataset.panel !== tab.dataset.mode));
 }));
 document.querySelector('#find-route-button').addEventListener('click', () => {
-  renderJourneyResult(document.querySelector('#from-station').value, document.querySelector('#to-station').value);
+  renderJourneyResult(
+    document.querySelector('#from-station').value,
+    document.querySelector('#to-station').value,
+    document.querySelector('#journey-search-mode').value
+  );
 });
 document.querySelector('.journey-result').addEventListener('click', (event) => {
   const button = event.target.closest('[data-option-index]');
