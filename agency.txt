@@ -1,0 +1,4 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_phone,agency_email
+EFZ:62____:,Željeznički prevoz Crne Gore,https://zpcg.me,Europe/Vienna,+382 20 441 197,info@zpcg.me
+EFZ:72____:,Srbija Voz,https://srbijavoz.rs,Europe/Vienna,+381 11 3602899,putnik.info@srbijavoz.rs
+unknown,Srbija Voz,https://srbijavoz.rs,Europe/Vienna,+381 11 3602899,putnik.info@srbijavoz.rs
