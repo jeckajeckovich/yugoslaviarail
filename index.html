@@ -13,12 +13,12 @@
         <p class="kicker">Interactive Balkan rail atlas</p>
         <h1 id="map-title">JugoRail</h1>
         <p class="hero-lede">Explore passenger railways across the Balkans.</p>
-        <p class="subtitle">Interactive railway atlas for discovering stations, routes, transfers and railway connectivity.</p>
+        <p class="subtitle">A passenger railway atlas for discovering stations, corridors, country coverage, visited routes and travel-time reachability.</p>
       </div>
       <div class="stats-grid" aria-label="JugoRail coverage statistics">
         <article class="stat-card"><strong>266</strong><span>active passenger services</span></article>
         <article class="stat-card"><strong>335</strong><span>stations in database</span></article>
-        <article class="stat-card"><strong>Serbia</strong><span>coverage</span></article>
+        <article class="stat-card"><strong>Serbia + Bosnia</strong><span>coverage</span></article>
         <article class="stat-card"><strong>GTFS</strong><span>powered</span></article>
       </div>
     </header>
@@ -65,12 +65,16 @@
         <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
         <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
         <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
+        <path class="route r16" data-route-id="r16" d="M220 760 L250 980 L185 1065 L185 1115 L170 1160 L150 1260" />
+        <path class="route r17" data-route-id="r17" d="M150 1260 L105 1360 L95 1450" />
+        <path class="route r18" data-route-id="r18" d="M110 990 L185 1065" />
       </g>
 
       <g class="intl">
         <text x="520" y="42">↑ Budapest</text>
         <text x="690" y="165">↑ Szeged</text>
         <text x="250" y="1390">↙ Bar</text>
+        <text x="74" y="1514">↙ Adriatic / Bosnia</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
       </g>
@@ -113,6 +117,14 @@
 
         <g><circle cx="330" cy="650" r="8"/><text x="265" y="630">Obrenovac</text></g>
         <g><circle cx="220" cy="760" r="8"/><text x="148" y="768">Loznica</text></g>
+        <g class="tier2 transfer"><circle class="halo" cx="250" cy="980" r="24"/><circle cx="250" cy="980" r="16"/><text x="282" y="990">Tuzla</text></g>
+        <g class="tier2"><circle cx="110" cy="990" r="13"/><text x="18" y="1000">Banja Luka</text></g>
+        <g class="tier2 transfer"><circle class="halo" cx="185" cy="1065" r="24"/><circle cx="185" cy="1065" r="16"/><text x="60" y="1075">Doboj</text></g>
+        <g><circle cx="185" cy="1115" r="8"/><text x="88" y="1125">Maglaj</text></g>
+        <g class="tier2"><circle cx="170" cy="1160" r="13"/><text x="62" y="1170">Zenica</text></g>
+        <g class="tier1 transfer"><circle class="halo" cx="150" cy="1260" r="29"/><circle cx="150" cy="1260" r="20"/><text x="36" y="1250">Sarajevo</text></g>
+        <g class="tier2"><circle cx="105" cy="1360" r="13"/><text x="18" y="1370">Mostar</text></g>
+        <g class="tier2"><circle cx="95" cy="1450" r="13"/><text x="8" y="1460">Čapljina</text></g>
         <g class="tier2 transfer"><circle class="halo" cx="360" cy="1060" r="24"/><circle cx="360" cy="1060" r="16"/><text x="402" y="1070">Požega</text></g>
         <g><circle cx="260" cy="1160" r="7"/><text x="182" y="1168">Užice</text></g>
         <g><circle cx="260" cy="1340" r="7"/><text x="154" y="1348">Prijepolje</text></g>
@@ -124,7 +136,7 @@
       </g>
 
       <g class="legend" transform="translate(765 1220)">
-        <rect width="330" height="245" rx="20" />
+        <rect width="330" height="275" rx="20" />
         <text class="legend-title" x="24" y="38">Passenger services</text>
         <path class="r1" d="M28 68 H92"/><text x="110" y="75">Subotica – Niš spine</text>
         <path class="r4" d="M28 98 H92"/><text x="110" y="105">Šid corridor</text>
@@ -132,25 +144,37 @@
         <path class="r6" d="M28 158 H92"/><text x="110" y="165">Vršac corridor</text>
         <path class="r9" d="M28 188 H92"/><text x="110" y="195">Požega – Prijepolje</text>
         <path class="r11" d="M28 218 H92"/><text x="110" y="225">Zaječar / eastern Serbia</text>
+        <path class="r16" d="M28 248 H92"/><text x="110" y="255">Bosnia connections</text>
       </g>
     </svg>
     </div>
       <aside class="services-panel" aria-labelledby="services-heading">
         <div class="tab-header" role="tablist" aria-label="Search mode">
-          <button class="tab active" type="button" data-mode="services">Services</button>
-          <button class="tab" type="button" data-mode="journey">Journey</button>
+          <button class="tab active" type="button" data-mode="services">Atlas</button>
+          <button class="tab" type="button" data-mode="explore">Explore</button>
+          <button class="tab" type="button" data-mode="journey">Planner</button>
         </div>
         <section class="services-tab" data-panel="services">
-          <h2 id="services-heading">Passenger services</h2>
-          <label class="service-search-label" for="service-search">Find a train, city, or route</label>
+          <div class="panel-heading">
+            <p class="panel-eyebrow">Railway atlas</p>
+            <h2 id="services-heading">Atlas</h2>
+            <p>Explore countries, stations, corridors, visited places and route coverage.</p>
+          </div>
+          <div class="atlas-dashboard" aria-live="polite"></div>
+          <label class="service-search-label" for="service-search">Search the atlas</label>
           <input id="service-search" type="search" placeholder="Search train, city or route..." autocomplete="off" />
-          <button class="clear-search" type="button">× Clear search</button>
-          <button class="show-all-services" type="button">Show all services</button>
+          <div class="panel-actions">
+            <button class="clear-search" type="button">× Clear search</button>
+            <button class="show-all-services" type="button">Show all services</button>
+          </div>
           <div class="service-count" aria-live="polite"></div>
-          <ul class="service-list" aria-label="Scheduled services"></ul>
+          <div class="panel-section-heading"><span>Route explorer</span></div>
+          <ul class="service-list" aria-label="Scheduled route cards"></ul>
+          <div class="panel-section-heading"><span>Station explorer</span></div>
+          <div class="station-list" aria-label="Station cards"></div>
         </section>
         <section class="journey-tab hidden" data-panel="journey">
-          <h2>Journey finder</h2>
+          <div class="panel-heading"><p class="panel-eyebrow">Timetable tools</p><h2>Planner</h2><p>Use trip search as a secondary atlas tool for testing connections and transfer chains.</p></div>
           <label class="service-search-label" for="from-station">From station</label>
           <select id="from-station"></select>
           <label class="service-search-label" for="to-station">To station</label>
@@ -175,8 +199,28 @@
             <p>Choose two stations to find direct trains or transfer journeys.</p>
           </article>
         </section>
+        <section class="explore-tab hidden" data-panel="explore">
+          <div class="panel-heading"><p class="panel-eyebrow">Network reach</p><h2>Explore</h2><p>Discover how far you can travel from a station with zero, one, or two transfers — or by travel-time range.</p></div>
+          <label class="service-search-label" for="explore-station">Select station</label>
+          <select id="explore-station"></select>
+          <div class="explore-actions" aria-label="Reachability actions">
+            <button type="button" data-explore-depth="0">Show direct destinations</button>
+            <button type="button" data-explore-depth="1">Show destinations with 1 transfer</button>
+            <button type="button" data-explore-depth="2">Show destinations with 2 transfers</button>
+          </div>
+          <div class="panel-section-heading"><span>Travel time map</span></div>
+          <div class="explore-actions" aria-label="Travel time reachability actions">
+            <button type="button" data-explore-minutes="120">Reachable within 2 hours</button>
+            <button type="button" data-explore-minutes="240">Reachable within 4 hours</button>
+            <button type="button" data-explore-minutes="480">Reachable within 8 hours</button>
+            <button type="button" data-explore-minutes="720">Reachable within 12 hours</button>
+          </div>
+          <article class="explore-result" aria-live="polite">
+            <p>Select a station to highlight reachable destinations on the map.</p>
+          </article>
+        </section>
         <article class="service-detail" aria-live="polite">
-          <p>Select a train to highlight its scheduled route, stops, and transfer hubs.</p>
+          <p>Select a route or station to build your railway atlas profile.</p>
         </article>
       </aside>
     </div>
