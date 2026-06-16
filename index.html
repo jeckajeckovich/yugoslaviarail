@@ -3,15 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Serbian Passenger Railway Map</title>
+  <title>JugoRail</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="poster" aria-labelledby="map-title">
-    <header class="masthead">
-      <p class="kicker">Srbija Voz · schematic passenger rail</p>
-      <h1 id="map-title">Serbian Railway Network</h1>
-      <p class="subtitle">A manually drafted transit diagram prioritising transfers, shared corridors, and direct service termini.</p>
+    <header class="masthead hero">
+      <div class="hero-copy">
+        <p class="kicker">Interactive Balkan rail atlas</p>
+        <h1 id="map-title">JugoRail</h1>
+        <p class="hero-lede">Explore passenger railways across the Balkans.</p>
+        <p class="subtitle">Interactive railway atlas for discovering stations, routes, transfers and railway connectivity.</p>
+      </div>
+      <div class="stats-grid" aria-label="JugoRail coverage statistics">
+        <article class="stat-card"><strong>266</strong><span>active passenger services</span></article>
+        <article class="stat-card"><strong>335</strong><span>stations in database</span></article>
+        <article class="stat-card"><strong>Serbia</strong><span>coverage</span></article>
+        <article class="stat-card"><strong>GTFS</strong><span>powered</span></article>
+      </div>
     </header>
 
     <div class="atlas-shell">
@@ -22,8 +31,8 @@
         <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
       </div>
       <svg class="rail-map" viewBox="0 0 1200 1680" role="img" aria-labelledby="svg-title svg-desc">
-      <title id="svg-title">Schematic map of passenger railway routes in Serbia</title>
-      <desc id="svg-desc">The Serbian railway network is organised around a dominant north-south spine from Subotica through Novi Sad, Belgrade, Lapovo, and Niš, with branches to Šid, Vršac, Kikinda, Prijepolje, Kraljevo, Zaječar, and international directions.</desc>
+      <title id="svg-title">JugoRail passenger railway atlas map</title>
+      <desc id="svg-desc">Passenger railway routes are organised around a dominant north-south spine from Subotica through Novi Sad, Belgrade, Lapovo, and Niš, with branches to Šid, Vršac, Kikinda, Prijepolje, Kraljevo, Zaječar, and international directions.</desc>
 
       <defs>
         <filter id="label-halo" x="-30%" y="-30%" width="160%" height="160%">

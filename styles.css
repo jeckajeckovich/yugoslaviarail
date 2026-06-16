@@ -8,12 +8,17 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; background: #ded7c8; color: var(--ink); font-family: Inter, "Segoe UI", system-ui, sans-serif; }
-.poster { width: min(100vw, 1120px); margin: 0 auto; min-height: 100vh; background: var(--paper); box-shadow: 0 20px 80px #0003; padding: 34px 42px 48px; }
-.masthead { display: grid; grid-template-columns: 1fr; gap: 6px; border-bottom: 5px solid var(--ink); padding-bottom: 18px; margin-bottom: 18px; }
-.kicker { margin: 0; color: #a33d2e; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-spacing: -.06em; }
-.subtitle { margin: 0; color: var(--muted); max-width: 760px; font-size: 1.05rem; }
-.map-frame { position: relative; overflow: auto; border-radius: 18px; background: var(--paper); }
+.poster { width: min(100vw, 1280px); margin: 0 auto; min-height: 100vh; background: var(--paper); box-shadow: 0 20px 80px #0003; padding: 34px 42px 48px; }
+.masthead { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: 24px; align-items: end; border-bottom: 5px solid var(--ink); padding-bottom: 24px; margin-bottom: 22px; }
+.kicker { margin: 0 0 8px; color: #a33d2e; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(4rem, 11vw, 9rem); line-height: .82; letter-spacing: -.08em; }
+.subtitle { margin: 8px 0 0; color: var(--muted); max-width: 760px; font-size: 1.14rem; line-height: 1.45; }
+.hero-lede { margin: 12px 0 0; max-width: 780px; font-size: clamp(1.6rem, 3.4vw, 3.4rem); line-height: .98; font-weight: 950; letter-spacing: -.055em; }
+.stats-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.stat-card { min-height: 112px; border: 3px solid var(--ink); border-radius: 18px; background: #fffaf1; padding: 16px; box-shadow: 7px 7px 0 #1f29331a; }
+.stat-card strong { display: block; font-size: clamp(1.55rem, 3vw, 2.8rem); line-height: .9; letter-spacing: -.055em; }
+.stat-card span { display: block; margin-top: 9px; color: var(--muted); font-size: .82rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+.map-frame { position: relative; overflow: auto; border: 4px solid var(--ink); border-radius: 26px; background: var(--paper); box-shadow: 0 24px 70px #1f29332b; }
 .zoom-controls { position: sticky; top: 12px; left: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 10px; margin: 12px; padding: 8px 12px; border: 2px solid var(--ink); border-radius: 999px; background: #fffaf1e8; color: var(--ink); font-size: .84rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
 .zoom-controls input { accent-color: #d3382f; inline-size: 120px; }
 .zoom-readout { min-width: 176px; }
@@ -57,8 +62,8 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .legend path { fill: none; stroke-width: 10; stroke-linecap: round; }
 .legend text { fill: var(--ink); font-size: 22px; font-weight: 700; }
 .legend .legend-title { font-size: 28px; font-weight: 900; }
-@media (max-width: 720px) { .poster { padding: 22px 14px 30px; } .zoom-controls { align-items: flex-start; border-radius: 16px; flex-direction: column; font-size: .72rem; } }
-.atlas-shell { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; align-items: start; }
+@media (max-width: 720px) { .poster { padding: 22px 14px 30px; } .masthead { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } .zoom-controls { align-items: flex-start; border-radius: 16px; flex-direction: column; font-size: .72rem; } }
+.atlas-shell { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
 .services-panel { position: sticky; top: 18px; max-height: calc(100vh - 36px); overflow: auto; border: 3px solid var(--ink); border-radius: 22px; background: #fffaf1; padding: 18px; box-shadow: 0 10px 30px #0000001f; }
 .tab-header { display: flex; border-bottom: 3px solid var(--ink); margin: -4px -4px 16px; }
 .tab { border: 0; border-radius: 14px 14px 0 0; background: var(--ink); color: var(--paper); padding: 10px 16px; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
