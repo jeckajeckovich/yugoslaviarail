@@ -1,0 +1,1315 @@
+[
+  {
+    "service_id": "re6001",
+    "train_number": "Re6001",
+    "name": "Zemun – Pančevo corridor",
+    "origin": "Zemun",
+    "destination": "Pančevo",
+    "route_ids": [
+      "r7"
+    ],
+    "stops": [
+      {
+        "station": "Zemun",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Beograd",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Pančevački Most",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Pančevo",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Zemun",
+      "Novi Beograd",
+      "Beograd Centar",
+      "Pančevački Most",
+      "Pančevo"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Zemun",
+        "Novi Beograd",
+        "Beograd Centar",
+        "Pančevački Most",
+        "Pančevo"
+      ]
+    }
+  },
+  {
+    "service_id": "rex821",
+    "train_number": "REx821",
+    "name": "Novi Sad – Sremska Mitrovica",
+    "origin": "Novi Sad",
+    "destination": "Sremska Mitrovica",
+    "route_ids": [
+      "r4"
+    ],
+    "stops": [
+      {
+        "station": "Novi Sad",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Ruma",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Sremska Mitrovica",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional express",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Novi Sad",
+      "Ruma",
+      "Sremska Mitrovica"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Novi Sad",
+        "Ruma",
+        "Sremska Mitrovica"
+      ]
+    }
+  },
+  {
+    "service_id": "re2515",
+    "train_number": "Re2515",
+    "name": "Subotica – Zrenjanin",
+    "origin": "Subotica",
+    "destination": "Zrenjanin",
+    "route_ids": [
+      "r1",
+      "r5"
+    ],
+    "stops": [
+      {
+        "station": "Subotica",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Bačka Topola",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Vrbas",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Zrenjanin",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Subotica",
+      "Bačka Topola",
+      "Vrbas",
+      "Novi Sad",
+      "Zrenjanin"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Subotica",
+        "Bačka Topola",
+        "Vrbas",
+        "Novi Sad",
+        "Zrenjanin"
+      ]
+    }
+  },
+  {
+    "service_id": "re4501",
+    "train_number": "Re4501",
+    "name": "Subotica – Kikinda",
+    "origin": "Subotica",
+    "destination": "Kikinda",
+    "route_ids": [
+      "r1",
+      "r5"
+    ],
+    "stops": [
+      {
+        "station": "Subotica",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Sad",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Zrenjanin",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Kikinda",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Subotica",
+      "Bačka Topola",
+      "Vrbas",
+      "Novi Sad",
+      "Zrenjanin",
+      "Kikinda"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Subotica",
+        "Bačka Topola",
+        "Vrbas",
+        "Novi Sad",
+        "Zrenjanin",
+        "Kikinda"
+      ]
+    }
+  },
+  {
+    "service_id": "re25440",
+    "train_number": "Re25440",
+    "name": "Novi Sad Ranžirna – Karavukovo",
+    "origin": "Novi Sad Ranžirna",
+    "destination": "Karavukovo",
+    "route_ids": [
+      "r4"
+    ],
+    "stops": [
+      {
+        "station": "Novi Sad Ranžirna",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Sad",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Karavukovo",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Novi Sad Ranžirna",
+      "Novi Sad",
+      "Karavukovo"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Novi Sad Ranžirna",
+        "Novi Sad",
+        "Karavukovo"
+      ]
+    }
+  },
+  {
+    "service_id": "re2101",
+    "train_number": "Re2101",
+    "name": "Zemun – Prijepolje Teretna",
+    "origin": "Zemun",
+    "destination": "Prijepolje Teretna",
+    "route_ids": [
+      "r9"
+    ],
+    "stops": [
+      {
+        "station": "Zemun",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Beograd",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Požega",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Užice",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Prijepolje",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Prijepolje Teretna",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Zemun",
+      "Novi Beograd",
+      "Beograd Centar",
+      "Požega",
+      "Užice",
+      "Prijepolje",
+      "Prijepolje Teretna"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Zemun",
+        "Novi Beograd",
+        "Beograd Centar",
+        "Požega",
+        "Užice",
+        "Prijepolje",
+        "Prijepolje Teretna"
+      ]
+    }
+  },
+  {
+    "service_id": "re4813",
+    "train_number": "Re4813",
+    "name": "Požega – Kraljevo",
+    "origin": "Požega",
+    "destination": "Kraljevo",
+    "route_ids": [
+      "r13"
+    ],
+    "stops": [
+      {
+        "station": "Požega",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Kraljevo",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Požega",
+      "Kraljevo"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Požega",
+        "Kraljevo"
+      ]
+    }
+  },
+  {
+    "service_id": "re4811",
+    "train_number": "Re4811",
+    "name": "Kraljevo – Jagodina",
+    "origin": "Kraljevo",
+    "destination": "Jagodina",
+    "route_ids": [
+      "r10"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Lapovo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Jagodina",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Lapovo",
+      "Jagodina"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Lapovo",
+        "Jagodina"
+      ]
+    }
+  },
+  {
+    "service_id": "re3831",
+    "train_number": "Re3831",
+    "name": "Kraljevo – Rudnica",
+    "origin": "Kraljevo",
+    "destination": "Rudnica",
+    "route_ids": [
+      "r13"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Kosovska Mitrovica",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Rudnica",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Kosovska Mitrovica",
+      "Rudnica"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Kosovska Mitrovica",
+        "Rudnica"
+      ]
+    }
+  },
+  {
+    "service_id": "re3810",
+    "train_number": "Re3810",
+    "name": "Kraljevo – Lapovo",
+    "origin": "Kraljevo",
+    "destination": "Lapovo",
+    "route_ids": [
+      "r10"
+    ],
+    "stops": [
+      {
+        "station": "Kraljevo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Lapovo",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Kraljevo",
+      "Lapovo"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Kraljevo",
+        "Lapovo"
+      ]
+    }
+  },
+  {
+    "service_id": "re2740",
+    "train_number": "Re2740",
+    "name": "Niš – Zaječar",
+    "origin": "Niš",
+    "destination": "Zaječar",
+    "route_ids": [
+      "r1",
+      "r11"
+    ],
+    "stops": [
+      {
+        "station": "Niš",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Lapovo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Bor",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Zaječar",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Niš",
+      "Lapovo",
+      "Bor",
+      "Zaječar"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Niš",
+        "Lapovo",
+        "Bor",
+        "Zaječar"
+      ]
+    }
+  },
+  {
+    "service_id": "re2771",
+    "train_number": "Re2771",
+    "name": "Prahovo Pristanište – Zaječar",
+    "origin": "Prahovo Pristanište",
+    "destination": "Zaječar",
+    "route_ids": [
+      "r11"
+    ],
+    "stops": [
+      {
+        "station": "Prahovo Pristanište",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Zaječar",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Prahovo Pristanište",
+      "Zaječar"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Prahovo Pristanište",
+        "Zaječar"
+      ]
+    }
+  },
+  {
+    "service_id": "re6751",
+    "train_number": "Re6751",
+    "name": "Smederevo – Požarevac",
+    "origin": "Smederevo",
+    "destination": "Požarevac",
+    "route_ids": [
+      "r6"
+    ],
+    "stops": [
+      {
+        "station": "Smederevo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Požarevac",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Smederevo",
+      "Požarevac"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Smederevo",
+        "Požarevac"
+      ]
+    }
+  },
+  {
+    "service_id": "ir620",
+    "train_number": "IR620",
+    "name": "Šabac – Beograd Centar",
+    "origin": "Šabac",
+    "destination": "Beograd Centar",
+    "route_ids": [
+      "r8"
+    ],
+    "stops": [
+      {
+        "station": "Šabac",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Obrenovac",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Beograd",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "interregio",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Šabac",
+      "Obrenovac",
+      "Novi Beograd",
+      "Beograd Centar"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Šabac",
+        "Obrenovac",
+        "Novi Beograd",
+        "Beograd Centar"
+      ]
+    }
+  },
+  {
+    "service_id": "hs_bg_ns_su",
+    "train_number": "HS-BG-NS-SU",
+    "name": "Beograd – Novi Sad – Subotica high-speed",
+    "origin": "Beograd Centar",
+    "destination": "Subotica",
+    "route_ids": [
+      "r1"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Stara Pazova",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Sad",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Subotica",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "high-speed",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Stara Pazova",
+      "Novi Sad",
+      "Subotica"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Stara Pazova",
+        "Novi Sad",
+        "Subotica"
+      ]
+    }
+  },
+  {
+    "service_id": "reg_bg_ns_su",
+    "train_number": "REG-BG-NS-SU",
+    "name": "Beograd – Novi Sad – Subotica regional",
+    "origin": "Beograd Centar",
+    "destination": "Subotica",
+    "route_ids": [
+      "r2"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Stara Pazova",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Inđija",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Novi Sad",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Vrbas",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Bačka Topola",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Subotica",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Stara Pazova",
+      "Inđija",
+      "Novi Sad",
+      "Vrbas",
+      "Bačka Topola",
+      "Subotica"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Stara Pazova",
+        "Inđija",
+        "Novi Sad",
+        "Vrbas",
+        "Bačka Topola",
+        "Subotica"
+      ]
+    }
+  },
+  {
+    "service_id": "reg_ni_bg",
+    "train_number": "REG-NI-BG",
+    "name": "Niš – Beograd Centar regional",
+    "origin": "Niš",
+    "destination": "Beograd Centar",
+    "route_ids": [
+      "r1"
+    ],
+    "stops": [
+      {
+        "station": "Niš",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Aleksinac",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Stalać",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Lapovo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Mladenovac",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Niš",
+      "Aleksinac",
+      "Stalać",
+      "Lapovo",
+      "Mladenovac",
+      "Beograd Centar"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Niš",
+        "Aleksinac",
+        "Stalać",
+        "Lapovo",
+        "Mladenovac",
+        "Beograd Centar"
+      ]
+    }
+  },
+  {
+    "service_id": "reg_lo_sa",
+    "train_number": "REG-LO-SA",
+    "name": "Loznica – Šabac regional",
+    "origin": "Loznica",
+    "destination": "Šabac",
+    "route_ids": [
+      "r8"
+    ],
+    "stops": [
+      {
+        "station": "Loznica",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Šabac",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Loznica",
+      "Šabac"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Loznica",
+        "Šabac"
+      ]
+    }
+  },
+  {
+    "service_id": "reg_bg_vr",
+    "train_number": "REG-BG-VR",
+    "name": "Beograd Centar – Vršac regional",
+    "origin": "Beograd Centar",
+    "destination": "Vršac",
+    "route_ids": [
+      "r7",
+      "r6"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Pančevački Most",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Pančevo",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Plandište",
+        "arrival": null,
+        "departure": null
+      },
+      {
+        "station": "Vršac",
+        "arrival": null,
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "Srbija Voz",
+    "source": "manual_screenshots",
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Pančevački Most",
+      "Pančevo",
+      "Plandište",
+      "Vršac"
+    ],
+    "route_geometry": {
+      "type": "schematic_path_points",
+      "path_points": [
+        "Beograd Centar",
+        "Pančevački Most",
+        "Pančevo",
+        "Plandište",
+        "Vršac"
+      ]
+    }
+  },
+  {
+    "service_id": "intl-bg-sarajevo",
+    "train_number": "IR 451",
+    "name": "Beograd Centar – Sarajevo",
+    "origin": "Beograd Centar",
+    "destination": "Sarajevo",
+    "route_ids": [
+      "r8",
+      "r16"
+    ],
+    "stops": [
+      {
+        "station": "Beograd Centar",
+        "arrival": null,
+        "departure": "07:00"
+      },
+      {
+        "station": "Novi Beograd",
+        "arrival": "07:08",
+        "departure": "07:10"
+      },
+      {
+        "station": "Šabac",
+        "arrival": "08:20",
+        "departure": "08:23"
+      },
+      {
+        "station": "Loznica",
+        "arrival": "09:10",
+        "departure": "09:15"
+      },
+      {
+        "station": "Tuzla",
+        "arrival": "10:30",
+        "departure": "10:35"
+      },
+      {
+        "station": "Doboj",
+        "arrival": "11:35",
+        "departure": "11:40"
+      },
+      {
+        "station": "Maglaj",
+        "arrival": "12:05",
+        "departure": "12:07"
+      },
+      {
+        "station": "Zenica",
+        "arrival": "12:45",
+        "departure": "12:48"
+      },
+      {
+        "station": "Sarajevo",
+        "arrival": "13:40",
+        "departure": null
+      }
+    ],
+    "service_type": "international regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Beograd Centar",
+      "Novi Beograd",
+      "Šabac",
+      "Loznica",
+      "Tuzla",
+      "Doboj",
+      "Maglaj",
+      "Zenica",
+      "Sarajevo"
+    ],
+    "route_geometry": [
+      "Beograd Centar",
+      "Novi Beograd",
+      "Šabac",
+      "Loznica",
+      "Tuzla",
+      "Doboj",
+      "Maglaj",
+      "Zenica",
+      "Sarajevo"
+    ]
+  },
+  {
+    "service_id": "reg-sarajevo-capljina",
+    "train_number": "R 720",
+    "name": "Sarajevo – Čapljina",
+    "origin": "Sarajevo",
+    "destination": "Čapljina",
+    "route_ids": [
+      "r17"
+    ],
+    "stops": [
+      {
+        "station": "Sarajevo",
+        "arrival": null,
+        "departure": "14:10"
+      },
+      {
+        "station": "Mostar",
+        "arrival": "16:05",
+        "departure": "16:08"
+      },
+      {
+        "station": "Čapljina",
+        "arrival": "16:45",
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Sarajevo",
+      "Mostar",
+      "Čapljina"
+    ],
+    "route_geometry": [
+      "Sarajevo",
+      "Mostar",
+      "Čapljina"
+    ]
+  },
+  {
+    "service_id": "reg-banja-luka-sarajevo",
+    "train_number": "R 721",
+    "name": "Banja Luka – Sarajevo",
+    "origin": "Banja Luka",
+    "destination": "Sarajevo",
+    "route_ids": [
+      "r18",
+      "r16"
+    ],
+    "stops": [
+      {
+        "station": "Banja Luka",
+        "arrival": null,
+        "departure": "09:20"
+      },
+      {
+        "station": "Doboj",
+        "arrival": "11:00",
+        "departure": "11:05"
+      },
+      {
+        "station": "Maglaj",
+        "arrival": "11:30",
+        "departure": "11:32"
+      },
+      {
+        "station": "Zenica",
+        "arrival": "12:10",
+        "departure": "12:13"
+      },
+      {
+        "station": "Sarajevo",
+        "arrival": "13:05",
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Banja Luka",
+      "Doboj",
+      "Maglaj",
+      "Zenica",
+      "Sarajevo"
+    ],
+    "route_geometry": [
+      "Banja Luka",
+      "Doboj",
+      "Maglaj",
+      "Zenica",
+      "Sarajevo"
+    ]
+  },
+  {
+    "service_id": "intl-sarajevo-bg",
+    "train_number": "IR 452",
+    "name": "Sarajevo – Beograd Centar",
+    "origin": "Sarajevo",
+    "destination": "Beograd Centar",
+    "route_ids": [
+      "r16",
+      "r8"
+    ],
+    "stops": [
+      {
+        "station": "Sarajevo",
+        "arrival": null,
+        "departure": "15:10"
+      },
+      {
+        "station": "Zenica",
+        "arrival": "16:02",
+        "departure": "16:05"
+      },
+      {
+        "station": "Maglaj",
+        "arrival": "16:43",
+        "departure": "16:45"
+      },
+      {
+        "station": "Doboj",
+        "arrival": "17:10",
+        "departure": "17:15"
+      },
+      {
+        "station": "Tuzla",
+        "arrival": "18:15",
+        "departure": "18:20"
+      },
+      {
+        "station": "Loznica",
+        "arrival": "19:35",
+        "departure": "19:40"
+      },
+      {
+        "station": "Šabac",
+        "arrival": "20:25",
+        "departure": "20:28"
+      },
+      {
+        "station": "Novi Beograd",
+        "arrival": "21:38",
+        "departure": "21:40"
+      },
+      {
+        "station": "Beograd Centar",
+        "arrival": "21:48",
+        "departure": null
+      }
+    ],
+    "service_type": "international regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Sarajevo",
+      "Zenica",
+      "Maglaj",
+      "Doboj",
+      "Tuzla",
+      "Loznica",
+      "Šabac",
+      "Novi Beograd",
+      "Beograd Centar"
+    ],
+    "route_geometry": [
+      "Sarajevo",
+      "Zenica",
+      "Maglaj",
+      "Doboj",
+      "Tuzla",
+      "Loznica",
+      "Šabac",
+      "Novi Beograd",
+      "Beograd Centar"
+    ]
+  },
+  {
+    "service_id": "reg-capljina-sarajevo",
+    "train_number": "R 722",
+    "name": "Čapljina – Sarajevo",
+    "origin": "Čapljina",
+    "destination": "Sarajevo",
+    "route_ids": [
+      "r17"
+    ],
+    "stops": [
+      {
+        "station": "Čapljina",
+        "arrival": null,
+        "departure": "06:40"
+      },
+      {
+        "station": "Mostar",
+        "arrival": "07:18",
+        "departure": "07:21"
+      },
+      {
+        "station": "Sarajevo",
+        "arrival": "09:15",
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Čapljina",
+      "Mostar",
+      "Sarajevo"
+    ],
+    "route_geometry": [
+      "Čapljina",
+      "Mostar",
+      "Sarajevo"
+    ]
+  },
+  {
+    "service_id": "reg-sarajevo-banja-luka",
+    "train_number": "R 723",
+    "name": "Sarajevo – Banja Luka",
+    "origin": "Sarajevo",
+    "destination": "Banja Luka",
+    "route_ids": [
+      "r16",
+      "r18"
+    ],
+    "stops": [
+      {
+        "station": "Sarajevo",
+        "arrival": null,
+        "departure": "15:35"
+      },
+      {
+        "station": "Zenica",
+        "arrival": "16:28",
+        "departure": "16:31"
+      },
+      {
+        "station": "Maglaj",
+        "arrival": "17:09",
+        "departure": "17:11"
+      },
+      {
+        "station": "Doboj",
+        "arrival": "17:36",
+        "departure": "17:41"
+      },
+      {
+        "station": "Banja Luka",
+        "arrival": "19:20",
+        "departure": null
+      }
+    ],
+    "service_type": "regional",
+    "operator": "JugoRail demo",
+    "source": "manual_bosnia_extension",
+    "is_realtime": false,
+    "path_points": [
+      "Sarajevo",
+      "Zenica",
+      "Maglaj",
+      "Doboj",
+      "Banja Luka"
+    ],
+    "route_geometry": [
+      "Sarajevo",
+      "Zenica",
+      "Maglaj",
+      "Doboj",
+      "Banja Luka"
+    ]
+  }
+]
