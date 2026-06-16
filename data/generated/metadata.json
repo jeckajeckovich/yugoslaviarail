@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-06-15T18:03:05.239Z",
+  "source": "gtfs",
+  "summary": {
+    "stops": 336,
+    "routes": 266,
+    "trips": 266,
+    "stop_times": 3679,
+    "calendar_dates": 81075,
+    "shapes": 105422,
+    "service_date_range": {
+      "start": "20260124",
+      "end": "20261212"
+    },
+    "generated_services": 266
+  }
+}
