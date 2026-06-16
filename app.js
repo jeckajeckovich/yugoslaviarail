@@ -1067,7 +1067,7 @@ const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = today
     resetSelection();
     return;
   }
-  const resultLimit = mode === 'exhaustive' ? 1 : 3;
+  const resultLimit = mode === 'exhaustive' ? 10 : 3;
   currentJourneyOptions = await findJourneyOptions(from, to, resultLimit, {
     mode,
     serviceCalendarIds: calendarInfo.activeServiceIds,
