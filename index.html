@@ -15,20 +15,28 @@
         <p class="hero-lede">Explore passenger railways across the Balkans.</p>
         <p class="subtitle">A passenger railway atlas for discovering stations, corridors, country coverage, visited routes and travel-time reachability.</p>
       </div>
-      <div class="stats-grid" aria-label="JugoRail coverage statistics">
-        <article class="stat-card"><strong>266</strong><span>active passenger services</span></article>
-        <article class="stat-card"><strong>335</strong><span>stations in database</span></article>
-        <article class="stat-card"><strong>Serbia + Bosnia</strong><span>coverage</span></article>
-        <article class="stat-card"><strong>GTFS</strong><span>powered</span></article>
-      </div>
+      <nav class="hero-nav" aria-label="JugoRail exploration sections">
+        <button class="hero-nav-card active" type="button" data-section="atlas"><strong>Atlas</strong><span>Explore stations, routes and railway corridors</span></button>
+        <button class="hero-nav-card" type="button" data-section="planner"><strong>Planner</strong><span>Build rail journeys across the network</span></button>
+        <button class="hero-nav-card" type="button" data-section="reachability"><strong>Reachability</strong><span>Discover where you can travel with transfers</span></button>
+        <button class="hero-nav-card" type="button" data-section="travel-time"><strong>Travel Time</strong><span>Explore stations reachable within time limits</span></button>
+        <button class="hero-nav-card hero-nav-card-wide" type="button" data-section="visited"><strong>Visited Network</strong><span>Track visited stations and routes</span></button>
+      </nav>
     </header>
 
     <div class="atlas-shell">
-      <div class="map-frame" data-zoom="100">
-      <div class="zoom-controls" aria-label="Map detail controls">
-        <label for="map-zoom">Map zoom</label>
-        <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
-        <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
+      <div class="map-frame" data-zoom="100" data-map-mode="schematic">
+      <div class="map-toolbar" aria-label="Map controls">
+        <div class="map-mode-switch" aria-label="Map mode">
+          <button class="active" type="button" data-map-mode-option="schematic">Schema</button>
+          <button type="button" data-map-mode-option="geographic">Geography</button>
+        </div>
+        <div class="zoom-controls" aria-label="Map detail controls">
+          <label for="map-zoom">Map zoom</label>
+          <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
+          <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
+        </div>
+        <p class="map-mode-status" aria-live="polite">Schematic View active.</p>
       </div>
       <svg class="rail-map" viewBox="0 0 1200 1680" role="img" aria-labelledby="svg-title svg-desc">
       <title id="svg-title">JugoRail passenger railway atlas map</title>
@@ -149,10 +157,12 @@
     </svg>
     </div>
       <aside class="services-panel" aria-labelledby="services-heading">
-        <div class="tab-header" role="tablist" aria-label="Search mode">
-          <button class="tab active" type="button" data-mode="services">Atlas</button>
-          <button class="tab" type="button" data-mode="explore">Explore</button>
-          <button class="tab" type="button" data-mode="journey">Planner</button>
+        <div class="tab-header" role="tablist" aria-label="Atlas sections">
+          <button class="tab active" type="button" data-section="atlas">Atlas</button>
+          <button class="tab" type="button" data-section="planner">Planner</button>
+          <button class="tab" type="button" data-section="reachability">Reachability</button>
+          <button class="tab" type="button" data-section="travel-time">Travel Time</button>
+          <button class="tab" type="button" data-section="visited">Visited</button>
         </div>
         <section class="services-tab" data-panel="services">
           <div class="panel-heading">
@@ -162,16 +172,16 @@
           </div>
           <div class="atlas-dashboard" aria-live="polite"></div>
           <label class="service-search-label" for="service-search">Search the atlas</label>
-          <input id="service-search" type="search" placeholder="Search train, city or route..." autocomplete="off" />
+          <input id="service-search" type="search" placeholder="Search station, corridor or route..." autocomplete="off" />
           <div class="panel-actions">
             <button class="clear-search" type="button">× Clear search</button>
-            <button class="show-all-services" type="button">Show all services</button>
+            <button class="show-all-services" type="button">Show train services</button>
           </div>
           <div class="service-count" aria-live="polite"></div>
-          <div class="panel-section-heading"><span>Route explorer</span></div>
-          <ul class="service-list" aria-label="Scheduled route cards"></ul>
           <div class="panel-section-heading"><span>Station explorer</span></div>
           <div class="station-list" aria-label="Station cards"></div>
+          <div class="panel-section-heading secondary-heading"><span>Corridors and train services</span></div>
+          <ul class="service-list" aria-label="Corridor and scheduled service cards"></ul>
         </section>
         <section class="journey-tab hidden" data-panel="journey">
           <div class="panel-heading"><p class="panel-eyebrow">Timetable tools</p><h2>Planner</h2><p>Use trip search as a secondary atlas tool for testing connections and transfer chains.</p></div>
@@ -188,6 +198,13 @@
               <button type="button" data-date-shortcut="next">Next available</button>
             </div>
           </div>
+          <label class="service-search-label" for="journey-network-scope">Network scope</label>
+          <select id="journey-network-scope">
+            <option value="serbia">Serbia</option>
+            <option value="bosnia">Bosnia and Herzegovina</option>
+            <option value="experimental">Serbia + Bosnia (experimental)</option>
+          </select>
+          <p class="network-scope-warning hidden">Experimental network. Some connections do not exist in real-world operations.</p>
           <label class="service-search-label" for="journey-search-mode">Search mode</label>
           <select id="journey-search-mode">
             <option value="fastest">Fastest</option>
@@ -200,20 +217,13 @@
           </article>
         </section>
         <section class="explore-tab hidden" data-panel="explore">
-          <div class="panel-heading"><p class="panel-eyebrow">Network reach</p><h2>Explore</h2><p>Discover how far you can travel from a station with zero, one, or two transfers — or by travel-time range.</p></div>
+          <div class="panel-heading"><p class="panel-eyebrow">Network reach</p><h2>Explore</h2><p>Combine transfer and travel-time filters to discover where the railway network can take you.</p></div>
           <label class="service-search-label" for="explore-station">Select station</label>
           <select id="explore-station"></select>
-          <div class="explore-actions" aria-label="Reachability actions">
-            <button type="button" data-explore-depth="0">Show direct destinations</button>
-            <button type="button" data-explore-depth="1">Show destinations with 1 transfer</button>
-            <button type="button" data-explore-depth="2">Show destinations with 2 transfers</button>
-          </div>
-          <div class="panel-section-heading"><span>Travel time map</span></div>
-          <div class="explore-actions" aria-label="Travel time reachability actions">
-            <button type="button" data-explore-minutes="120">Reachable within 2 hours</button>
-            <button type="button" data-explore-minutes="240">Reachable within 4 hours</button>
-            <button type="button" data-explore-minutes="480">Reachable within 8 hours</button>
-            <button type="button" data-explore-minutes="720">Reachable within 12 hours</button>
+          <div class="explore-filter-grid" aria-label="Reachability filters">
+            <label><span>Transfer limit</span><select id="explore-transfer-limit"><option value="0">Direct only</option><option value="1">Max 1 transfer</option><option value="2" selected>Max 2 transfers</option><option value="unlimited">Unlimited transfers</option></select></label>
+            <label><span>Travel time</span><select id="explore-time-limit"><option value="120">2 hours</option><option value="240" selected>4 hours</option><option value="480">8 hours</option><option value="720">12 hours</option></select></label>
+            <button id="run-reachability" type="button">Show reachable stations</button>
           </div>
           <article class="explore-result" aria-live="polite">
             <p>Select a station to highlight reachable destinations on the map.</p>
