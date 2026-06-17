@@ -536,7 +536,10 @@ const renderDetail = (service) => {
     <ol class="stop-list">
       ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
     </ol>
-    <p class="service-note">Secondary timetable layer for this corridor. Atlas exploration remains centred on stations, corridors and connectivity.</p>
+<p class="service-note">
+  Services on this corridor.
+  Use station profiles and Explore mode to discover the wider railway network.
+</p>
   `;
 };
 
@@ -586,8 +589,11 @@ const renderServices = () => {
   `).join('');
   if (visible.length === 1 && !selectedServiceIds.size) renderDetail(visible[0]);
   if (!visible.length) {
-    serviceList.innerHTML = '<li class="no-results">No matching corridors or services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</li>';
-    serviceDetail.innerHTML = '<p>No matching stations, corridors or services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</p>';
+serviceList.innerHTML =
+'<li class="no-results">No matching stations, corridors or services found. Try: Beograd, Novi Sad, Niš, Subotica, RE2101.</li>';
+
+serviceDetail.innerHTML =
+'<p>No matching stations, corridors or services found.</p>';
   }
 };
 
@@ -1229,7 +1235,7 @@ const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = today
     resetSelection();
     return;
   }
-  const resultLimit = mode === 'exhaustive' ? 1 : 3;
+  const resultLimit = mode === 'exhaustive' ? 10 : 3;
   currentJourneyOptions = await findJourneyOptions(from, to, resultLimit, {
     mode,
     serviceCalendarIds: calendarInfo.activeServiceIds,

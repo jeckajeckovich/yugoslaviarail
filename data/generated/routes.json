@@ -1,0 +1,2396 @@
+[
+  {
+    "route_id": "U94yIh7ipvyaQ7J84fUpgQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "2517",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "hZCfp13g0d/dRA1t6PmqKg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "2518",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RKc/pfKd+VrxExdMzZTNqQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "2519",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "y7PI+4BBrKcLOcpagJO5EQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "4500",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "cZ7hJ+QMkmlnEUyu2OIeDQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "4502",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "4CFyhoTXI/BmGXWNdya3Ww",
+    "agency_id": "EFZ:72____:",
+    "short_name": "4510",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "TmI5KgDwgBbSRxSwG9Of1w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "4512",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RFg0yZY/SMqtBRy7wvb+UQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "4513",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "r4x4aEPKzRM5yCrJ7uAdyA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5420",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "wksIEzMoqNkR6tEyz/XKWA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5421",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "rpMfD/CIrDLTQnAD2tbZGw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5422",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "txqR/uqatoyZ3rHRzWAxew",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5423",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "dhaeJUbMNWt/tBYo7a2s2g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5424",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "/UDKbmKN8zvVXCQFylfoNQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5425",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "AmDYFN0r8HvzB8TrS6Ll2w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5426",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "214tjDaVQGEOcGUFmK4b+w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5427",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "EVfhdcfB0x7em9JWNDvc/A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5428",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "uC3kzmdcbXiwoU99Ep07cw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5429",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "3tbSHCyJGu3sfsvMlL0dGA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "5431",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "z4Ib2KTvgvqCWlBh941RUw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "6430",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KdgaS7assMs72niOeSZRug",
+    "agency_id": "EFZ:72____:",
+    "short_name": "6432",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "9HkkwJyJndwt3UnJYg4SEg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "6434",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "MFr3vXLlit1Mz0y0EJU1aA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "6436",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "qL1mLsVRGIUKIWvBU3WNAw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "6437",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "HLhEdaQldpEAxvtL/0lJdA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "710",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "zwYgc8pmnAFbwDavCgQeWg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "711",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "wKHcCqPVH4iIn5QZTt5DWQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "712",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "zlbvfpR/GZette+Yt++w7g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "713",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "lLFRHyuDfIChZodGs6yPjg",
+    "agency_id": "unknown",
+    "short_name": "7300",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "/pbWxr14qj9s+4Y/Q2V91g",
+    "agency_id": "unknown",
+    "short_name": "7302",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "v2ztIamijvcBNC+3gxN5gg",
+    "agency_id": "unknown",
+    "short_name": "7304",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "pC4JBe7oCjrQhNFg4OFKdA",
+    "agency_id": "unknown",
+    "short_name": "7306",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Qlapjh10V6FgzuaQVFY6wQ",
+    "agency_id": "unknown",
+    "short_name": "7308",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ugJtons3Sk+4Dmz/UJwwRQ",
+    "agency_id": "unknown",
+    "short_name": "7313",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "sBzPdEmQ8Q9BpEN+dmHsAA",
+    "agency_id": "unknown",
+    "short_name": "7314",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "guVZMzEserQS+RaXhJ+taQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "770",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BI9xSMBIElNBG1+4UikdUQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "771",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "bnOu898pHTDJ3mjvQMKTYA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "772",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nyG0VJLoX3+3dxMKTnPe9w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "773",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "oYts9mxy2RA+s8CJQ1cL2A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "774",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "y+cZ81eqN13GN/JqV60dwA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "775",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "bIwSVqEDJsSDgEIKeedNXg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "776",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "hYepKL6fWJlnREDxbzZO2Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "777",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "TfZHww6JRy/rQx0XVY1UJg",
+    "agency_id": "EFZ:62____:",
+    "short_name": "B 432",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "o3+klkqeytrxB3bZLQ+MGg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 433",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "5mp7GW4WeBP5MiXSExbzmQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 610",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "gOdwpghGjvhzmTjAoulyaw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 611",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ZUQxXOJK6ICMOz6k6rvowQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 615",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Y6nfOBOpKfksxvVCUiPB3w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 616",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "sGyzjNp9E4nF3uYq1CZGSw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 620",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "x1sJii4abxEeCdfsIOmQPA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 621",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "hnGXRhqpnLc6c1vq3NY1eQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 622",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "r9CfuwUqCVEy03xhcdJozA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 623",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "R5kbsv2dkbFoavo5y5t0GQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 641",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RP+mxmF4Y9dJpnenhavWLQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 643",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "DhqH8aPll7ilE0Xz81t3zw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 645",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ZsvGhflYtdBMLWTqypNRUQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 647",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "EJF1kpwgMZoLYGZ7kWk7Vw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 649",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "DPjEkiG3Ejk2VZKCjsjl6A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 651",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "U4ZviMm/R/L7BGLTJeyeRA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 653",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "1G+icuokEbrJJpfn+KfpOQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 655",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "55AXhnfoRo2zcIuDI9dFkg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 657",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "wXKqhYHjSNrio08fqP4I9A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 690",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "gjFtQJXc3csoJ/LIa36j5g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "B 691",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7pf/O2wbAZI5d1zB4tTq1A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 540",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "NdwsBAhUEIMZyw5Oc90ilA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 541",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2v04ZWh2oAwjhRiRjNJ4oQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 542",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "fGBtOst0kpWv+rT2haZ+EQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 543",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "QzjauFfGJ+5tNPndbRgu7g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 544",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "DC/EcfJNeNEzVF6msoyAng",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 545",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "IcJbORXF23A5YWnp8WUYQQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 546",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "1I7dziUAJhVjfvLf+aHaTA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 547",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RRTd/FXrUwsBVBTT9ozGoA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 548",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "qE06yt7Wryx8bZH8mcBfIQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 549",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "SteABfxI42okme2w4T5ltw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 550",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "xBq0ilX3sPC1NEtgmD6OFg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 551",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "fQREzoKmYrLq39nteV9mGw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 552",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "NIvbcVNphpsgTBOQU9sm5A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 553",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "9q4rOVVL5OHPpnNeH//o4Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 554",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7UApjK59IfjbPwwp0RptSw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 555",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "JHF83sDAwQ+vcp026rdi1g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 556",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "jQmLitdedlqICWHdshxkMA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IC 557",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "LGoklpcQ3cS4P2l73ZzA6Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 640",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "v3n3/6u5694rrQCPIDbR6w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 642",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "L0phbZKjgGmlQtZZkiVbwA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 644",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "cHiO2yyekKqRpbUIZC2KWg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 646",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "lOfe1qOPXMsUaTcgmFXamw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 648",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ucZNACinzc3+Z9SPrnXB6w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 650",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2eZqb4uG4/sOLU9TqKObaQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 652",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "39+fxC0ln/k91nibd3bAYA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 654",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "+UEJAJnoja0kFdPGt2cU7Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "IR 656",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "LckjWlO34o0RmnIg2BYY+g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2100",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "SPxC38fSbCf7GgPUhxQ3ww",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2101",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "CJvaUAGOPRqPQx8O2CcUlg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2102",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "VCqnBeyea7vp2/rjdTtQRw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2103",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2zNgaplN4Nui1FrKWfeZhg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2104",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "GsW5GrdxVgmEG2tjGbE3cg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2120",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2oo3rKUA67hY0wNvOIiZYQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2121",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "6c2BukTnJyVu3DHDKD6r0Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2133",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "UZ47IHNnhMKErsLR+7cY8g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2151",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "eQpqngt6Hz2xLdT0+wA3HQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2200",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nTLC4fLdFY4o2gLCKZPVZg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2201",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "vujnpu1TrWTwia1ynqTRdA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2202",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "AgMpkW3/i/kfoQ+05Owgug",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2203",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "PirdG0gG0Y83SBNVTGVqlQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2204",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "F/t4GBn0JZjZfrepTvQ7Ug",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2205",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "kSTJM+zNGuhWQQ34z7f82Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2207",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "s+zmR1Of+ffuho3SD2WcUQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2230",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Cumz8xHTLb3MWPCj03r5Cg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2400",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ioiAtQWgEhi2FssbhW/tVA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2401",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nH2Dpc4Ldnv4l7bw7Yh0Ww",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2402",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Ue3FyRhyU20miyhPZwlQlQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2403",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "FNBP/gIiRk7T8Gx0FTsUMA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2404",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "dQoMzMEzGGh3VU41eTFCIg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2405",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "e9R11MQvWhspU4GMOx895g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2406",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "L0fvR9JmfpuRumc0Yw7yoQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2407",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KWy3xW+tMM90ECsvvL1Crw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2408",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "G9VCgVoRZN6Z89XFjGj0Zw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2409",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BRBrbDM6T6R+StdvZ1+a3w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2410",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Di0OohdGskkCEVCOM3vHAg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2411",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2RG/x5dP2rshvsxZpH7b2w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2412",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "/Aw/Tf7bo1+3mGLg9xg1kg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2413",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "JTlrPGKzOcNTsEiYMFpN3g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2414",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "aphCP0C7BhBx3KUkL015nA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2415",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "84/roVQuRdcfDlZxccYMxg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2416",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "uFccU7QGLR3zW3hNiFjegg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2417",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "oAl8JBkK95MSKnY3MNko9Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2418",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "k8eGUge/UIaF0buS7k7Qbw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2419",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "I7hEipNgwIjpmcc2aisDQg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2420",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "MGOB2IddJEhOe6c/NYtf9A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2421",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KNGiaYYA5yw65QmWsIqwcg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2500",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "lUXM9C54lGzXEJqRP240zg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2501",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "SzFycYXJfgJ5OViD6j+zhg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2502",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "XsCqJA83vhmZZvTR4e7X3Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2503",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "0FJ2HwZORvv33IH4il2sNw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2515",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nHxqeeMF5ij3k71CgW7xeA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2516",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BTbeBFRyMtrR9X3+mpicbw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2520",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "wSXLdZ5tAySMvt+so/VI7Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2521",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "aYwWnKrnTTrCF8ehUVxiPA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2522",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KHB7Mif410JjzKepS+gXag",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2523",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "h8DijxGLonqY67Wt0mBfnw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2524",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "pN8rJUvi9SS0XDz/BjzOrw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2600",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "CkFoTy3Trk3wmdHBPMTosQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2601",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "hDzVd7iMA+TjqjBxFBewVQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2602",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "zNxJ2an+0Uj7L+5abV8Rfg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2603",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "MqaCzhJfoxMovWFFHE8snQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2604",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "C8czMv1YAXuHDroNTNEyMQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2605",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "qqKqeeobfF9YjmxUSE+XRw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2606",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "fGjieL/eqRy6vSMFLhNtqw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2607",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "GawzZWlWO6+BhN3ORMPLvQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2608",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "JFWy09Hf8GysXgelfNKrsQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2609",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "0wf/76cZD0aUp9rhKszVXQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2610",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "u0Uk8TPWPw9kLLo3zk0+MQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2611",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "hGBUzAnJsisgiH61Z3hGDA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2740",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Iff/hQAwbuBmriX/j7ej3w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2741",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "o2Xm3USjBdLkhTdp2DWfHA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2742",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "/TxZy+A3Li1og8Lpj34S0g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2743",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "YXw9lYw2kwrvUyBgV7KdjQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2760",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ywpJ6VzTbOC1tv5fHA6FnA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2761",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "k6EiIO0zffT6nChN8vFRbA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2762",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "qDq4P54Wg3VAGw+dezx7UQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2763",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "8uhRd15aZrATE59wHK1f3Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2770",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "OAjeQg278otznJJuQNr9ZQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2771",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "CG3VTKGAVdPIhioQmUfQxw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2772",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "/YwrSDrZEEVNzMLDHYag8Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2773",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "VK7cl+GATUgtGYkRxHLSaA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2900",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "5mQHv1QfrOUAZc0sdB06GA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2901",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "G2juqixCY+ITsZ6qTNaHSA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2903",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BWMpQ5rub1n3VQwL/cVLUw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2904",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "x/XAroEfyqmN/2FGlxzs0Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2905",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "51Te3o0AlF57878sxEX2EA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2950",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "mp93IZdgGP52arcK1WEQxQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2951",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7EV34QG5Co9rY8iEuat81Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2990",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "pn353IPnP5stNRRjomic6g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 2991",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "xw7comx2l/ydoGcr0+i8hQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3210",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "9ttHQ+oBSG4xJ3qXIyJitQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3810",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Iv09Z+z3I5jtXUr1ydK4WA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3811",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7WMlK7PUwZGMAII+JTAiag",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3812",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "AxrHXtuOaFa4bey9tAjXSA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3813",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "E55gOsXZJBaJZT72bIoIvQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3830",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "0/5tRcVOjgKeAmHD8ufWZQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3831",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RgWPe36TNqc52fjssW07Ew",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3833",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7y9jYc5058/OVvfFMbPO4Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 3840",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "a0dWerLiPBuY+93Sej6zFQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4501",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "JWxlgSZgSJ27zyWok7K9Hw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4511",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "owtnyMrDLRXSYJC40qFb6Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4810",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "yMIhBfafLXqLpF5xO9j6ZA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4811",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "+S6idVjMmyeMKxXvls4fmQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4812",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "W3ERa2eJd6sxPCnO969rCg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4813",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "2bH890p+QuFv3VqdNbOOuQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4830",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "1/J1KYhXPxIffte74NBMXA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4831",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "mWrBUEYLNJypdXk4VYK/cw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4832",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "WXPN1Ih1SGWPo2ktEngezA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4833",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "62ybDcbU/YvokAUkcxVvHA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4834",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "gBRSVB4knpOnW8lc91w4NQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4835",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "8wJcmbbOaBVx+Kofo7imFw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4836",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "B0XwOA/Vh2VtAokaaZOrRw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 4837",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RPTz7bmqr51w5N8qwRswGA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5230",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "M6kfIbWtP8Cb1zrk9zqkgg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5231",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ahqk/srgB0aHzKIm0tzuKA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5232",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "DUSq1yU9DB0rIfPjVnEGyA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5233",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "pSjboQ1jvOXwqEUvmya9cQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5234",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "cEDFfvJtq16zAEtVx5deJw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5235",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Z08ah3c0mGGUM7HaPmN9LQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5430",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "1m0wqRQm6celpljUu2sRmw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5440",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "u11y8gz4AQ2mOoecZdaRYw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5441",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "bau66NsB2cQdaLOG47akMw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5442",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "MQoyOlru0f+l2k07vpvZ1A",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5443",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "lVpR9R5kdY8xBtWFMrMRkA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5444",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "uk9HJUdCtsDZkBzqW9+Rng",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5445",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "UNvncOb2FUctFRHSh3vScQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5446",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ZIaHkF/c3Crmo7jAj6aOrg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 5447",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "R9EVq0SH2eQrrTAxhsw8Eg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6000",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "wii+hSObCeg0Qg400IICsg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6001",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7mIst174YQn+MN7VsSqDwA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6002",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "ftVR6mj9u+2W4odbLElANQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6003",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "4JP16VIoMKMCg9sW+Uh5VA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6004",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BSzdUaZVcdXS53jkRy5kcA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6005",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7N6+s4ELpK7Hd++MGa8fIg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6006",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "HTr+J89Oe1fxexW8ivvrdw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6007",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "33UBBGQNfY49N6yd/yRukg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6008",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "lf3rchT1eSMNbOieyy7k9g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6009",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "4FkF+KhCRgwQR/4nMbvO2w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6010",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "x7TOgzRmnM4Toq6BacC88Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6011",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "5DCakZQa8VaXHy+YuWf1Cw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6012",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "yYFParuuoh72RSYuvfcJRA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6013",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "5lYmsQdZ+b5kSMNaO1JsQQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6014",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "p7PMnXJ0/G9r2SPZNe5+kA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6015",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "eSj4EFg0HHMhxt4XTFNNAA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6016",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "DPxoYxPgcHfaKMttyBnzWA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6017",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BiAtdpy8mvbO8p4O6YjUBQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6018",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "gsZP169erGOFgnBmfoUuzw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6019",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "rhWw2haxwc5qOcv1a8HmjQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6431",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "mymes8+LZ+BZXxA7YDhA9g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6433",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "EPK0XPrE2CHh/HNakeMSdg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "Re 6435",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "XIk/O4OxXw4BXH9+0AgXbQ",
+    "agency_id": "unknown",
+    "short_name": "Re 7301",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "UmatWk93q+13No9SNvO8OA",
+    "agency_id": "unknown",
+    "short_name": "Re 7303",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "jqI6LPo4EdaImgU1SQdw9w",
+    "agency_id": "unknown",
+    "short_name": "Re 7305",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "7wSoz9z/t2XCyFd3/fTy4g",
+    "agency_id": "unknown",
+    "short_name": "Re 7307",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "HtsLQcwIGyFh+LAwSQ3e8A",
+    "agency_id": "unknown",
+    "short_name": "Re 7309",
+    "long_name": null,
+    "route_type": "106",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "1yIpF1XegRltWd8UPB+PSw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 720",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BcE5Iq33vlvRlCOTvyQcQg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 721",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "BI5Nv4FHS/VIaRMHK1qqiw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 722",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "6GK0KDcUfM5uo4w9cSxo0g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 723",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Yn7VYC5Dwcgj2VJuB43VZg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 724",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "RH5sO8kQCqiFwJMKlqPiaw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 725",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "IDucJngxr489sDTlTwTNVg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 740",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "XU8NMJmnEXOajTUFF3OzNQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 741",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "gv0ooZIWHqZDLH2embH3mQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 742",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "dRQIIX4XcFdTBtohcpywuw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 743",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "23Gbxvg3xr3c5CQFOYr1pQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 744",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "csSCcGUXx3XGUEE4IxohcQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 745",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nx0XY4kH454Zfu/jnnjR9Q",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 746",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "0nDf/LurLd67qOtKAa9zpg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 747",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "R+lHKpz3fTHSnMFfm75DqQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 748",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "MoQ46ccOxR3Vw+DZezhx5g",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 749",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Hbz/YWcAb5AHaC/zMK6A1w",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 750",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "B+I+pFGhNIIPd9aAOSRflg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 751",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KpY/cY4+9InN4gJT+vCCtg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 752",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "Z9yfit2dqHmDtZPkOD5iZw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 753",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "73mh1XrDz2PP8UOUX0GLJA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 754",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "CVuZA+YQ1ovQG+MW27CXCQ",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 755",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "TGCy6TjPudjeCwXtpIPyTA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 756",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "nJTImVCSWJNzWCBydOI9gA",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 757",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "KbXSMO558dFHqQEtOxlizw",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 758",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  },
+  {
+    "route_id": "qNw9zisd6kImhOb6j0lCzg",
+    "agency_id": "EFZ:72____:",
+    "short_name": "ReX 759",
+    "long_name": null,
+    "route_type": "102",
+    "color": null,
+    "text_color": null
+  }
+]
