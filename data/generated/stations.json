@@ -1,0 +1,2354 @@
+[
+  {
+    "station_id": "7200747",
+    "gtfs_stop_id": "7200747",
+    "name": "Adrani",
+    "latitude": 43.765438,
+    "longitude": 20.628565
+  },
+  {
+    "station_id": "7200394",
+    "gtfs_stop_id": "7200394",
+    "name": "Adrovac",
+    "latitude": 43.52151,
+    "longitude": 21.653503
+  },
+  {
+    "station_id": "7200775",
+    "gtfs_stop_id": "7200775",
+    "name": "Aleksa Šantić",
+    "latitude": 45.92476,
+    "longitude": 19.348879
+  },
+  {
+    "station_id": "7200124",
+    "gtfs_stop_id": "7200124",
+    "name": "Aleksinac",
+    "latitude": 43.508167,
+    "longitude": 21.69344
+  },
+  {
+    "station_id": "7200658",
+    "gtfs_stop_id": "7200658",
+    "name": "Alibunar",
+    "latitude": 45.073112,
+    "longitude": 20.956863
+  },
+  {
+    "station_id": "7200683",
+    "gtfs_stop_id": "7200683",
+    "name": "Badnjevac",
+    "latitude": 44.130028,
+    "longitude": 20.980158
+  },
+  {
+    "station_id": "7200390",
+    "gtfs_stop_id": "7200390",
+    "name": "Bagrdan",
+    "latitude": 44.083164,
+    "longitude": 21.180115
+  },
+  {
+    "station_id": "7200776",
+    "gtfs_stop_id": "7200776",
+    "name": "Bajmok",
+    "latitude": 45.976837,
+    "longitude": 19.413094
+  },
+  {
+    "station_id": "7200766",
+    "gtfs_stop_id": "7200766",
+    "name": "Baluga",
+    "latitude": 43.85739,
+    "longitude": 20.419813
+  },
+  {
+    "station_id": "7222508",
+    "gtfs_stop_id": "7222508",
+    "name": "Banat. Miloševo Polje",
+    "latitude": 45.69279,
+    "longitude": 20.29583
+  },
+  {
+    "station_id": "7200659",
+    "gtfs_stop_id": "7200659",
+    "name": "Banatski Karlovac",
+    "latitude": 45.055782,
+    "longitude": 21.016256
+  },
+  {
+    "station_id": "7200631",
+    "gtfs_stop_id": "7200631",
+    "name": "Banatsko Miloševo",
+    "latitude": 45.726345,
+    "longitude": 20.320004
+  },
+  {
+    "station_id": "7200656",
+    "gtfs_stop_id": "7200656",
+    "name": "Banatsko Novo Selo",
+    "latitude": 44.97637,
+    "longitude": 20.785658
+  },
+  {
+    "station_id": "6231080",
+    "gtfs_stop_id": "6231080",
+    "name": "Bar",
+    "latitude": 42.08726,
+    "longitude": 19.10549
+  },
+  {
+    "station_id": "7200550",
+    "gtfs_stop_id": "7200550",
+    "name": "Barajevo centar",
+    "latitude": 44.57728,
+    "longitude": 20.41212
+  },
+  {
+    "station_id": "7200253",
+    "gtfs_stop_id": "7200253",
+    "name": "Batajnica",
+    "latitude": 44.899075,
+    "longitude": 20.27185
+  },
+  {
+    "station_id": "7200682",
+    "gtfs_stop_id": "7200682",
+    "name": "Batočina",
+    "latitude": 44.155586,
+    "longitude": 21.075258
+  },
+  {
+    "station_id": "7200186",
+    "gtfs_stop_id": "7200186",
+    "name": "Bačka Topola",
+    "latitude": 45.817974,
+    "longitude": 19.649643
+  },
+  {
+    "station_id": "7200795",
+    "gtfs_stop_id": "7200795",
+    "name": "Bački Maglić",
+    "latitude": 45.351704,
+    "longitude": 19.536453
+  },
+  {
+    "station_id": "7200794",
+    "gtfs_stop_id": "7200794",
+    "name": "Bački Petrovac - Gložan",
+    "latitude": 45.32899,
+    "longitude": 19.582054
+  },
+  {
+    "station_id": "7200780",
+    "gtfs_stop_id": "7200780",
+    "name": "Bački Vinogradi",
+    "latitude": 46.127686,
+    "longitude": 19.857977
+  },
+  {
+    "station_id": "7200080",
+    "gtfs_stop_id": "7200080",
+    "name": "Beograd centar",
+    "latitude": 44.79363,
+    "longitude": 20.453129
+  },
+  {
+    "station_id": "7200814",
+    "gtfs_stop_id": "7200814",
+    "name": "Beška",
+    "latitude": 45.14094,
+    "longitude": 20.041615
+  },
+  {
+    "station_id": "6231302",
+    "gtfs_stop_id": "6231302",
+    "name": "Bijelo Polje",
+    "latitude": 43.054348,
+    "longitude": 19.769432
+  },
+  {
+    "station_id": "7215710",
+    "gtfs_stop_id": "7215710",
+    "name": "Bistrica na Limu",
+    "latitude": 43.48321,
+    "longitude": 19.646372
+  },
+  {
+    "station_id": "7200781",
+    "gtfs_stop_id": "7200781",
+    "name": "Bogaraš",
+    "latitude": 45.935143,
+    "longitude": 19.927334
+  },
+  {
+    "station_id": "7200219",
+    "gtfs_stop_id": "7200219",
+    "name": "Bogojevo",
+    "latitude": 45.544754,
+    "longitude": 19.103899
+  },
+  {
+    "station_id": "7200808",
+    "gtfs_stop_id": "7200808",
+    "name": "Bogojevo Selo",
+    "latitude": 45.532875,
+    "longitude": 19.137964
+  },
+  {
+    "station_id": "7200693",
+    "gtfs_stop_id": "7200693",
+    "name": "Bogutovačka Banja",
+    "latitude": 43.65278,
+    "longitude": 20.557518
+  },
+  {
+    "station_id": "7214305",
+    "gtfs_stop_id": "7214305",
+    "name": "Bor teretna",
+    "latitude": 44.059917,
+    "longitude": 22.125198
+  },
+  {
+    "station_id": "7200810",
+    "gtfs_stop_id": "7200810",
+    "name": "Boračko",
+    "latitude": 43.84831,
+    "longitude": 20.069323
+  },
+  {
+    "station_id": "7200648",
+    "gtfs_stop_id": "7200648",
+    "name": "Bočar",
+    "latitude": 45.761215,
+    "longitude": 20.285496
+  },
+  {
+    "station_id": "7200409",
+    "gtfs_stop_id": "7200409",
+    "name": "Braljina",
+    "latitude": 43.657364,
+    "longitude": 21.48327
+  },
+  {
+    "station_id": "7200566",
+    "gtfs_stop_id": "7200566",
+    "name": "Branešci",
+    "latitude": 43.779247,
+    "longitude": 19.681684
+  },
+  {
+    "station_id": "7200287",
+    "gtfs_stop_id": "7200287",
+    "name": "Brasina",
+    "latitude": 44.45989,
+    "longitude": 19.14724
+  },
+  {
+    "station_id": "7200698",
+    "gtfs_stop_id": "7200698",
+    "name": "Brevnik",
+    "latitude": 43.35587,
+    "longitude": 20.645086
+  },
+  {
+    "station_id": "7200367",
+    "gtfs_stop_id": "7200367",
+    "name": "Brezonik",
+    "latitude": 44.101162,
+    "longitude": 22.07934
+  },
+  {
+    "station_id": "7200346",
+    "gtfs_stop_id": "7200346",
+    "name": "Brusnik",
+    "latitude": 44.097794,
+    "longitude": 22.482878
+  },
+  {
+    "station_id": "7200421",
+    "gtfs_stop_id": "7200421",
+    "name": "Brzan",
+    "latitude": 44.124165,
+    "longitude": 21.134794
+  },
+  {
+    "station_id": "7200773",
+    "gtfs_stop_id": "7200773",
+    "name": "Bukovački salaši",
+    "latitude": 45.740555,
+    "longitude": 19.073517
+  },
+  {
+    "station_id": "7200424",
+    "gtfs_stop_id": "7200424",
+    "name": "Bukovče",
+    "latitude": 44.008175,
+    "longitude": 21.232079
+  },
+  {
+    "station_id": "7200279",
+    "gtfs_stop_id": "7200279",
+    "name": "Buđanovci",
+    "latitude": 44.897324,
+    "longitude": 19.856234
+  },
+  {
+    "station_id": "7200327",
+    "gtfs_stop_id": "7200327",
+    "name": "Cerovo",
+    "latitude": 44.187424,
+    "longitude": 22.015617
+  },
+  {
+    "station_id": "7200430",
+    "gtfs_stop_id": "7200430",
+    "name": "Cerovo-Ražanj",
+    "latitude": 43.625916,
+    "longitude": 21.486067
+  },
+  {
+    "station_id": "7222004",
+    "gtfs_stop_id": "7222004",
+    "name": "Crepaja",
+    "latitude": 45.00537,
+    "longitude": 20.625935
+  },
+  {
+    "station_id": "7200385",
+    "gtfs_stop_id": "7200385",
+    "name": "Crnomasnica",
+    "latitude": 44.077717,
+    "longitude": 22.54263
+  },
+  {
+    "station_id": "7200476",
+    "gtfs_stop_id": "7200476",
+    "name": "Crveni Krst",
+    "latitude": 43.332405,
+    "longitude": 21.88147
+  },
+  {
+    "station_id": "7200360",
+    "gtfs_stop_id": "7200360",
+    "name": "Debeli Lug",
+    "latitude": 44.365658,
+    "longitude": 21.908985
+  },
+  {
+    "station_id": "7222005",
+    "gtfs_stop_id": "7222005",
+    "name": "Debeljača",
+    "latitude": 45.071945,
+    "longitude": 20.613094
+  },
+  {
+    "station_id": "7200738",
+    "gtfs_stop_id": "7200738",
+    "name": "Dedina",
+    "latitude": 43.59258,
+    "longitude": 21.353453
+  },
+  {
+    "station_id": "7200533",
+    "gtfs_stop_id": "7200533",
+    "name": "Divci",
+    "latitude": 44.300343,
+    "longitude": 20.027962
+  },
+  {
+    "station_id": "7200789",
+    "gtfs_stop_id": "7200789",
+    "name": "Doline",
+    "latitude": 45.958084,
+    "longitude": 19.871975
+  },
+  {
+    "station_id": "7200302",
+    "gtfs_stop_id": "7200302",
+    "name": "Donja Borina",
+    "latitude": 44.439625,
+    "longitude": 19.15336
+  },
+  {
+    "station_id": "7214015",
+    "gtfs_stop_id": "7214015",
+    "name": "Donje Zuniče",
+    "latitude": 43.624153,
+    "longitude": 22.27384
+  },
+  {
+    "station_id": "7200432",
+    "gtfs_stop_id": "7200432",
+    "name": "Donji Ljubeš",
+    "latitude": 43.578465,
+    "longitude": 21.570946
+  },
+  {
+    "station_id": "7200754",
+    "gtfs_stop_id": "7200754",
+    "name": "Dragačevo",
+    "latitude": 43.880676,
+    "longitude": 20.114481
+  },
+  {
+    "station_id": "7200686",
+    "gtfs_stop_id": "7200686",
+    "name": "Dragobraća",
+    "latitude": 43.97323,
+    "longitude": 20.820633
+  },
+  {
+    "station_id": "7200428",
+    "gtfs_stop_id": "7200428",
+    "name": "Drenovac",
+    "latitude": 43.764214,
+    "longitude": 21.427908
+  },
+  {
+    "station_id": "7200556",
+    "gtfs_stop_id": "7200556",
+    "name": "Drenovački Kik",
+    "latitude": 44.088043,
+    "longitude": 19.886002
+  },
+  {
+    "station_id": "7200092",
+    "gtfs_stop_id": "7200092",
+    "name": "Džurovo",
+    "latitude": 43.443348,
+    "longitude": 19.633175
+  },
+  {
+    "station_id": "7200642",
+    "gtfs_stop_id": "7200642",
+    "name": "Elemir",
+    "latitude": 45.43729,
+    "longitude": 20.311207
+  },
+  {
+    "station_id": "7200793",
+    "gtfs_stop_id": "7200793",
+    "name": "Futog",
+    "latitude": 45.254726,
+    "longitude": 19.700811
+  },
+  {
+    "station_id": "7200783",
+    "gtfs_stop_id": "7200783",
+    "name": "Gabrić",
+    "latitude": 46.003735,
+    "longitude": 19.79497
+  },
+  {
+    "station_id": "7200790",
+    "gtfs_stop_id": "7200790",
+    "name": "Gajdobra",
+    "latitude": 45.35652,
+    "longitude": 19.456257
+  },
+  {
+    "station_id": "7200425",
+    "gtfs_stop_id": "7200425",
+    "name": "Gilje",
+    "latitude": 43.954193,
+    "longitude": 21.317728
+  },
+  {
+    "station_id": "7200406",
+    "gtfs_stop_id": "7200406",
+    "name": "Glibovac",
+    "latitude": 44.36849,
+    "longitude": 20.905264
+  },
+  {
+    "station_id": "7200558",
+    "gtfs_stop_id": "7200558",
+    "name": "Glumač",
+    "latitude": 43.87781,
+    "longitude": 19.999512
+  },
+  {
+    "station_id": "7200269",
+    "gtfs_stop_id": "7200269",
+    "name": "Golubinci",
+    "latitude": 45.016224,
+    "longitude": 20.051529
+  },
+  {
+    "station_id": "6231002",
+    "gtfs_stop_id": "6231002",
+    "name": "Golubovci",
+    "latitude": 42.343647,
+    "longitude": 19.218266
+  },
+  {
+    "station_id": "7200764",
+    "gtfs_stop_id": "7200764",
+    "name": "Goričani",
+    "latitude": 43.79573,
+    "longitude": 20.51457
+  },
+  {
+    "station_id": "7200363",
+    "gtfs_stop_id": "7200363",
+    "name": "Gornjane",
+    "latitude": 44.23245,
+    "longitude": 22.016064
+  },
+  {
+    "station_id": "7214014",
+    "gtfs_stop_id": "7214014",
+    "name": "Gornje Zuniče",
+    "latitude": 43.60044,
+    "longitude": 22.271574
+  },
+  {
+    "station_id": "7200788",
+    "gtfs_stop_id": "7200788",
+    "name": "Gornji Breg",
+    "latitude": 45.932194,
+    "longitude": 20.015898
+  },
+  {
+    "station_id": "7200433",
+    "gtfs_stop_id": "7200433",
+    "name": "Gornji Ljubeš",
+    "latitude": 43.565754,
+    "longitude": 21.593685
+  },
+  {
+    "station_id": "7200129",
+    "gtfs_stop_id": "7200129",
+    "name": "Gradac",
+    "latitude": 44.146416,
+    "longitude": 21.021658
+  },
+  {
+    "station_id": "7214005",
+    "gtfs_stop_id": "7214005",
+    "name": "Gramada",
+    "latitude": 43.37772,
+    "longitude": 22.047915
+  },
+  {
+    "station_id": "7200395",
+    "gtfs_stop_id": "7200395",
+    "name": "Grejač",
+    "latitude": 43.42244,
+    "longitude": 21.747797
+  },
+  {
+    "station_id": "7214021",
+    "gtfs_stop_id": "7214021",
+    "name": "Grljan",
+    "latitude": 43.85589,
+    "longitude": 22.29015
+  },
+  {
+    "station_id": "7200685",
+    "gtfs_stop_id": "7200685",
+    "name": "Grošnica",
+    "latitude": 43.994904,
+    "longitude": 20.876547
+  },
+  {
+    "station_id": "7200688",
+    "gtfs_stop_id": "7200688",
+    "name": "Gruža",
+    "latitude": 43.89235,
+    "longitude": 20.767843
+  },
+  {
+    "station_id": "7200689",
+    "gtfs_stop_id": "7200689",
+    "name": "Guberevac",
+    "latitude": 43.83874,
+    "longitude": 20.77385
+  },
+  {
+    "station_id": "7200812",
+    "gtfs_stop_id": "7200812",
+    "name": "Gugalj",
+    "latitude": 43.86632,
+    "longitude": 20.097984
+  },
+  {
+    "station_id": "7214006",
+    "gtfs_stop_id": "7214006",
+    "name": "Hadžićevo",
+    "latitude": 43.39807,
+    "longitude": 22.050417
+  },
+  {
+    "station_id": "7200779",
+    "gtfs_stop_id": "7200779",
+    "name": "Hajdukovo",
+    "latitude": 46.11512,
+    "longitude": 19.810335
+  },
+  {
+    "station_id": "7200193",
+    "gtfs_stop_id": "7200193",
+    "name": "Horgoš",
+    "latitude": 46.155834,
+    "longitude": 19.957788
+  },
+  {
+    "station_id": "7200206",
+    "gtfs_stop_id": "7200206",
+    "name": "Inđija",
+    "latitude": 45.04846,
+    "longitude": 20.09234
+  },
+  {
+    "station_id": "7200554",
+    "gtfs_stop_id": "7200554",
+    "name": "Iverak",
+    "latitude": 44.29174,
+    "longitude": 19.95893
+  },
+  {
+    "station_id": "7200543",
+    "gtfs_stop_id": "7200543",
+    "name": "Jablanica",
+    "latitude": 43.700928,
+    "longitude": 19.520412
+  },
+  {
+    "station_id": "7200196",
+    "gtfs_stop_id": "7200196",
+    "name": "Jagodina",
+    "latitude": 43.982292,
+    "longitude": 21.263403
+  },
+  {
+    "station_id": "7214004",
+    "gtfs_stop_id": "7214004",
+    "name": "Jasenovik",
+    "latitude": 43.363934,
+    "longitude": 22.029121
+  },
+  {
+    "station_id": "7200361",
+    "gtfs_stop_id": "7200361",
+    "name": "Jasikovo",
+    "latitude": 44.284794,
+    "longitude": 21.956194
+  },
+  {
+    "station_id": "7200023",
+    "gtfs_stop_id": "7200023",
+    "name": "Jelen Do",
+    "latitude": 43.89041,
+    "longitude": 20.119604
+  },
+  {
+    "station_id": "7200684",
+    "gtfs_stop_id": "7200684",
+    "name": "Jovanovac",
+    "latitude": 44.05564,
+    "longitude": 20.976692
+  },
+  {
+    "station_id": "7200104",
+    "gtfs_stop_id": "7200104",
+    "name": "Jošanička Banja",
+    "latitude": 43.41072,
+    "longitude": 20.658949
+  },
+  {
+    "station_id": "7200538",
+    "gtfs_stop_id": "7200538",
+    "name": "Kalenić",
+    "latitude": 43.927483,
+    "longitude": 19.98958
+  },
+  {
+    "station_id": "7200791",
+    "gtfs_stop_id": "7200791",
+    "name": "Karavukovo",
+    "latitude": 45.501778,
+    "longitude": 19.208488
+  },
+  {
+    "station_id": "7200053",
+    "gtfs_stop_id": "7200053",
+    "name": "Karađorđev park",
+    "latitude": 44.793846,
+    "longitude": 20.466002
+  },
+  {
+    "station_id": "7200854",
+    "gtfs_stop_id": "7200854",
+    "name": "Kaznovići",
+    "latitude": 43.260387,
+    "longitude": 20.662195
+  },
+  {
+    "station_id": "7222003",
+    "gtfs_stop_id": "7222003",
+    "name": "Kačarevo",
+    "latitude": 44.965054,
+    "longitude": 20.689043
+  },
+  {
+    "station_id": "7200212",
+    "gtfs_stop_id": "7200212",
+    "name": "Kikinda",
+    "latitude": 45.837925,
+    "longitude": 20.488783
+  },
+  {
+    "station_id": "7200294",
+    "gtfs_stop_id": "7200294",
+    "name": "Klenak",
+    "latitude": 44.781765,
+    "longitude": 19.714483
+  },
+  {
+    "station_id": "7200687",
+    "gtfs_stop_id": "7200687",
+    "name": "Knić",
+    "latitude": 43.932907,
+    "longitude": 20.748554
+  },
+  {
+    "station_id": "7214013",
+    "gtfs_stop_id": "7214013",
+    "name": "Knjaževac",
+    "latitude": 43.57142,
+    "longitude": 22.251387
+  },
+  {
+    "station_id": "7200388",
+    "gtfs_stop_id": "7200388",
+    "name": "Kobišnica",
+    "latitude": 44.189156,
+    "longitude": 22.587463
+  },
+  {
+    "station_id": "6231307",
+    "gtfs_stop_id": "6231307",
+    "name": "Kolašin",
+    "latitude": 42.819553,
+    "longitude": 19.53735
+  },
+  {
+    "station_id": "7200393",
+    "gtfs_stop_id": "7200393",
+    "name": "Korman",
+    "latitude": 43.552685,
+    "longitude": 21.612436
+  },
+  {
+    "station_id": "7200107",
+    "gtfs_stop_id": "7200107",
+    "name": "Kosjerić",
+    "latitude": 44.00041,
+    "longitude": 19.918955
+  },
+  {
+    "station_id": "7200404",
+    "gtfs_stop_id": "7200404",
+    "name": "Kovačevac",
+    "latitude": 44.399242,
+    "longitude": 20.750328
+  },
+  {
+    "station_id": "7222006",
+    "gtfs_stop_id": "7222006",
+    "name": "Kovačica",
+    "latitude": 45.111893,
+    "longitude": 20.610771
+  },
+  {
+    "station_id": "7200286",
+    "gtfs_stop_id": "7200286",
+    "name": "Koviljača",
+    "latitude": 44.5171,
+    "longitude": 19.16197
+  },
+  {
+    "station_id": "7212205",
+    "gtfs_stop_id": "7212205",
+    "name": "Koševi",
+    "latitude": 43.585453,
+    "longitude": 21.247364
+  },
+  {
+    "station_id": "7200179",
+    "gtfs_stop_id": "7200179",
+    "name": "Kragujevac",
+    "latitude": 44.01013,
+    "longitude": 20.928427
+  },
+  {
+    "station_id": "7200275",
+    "gtfs_stop_id": "7200275",
+    "name": "Kraljevci",
+    "latitude": 44.98438,
+    "longitude": 19.887487
+  },
+  {
+    "station_id": "7200178",
+    "gtfs_stop_id": "7200178",
+    "name": "Kraljevo",
+    "latitude": 43.72856,
+    "longitude": 20.69345
+  },
+  {
+    "station_id": "7200365",
+    "gtfs_stop_id": "7200365",
+    "name": "Kriveljski most",
+    "latitude": 44.167583,
+    "longitude": 22.018215
+  },
+  {
+    "station_id": "7200366",
+    "gtfs_stop_id": "7200366",
+    "name": "Kriveljski potok",
+    "latitude": 44.141605,
+    "longitude": 22.042183
+  },
+  {
+    "station_id": "7200739",
+    "gtfs_stop_id": "7200739",
+    "name": "Kruševac",
+    "latitude": 43.58755,
+    "longitude": 21.327414
+  },
+  {
+    "station_id": "7200765",
+    "gtfs_stop_id": "7200765",
+    "name": "Kukići",
+    "latitude": 43.833843,
+    "longitude": 20.465471
+  },
+  {
+    "station_id": "7216513",
+    "gtfs_stop_id": "7216513",
+    "name": "Kukujevci - Erdevik",
+    "latitude": 45.06234,
+    "longitude": 19.342646
+  },
+  {
+    "station_id": "7200644",
+    "gtfs_stop_id": "7200644",
+    "name": "Kumane",
+    "latitude": 45.54824,
+    "longitude": 20.232075
+  },
+  {
+    "station_id": "7200405",
+    "gtfs_stop_id": "7200405",
+    "name": "Kusadak",
+    "latitude": 44.37599,
+    "longitude": 20.828901
+  },
+  {
+    "station_id": "7200110",
+    "gtfs_stop_id": "7200110",
+    "name": "Lajkovac",
+    "latitude": 44.36786,
+    "longitude": 20.164227
+  },
+  {
+    "station_id": "7200423",
+    "gtfs_stop_id": "7200423",
+    "name": "Lanište",
+    "latitude": 44.043,
+    "longitude": 21.236286
+  },
+  {
+    "station_id": "7200005",
+    "gtfs_stop_id": "7200005",
+    "name": "Lapovo",
+    "latitude": 44.15775,
+    "longitude": 21.102226
+  },
+  {
+    "station_id": "7200415",
+    "gtfs_stop_id": "7200415",
+    "name": "Lapovo Varoš",
+    "latitude": 44.186527,
+    "longitude": 21.102577
+  },
+  {
+    "station_id": "7200420",
+    "gtfs_stop_id": "7200420",
+    "name": "Lapovo ranžirna",
+    "latitude": 44.168156,
+    "longitude": 21.098991
+  },
+  {
+    "station_id": "7200535",
+    "gtfs_stop_id": "7200535",
+    "name": "Lastra",
+    "latitude": 44.156315,
+    "longitude": 19.886469
+  },
+  {
+    "station_id": "7200111",
+    "gtfs_stop_id": "7200111",
+    "name": "Lazarevac",
+    "latitude": 44.384876,
+    "longitude": 20.245434
+  },
+  {
+    "station_id": "7200555",
+    "gtfs_stop_id": "7200555",
+    "name": "Leskovice",
+    "latitude": 44.172775,
+    "longitude": 19.867844
+  },
+  {
+    "station_id": "7200325",
+    "gtfs_stop_id": "7200325",
+    "name": "Leskovo",
+    "latitude": 44.316814,
+    "longitude": 21.941912
+  },
+  {
+    "station_id": "7216307",
+    "gtfs_stop_id": "7216307",
+    "name": "Lešnica",
+    "latitude": 44.656532,
+    "longitude": 19.321203
+  },
+  {
+    "station_id": "7200759",
+    "gtfs_stop_id": "7200759",
+    "name": "Lipova stajalište",
+    "latitude": 43.660847,
+    "longitude": 20.852318
+  },
+  {
+    "station_id": "7200786",
+    "gtfs_stop_id": "7200786",
+    "name": "Ljutovo",
+    "latitude": 46.05902,
+    "longitude": 19.536547
+  },
+  {
+    "station_id": "7200821",
+    "gtfs_stop_id": "7200821",
+    "name": "Lovćenac / Mali Iđoš",
+    "latitude": 45.691788,
+    "longitude": 19.650692
+  },
+  {
+    "station_id": "7200132",
+    "gtfs_stop_id": "7200132",
+    "name": "Loznica",
+    "latitude": 44.535465,
+    "longitude": 19.215996
+  },
+  {
+    "station_id": "7200721",
+    "gtfs_stop_id": "7200721",
+    "name": "Lozno",
+    "latitude": 43.4358,
+    "longitude": 20.662727
+  },
+  {
+    "station_id": "7222204",
+    "gtfs_stop_id": "7222204",
+    "name": "Lukićevo",
+    "latitude": 45.33297,
+    "longitude": 20.495104
+  },
+  {
+    "station_id": "7200429",
+    "gtfs_stop_id": "7200429",
+    "name": "Lučina",
+    "latitude": 43.702774,
+    "longitude": 21.430002
+  },
+  {
+    "station_id": "7200436",
+    "gtfs_stop_id": "7200436",
+    "name": "Lužane",
+    "latitude": 43.47162,
+    "longitude": 21.720331
+  },
+  {
+    "station_id": "7200220",
+    "gtfs_stop_id": "7200220",
+    "name": "Majdanpek",
+    "latitude": 44.381916,
+    "longitude": 21.889278
+  },
+  {
+    "station_id": "7216300",
+    "gtfs_stop_id": "7216300",
+    "name": "Majur",
+    "latitude": 44.77183,
+    "longitude": 19.655699
+  },
+  {
+    "station_id": "7200407",
+    "gtfs_stop_id": "7200407",
+    "name": "Mala Plana",
+    "latitude": 44.33686,
+    "longitude": 21.034956
+  },
+  {
+    "station_id": "7214018",
+    "gtfs_stop_id": "7214018",
+    "name": "Mali Izvor",
+    "latitude": 43.72907,
+    "longitude": 22.305283
+  },
+  {
+    "station_id": "7200328",
+    "gtfs_stop_id": "7200328",
+    "name": "Mali Krivelj",
+    "latitude": 44.118595,
+    "longitude": 22.064192
+  },
+  {
+    "station_id": "7200389",
+    "gtfs_stop_id": "7200389",
+    "name": "Markovac",
+    "latitude": 44.239124,
+    "longitude": 21.096397
+  },
+  {
+    "station_id": "7200272",
+    "gtfs_stop_id": "7200272",
+    "name": "Martinci",
+    "latitude": 45.02097,
+    "longitude": 19.46831
+  },
+  {
+    "station_id": "7200692",
+    "gtfs_stop_id": "7200692",
+    "name": "Mataruška Banja",
+    "latitude": 43.696983,
+    "longitude": 20.601633
+  },
+  {
+    "station_id": "7214001",
+    "gtfs_stop_id": "7214001",
+    "name": "Matejevac",
+    "latitude": 43.34922,
+    "longitude": 21.956009
+  },
+  {
+    "station_id": "7200643",
+    "gtfs_stop_id": "7200643",
+    "name": "Melenci",
+    "latitude": 45.50857,
+    "longitude": 20.297667
+  },
+  {
+    "station_id": "7200439",
+    "gtfs_stop_id": "7200439",
+    "name": "Mezgraja",
+    "latitude": 43.39261,
+    "longitude": 21.779686
+  },
+  {
+    "station_id": "7200713",
+    "gtfs_stop_id": "7200713",
+    "name": "Milatovac",
+    "latitude": 44.089935,
+    "longitude": 20.98331
+  },
+  {
+    "station_id": "7200716",
+    "gtfs_stop_id": "7200716",
+    "name": "Milavčići",
+    "latitude": 43.760696,
+    "longitude": 20.805584
+  },
+  {
+    "station_id": "7200422",
+    "gtfs_stop_id": "7200422",
+    "name": "Miloševo",
+    "latitude": 44.10712,
+    "longitude": 21.160507
+  },
+  {
+    "station_id": "7214016",
+    "gtfs_stop_id": "7214016",
+    "name": "Minićevo",
+    "latitude": 43.68651,
+    "longitude": 22.291136
+  },
+  {
+    "station_id": "7200134",
+    "gtfs_stop_id": "7200134",
+    "name": "Mladenovac",
+    "latitude": 44.440197,
+    "longitude": 20.691269
+  },
+  {
+    "station_id": "7200056",
+    "gtfs_stop_id": "7200056",
+    "name": "Mlađevo",
+    "latitude": 44.312496,
+    "longitude": 20.0631
+  },
+  {
+    "station_id": "6231305",
+    "gtfs_stop_id": "6231305",
+    "name": "Mojkovac",
+    "latitude": 42.95285,
+    "longitude": 19.58628
+  },
+  {
+    "station_id": "7200763",
+    "gtfs_stop_id": "7200763",
+    "name": "Mrsać",
+    "latitude": 43.76917,
+    "longitude": 20.593533
+  },
+  {
+    "station_id": "7200756",
+    "gtfs_stop_id": "7200756",
+    "name": "Mrzenica",
+    "latitude": 43.657207,
+    "longitude": 21.385206
+  },
+  {
+    "station_id": "7213005",
+    "gtfs_stop_id": "7213005",
+    "name": "Mršinci",
+    "latitude": 43.818436,
+    "longitude": 20.48294
+  },
+  {
+    "station_id": "7200349",
+    "gtfs_stop_id": "7200349",
+    "name": "Negotin",
+    "latitude": 44.228935,
+    "longitude": 22.540117
+  },
+  {
+    "station_id": "7200280",
+    "gtfs_stop_id": "7200280",
+    "name": "Nikinci",
+    "latitude": 44.857582,
+    "longitude": 19.821196
+  },
+  {
+    "station_id": "7200672",
+    "gtfs_stop_id": "7200672",
+    "name": "Nikolinci",
+    "latitude": 45.06049,
+    "longitude": 21.06621
+  },
+  {
+    "station_id": "7200007",
+    "gtfs_stop_id": "7200007",
+    "name": "Niš",
+    "latitude": 43.31661,
+    "longitude": 21.877302
+  },
+  {
+    "station_id": "7214008",
+    "gtfs_stop_id": "7214008",
+    "name": "Niševac",
+    "latitude": 43.45858,
+    "longitude": 22.10254
+  },
+  {
+    "station_id": "7200268",
+    "gtfs_stop_id": "7200268",
+    "name": "Nova Pazova",
+    "latitude": 44.937675,
+    "longitude": 20.210007
+  },
+  {
+    "station_id": "7200210",
+    "gtfs_stop_id": "7200210",
+    "name": "Novi Beograd",
+    "latitude": 44.80692,
+    "longitude": 20.417845
+  },
+  {
+    "station_id": "7200645",
+    "gtfs_stop_id": "7200645",
+    "name": "Novi Bečej",
+    "latitude": 45.603817,
+    "longitude": 20.152424
+  },
+  {
+    "station_id": "7200008",
+    "gtfs_stop_id": "7200008",
+    "name": "Novi Sad",
+    "latitude": 45.265835,
+    "longitude": 19.829117
+  },
+  {
+    "station_id": "7200419",
+    "gtfs_stop_id": "7200419",
+    "name": "Novo Selo",
+    "latitude": 44.2621,
+    "longitude": 21.091911
+  },
+  {
+    "station_id": "7200435",
+    "gtfs_stop_id": "7200435",
+    "name": "Nozrina",
+    "latitude": 43.48229,
+    "longitude": 21.713308
+  },
+  {
+    "station_id": "7225003",
+    "gtfs_stop_id": "7225003",
+    "name": "Odžaci",
+    "latitude": 45.51441,
+    "longitude": 19.273746
+  },
+  {
+    "station_id": "7225401",
+    "gtfs_stop_id": "7225401",
+    "name": "Odžaci Kalvarija",
+    "latitude": 45.510674,
+    "longitude": 19.255125
+  },
+  {
+    "station_id": "7222203",
+    "gtfs_stop_id": "7222203",
+    "name": "Orlovat stajalište",
+    "latitude": 45.2509,
+    "longitude": 20.582941
+  },
+  {
+    "station_id": "7200782",
+    "gtfs_stop_id": "7200782",
+    "name": "Orom",
+    "latitude": 45.978073,
+    "longitude": 19.831774
+  },
+  {
+    "station_id": "7200650",
+    "gtfs_stop_id": "7200650",
+    "name": "Ostojićevo",
+    "latitude": 45.891132,
+    "longitude": 20.15274
+  },
+  {
+    "station_id": "7200563",
+    "gtfs_stop_id": "7200563",
+    "name": "Otanj",
+    "latitude": 43.896877,
+    "longitude": 19.997244
+  },
+  {
+    "station_id": "7200753",
+    "gtfs_stop_id": "7200753",
+    "name": "Ovčar Banja",
+    "latitude": 43.903484,
+    "longitude": 20.192736
+  },
+  {
+    "station_id": "7200649",
+    "gtfs_stop_id": "7200649",
+    "name": "Padej",
+    "latitude": 45.82955,
+    "longitude": 20.171642
+  },
+  {
+    "station_id": "7214009",
+    "gtfs_stop_id": "7214009",
+    "name": "Palilula",
+    "latitude": 43.48921,
+    "longitude": 22.111141
+  },
+  {
+    "station_id": "7200194",
+    "gtfs_stop_id": "7200194",
+    "name": "Palić",
+    "latitude": 46.103413,
+    "longitude": 19.760597
+  },
+  {
+    "station_id": "7214003",
+    "gtfs_stop_id": "7214003",
+    "name": "Pantelej",
+    "latitude": 43.340042,
+    "longitude": 21.915834
+  },
+  {
+    "station_id": "7200260",
+    "gtfs_stop_id": "7200260",
+    "name": "Pančevački most",
+    "latitude": 44.820034,
+    "longitude": 20.49037
+  },
+  {
+    "station_id": "7216014",
+    "gtfs_stop_id": "7216014",
+    "name": "Pančevo Strelište",
+    "latitude": 44.86985,
+    "longitude": 20.666103
+  },
+  {
+    "station_id": "7221101",
+    "gtfs_stop_id": "7221101",
+    "name": "Pančevo Vojlovica",
+    "latitude": 44.859245,
+    "longitude": 20.655521
+  },
+  {
+    "station_id": "7200209",
+    "gtfs_stop_id": "7200209",
+    "name": "Pančevo glavna",
+    "latitude": 44.887493,
+    "longitude": 20.637415
+  },
+  {
+    "station_id": "7200256",
+    "gtfs_stop_id": "7200256",
+    "name": "Pančevo varoš",
+    "latitude": 44.879032,
+    "longitude": 20.660547
+  },
+  {
+    "station_id": "7200807",
+    "gtfs_stop_id": "7200807",
+    "name": "Parage",
+    "latitude": 45.40812,
+    "longitude": 19.38284
+  },
+  {
+    "station_id": "7200155",
+    "gtfs_stop_id": "7200155",
+    "name": "Paraćin",
+    "latitude": 43.86483,
+    "longitude": 21.39882
+  },
+  {
+    "station_id": "7216807",
+    "gtfs_stop_id": "7216807",
+    "name": "Petrovaradin",
+    "latitude": 45.240433,
+    "longitude": 19.8882
+  },
+  {
+    "station_id": "7200697",
+    "gtfs_stop_id": "7200697",
+    "name": "Piskanja",
+    "latitude": 43.388855,
+    "longitude": 20.64648
+  },
+  {
+    "station_id": "7200281",
+    "gtfs_stop_id": "7200281",
+    "name": "Platičevo",
+    "latitude": 44.829494,
+    "longitude": 19.778852
+  },
+  {
+    "station_id": "6231001",
+    "gtfs_stop_id": "6231001",
+    "name": "Podgorica",
+    "latitude": 42.432007,
+    "longitude": 19.269415
+  },
+  {
+    "station_id": "7200745",
+    "gtfs_stop_id": "7200745",
+    "name": "Podunavci",
+    "latitude": 43.6724,
+    "longitude": 20.83416
+  },
+  {
+    "station_id": "7214011",
+    "gtfs_stop_id": "7214011",
+    "name": "Podvis",
+    "latitude": 43.545483,
+    "longitude": 22.18841
+  },
+  {
+    "station_id": "7200570",
+    "gtfs_stop_id": "7200570",
+    "name": "Poljice",
+    "latitude": 43.563873,
+    "longitude": 19.541885
+  },
+  {
+    "station_id": "7200695",
+    "gtfs_stop_id": "7200695",
+    "name": "Polumir",
+    "latitude": 43.5329,
+    "longitude": 20.609917
+  },
+  {
+    "station_id": "7200742",
+    "gtfs_stop_id": "7200742",
+    "name": "Počekovina",
+    "latitude": 43.591934,
+    "longitude": 21.075914
+  },
+  {
+    "station_id": "7200233",
+    "gtfs_stop_id": "7200233",
+    "name": "Požega",
+    "latitude": 43.84041,
+    "longitude": 20.028872
+  },
+  {
+    "station_id": "7200309",
+    "gtfs_stop_id": "7200309",
+    "name": "Prahovo",
+    "latitude": 44.28746,
+    "longitude": 22.588013
+  },
+  {
+    "station_id": "7200310",
+    "gtfs_stop_id": "7200310",
+    "name": "Prahovo pristanište",
+    "latitude": 44.291115,
+    "longitude": 22.608118
+  },
+  {
+    "station_id": "7200049",
+    "gtfs_stop_id": "7200049",
+    "name": "Priboj",
+    "latitude": 43.58189,
+    "longitude": 19.52493
+  },
+  {
+    "station_id": "7200571",
+    "gtfs_stop_id": "7200571",
+    "name": "Pribojska Banja",
+    "latitude": 43.529316,
+    "longitude": 19.571148
+  },
+  {
+    "station_id": "7200772",
+    "gtfs_stop_id": "7200772",
+    "name": "Prigrevica",
+    "latitude": 45.675873,
+    "longitude": 19.097023
+  },
+  {
+    "station_id": "7200050",
+    "gtfs_stop_id": "7200050",
+    "name": "Prijepolje",
+    "latitude": 43.39285,
+    "longitude": 19.640026
+  },
+  {
+    "station_id": "7200546",
+    "gtfs_stop_id": "7200546",
+    "name": "Prijepolje teretna",
+    "latitude": 43.366436,
+    "longitude": 19.633482
+  },
+  {
+    "station_id": "7200752",
+    "gtfs_stop_id": "7200752",
+    "name": "Prijevor",
+    "latitude": 43.908623,
+    "longitude": 20.282246
+  },
+  {
+    "station_id": "7200284",
+    "gtfs_stop_id": "7200284",
+    "name": "Prnjavor Mačvanski",
+    "latitude": 44.696533,
+    "longitude": 19.377018
+  },
+  {
+    "station_id": "7200719",
+    "gtfs_stop_id": "7200719",
+    "name": "Progorelica",
+    "latitude": 43.68135,
+    "longitude": 20.572182
+  },
+  {
+    "station_id": "7200720",
+    "gtfs_stop_id": "7200720",
+    "name": "Pusto Polje",
+    "latitude": 43.493195,
+    "longitude": 20.610659
+  },
+  {
+    "station_id": "7200270",
+    "gtfs_stop_id": "7200270",
+    "name": "Putinci",
+    "latitude": 44.980637,
+    "longitude": 19.966318
+  },
+  {
+    "station_id": "7200416",
+    "gtfs_stop_id": "7200416",
+    "name": "Rabrovac",
+    "latitude": 44.384747,
+    "longitude": 20.77498
+  },
+  {
+    "station_id": "7200347",
+    "gtfs_stop_id": "7200347",
+    "name": "Rajac",
+    "latitude": 44.08959,
+    "longitude": 22.561138
+  },
+  {
+    "station_id": "7200213",
+    "gtfs_stop_id": "7200213",
+    "name": "Rakovica",
+    "latitude": 44.74665,
+    "longitude": 20.442955
+  },
+  {
+    "station_id": "7200401",
+    "gtfs_stop_id": "7200401",
+    "name": "Ralja",
+    "latitude": 44.568092,
+    "longitude": 20.5613
+  },
+  {
+    "station_id": "7200559",
+    "gtfs_stop_id": "7200559",
+    "name": "Rasna",
+    "latitude": 43.80798,
+    "longitude": 20.024006
+  },
+  {
+    "station_id": "7200417",
+    "gtfs_stop_id": "7200417",
+    "name": "Ratare",
+    "latitude": 44.368057,
+    "longitude": 20.86659
+  },
+  {
+    "station_id": "7200746",
+    "gtfs_stop_id": "7200746",
+    "name": "Ratina",
+    "latitude": 43.71317,
+    "longitude": 20.752449
+  },
+  {
+    "station_id": "7200796",
+    "gtfs_stop_id": "7200796",
+    "name": "Ratkovo",
+    "latitude": 45.448174,
+    "longitude": 19.326946
+  },
+  {
+    "station_id": "7200569",
+    "gtfs_stop_id": "7200569",
+    "name": "Rača",
+    "latitude": 43.62025,
+    "longitude": 19.500927
+  },
+  {
+    "station_id": "7200181",
+    "gtfs_stop_id": "7200181",
+    "name": "Raška",
+    "latitude": 43.29079,
+    "longitude": 20.616678
+  },
+  {
+    "station_id": "7200537",
+    "gtfs_stop_id": "7200537",
+    "name": "Ražana",
+    "latitude": 44.06061,
+    "longitude": 19.908669
+  },
+  {
+    "station_id": "7200167",
+    "gtfs_stop_id": "7200167",
+    "name": "Resnik",
+    "latitude": 44.704445,
+    "longitude": 20.44842
+  },
+  {
+    "station_id": "7200712",
+    "gtfs_stop_id": "7200712",
+    "name": "Resnik Kragujevacki",
+    "latitude": 44.110016,
+    "longitude": 20.965082
+  },
+  {
+    "station_id": "7200333",
+    "gtfs_stop_id": "7200333",
+    "name": "Rgotina",
+    "latitude": 44.007187,
+    "longitude": 22.279604
+  },
+  {
+    "station_id": "7214012",
+    "gtfs_stop_id": "7214012",
+    "name": "Rgošte",
+    "latitude": 43.551132,
+    "longitude": 22.208275
+  },
+  {
+    "station_id": "7200567",
+    "gtfs_stop_id": "7200567",
+    "name": "Ribnica Zlatiborska",
+    "latitude": 43.708103,
+    "longitude": 19.573248
+  },
+  {
+    "station_id": "7200398",
+    "gtfs_stop_id": "7200398",
+    "name": "Ripanj",
+    "latitude": 44.662334,
+    "longitude": 20.506948
+  },
+  {
+    "station_id": "7200564",
+    "gtfs_stop_id": "7200564",
+    "name": "Ristanovića Polje",
+    "latitude": 43.829124,
+    "longitude": 19.74467
+  },
+  {
+    "station_id": "7200348",
+    "gtfs_stop_id": "7200348",
+    "name": "Rogljevo",
+    "latitude": 44.11642,
+    "longitude": 22.573555
+  },
+  {
+    "station_id": "7212113",
+    "gtfs_stop_id": "7212113",
+    "name": "Rudnica",
+    "latitude": 43.237415,
+    "longitude": 20.6808
+  },
+  {
+    "station_id": "7200010",
+    "gtfs_stop_id": "7200010",
+    "name": "Ruma",
+    "latitude": 44.98938,
+    "longitude": 19.826988
+  },
+  {
+    "station_id": "7200722",
+    "gtfs_stop_id": "7200722",
+    "name": "Rvati",
+    "latitude": 43.32669,
+    "longitude": 20.63706
+  },
+  {
+    "station_id": "5501493",
+    "gtfs_stop_id": "5501493",
+    "name": "Röszke",
+    "latitude": 46.193996,
+    "longitude": 20.03294
+  },
+  {
+    "station_id": "7200748",
+    "gtfs_stop_id": "7200748",
+    "name": "Samaila",
+    "latitude": 43.777687,
+    "longitude": 20.559471
+  },
+  {
+    "station_id": "7200536",
+    "gtfs_stop_id": "7200536",
+    "name": "Samari",
+    "latitude": 44.123478,
+    "longitude": 19.857883
+  },
+  {
+    "station_id": "7214017",
+    "gtfs_stop_id": "7214017",
+    "name": "Selačka Reka",
+    "latitude": 43.70798,
+    "longitude": 22.300667
+  },
+  {
+    "station_id": "7200769",
+    "gtfs_stop_id": "7200769",
+    "name": "Senta",
+    "latitude": 45.92968,
+    "longitude": 20.071686
+  },
+  {
+    "station_id": "7200539",
+    "gtfs_stop_id": "7200539",
+    "name": "Sevojno",
+    "latitude": 43.83784,
+    "longitude": 19.904398
+  },
+  {
+    "station_id": "7200427",
+    "gtfs_stop_id": "7200427",
+    "name": "Sikirica-Ratari",
+    "latitude": 43.79177,
+    "longitude": 21.422014
+  },
+  {
+    "station_id": "7200718",
+    "gtfs_stop_id": "7200718",
+    "name": "Sirča",
+    "latitude": 43.72738,
+    "longitude": 20.72595
+  },
+  {
+    "station_id": "7200532",
+    "gtfs_stop_id": "7200532",
+    "name": "Slovac",
+    "latitude": 44.34717,
+    "longitude": 20.093208
+  },
+  {
+    "station_id": "7200188",
+    "gtfs_stop_id": "7200188",
+    "name": "Smederevska Palanka",
+    "latitude": 44.362843,
+    "longitude": 20.959778
+  },
+  {
+    "station_id": "7200218",
+    "gtfs_stop_id": "7200218",
+    "name": "Sombor",
+    "latitude": 45.786,
+    "longitude": 19.11407
+  },
+  {
+    "station_id": "7200771",
+    "gtfs_stop_id": "7200771",
+    "name": "Sonta",
+    "latitude": 45.599453,
+    "longitude": 19.110613
+  },
+  {
+    "station_id": "7200402",
+    "gtfs_stop_id": "7200402",
+    "name": "Sopot Kosmajski",
+    "latitude": 44.52376,
+    "longitude": 20.611635
+  },
+  {
+    "station_id": "7200011",
+    "gtfs_stop_id": "7200011",
+    "name": "Sremska Mitrovica",
+    "latitude": 44.982418,
+    "longitude": 19.613642
+  },
+  {
+    "station_id": "7216806",
+    "gtfs_stop_id": "7216806",
+    "name": "Sremski Karlovci",
+    "latitude": 45.207787,
+    "longitude": 19.929893
+  },
+  {
+    "station_id": "7200141",
+    "gtfs_stop_id": "7200141",
+    "name": "Stalać",
+    "latitude": 43.68223,
+    "longitude": 21.41496
+  },
+  {
+    "station_id": "7200755",
+    "gtfs_stop_id": "7200755",
+    "name": "Stalać Grad",
+    "latitude": 43.674377,
+    "longitude": 21.404522
+  },
+  {
+    "station_id": "7200541",
+    "gtfs_stop_id": "7200541",
+    "name": "Stapari",
+    "latitude": 43.845707,
+    "longitude": 19.762316
+  },
+  {
+    "station_id": "7200174",
+    "gtfs_stop_id": "7200174",
+    "name": "Stara Pazova",
+    "latitude": 44.98661,
+    "longitude": 20.137444
+  },
+  {
+    "station_id": "7200418",
+    "gtfs_stop_id": "7200418",
+    "name": "Staro Selo",
+    "latitude": 44.2944,
+    "longitude": 21.089785
+  },
+  {
+    "station_id": "7200410",
+    "gtfs_stop_id": "7200410",
+    "name": "Staro Trubarevo",
+    "latitude": 43.60997,
+    "longitude": 21.48591
+  },
+  {
+    "station_id": "7200741",
+    "gtfs_stop_id": "7200741",
+    "name": "Stopanja",
+    "latitude": 43.57715,
+    "longitude": 21.153334
+  },
+  {
+    "station_id": "7200012",
+    "gtfs_stop_id": "7200012",
+    "name": "Subotica",
+    "latitude": 46.101967,
+    "longitude": 19.67134
+  },
+  {
+    "station_id": "7200127",
+    "gtfs_stop_id": "7200127",
+    "name": "Subotica javna skladišta",
+    "latitude": 46.093704,
+    "longitude": 19.693146
+  },
+  {
+    "station_id": "7200787",
+    "gtfs_stop_id": "7200787",
+    "name": "Subotica predgrađe",
+    "latitude": 46.109165,
+    "longitude": 19.638891
+  },
+  {
+    "station_id": "7200438",
+    "gtfs_stop_id": "7200438",
+    "name": "Supovački most",
+    "latitude": 43.39632,
+    "longitude": 21.766123
+  },
+  {
+    "station_id": "6294147",
+    "gtfs_stop_id": "6294147",
+    "name": "Sutomore",
+    "latitude": 42.139725,
+    "longitude": 19.050251
+  },
+  {
+    "station_id": "7200542",
+    "gtfs_stop_id": "7200542",
+    "name": "Sušica",
+    "latitude": 43.788696,
+    "longitude": 19.752884
+  },
+  {
+    "station_id": "7200774",
+    "gtfs_stop_id": "7200774",
+    "name": "Svetozar Miletić",
+    "latitude": 45.843143,
+    "longitude": 19.20983
+  },
+  {
+    "station_id": "7214007",
+    "gtfs_stop_id": "7214007",
+    "name": "Svrljig",
+    "latitude": 43.4143,
+    "longitude": 22.11811
+  },
+  {
+    "station_id": "7214010",
+    "gtfs_stop_id": "7214010",
+    "name": "Svrljiški Miljkovac",
+    "latitude": 43.489304,
+    "longitude": 22.134882
+  },
+  {
+    "station_id": "5500101",
+    "gtfs_stop_id": "5500101",
+    "name": "Szeged",
+    "latitude": 46.239594,
+    "longitude": 20.143318
+  },
+  {
+    "station_id": "5517665",
+    "gtfs_stop_id": "5517665",
+    "name": "Szentmihálytelek",
+    "latitude": 46.222683,
+    "longitude": 20.080439
+  },
+  {
+    "station_id": "7200345",
+    "gtfs_stop_id": "7200345",
+    "name": "Tabakovac",
+    "latitude": 44.05764,
+    "longitude": 22.414024
+  },
+  {
+    "station_id": "7200383",
+    "gtfs_stop_id": "7200383",
+    "name": "Tabakovačka Reka",
+    "latitude": 44.067604,
+    "longitude": 22.432077
+  },
+  {
+    "station_id": "7200384",
+    "gtfs_stop_id": "7200384",
+    "name": "Tamnič",
+    "latitude": 44.0867,
+    "longitude": 22.511284
+  },
+  {
+    "station_id": "7200777",
+    "gtfs_stop_id": "7200777",
+    "name": "Tavankut",
+    "latitude": 46.04258,
+    "longitude": 19.502983
+  },
+  {
+    "station_id": "7200437",
+    "gtfs_stop_id": "7200437",
+    "name": "Tešica",
+    "latitude": 43.444336,
+    "longitude": 21.736723
+  },
+  {
+    "station_id": "7214022",
+    "gtfs_stop_id": "7214022",
+    "name": "Timok",
+    "latitude": 43.894165,
+    "longitude": 22.29056
+  },
+  {
+    "station_id": "7222202",
+    "gtfs_stop_id": "7222202",
+    "name": "Tomaševac",
+    "latitude": 45.24448,
+    "longitude": 20.60811
+  },
+  {
+    "station_id": "7200760",
+    "gtfs_stop_id": "7200760",
+    "name": "Tominac stajalište",
+    "latitude": 43.651745,
+    "longitude": 20.881289
+  },
+  {
+    "station_id": "7200715",
+    "gtfs_stop_id": "7200715",
+    "name": "Tomića brdo",
+    "latitude": 43.805058,
+    "longitude": 20.787828
+  },
+  {
+    "station_id": "7216012",
+    "gtfs_stop_id": "7216012",
+    "name": "Tošin bunar",
+    "latitude": 44.81635,
+    "longitude": 20.397257
+  },
+  {
+    "station_id": "7200024",
+    "gtfs_stop_id": "7200024",
+    "name": "Trbusani",
+    "latitude": 43.909996,
+    "longitude": 20.31553
+  },
+  {
+    "station_id": "7200565",
+    "gtfs_stop_id": "7200565",
+    "name": "Tripkova",
+    "latitude": 43.807278,
+    "longitude": 19.742025
+  },
+  {
+    "station_id": "7200344",
+    "gtfs_stop_id": "7200344",
+    "name": "Trnavac",
+    "latitude": 43.997417,
+    "longitude": 22.327526
+  },
+  {
+    "station_id": "7200434",
+    "gtfs_stop_id": "7200434",
+    "name": "Trnjane",
+    "latitude": 43.535717,
+    "longitude": 21.633795
+  },
+  {
+    "station_id": "7200743",
+    "gtfs_stop_id": "7200743",
+    "name": "Trstenik",
+    "latitude": 43.615013,
+    "longitude": 20.997627
+  },
+  {
+    "station_id": "7200475",
+    "gtfs_stop_id": "7200475",
+    "name": "Trupale",
+    "latitude": 43.357582,
+    "longitude": 21.819073
+  },
+  {
+    "station_id": "7200557",
+    "gtfs_stop_id": "7200557",
+    "name": "Tubići",
+    "latitude": 43.973003,
+    "longitude": 19.95389
+  },
+  {
+    "station_id": "7200660",
+    "gtfs_stop_id": "7200660",
+    "name": "Uljma",
+    "latitude": 45.051105,
+    "longitude": 21.155546
+  },
+  {
+    "station_id": "7222201",
+    "gtfs_stop_id": "7222201",
+    "name": "Uzdin",
+    "latitude": 45.202896,
+    "longitude": 20.634216
+  },
+  {
+    "station_id": "7200560",
+    "gtfs_stop_id": "7200560",
+    "name": "Uzići",
+    "latitude": 43.812145,
+    "longitude": 19.980629
+  },
+  {
+    "station_id": "7200696",
+    "gtfs_stop_id": "7200696",
+    "name": "Ušće",
+    "latitude": 43.46549,
+    "longitude": 20.624302
+  },
+  {
+    "station_id": "7200208",
+    "gtfs_stop_id": "7200208",
+    "name": "Užice",
+    "latitude": 43.853447,
+    "longitude": 19.839695
+  },
+  {
+    "station_id": "7215151",
+    "gtfs_stop_id": "7215151",
+    "name": "Užice teretna",
+    "latitude": 43.846733,
+    "longitude": 19.858383
+  },
+  {
+    "station_id": "7200014",
+    "gtfs_stop_id": "7200014",
+    "name": "Valjevo",
+    "latitude": 44.2706,
+    "longitude": 19.907227
+  },
+  {
+    "station_id": "7200116",
+    "gtfs_stop_id": "7200116",
+    "name": "Velika Plana",
+    "latitude": 44.325157,
+    "longitude": 21.082598
+  },
+  {
+    "station_id": "7200386",
+    "gtfs_stop_id": "7200386",
+    "name": "Veljkovo",
+    "latitude": 44.128426,
+    "longitude": 22.604118
+  },
+  {
+    "station_id": "7200691",
+    "gtfs_stop_id": "7200691",
+    "name": "Vitanovac",
+    "latitude": 43.727043,
+    "longitude": 20.801605
+  },
+  {
+    "station_id": "7200431",
+    "gtfs_stop_id": "7200431",
+    "name": "Vitkovac",
+    "latitude": 43.791443,
+    "longitude": 20.790466
+  },
+  {
+    "station_id": "7200690",
+    "gtfs_stop_id": "7200690",
+    "name": "Vitkovac",
+    "latitude": 43.59084,
+    "longitude": 21.55237
+  },
+  {
+    "station_id": "7200657",
+    "gtfs_stop_id": "7200657",
+    "name": "Vladimirovac",
+    "latitude": 45.03144,
+    "longitude": 20.892744
+  },
+  {
+    "station_id": "7200673",
+    "gtfs_stop_id": "7200673",
+    "name": "Vlajkovac",
+    "latitude": 45.066486,
+    "longitude": 21.211466
+  },
+  {
+    "station_id": "7200326",
+    "gtfs_stop_id": "7200326",
+    "name": "Vlaole",
+    "latitude": 44.2573,
+    "longitude": 22.002308
+  },
+  {
+    "station_id": "7200362",
+    "gtfs_stop_id": "7200362",
+    "name": "Vlaole Selo",
+    "latitude": 44.270576,
+    "longitude": 21.980787
+  },
+  {
+    "station_id": "7215407",
+    "gtfs_stop_id": "7215407",
+    "name": "Vlaško Polje",
+    "latitude": 44.48058,
+    "longitude": 20.660349
+  },
+  {
+    "station_id": "7200849",
+    "gtfs_stop_id": "7200849",
+    "name": "Vraneši",
+    "latitude": 43.68403,
+    "longitude": 20.805485
+  },
+  {
+    "station_id": "7214019",
+    "gtfs_stop_id": "7214019",
+    "name": "Vratarnica",
+    "latitude": 43.798904,
+    "longitude": 22.30299
+  },
+  {
+    "station_id": "7200343",
+    "gtfs_stop_id": "7200343",
+    "name": "Vražogrnac",
+    "latitude": 43.953663,
+    "longitude": 22.32441
+  },
+  {
+    "station_id": "7212214",
+    "gtfs_stop_id": "7212214",
+    "name": "Vrba",
+    "latitude": 43.690487,
+    "longitude": 20.78449
+  },
+  {
+    "station_id": "7200119",
+    "gtfs_stop_id": "7200119",
+    "name": "Vrbas Nova",
+    "latitude": 45.5544,
+    "longitude": 19.629
+  },
+  {
+    "station_id": "7200530",
+    "gtfs_stop_id": "7200530",
+    "name": "Vreoci",
+    "latitude": 44.44897,
+    "longitude": 20.279459
+  },
+  {
+    "station_id": "7200744",
+    "gtfs_stop_id": "7200744",
+    "name": "Vrnjačka Banja",
+    "latitude": 43.639023,
+    "longitude": 20.925993
+  },
+  {
+    "station_id": "7200440",
+    "gtfs_stop_id": "7200440",
+    "name": "Vrtište",
+    "latitude": 43.375137,
+    "longitude": 21.808517
+  },
+  {
+    "station_id": "7200001",
+    "gtfs_stop_id": "7200001",
+    "name": "Vršac",
+    "latitude": 45.10574,
+    "longitude": 21.283173
+  },
+  {
+    "station_id": "7200265",
+    "gtfs_stop_id": "7200265",
+    "name": "Vukov spomenik",
+    "latitude": 44.805153,
+    "longitude": 20.477638
+  },
+  {
+    "station_id": "7200750",
+    "gtfs_stop_id": "7200750",
+    "name": "Zablaće",
+    "latitude": 43.844,
+    "longitude": 20.447668
+  },
+  {
+    "station_id": "7200128",
+    "gtfs_stop_id": "7200128",
+    "name": "Zagrađe",
+    "latitude": 44.033768,
+    "longitude": 22.213839
+  },
+  {
+    "station_id": "7200342",
+    "gtfs_stop_id": "7200342",
+    "name": "Zaječar",
+    "latitude": 43.904987,
+    "longitude": 22.272894
+  },
+  {
+    "station_id": "7200714",
+    "gtfs_stop_id": "7200714",
+    "name": "Zavod",
+    "latitude": 44.00855,
+    "longitude": 20.913994
+  },
+  {
+    "station_id": "7200251",
+    "gtfs_stop_id": "7200251",
+    "name": "Zemun",
+    "latitude": 44.83671,
+    "longitude": 20.3718
+  },
+  {
+    "station_id": "7200252",
+    "gtfs_stop_id": "7200252",
+    "name": "Zemunsko polje",
+    "latitude": 44.857773,
+    "longitude": 20.334692
+  },
+  {
+    "station_id": "7200561",
+    "gtfs_stop_id": "7200561",
+    "name": "Zlakusa",
+    "latitude": 43.806236,
+    "longitude": 19.953794
+  },
+  {
+    "station_id": "7200123",
+    "gtfs_stop_id": "7200123",
+    "name": "Zlatibor",
+    "latitude": 43.735043,
+    "longitude": 19.614357
+  },
+  {
+    "station_id": "7200820",
+    "gtfs_stop_id": "7200820",
+    "name": "Zmajevo",
+    "latitude": 45.45995,
+    "longitude": 19.673567
+  },
+  {
+    "station_id": "7200630",
+    "gtfs_stop_id": "7200630",
+    "name": "Zrenjanin",
+    "latitude": 45.378036,
+    "longitude": 20.378983
+  },
+  {
+    "station_id": "7222501",
+    "gtfs_stop_id": "7222501",
+    "name": "Zrenjanin fabrika",
+    "latitude": 45.371243,
+    "longitude": 20.426125
+  },
+  {
+    "station_id": "7200216",
+    "gtfs_stop_id": "7200216",
+    "name": "Zvornik",
+    "latitude": 44.400303,
+    "longitude": 19.1216
+  },
+  {
+    "station_id": "7200391",
+    "gtfs_stop_id": "7200391",
+    "name": "Ćićevac",
+    "latitude": 43.72043,
+    "longitude": 21.438116
+  },
+  {
+    "station_id": "7200091",
+    "gtfs_stop_id": "7200091",
+    "name": "Ćuprija",
+    "latitude": 43.91629,
+    "longitude": 21.365362
+  },
+  {
+    "station_id": "7200751",
+    "gtfs_stop_id": "7200751",
+    "name": "Čačak",
+    "latitude": 43.88998,
+    "longitude": 20.356165
+  },
+  {
+    "station_id": "7212218",
+    "gtfs_stop_id": "7212218",
+    "name": "Čitluk",
+    "latitude": 43.590687,
+    "longitude": 21.269938
+  },
+  {
+    "station_id": "7200633",
+    "gtfs_stop_id": "7200633",
+    "name": "Čoka",
+    "latitude": 45.94297,
+    "longitude": 20.135529
+  },
+  {
+    "station_id": "7200244",
+    "gtfs_stop_id": "7200244",
+    "name": "Čokonjar",
+    "latitude": 44.016037,
+    "longitude": 22.35228
+  },
+  {
+    "station_id": "7200392",
+    "gtfs_stop_id": "7200392",
+    "name": "Đunis",
+    "latitude": 43.604908,
+    "longitude": 21.513254
+  },
+  {
+    "station_id": "7200215",
+    "gtfs_stop_id": "7200215",
+    "name": "Šabac",
+    "latitude": 44.758984,
+    "longitude": 19.701607
+  },
+  {
+    "station_id": "7224408",
+    "gtfs_stop_id": "7224408",
+    "name": "Šebešić",
+    "latitude": 46.08599,
+    "longitude": 19.591553
+  },
+  {
+    "station_id": "7200140",
+    "gtfs_stop_id": "7200140",
+    "name": "Šid",
+    "latitude": 45.117508,
+    "longitude": 19.22167
+  },
+  {
+    "station_id": "7200544",
+    "gtfs_stop_id": "7200544",
+    "name": "Štrpci",
+    "latitude": 43.63874,
+    "longitude": 19.503252
+  },
+  {
+    "station_id": "7200717",
+    "gtfs_stop_id": "7200717",
+    "name": "Šumarice",
+    "latitude": 43.726418,
+    "longitude": 20.760355
+  },
+  {
+    "station_id": "7200364",
+    "gtfs_stop_id": "7200364",
+    "name": "Šušulajka",
+    "latitude": 44.215355,
+    "longitude": 22.020283
+  },
+  {
+    "station_id": "7223407",
+    "gtfs_stop_id": "7223407",
+    "name": "Žednik",
+    "latitude": 45.93987,
+    "longitude": 19.668324
+  }
+]
