@@ -57,7 +57,6 @@ const stationCoordinates = {
 };
 
 const frame = document.querySelector('.map-frame');
-const mapModeStatus = document.querySelector('.map-mode-status');
 const readout = document.querySelector('.zoom-readout');
 const zoomControl = document.querySelector('#map-zoom');
 const serviceSearch = document.querySelector('#service-search');
@@ -184,31 +183,6 @@ const aliasPhrases = [
   ['subotica', 'subotica']
 ];
 
-const mapModes = {
-  schematic: {
-    label: 'Schematic View',
-    implemented: true,
-    status: 'Schematic View active.'
-  },
-  geographic: {
-    label: 'Geographic View',
-    implemented: false,
-    status: 'Geographic View architecture is ready; real-coordinate rendering will be added in a future implementation.'
-  }
-};
-let activeMapMode = 'schematic';
-
-const setMapMode = (mode = 'schematic') => {
-  activeMapMode = mapModes[mode] ? mode : 'schematic';
-  frame.dataset.mapMode = activeMapMode;
-  document.querySelectorAll('[data-map-mode-option]').forEach((button) => {
-    button.classList.toggle('active', button.dataset.mapModeOption === activeMapMode);
-    button.setAttribute('aria-pressed', String(button.dataset.mapModeOption === activeMapMode));
-  });
-  if (mapModeStatus) mapModeStatus.textContent = mapModes[activeMapMode].status;
-  console.info('map mode selected', { mode: activeMapMode, implemented: mapModes[activeMapMode].implemented });
-};
-
 export const normalizeSearch = (text) => {
   let normalized = String(text ?? '')
     .toLowerCase()
@@ -226,6 +200,8 @@ const serviceType = (service) => service.service_type || service.route_short_nam
 const stopNames = (service) => service.stops.map((stop) => stop.station);
 const uniqueStations = () => [...new Set(services.flatMap((service) => stopNames(service)))].sort((a, b) => a.localeCompare(b));
 const minimumTransferMinutes = 5;
+const reachabilityTransferPenaltyMinutes = 15;
+const unusualTransferThreshold = 4;
 const journeySearchModes = {
   fastest: { maxTransfers: 3, maxStates: 7500, maxQueueSize: 7500, timeoutMs: 1500, maxJourneyMinutes: Infinity, yieldEvery: 2500, allowOvernight: false, allowStationRevisits: false, rankBy: 'time' },
   all: { maxTransfers: 10, maxStates: 150000, maxQueueSize: 75000, timeoutMs: 5000, maxJourneyMinutes: Infinity, yieldEvery: 2500, allowOvernight: true, allowStationRevisits: true, rankBy: 'transfers' },
@@ -462,13 +438,15 @@ const renderAtlasDashboard = () => {
         <div><strong>Connectivity explorer</strong><span>Direct, 1-transfer and 2-transfer reach</span></div>
         <div><strong>Travel time atlas</strong><span>2h, 4h, 8h and 12h maps</span></div>
       </div>
-      <div class="country-stat-grid">${countryCards}</div>
-      <div class="visited-stat-grid">
-        <div><strong>${visitedStations.size}</strong><span>visited stations</span></div>
-        <div><strong>${visitedRoutes.size}</strong><span>visited routes</span></div>
-        <div><strong>${hubCount}</strong><span>transfer hubs</span></div>
-      </div>
-      <button class="clear-visited" type="button">Reset visited tracking</button>
+      <div class="country-stat-grid">${countryCards}<div><strong>${hubCount}</strong><span>transfer hubs</span></div></div>
+      <details class="secondary-menu">
+        <summary>Visited tracking</summary>
+        <div class="visited-stat-grid">
+          <div><strong>${visitedStations.size}</strong><span>visited stations</span></div>
+          <div><strong>${visitedRoutes.size}</strong><span>visited routes</span></div>
+        </div>
+        <button class="clear-visited" type="button">Reset visited tracking</button>
+      </details>
     </section>
   `;
 };
@@ -496,6 +474,15 @@ const renderStationProfile = (station) => {
     .slice(0, 12);
   const corridors = [...new Set(stationServiceList.flatMap((service) => service.route_ids || [service.route_id]).filter(Boolean))].sort();
   const transferImportance = stationTransferImportance(station, stationServiceList.length, directDestinations.length, corridors.length);
+  const nextDepartures = stationServiceList
+    .map((service) => {
+      const stop = service.stops.find((item) => item.station === station);
+      const departure = stopDeparture(stop);
+      return departure ? { service, departure, departureMinutes: minutesFromMidnight(departure) } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.departureMinutes - b.departureMinutes)
+    .slice(0, 8);
   serviceDetail.innerHTML = `
     <article class="station-profile-card station-profile-upgraded">
       <div class="station-photo-placeholder" aria-label="Station photo placeholder"><span>Station photo</span></div>
@@ -518,8 +505,9 @@ const renderStationProfile = (station) => {
         <button type="button" data-station-action="two-transfer" data-station-name="${station}">Show destinations with 2 transfers</button>
         <button type="button" data-station-action="travel-time" data-station-name="${station}">Show travel time map</button>
       </div>
+      <section><h4>Next departures</h4>${listItems(nextDepartures.map(({ service, departure }) => `${departure} · ${service.train_number} · ${service.origin} → ${service.destination}`), 'No timed departures in the loaded dataset.')}</section>
+      <section><h4>Train services through station <span class="secondary-label">secondary timetable layer</span></h4>${listItems(stationServiceList.map((service) => `${service.train_number} · ${service.origin} → ${service.destination}`).slice(0, 16), 'No services in the loaded dataset.')}</section>
       <section><h4>Direct destinations</h4><p class="connectivity-count">${directDestinations.length} reachable without transfer</p>${listItems(directDestinations, 'No direct destinations in the loaded dataset.')}</section>
-      <section><h4>Train services <span class="secondary-label">secondary timetable layer</span></h4>${listItems(stationServiceList.map((service) => `${service.train_number} · ${service.origin} → ${service.destination}`).slice(0, 16), 'No services in the loaded dataset.')}</section>
       <section><h4>Transfer routes</h4>${listItems(transferRoutes, 'No transfer routes identified in the loaded dataset.')}</section>
       <section><h4>Connected corridors</h4>${listItems(corridors, 'No corridors mapped for this station.')}</section>
     </article>
@@ -536,10 +524,7 @@ const renderDetail = (service) => {
     <ol class="stop-list">
       ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
     </ol>
-<p class="service-note">
-  Services on this corridor.
-  Use station profiles and Explore mode to discover the wider railway network.
-</p>
+    <p class="service-note">Secondary timetable layer for this corridor. Atlas exploration remains centred on stations, corridors and connectivity.</p>
   `;
 };
 
@@ -589,11 +574,8 @@ const renderServices = () => {
   `).join('');
   if (visible.length === 1 && !selectedServiceIds.size) renderDetail(visible[0]);
   if (!visible.length) {
-serviceList.innerHTML =
-'<li class="no-results">No matching stations, corridors or services found. Try: Beograd, Novi Sad, Niš, Subotica, RE2101.</li>';
-
-serviceDetail.innerHTML =
-'<p>No matching stations, corridors or services found.</p>';
+    serviceList.innerHTML = '<li class="no-results">No matching corridors or services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</li>';
+    serviceDetail.innerHTML = '<p>No matching stations, corridors or services found. Try Beograd, Novi Sad, Niš, Subotica, Re2101.</p>';
   }
 };
 
@@ -1154,32 +1136,44 @@ const transferClass = (transfers) => transfers === 0 ? 'reach-direct' : transfer
 const transferLimitLabel = (maxTransfers) => Number.isFinite(maxTransfers) ? (maxTransfers === 0 ? 'direct only' : `max ${maxTransfers} transfer${maxTransfers === 1 ? '' : 's'}`) : 'unlimited transfers';
 const transferCountLabel = (transfers) => transfers === 0 ? 'direct' : `${transfers} transfer${transfers === 1 ? '' : 's'}`;
 
+const reachabilityCost = (minutes, transfers) => minutes + (transfers * reachabilityTransferPenaltyMinutes);
+
+const preferredReachabilityOption = (candidate, currentBest) => {
+  if (!currentBest) return true;
+  if (candidate.effectiveCost !== currentBest.effectiveCost) return candidate.effectiveCost < currentBest.effectiveCost;
+  if (candidate.transfers !== currentBest.transfers) return candidate.transfers < currentBest.transfers;
+  return candidate.minutes < currentBest.minutes;
+};
+
+const reachabilitySanityWarning = (transfers) => transfers > unusualTransferThreshold
+  ? ' · Unusual routing. A simpler route may exist.'
+  : '';
+
 const stationCombinedReachability = (origin, maxTransfers, maxMinutes) => {
   const graph = buildTimetableGraph({ allowOvernight: true });
   const bestByState = new Map([[`${origin}|0`, 0]]);
   const bestByStation = new Map();
-  const queue = [{ station: origin, minutes: 0, serviceId: null, transfers: 0 }];
+  const queue = [{ station: origin, minutes: 0, effectiveCost: 0, serviceId: null, transfers: 0 }];
   while (queue.length) {
-    queue.sort((a, b) => a.minutes - b.minutes || a.transfers - b.transfers);
+    queue.sort((a, b) => a.effectiveCost - b.effectiveCost || a.transfers - b.transfers || a.minutes - b.minutes);
     const current = queue.shift();
-    if (current.minutes > (bestByState.get(`${current.station}|${current.transfers}`) ?? Infinity)) continue;
+    if (current.effectiveCost > (bestByState.get(`${current.station}|${current.transfers}`) ?? Infinity)) continue;
     for (const edge of graph.get(current.station) || []) {
       const nextTransfers = current.serviceId && current.serviceId !== edge.service.service_id ? current.transfers + 1 : current.transfers;
       if (Number.isFinite(maxTransfers) && nextTransfers > maxTransfers) continue;
       const nextMinutes = current.minutes + edge.travelMinutes;
       if (nextMinutes > maxMinutes) continue;
+      const nextCost = reachabilityCost(nextMinutes, nextTransfers);
       const stateKey = `${edge.to}|${nextTransfers}`;
-      if (nextMinutes >= (bestByState.get(stateKey) ?? Infinity)) continue;
-      bestByState.set(stateKey, nextMinutes);
-      const currentBest = bestByStation.get(edge.to);
-      if (!currentBest || nextMinutes < currentBest.minutes || (nextMinutes === currentBest.minutes && nextTransfers < currentBest.transfers)) {
-        bestByStation.set(edge.to, { station: edge.to, minutes: nextMinutes, transfers: nextTransfers });
-      }
-      queue.push({ station: edge.to, minutes: nextMinutes, serviceId: edge.service.service_id, transfers: nextTransfers });
+      if (nextCost >= (bestByState.get(stateKey) ?? Infinity)) continue;
+      bestByState.set(stateKey, nextCost);
+      const candidate = { station: edge.to, minutes: nextMinutes, transfers: nextTransfers, effectiveCost: nextCost };
+      if (preferredReachabilityOption(candidate, bestByStation.get(edge.to))) bestByStation.set(edge.to, candidate);
+      queue.push({ station: edge.to, minutes: nextMinutes, effectiveCost: nextCost, serviceId: edge.service.service_id, transfers: nextTransfers });
     }
   }
   bestByStation.delete(origin);
-  return [...bestByStation.values()].sort((a, b) => a.minutes - b.minutes || a.transfers - b.transfers || a.station.localeCompare(b.station));
+  return [...bestByStation.values()].sort((a, b) => a.effectiveCost - b.effectiveCost || a.transfers - b.transfers || a.minutes - b.minutes || a.station.localeCompare(b.station));
 };
 
 const renderUnifiedReachability = (origin, maxTransfers, maxMinutes) => {
@@ -1196,7 +1190,7 @@ const renderUnifiedReachability = (origin, maxTransfers, maxMinutes) => {
       .filter(({ station }) => stationCoordinates[station])
       .map(({ station, minutes, transfers }) => {
         const point = stationCoordinates[station];
-        return `<circle class="service-stop reachability-stop ${transferClass(transfers)}" cx="${point.x}" cy="${point.y}" r="11"><title>${station}: ${durationLabel(minutes)}, ${transferCountLabel(transfers)}</title></circle>`;
+        return `<circle class="service-stop reachability-stop ${transferClass(transfers)}" cx="${point.x}" cy="${point.y}" r="11"><title>${station}: ${durationLabel(minutes)}, ${transferCountLabel(transfers)}${reachabilitySanityWarning(transfers)}</title></circle>`;
       })
   ];
   serviceStopMarkers.innerHTML = markers.join('');
@@ -1205,7 +1199,7 @@ const renderUnifiedReachability = (origin, maxTransfers, maxMinutes) => {
     <h3>${origin}</h3>
     <p class="connectivity-count">${reachable.length} stations reachable within ${durationLabel(maxMinutes)} · ${transferLimitLabel(maxTransfers)}</p>
     <div class="reachability-legend"><span class="reach-direct">Direct</span><span class="reach-one-transfer">1 transfer</span><span class="reach-two-transfer">2 transfers</span><span class="reach-unlimited">3+ transfers</span></div>
-    <section><h4>Combined reachability</h4>${listItems(reachable.map(({ station, minutes, transfers }) => `${station} · ${durationLabel(minutes)} · ${transferCountLabel(transfers)}`), 'No stations match these combined filters.')}</section>
+    <section><h4>Combined reachability</h4><p class="service-note">Reachability ranks by travel time plus a ${reachabilityTransferPenaltyMinutes} minute penalty per transfer, so simpler routes are preferred when timings are similar.</p>${listItems(reachable.map(({ station, minutes, transfers }) => `${station} · ${durationLabel(minutes)} · ${transferCountLabel(transfers)}${reachabilitySanityWarning(transfers)}`), 'No stations match these combined filters.')}</section>
   `;
   serviceDetail.innerHTML = '<p>Explore mode highlighted stations matching the combined transfer and travel-time filters.</p>';
 };
@@ -1235,7 +1229,7 @@ const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = today
     resetSelection();
     return;
   }
-  const resultLimit = mode === 'exhaustive' ? 10 : 3;
+  const resultLimit = mode === 'exhaustive' ? 1 : 3;
   currentJourneyOptions = await findJourneyOptions(from, to, resultLimit, {
     mode,
     serviceCalendarIds: calendarInfo.activeServiceIds,
@@ -1371,9 +1365,7 @@ const runJourneySearch = async () => {
 const atlasSectionPanels = {
   atlas: 'services',
   planner: 'journey',
-  reachability: 'explore',
-  'travel-time': 'explore',
-  visited: 'services'
+  explore: 'explore'
 };
 
 const setAtlasSection = (section = 'atlas') => {
@@ -1391,33 +1383,17 @@ const setAtlasSection = (section = 'atlas') => {
   if (section === 'planner') {
     document.querySelector('#from-station')?.focus();
   }
-  if (section === 'reachability') {
+  if (section === 'explore') {
     document.querySelector('#explore-transfer-limit').value = '2';
     document.querySelector('#explore-time-limit').value = '240';
-    exploreResult.innerHTML = '<p>Select a station and combine transfer and travel-time filters to highlight reachable destinations.</p>';
+    exploreResult.innerHTML = '<p>Select an origin station, transfer limit and travel-time limit to highlight reachable stations.</p>';
     document.querySelector('#explore-station')?.focus();
-  }
-  if (section === 'travel-time') {
-    document.querySelector('#explore-transfer-limit').value = 'unlimited';
-    document.querySelector('#explore-time-limit').value = '240';
-    exploreResult.innerHTML = '<p>Select a station to explore reachable places as a travel-time map.</p>';
-    document.querySelector('#explore-station')?.focus();
-  }
-  if (section === 'visited') {
-    showServiceDirectory = false;
-    serviceSearch.value = '';
-    renderServices();
-    serviceDetail.innerHTML = '<p>Visited Network tracks stations and route corridors you select while exploring the atlas.</p>';
   }
 };
 
 const attachUiHandlers = () => {
   setZoomDetail(zoomControl.value);
   zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
-  document.querySelectorAll('[data-map-mode-option]').forEach((button) => {
-    button.addEventListener('click', () => setMapMode(button.dataset.mapModeOption));
-  });
-  setMapMode(activeMapMode);
   serviceSearch.addEventListener('input', () => {
     showServiceDirectory = false;
     renderServices();
@@ -1493,7 +1469,7 @@ const attachUiHandlers = () => {
     if (!button) return;
     const station = button.dataset.stationName;
     document.querySelector('#explore-station').value = station;
-    setAtlasSection(button.dataset.stationAction === 'travel-time' ? 'travel-time' : 'reachability');
+    setAtlasSection('explore');
     if (button.dataset.stationAction === 'direct') { document.querySelector('#explore-transfer-limit').value = '0'; document.querySelector('#explore-time-limit').value = '720'; }
     if (button.dataset.stationAction === 'one-transfer') { document.querySelector('#explore-transfer-limit').value = '1'; document.querySelector('#explore-time-limit').value = '720'; }
     if (button.dataset.stationAction === 'two-transfer') { document.querySelector('#explore-transfer-limit').value = '2'; document.querySelector('#explore-time-limit').value = '720'; }

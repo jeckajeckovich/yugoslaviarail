@@ -13,30 +13,21 @@
         <p class="kicker">Interactive Balkan rail atlas</p>
         <h1 id="map-title">JugoRail</h1>
         <p class="hero-lede">Explore passenger railways across the Balkans.</p>
-        <p class="subtitle">A passenger railway atlas for discovering stations, corridors, country coverage, visited routes and travel-time reachability.</p>
+        <p class="subtitle">A passenger railway atlas for discovering stations, corridors, connectivity, reachability and travel time.</p>
       </div>
       <nav class="hero-nav" aria-label="JugoRail exploration sections">
-        <button class="hero-nav-card active" type="button" data-section="atlas"><strong>Atlas</strong><span>Explore stations, routes and railway corridors</span></button>
-        <button class="hero-nav-card" type="button" data-section="planner"><strong>Planner</strong><span>Build rail journeys across the network</span></button>
-        <button class="hero-nav-card" type="button" data-section="reachability"><strong>Reachability</strong><span>Discover where you can travel with transfers</span></button>
-        <button class="hero-nav-card" type="button" data-section="travel-time"><strong>Travel Time</strong><span>Explore stations reachable within time limits</span></button>
-        <button class="hero-nav-card hero-nav-card-wide" type="button" data-section="visited"><strong>Visited Network</strong><span>Track visited stations and routes</span></button>
+        <button class="hero-nav-card active" type="button" data-section="atlas"><strong>Atlas</strong><span>Station profiles, next departures and direct destinations</span></button>
+        <button class="hero-nav-card" type="button" data-section="planner"><strong>Planner</strong><span>From, to, date and journey search</span></button>
+        <button class="hero-nav-card hero-nav-card-wide" type="button" data-section="explore"><strong>Explore</strong><span>Origin station, transfer limit, travel-time limit and reachable stations</span></button>
       </nav>
     </header>
 
     <div class="atlas-shell">
-      <div class="map-frame" data-zoom="100" data-map-mode="schematic">
-      <div class="map-toolbar" aria-label="Map controls">
-        <div class="map-mode-switch" aria-label="Map mode">
-          <button class="active" type="button" data-map-mode-option="schematic">Schema</button>
-          <button type="button" data-map-mode-option="geographic">Geography</button>
-        </div>
-        <div class="zoom-controls" aria-label="Map detail controls">
-          <label for="map-zoom">Map zoom</label>
-          <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
-          <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
-        </div>
-        <p class="map-mode-status" aria-live="polite">Schematic View active.</p>
+      <div class="map-frame" data-zoom="100">
+      <div class="zoom-controls" aria-label="Map detail controls">
+        <label for="map-zoom">Map zoom</label>
+        <input id="map-zoom" type="range" min="100" max="160" step="20" value="100" />
+        <output class="zoom-readout" for="map-zoom" aria-live="polite">Detail: core labels</output>
       </div>
       <svg class="rail-map" viewBox="0 0 1200 1680" role="img" aria-labelledby="svg-title svg-desc">
       <title id="svg-title">JugoRail passenger railway atlas map</title>
@@ -73,7 +64,7 @@
         <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
         <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
         <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
-        <path class="route r16" data-route-id="r16" d="M220 760 L250 980 L185 1065 L185 1115 L170 1160 L150 1260" />
+        <path class="route r16" data-route-id="r16" d="M185 1065 L185 1115 L170 1160 L150 1260" />
         <path class="route r17" data-route-id="r17" d="M150 1260 L105 1360 L95 1450" />
         <path class="route r18" data-route-id="r18" d="M110 990 L185 1065" />
       </g>
@@ -82,7 +73,7 @@
         <text x="520" y="42">↑ Budapest</text>
         <text x="690" y="165">↑ Szeged</text>
         <text x="250" y="1390">↙ Bar</text>
-        <text x="74" y="1514">↙ Adriatic / Bosnia</text>
+        <text x="74" y="1514">↙ Adriatic</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
       </g>
@@ -160,15 +151,13 @@
         <div class="tab-header" role="tablist" aria-label="Atlas sections">
           <button class="tab active" type="button" data-section="atlas">Atlas</button>
           <button class="tab" type="button" data-section="planner">Planner</button>
-          <button class="tab" type="button" data-section="reachability">Reachability</button>
-          <button class="tab" type="button" data-section="travel-time">Travel Time</button>
-          <button class="tab" type="button" data-section="visited">Visited</button>
+          <button class="tab" type="button" data-section="explore">Explore</button>
         </div>
         <section class="services-tab" data-panel="services">
           <div class="panel-heading">
             <p class="panel-eyebrow">Railway atlas</p>
             <h2 id="services-heading">Atlas</h2>
-            <p>Explore countries, stations, corridors, visited places and route coverage.</p>
+            <p>Click a station to open its profile, next departures, services through station and direct destinations.</p>
           </div>
           <div class="atlas-dashboard" aria-live="polite"></div>
           <label class="service-search-label" for="service-search">Search the atlas</label>

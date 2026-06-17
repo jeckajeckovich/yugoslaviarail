@@ -106,7 +106,7 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
 .zoom-secondary,.zoom-all{opacity:1;pointer-events:auto;}
   ]]></style>
       <title id="svg-title">Schematic map of passenger railway routes in Serbia and Bosnia and Herzegovina</title>
-      <desc id="svg-desc">The JugoRail railway atlas is organised around a Serbian north-south spine with branches and international links toward Bosnia and Herzegovina, including Sarajevo, Mostar, Doboj, Tuzla, and Banja Luka.</desc>
+      <desc id="svg-desc">The JugoRail railway atlas is organised around a Serbian north-south spine with branches and the separate Bosnia and Herzegovina passenger network around Sarajevo, Mostar, Doboj, and Banja Luka.</desc>
 
       <defs>
         <filter id="label-halo" x="-30%" y="-30%" width="160%" height="160%">
@@ -139,7 +139,7 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
         <path class="route r13" data-route-id="r13" d="M498 1150 H345 V1288 H250" />
         <path class="route r14" data-route-id="r14" d="M520 1450 V1580" />
         <path class="route r15" data-route-id="r15" d="M542 1450 H685 L790 1555" />
-        <path class="route r16" data-route-id="r16" d="M220 760 L250 980 L185 1065 L185 1115 L170 1160 L150 1260" />
+        <path class="route r16" data-route-id="r16" d="M185 1065 L185 1115 L170 1160 L150 1260" />
         <path class="route r17" data-route-id="r17" d="M150 1260 L105 1360 L95 1450" />
         <path class="route r18" data-route-id="r18" d="M110 990 L185 1065" />
       </g>
@@ -148,7 +148,7 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
         <text x="520" y="42">↑ Budapest</text>
         <text x="690" y="165">↑ Szeged</text>
         <text x="250" y="1390">↙ Bar</text>
-        <text x="74" y="1514">↙ Adriatic / Bosnia</text>
+        <text x="74" y="1514">↙ Adriatic</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
       </g>
