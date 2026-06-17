@@ -37,8 +37,15 @@ const stationCoordinates = {
   'Maglaj': { x: 185, y: 1115 },
   'Zenica': { x: 170, y: 1160 },
   'Sarajevo': { x: 150, y: 1260 },
+  'Hadžići': { x: 140, y: 1295 },
+  'Konjic': { x: 125, y: 1325 },
+  'Jablanica Grad': { x: 118, y: 1340 },
+  'Drežnica Stara': { x: 112, y: 1350 },
   'Mostar': { x: 105, y: 1360 },
+  'Žitomislići': { x: 100, y: 1405 },
   'Čapljina': { x: 95, y: 1450 },
+  'Metković': { x: 88, y: 1515 },
+  'Ploče': { x: 80, y: 1580 },
   'Požega': { x: 360, y: 1060 },
   'Užice': { x: 260, y: 1160 },
   'Prijepolje': { x: 260, y: 1340 },
@@ -343,8 +350,15 @@ const listItems = (items, emptyLabel = 'None shown') => items.length
 
 const stationCountries = new Map([
   ['Sarajevo', 'Bosnia and Herzegovina'],
+  ['Hadžići', 'Bosnia and Herzegovina'],
+  ['Konjic', 'Bosnia and Herzegovina'],
+  ['Jablanica Grad', 'Bosnia and Herzegovina'],
+  ['Drežnica Stara', 'Bosnia and Herzegovina'],
   ['Mostar', 'Bosnia and Herzegovina'],
+  ['Žitomislići', 'Bosnia and Herzegovina'],
   ['Čapljina', 'Bosnia and Herzegovina'],
+  ['Metković', 'Croatia'],
+  ['Ploče', 'Croatia'],
   ['Zenica', 'Bosnia and Herzegovina'],
   ['Doboj', 'Bosnia and Herzegovina'],
   ['Banja Luka', 'Bosnia and Herzegovina'],
@@ -362,7 +376,8 @@ const serviceInNetworkScope = (service, networkScope = 'experimental') => {
   if (networkScope === 'bosnia') return countries.size === 1 && countries.has('Bosnia and Herzegovina');
   return true;
 };
-const usesExperimentalNetwork = (option) => option?.segments?.some((segment) => serviceCountries(segment.service).size > 1 || segment.service.source === 'manual_bosnia_extension');
+const isSeasonalPloceService = (service) => service.source === 'manual_croatia_ploce_extension';
+const usesExperimentalNetwork = (option) => option?.segments?.some((segment) => (serviceCountries(segment.service).size > 1 && !isSeasonalPloceService(segment.service)) || segment.service.source === 'manual_bosnia_extension');
 
 const stationRole = (station, stationServices) => {
   if (transferHubs.has(station)) return 'Major railway hub';
@@ -524,6 +539,7 @@ const renderDetail = (service) => {
     <ol class="stop-list">
       ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
     </ol>
+    ${service.service_notice ? `<p class="service-note">${service.service_notice}</p>` : ''}
     <p class="service-note">Secondary timetable layer for this corridor. Atlas exploration remains centred on stations, corridors and connectivity.</p>
   `;
 };

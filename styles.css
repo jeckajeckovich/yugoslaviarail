@@ -48,6 +48,7 @@ h1 { margin: 0 0 16px; font-size: clamp(3.15rem, 7.4vw, 6.85rem); line-height: .
 .r16 { stroke: #0f8f6f; }
 .r17 { stroke: #b65f00; }
 .r18 { stroke: #4b7fbd; }
+.r19 { stroke: #0e7490; }
 .stations circle { fill: var(--paper); stroke: var(--ink); stroke-width: 4.5; }
 .stations .halo { fill: var(--paper); stroke: var(--ink); stroke-width: 3; opacity: .96; }
 .stations text { fill: var(--ink); font-size: 22px; font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 8px; stroke-linejoin: round; filter: url(#label-halo); }
