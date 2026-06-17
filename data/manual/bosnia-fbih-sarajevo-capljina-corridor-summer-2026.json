@@ -1,0 +1,394 @@
+{
+  "schema_version": 1,
+  "id": "sarajevo-capljina-corridor-summer-2026",
+  "description": "Manual Željeznice FBiH Sarajevo–Čapljina corridor timetable collection for JugoRail. Kept separate from app runtime datasets until validated/imported.",
+  "source": {
+    "operator": "Željeznice FBiH",
+    "source_type": "manual",
+    "validity": "Summer 2026"
+  },
+  "train_types": {
+    "local": {
+      "description": "Stops at most intermediate stations"
+    },
+    "fast": {
+      "description": "Limited-stop regional/intercity service"
+    },
+    "intercity": {
+      "description": "Long-distance service"
+    }
+  },
+  "notes": [
+    "User-provided corridor collection preserved on 2026-06-17.",
+    "Exact duplicate pasted entries for trains 723, 720, and 722 were deduplicated by train number, origin, destination, and departure time.",
+    "Trains 721 and 393 share the same supplied schedule but are preserved as distinct train numbers.",
+    "This manual file is not loaded by the app until a future validation/import step wires it into generated datasets."
+  ],
+  "services": [
+    {
+      "service_id": "zfbh-manual-sarajevo-capljina-2026-723-sarajevo-capljina",
+      "train_number": "723",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Čapljina",
+      "departure": "07:15",
+      "arrival": "09:40",
+      "duration": "2h25m",
+      "source": "manual_zfbh_sarajevo_capljina_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "07:15",
+          "time": "07:15"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "07:33",
+          "departure": "07:33",
+          "time": "07:33"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "08:25",
+          "departure": "08:25",
+          "time": "08:25"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "08:40",
+          "departure": "08:40",
+          "time": "08:40"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "08:54",
+          "departure": "08:54",
+          "time": "08:54"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "09:15",
+          "departure": "09:15",
+          "time": "09:15"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "09:28",
+          "departure": "09:28",
+          "time": "09:28"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "09:40",
+          "departure": null,
+          "time": "09:40"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-capljina-2026-721-sarajevo-capljina",
+      "train_number": "721",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Čapljina",
+      "departure": "16:46",
+      "arrival": "19:15",
+      "duration": "2h29m",
+      "source": "manual_zfbh_sarajevo_capljina_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "16:46",
+          "time": "16:46"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "17:04",
+          "departure": "17:04",
+          "time": "17:04"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "18:00",
+          "departure": "18:00",
+          "time": "18:00"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "18:15",
+          "departure": "18:15",
+          "time": "18:15"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "18:29",
+          "departure": "18:29",
+          "time": "18:29"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "18:50",
+          "departure": "18:50",
+          "time": "18:50"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "19:03",
+          "departure": "19:03",
+          "time": "19:03"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "19:15",
+          "departure": null,
+          "time": "19:15"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-capljina-2026-393-sarajevo-capljina",
+      "train_number": "393",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Čapljina",
+      "departure": "16:46",
+      "arrival": "19:15",
+      "duration": "2h29m",
+      "source": "manual_zfbh_sarajevo_capljina_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "16:46",
+          "time": "16:46"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "17:04",
+          "departure": "17:04",
+          "time": "17:04"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "18:00",
+          "departure": "18:00",
+          "time": "18:00"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "18:15",
+          "departure": "18:15",
+          "time": "18:15"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "18:29",
+          "departure": "18:29",
+          "time": "18:29"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "18:50",
+          "departure": "18:50",
+          "time": "18:50"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "19:03",
+          "departure": "19:03",
+          "time": "19:03"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "19:15",
+          "departure": null,
+          "time": "19:15"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-capljina-2026-720-capljina-sarajevo",
+      "train_number": "720",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Čapljina",
+      "destination": "Sarajevo",
+      "departure": "06:09",
+      "arrival": "08:35",
+      "duration": "2h26m",
+      "source": "manual_zfbh_sarajevo_capljina_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Čapljina",
+          "arrival": null,
+          "departure": "06:09",
+          "time": "06:09"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "06:21",
+          "departure": "06:21",
+          "time": "06:21"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "06:36",
+          "departure": "06:36",
+          "time": "06:36"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "06:55",
+          "departure": "06:55",
+          "time": "06:55"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "07:09",
+          "departure": "07:09",
+          "time": "07:09"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "07:25",
+          "departure": "07:25",
+          "time": "07:25"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "08:18",
+          "departure": "08:18",
+          "time": "08:18"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "08:35",
+          "departure": null,
+          "time": "08:35"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-capljina-2026-722-capljina-sarajevo",
+      "train_number": "722",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Čapljina",
+      "destination": "Sarajevo",
+      "departure": "16:45",
+      "arrival": "19:07",
+      "duration": "2h22m",
+      "source": "manual_zfbh_sarajevo_capljina_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Čapljina",
+          "arrival": null,
+          "departure": "16:45",
+          "time": "16:45"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "16:57",
+          "departure": "16:57",
+          "time": "16:57"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "17:12",
+          "departure": "17:12",
+          "time": "17:12"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "17:31",
+          "departure": "17:31",
+          "time": "17:31"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "17:45",
+          "departure": "17:45",
+          "time": "17:45"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "18:01",
+          "departure": "18:01",
+          "time": "18:01"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "18:50",
+          "departure": "18:50",
+          "time": "18:50"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "19:07",
+          "departure": null,
+          "time": "19:07"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    }
+  ]
+}

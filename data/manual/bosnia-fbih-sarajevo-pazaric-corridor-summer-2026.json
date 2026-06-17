@@ -1,0 +1,686 @@
+{
+  "schema_version": 1,
+  "id": "sarajevo-pazaric-corridor-summer-2026",
+  "description": "Manual Željeznice FBiH Sarajevo–Pazarić local corridor timetable collection for JugoRail. Kept separate from app runtime datasets until validated/imported.",
+  "source": {
+    "operator": "Željeznice FBiH",
+    "source_type": "manual",
+    "validity": "Summer 2026"
+  },
+  "train_types": {
+    "local": {
+      "description": "Stops at most intermediate stations"
+    },
+    "fast": {
+      "description": "Limited-stop regional/intercity service"
+    },
+    "intercity": {
+      "description": "Long-distance service"
+    }
+  },
+  "notes": [
+    "User-provided corridor collection preserved on 2026-06-17.",
+    "This file stores Sarajevo–Pazarić local corridor records separately from data/services.json and other manual Bosnia corridor collections.",
+    "Manual records are not loaded by the app until a future validation/import step wires them into generated datasets."
+  ],
+  "services": [
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2403-sarajevo-pazaric",
+      "train_number": "2403",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Pazarić",
+      "departure": "07:34",
+      "arrival": "08:08",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "07:34",
+          "time": "07:34"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "07:40",
+          "departure": "07:40",
+          "time": "07:40"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "07:46",
+          "departure": "07:46",
+          "time": "07:46"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "07:51",
+          "departure": "07:51",
+          "time": "07:51"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "07:55",
+          "departure": "07:55",
+          "time": "07:55"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "08:00",
+          "departure": "08:00",
+          "time": "08:00"
+        },
+        {
+          "station": "Pazarić",
+          "arrival": "08:08",
+          "departure": null,
+          "time": "08:08"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2405-sarajevo-pazaric",
+      "train_number": "2405",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Pazarić",
+      "departure": "09:56",
+      "arrival": "10:30",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "09:56",
+          "time": "09:56"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "10:02",
+          "departure": "10:02",
+          "time": "10:02"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "10:08",
+          "departure": "10:08",
+          "time": "10:08"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "10:13",
+          "departure": "10:13",
+          "time": "10:13"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "10:17",
+          "departure": "10:17",
+          "time": "10:17"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "10:22",
+          "departure": "10:22",
+          "time": "10:22"
+        },
+        {
+          "station": "Pazarić",
+          "arrival": "10:30",
+          "departure": null,
+          "time": "10:30"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2407-sarajevo-pazaric",
+      "train_number": "2407",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Pazarić",
+      "departure": "11:55",
+      "arrival": "12:29",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "11:55",
+          "time": "11:55"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "12:01",
+          "departure": "12:01",
+          "time": "12:01"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "12:07",
+          "departure": "12:07",
+          "time": "12:07"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "12:12",
+          "departure": "12:12",
+          "time": "12:12"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "12:16",
+          "departure": "12:16",
+          "time": "12:16"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "12:21",
+          "departure": "12:21",
+          "time": "12:21"
+        },
+        {
+          "station": "Pazarić",
+          "arrival": "12:29",
+          "departure": null,
+          "time": "12:29"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2409-sarajevo-pazaric",
+      "train_number": "2409",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Pazarić",
+      "departure": "14:30",
+      "arrival": "15:04",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "14:30",
+          "time": "14:30"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "14:36",
+          "departure": "14:36",
+          "time": "14:36"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "14:42",
+          "departure": "14:42",
+          "time": "14:42"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "14:47",
+          "departure": "14:47",
+          "time": "14:47"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "14:51",
+          "departure": "14:51",
+          "time": "14:51"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "14:56",
+          "departure": "14:56",
+          "time": "14:56"
+        },
+        {
+          "station": "Pazarić",
+          "arrival": "15:04",
+          "departure": null,
+          "time": "15:04"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2411-sarajevo-pazaric",
+      "train_number": "2411",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Pazarić",
+      "departure": "17:00",
+      "arrival": "17:34",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "17:00",
+          "time": "17:00"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "17:06",
+          "departure": "17:06",
+          "time": "17:06"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "17:12",
+          "departure": "17:12",
+          "time": "17:12"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "17:17",
+          "departure": "17:17",
+          "time": "17:17"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "17:21",
+          "departure": "17:21",
+          "time": "17:21"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "17:26",
+          "departure": "17:26",
+          "time": "17:26"
+        },
+        {
+          "station": "Pazarić",
+          "arrival": "17:34",
+          "departure": null,
+          "time": "17:34"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2402-pazaric-sarajevo",
+      "train_number": "2402",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Pazarić",
+      "destination": "Sarajevo",
+      "departure": "06:37",
+      "arrival": "07:11",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Pazarić",
+          "arrival": null,
+          "departure": "06:37",
+          "time": "06:37"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "06:46",
+          "departure": "06:46",
+          "time": "06:46"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "06:55",
+          "departure": "06:55",
+          "time": "06:55"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "07:00",
+          "departure": "07:00",
+          "time": "07:00"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "07:06",
+          "departure": "07:06",
+          "time": "07:06"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "07:11",
+          "departure": null,
+          "time": "07:11"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2404-pazaric-sarajevo",
+      "train_number": "2404",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Pazarić",
+      "destination": "Sarajevo",
+      "departure": "08:25",
+      "arrival": "08:59",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Pazarić",
+          "arrival": null,
+          "departure": "08:25",
+          "time": "08:25"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "08:34",
+          "departure": "08:34",
+          "time": "08:34"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "08:38",
+          "departure": "08:38",
+          "time": "08:38"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "08:43",
+          "departure": "08:43",
+          "time": "08:43"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "08:48",
+          "departure": "08:48",
+          "time": "08:48"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "08:54",
+          "departure": "08:54",
+          "time": "08:54"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "08:59",
+          "departure": null,
+          "time": "08:59"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2406-pazaric-sarajevo",
+      "train_number": "2406",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Pazarić",
+      "destination": "Sarajevo",
+      "departure": "11:01",
+      "arrival": "11:38",
+      "duration": "37m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Pazarić",
+          "arrival": null,
+          "departure": "11:01",
+          "time": "11:01"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "11:10",
+          "departure": "11:10",
+          "time": "11:10"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "11:22",
+          "departure": "11:22",
+          "time": "11:22"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "11:27",
+          "departure": "11:27",
+          "time": "11:27"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "11:33",
+          "departure": "11:33",
+          "time": "11:33"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "11:38",
+          "departure": null,
+          "time": "11:38"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2408-pazaric-sarajevo",
+      "train_number": "2408",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Pazarić",
+      "destination": "Sarajevo",
+      "departure": "12:44",
+      "arrival": "13:18",
+      "duration": "34m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Pazarić",
+          "arrival": null,
+          "departure": "12:44",
+          "time": "12:44"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "12:53",
+          "departure": "12:53",
+          "time": "12:53"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "12:57",
+          "departure": "12:57",
+          "time": "12:57"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "13:02",
+          "departure": "13:02",
+          "time": "13:02"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "13:07",
+          "departure": "13:07",
+          "time": "13:07"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "13:13",
+          "departure": "13:13",
+          "time": "13:13"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "13:18",
+          "departure": null,
+          "time": "13:18"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-sarajevo-pazaric-2026-2410-pazaric-sarajevo",
+      "train_number": "2410",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Pazarić",
+      "destination": "Sarajevo",
+      "departure": "16:10",
+      "arrival": "16:48",
+      "duration": "38m",
+      "source": "manual_zfbh_sarajevo_pazaric_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026"
+      },
+      "stops": [
+        {
+          "station": "Pazarić",
+          "arrival": null,
+          "departure": "16:10",
+          "time": "16:10"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "16:19",
+          "departure": "16:19",
+          "time": "16:19"
+        },
+        {
+          "station": "Binježevo",
+          "arrival": "16:23",
+          "departure": "16:23",
+          "time": "16:23"
+        },
+        {
+          "station": "Blažuj",
+          "arrival": "16:32",
+          "departure": "16:32",
+          "time": "16:32"
+        },
+        {
+          "station": "Ilidža",
+          "arrival": "16:37",
+          "departure": "16:37",
+          "time": "16:37"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "16:43",
+          "departure": "16:43",
+          "time": "16:43"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "16:48",
+          "departure": null,
+          "time": "16:48"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    }
+  ]
+}

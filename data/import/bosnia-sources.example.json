@@ -1,0 +1,14 @@
+[
+  {
+    "operator": "Željeznice Federacije Bosne i Hercegovine",
+    "url": "https://www.zfbh.ba/en/time-table/",
+    "source": "zfbh_official_timetable",
+    "service_calendar_id": "zfbh_imported"
+  },
+  {
+    "operator": "Željeznice Republike Srpske",
+    "url": "https://www.zrs-rs.com/red-voznje",
+    "source": "zrs_official_timetable",
+    "service_calendar_id": "zrs_imported"
+  }
+]
