@@ -1,0 +1,1145 @@
+{
+  "schema_version": 1,
+  "id": "visoko-sarajevo-corridor-summer-2026",
+  "description": "Manual Željeznice FBiH Sarajevo–Visoko corridor timetable collection for JugoRail. Kept separate from app runtime datasets until validated/imported.",
+  "source": {
+    "operator": "Željeznice FBiH",
+    "source_type": "manual",
+    "validity": "Summer 2026",
+    "note": "Unverified manual extraction from passenger timetable search"
+  },
+  "train_types": {
+    "local": {
+      "description": "Stops at most intermediate stations"
+    },
+    "fast": {
+      "description": "Limited-stop regional/intercity service"
+    },
+    "intercity": {
+      "description": "Long-distance service"
+    }
+  },
+  "notes": [
+    "User-provided corridor collection preserved on 2026-06-17.",
+    "This file stores Sarajevo–Visoko corridor records separately from data/services.json and the broader Bosnia manual service file.",
+    "Some train numbers also appear in longer Sarajevo–Zenica/Maglaj or Zenica–Sarajevo manual records; these entries preserve the corridor-specific origin/destination and times supplied by the user."
+  ],
+  "services": [
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2150-sarajevo-visoko",
+      "train_number": "2150",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "04:44",
+      "arrival": "05:29",
+      "duration": "45m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "04:44",
+          "time": "04:44"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "04:50",
+          "departure": "04:50",
+          "time": "04:50"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "04:53",
+          "departure": "04:53",
+          "time": "04:53"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "04:56",
+          "departure": "04:56",
+          "time": "04:56"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "04:59",
+          "departure": "04:59",
+          "time": "04:59"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "05:06",
+          "departure": "05:06",
+          "time": "05:06"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "05:10",
+          "departure": "05:10",
+          "time": "05:10"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "05:15",
+          "departure": "05:15",
+          "time": "05:15"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "05:17",
+          "departure": "05:17",
+          "time": "05:17"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "05:21",
+          "departure": "05:21",
+          "time": "05:21"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "05:25",
+          "departure": "05:25",
+          "time": "05:25"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "05:29",
+          "departure": null,
+          "time": "05:29"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2160-sarajevo-visoko",
+      "train_number": "2160",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "05:24",
+      "arrival": "06:13",
+      "duration": "49m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "05:24",
+          "time": "05:24"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "05:27",
+          "departure": "05:27",
+          "time": "05:27"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "05:30",
+          "departure": "05:30",
+          "time": "05:30"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "05:33",
+          "departure": "05:33",
+          "time": "05:33"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "05:36",
+          "departure": "05:36",
+          "time": "05:36"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "05:39",
+          "departure": "05:39",
+          "time": "05:39"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "05:46",
+          "departure": "05:46",
+          "time": "05:46"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "05:50",
+          "departure": "05:50",
+          "time": "05:50"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "05:55",
+          "departure": "05:55",
+          "time": "05:55"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "05:57",
+          "departure": "05:57",
+          "time": "05:57"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "06:05",
+          "departure": "06:05",
+          "time": "06:05"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "06:09",
+          "departure": "06:09",
+          "time": "06:09"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "06:13",
+          "departure": null,
+          "time": "06:13"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2162-sarajevo-visoko",
+      "train_number": "2162",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "08:17",
+      "arrival": "09:07",
+      "duration": "50m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "08:17",
+          "time": "08:17"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "08:20",
+          "departure": "08:20",
+          "time": "08:20"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "08:25",
+          "departure": "08:25",
+          "time": "08:25"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "08:28",
+          "departure": "08:28",
+          "time": "08:28"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "08:31",
+          "departure": "08:31",
+          "time": "08:31"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "08:34",
+          "departure": "08:34",
+          "time": "08:34"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "08:41",
+          "departure": "08:41",
+          "time": "08:41"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "08:45",
+          "departure": "08:45",
+          "time": "08:45"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "08:50",
+          "departure": "08:50",
+          "time": "08:50"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "08:52",
+          "departure": "08:52",
+          "time": "08:52"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "08:59",
+          "departure": "08:59",
+          "time": "08:59"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "09:03",
+          "departure": "09:03",
+          "time": "09:03"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "09:07",
+          "departure": null,
+          "time": "09:07"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2156-sarajevo-visoko",
+      "train_number": "2156",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "15:41",
+      "arrival": "16:32",
+      "duration": "51m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "15:41",
+          "time": "15:41"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "15:47",
+          "departure": "15:47",
+          "time": "15:47"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "15:50",
+          "departure": "15:50",
+          "time": "15:50"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "15:53",
+          "departure": "15:53",
+          "time": "15:53"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "15:56",
+          "departure": "15:56",
+          "time": "15:56"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "16:03",
+          "departure": "16:03",
+          "time": "16:03"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "16:07",
+          "departure": "16:07",
+          "time": "16:07"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "16:12",
+          "departure": "16:12",
+          "time": "16:12"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "16:14",
+          "departure": "16:14",
+          "time": "16:14"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "16:18",
+          "departure": "16:18",
+          "time": "16:18"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "16:22",
+          "departure": "16:22",
+          "time": "16:22"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "16:32",
+          "departure": null,
+          "time": "16:32"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-710-sarajevo-visoko",
+      "train_number": "710",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "16:28",
+      "arrival": "17:06",
+      "duration": "38m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "16:28",
+          "time": "16:28"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "16:50",
+          "departure": "16:50",
+          "time": "16:50"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "16:59",
+          "departure": "16:59",
+          "time": "16:59"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "17:06",
+          "departure": null,
+          "time": "17:06"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2168-sarajevo-visoko",
+      "train_number": "2168",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Visoko",
+      "departure": "17:21",
+      "arrival": "18:07",
+      "duration": "46m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "17:21",
+          "time": "17:21"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "17:24",
+          "departure": "17:24",
+          "time": "17:24"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "17:28",
+          "departure": "17:28",
+          "time": "17:28"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "17:31",
+          "departure": "17:31",
+          "time": "17:31"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "17:34",
+          "departure": "17:34",
+          "time": "17:34"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "17:37",
+          "departure": "17:37",
+          "time": "17:37"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "17:44",
+          "departure": "17:44",
+          "time": "17:44"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "17:48",
+          "departure": "17:48",
+          "time": "17:48"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "17:53",
+          "departure": "17:53",
+          "time": "17:53"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "17:55",
+          "departure": "17:55",
+          "time": "17:55"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "17:59",
+          "departure": "17:59",
+          "time": "17:59"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "18:03",
+          "departure": "18:03",
+          "time": "18:03"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "18:07",
+          "departure": null,
+          "time": "18:07"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2151-visoko-sarajevo",
+      "train_number": "2151",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "05:54",
+      "arrival": "06:39",
+      "duration": "45m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "05:54",
+          "time": "05:54"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "05:58",
+          "departure": "05:58",
+          "time": "05:58"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "06:03",
+          "departure": "06:03",
+          "time": "06:03"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "06:06",
+          "departure": "06:06",
+          "time": "06:06"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "06:08",
+          "departure": "06:08",
+          "time": "06:08"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "06:13",
+          "departure": "06:13",
+          "time": "06:13"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "06:18",
+          "departure": "06:18",
+          "time": "06:18"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "06:24",
+          "departure": "06:24",
+          "time": "06:24"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "06:28",
+          "departure": "06:28",
+          "time": "06:28"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "06:30",
+          "departure": "06:30",
+          "time": "06:30"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "06:34",
+          "departure": "06:34",
+          "time": "06:34"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "06:39",
+          "departure": null,
+          "time": "06:39"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2161-visoko-sarajevo",
+      "train_number": "2161",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "06:47",
+      "arrival": "07:33",
+      "duration": "46m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "06:47",
+          "time": "06:47"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "06:51",
+          "departure": "06:51",
+          "time": "06:51"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "06:56",
+          "departure": "06:56",
+          "time": "06:56"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "06:59",
+          "departure": "06:59",
+          "time": "06:59"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "07:01",
+          "departure": "07:01",
+          "time": "07:01"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "07:07",
+          "departure": "07:07",
+          "time": "07:07"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "07:11",
+          "departure": "07:11",
+          "time": "07:11"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "07:17",
+          "departure": "07:17",
+          "time": "07:17"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "07:21",
+          "departure": "07:21",
+          "time": "07:21"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "07:23",
+          "departure": "07:23",
+          "time": "07:23"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "07:27",
+          "departure": "07:27",
+          "time": "07:27"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "07:30",
+          "departure": "07:30",
+          "time": "07:30"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "07:33",
+          "departure": null,
+          "time": "07:33"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-711-visoko-sarajevo",
+      "train_number": "711",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "08:10",
+      "arrival": "08:49",
+      "duration": "39m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "08:10",
+          "time": "08:10"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "08:18",
+          "departure": "08:18",
+          "time": "08:18"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "08:23",
+          "departure": "08:23",
+          "time": "08:23"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "08:49",
+          "departure": null,
+          "time": "08:49"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2163-visoko-sarajevo",
+      "train_number": "2163",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "09:25",
+      "arrival": "10:15",
+      "duration": "50m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "09:25",
+          "time": "09:25"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "09:29",
+          "departure": "09:29",
+          "time": "09:29"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "09:37",
+          "departure": "09:37",
+          "time": "09:37"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "09:40",
+          "departure": "09:40",
+          "time": "09:40"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "09:42",
+          "departure": "09:42",
+          "time": "09:42"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "09:47",
+          "departure": "09:47",
+          "time": "09:47"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "09:52",
+          "departure": "09:52",
+          "time": "09:52"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "09:58",
+          "departure": "09:58",
+          "time": "09:58"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "10:02",
+          "departure": "10:02",
+          "time": "10:02"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "10:06",
+          "departure": "10:06",
+          "time": "10:06"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "10:10",
+          "departure": "10:10",
+          "time": "10:10"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "10:12",
+          "departure": "10:12",
+          "time": "10:12"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "10:15",
+          "departure": null,
+          "time": "10:15"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2157-visoko-sarajevo",
+      "train_number": "2157",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "16:26",
+      "arrival": "17:38",
+      "duration": "1h12m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "16:26",
+          "time": "16:26"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "16:30",
+          "departure": "16:30",
+          "time": "16:30"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "17:02",
+          "departure": "17:02",
+          "time": "17:02"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "17:05",
+          "departure": "17:05",
+          "time": "17:05"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "17:07",
+          "departure": "17:07",
+          "time": "17:07"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "17:12",
+          "departure": "17:12",
+          "time": "17:12"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "17:17",
+          "departure": "17:17",
+          "time": "17:17"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "17:23",
+          "departure": "17:23",
+          "time": "17:23"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "17:27",
+          "departure": "17:27",
+          "time": "17:27"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "17:29",
+          "departure": "17:29",
+          "time": "17:29"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "17:33",
+          "departure": "17:33",
+          "time": "17:33"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "17:38",
+          "departure": null,
+          "time": "17:38"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-visoko-sarajevo-2026-2169-visoko-sarajevo",
+      "train_number": "2169",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Visoko",
+      "destination": "Sarajevo",
+      "departure": "18:35",
+      "arrival": "19:20",
+      "duration": "45m",
+      "source": "manual_zfbh_visoko_sarajevo_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "note": "Unverified manual extraction from passenger timetable search"
+      },
+      "stops": [
+        {
+          "station": "Visoko",
+          "arrival": null,
+          "departure": "18:35",
+          "time": "18:35"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "18:39",
+          "departure": "18:39",
+          "time": "18:39"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "18:44",
+          "departure": "18:44",
+          "time": "18:44"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "18:47",
+          "departure": "18:47",
+          "time": "18:47"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "18:49",
+          "departure": "18:49",
+          "time": "18:49"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "18:54",
+          "departure": "18:54",
+          "time": "18:54"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "18:59",
+          "departure": "18:59",
+          "time": "18:59"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "19:05",
+          "departure": "19:05",
+          "time": "19:05"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "19:09",
+          "departure": "19:09",
+          "time": "19:09"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "19:11",
+          "departure": "19:11",
+          "time": "19:11"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "19:15",
+          "departure": "19:15",
+          "time": "19:15"
+        },
+        {
+          "station": "Buča Potok",
+          "arrival": "19:17",
+          "departure": "19:17",
+          "time": "19:17"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "19:20",
+          "departure": null,
+          "time": "19:20"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    }
+  ]
+}

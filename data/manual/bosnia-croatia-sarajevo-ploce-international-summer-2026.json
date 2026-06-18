@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "id": "sarajevo-ploce-international-corridor-summer-2026",
+  "description": "Temporary manual Croatia extension for the real ŽFBH/HŽPP Sarajevo–Ploče seasonal international passenger service. This is not a general Croatia expansion.",
+  "source": {
+    "operator": "ŽFBH / HŽPP",
+    "source_type": "manual",
+    "validity": "Summer 2026",
+    "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
+    "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
+  },
+  "train_types": {
+    "local": {
+      "description": "Stops at most intermediate stations"
+    },
+    "fast": {
+      "description": "Limited-stop regional/intercity service"
+    },
+    "intercity": {
+      "description": "Long-distance service"
+    }
+  },
+  "scope": {
+    "countries": [
+      "Bosnia and Herzegovina",
+      "Croatia"
+    ],
+    "croatia_stations": [
+      "Metković",
+      "Ploče"
+    ],
+    "future_expansion_rule": "No additional Croatian network should be added automatically; future expansion requires real passenger services, timetable source, station coordinates, and route geometry."
+  },
+  "corridor": {
+    "id": "sarajevo-ploce-international-corridor-summer-2026",
+    "type": "international",
+    "countries": [
+      "Bosnia and Herzegovina",
+      "Croatia"
+    ],
+    "status": "active",
+    "stations": [
+      "Sarajevo",
+      "Hadžići",
+      "Konjic",
+      "Jablanica Grad",
+      "Drežnica Stara",
+      "Mostar",
+      "Žitomislići",
+      "Čapljina",
+      "Metković",
+      "Ploče"
+    ]
+  },
+  "notes": [
+    "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel.",
+    "This temporary extension adds only Metković and Ploče in Croatia and only for the Sarajevo–Ploče passenger service.",
+    "Do not create Serbia–Bosnia passenger services from this dataset."
+  ],
+  "services": [
+    {
+      "service_id": "zfbh-hzpp-summer-2026-391-sarajevo-ploce",
+      "train_number": "391",
+      "name": "Sarajevo – Ploče seasonal international",
+      "train_type": "intercity",
+      "service_type": "long-distance international",
+      "operator": "ŽFBH / HŽPP",
+      "origin": "Sarajevo",
+      "destination": "Ploče",
+      "departure": "07:15",
+      "arrival": "10:36",
+      "duration": "3h21m",
+      "source": "manual_croatia_ploce_extension",
+      "source_details": {
+        "operator": "ŽFBH / HŽPP",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
+        "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
+      },
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
+      "countries": [
+        "Bosnia and Herzegovina",
+        "Croatia"
+      ],
+      "corridor": {
+        "id": "sarajevo-ploce-international-corridor-summer-2026",
+        "name": "Sarajevo – Ploče international corridor",
+        "type": "international",
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Croatia"
+        ],
+        "status": "active"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "07:15",
+          "time": "07:15"
+        },
+        {
+          "station": "Hadžići",
+          "arrival": "07:33",
+          "departure": "07:33",
+          "time": "07:33"
+        },
+        {
+          "station": "Konjic",
+          "arrival": "08:25",
+          "departure": "08:25",
+          "time": "08:25"
+        },
+        {
+          "station": "Jablanica Grad",
+          "arrival": "08:40",
+          "departure": "08:40",
+          "time": "08:40"
+        },
+        {
+          "station": "Drežnica Stara",
+          "arrival": "08:54",
+          "departure": "08:54",
+          "time": "08:54"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "09:15",
+          "departure": "09:15",
+          "time": "09:15"
+        },
+        {
+          "station": "Žitomislići",
+          "arrival": "09:28",
+          "departure": "09:28",
+          "time": "09:28"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "09:52",
+          "departure": "09:52",
+          "time": "09:52"
+        },
+        {
+          "station": "Metković",
+          "arrival": "10:18",
+          "departure": "10:18",
+          "time": "10:18"
+        },
+        {
+          "station": "Ploče",
+          "arrival": "10:36",
+          "departure": null,
+          "time": "10:36"
+        }
+      ],
+      "route_ids": [
+        "r17",
+        "r19"
+      ],
+      "path_points": [
+        "Sarajevo",
+        "Hadžići",
+        "Konjic",
+        "Jablanica Grad",
+        "Drežnica Stara",
+        "Mostar",
+        "Žitomislići",
+        "Čapljina",
+        "Metković",
+        "Ploče"
+      ],
+      "route_geometry": {
+        "type": "schematic_path_points",
+        "path_points": [
+          "Sarajevo",
+          "Hadžići",
+          "Konjic",
+          "Jablanica Grad",
+          "Drežnica Stara",
+          "Mostar",
+          "Žitomislići",
+          "Čapljina",
+          "Metković",
+          "Ploče"
+        ]
+      },
+      "is_realtime": false,
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
+    },
+    {
+      "service_id": "zfbh-hzpp-summer-2026-393-sarajevo-ploce",
+      "train_number": "393",
+      "name": "Sarajevo – Ploče seasonal international",
+      "train_type": "intercity",
+      "service_type": "long-distance international",
+      "operator": "ŽFBH / HŽPP",
+      "origin": "Sarajevo",
+      "destination": "Ploče",
+      "departure": "16:46",
+      "arrival": "20:15",
+      "duration": "3h29m",
+      "source": "manual_croatia_ploce_extension",
+      "source_details": {
+        "operator": "ŽFBH / HŽPP",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
+        "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
+      },
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
+      "countries": [
+        "Bosnia and Herzegovina",
+        "Croatia"
+      ],
+      "corridor": {
+        "id": "sarajevo-ploce-international-corridor-summer-2026",
+        "name": "Sarajevo – Ploče international corridor",
+        "type": "international",
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Croatia"
+        ],
+        "status": "active"
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "16:46",
+          "time": "16:46"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "18:53",
+          "departure": "18:53",
+          "time": "18:53"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "19:31",
+          "departure": "19:31",
+          "time": "19:31"
+        },
+        {
+          "station": "Metković",
+          "arrival": "19:57",
+          "departure": "19:57",
+          "time": "19:57"
+        },
+        {
+          "station": "Ploče",
+          "arrival": "20:15",
+          "departure": null,
+          "time": "20:15"
+        }
+      ],
+      "route_ids": [
+        "r17",
+        "r19"
+      ],
+      "path_points": [
+        "Sarajevo",
+        "Mostar",
+        "Čapljina",
+        "Metković",
+        "Ploče"
+      ],
+      "route_geometry": {
+        "type": "schematic_path_points",
+        "path_points": [
+          "Sarajevo",
+          "Mostar",
+          "Čapljina",
+          "Metković",
+          "Ploče"
+        ]
+      },
+      "is_realtime": false,
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
+    },
+    {
+      "service_id": "zfbh-hzpp-summer-2026-390-ploce-sarajevo",
+      "train_number": "390",
+      "name": "Ploče – Sarajevo seasonal international",
+      "train_type": "intercity",
+      "service_type": "long-distance international",
+      "operator": "ŽFBH / HŽPP",
+      "origin": "Ploče",
+      "destination": "Sarajevo",
+      "departure": "15:40",
+      "arrival": "19:07",
+      "duration": "3h27m",
+      "source": "manual_croatia_ploce_extension",
+      "source_details": {
+        "operator": "ŽFBH / HŽPP",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
+        "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
+      },
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
+      "countries": [
+        "Bosnia and Herzegovina",
+        "Croatia"
+      ],
+      "corridor": {
+        "id": "sarajevo-ploce-international-corridor-summer-2026",
+        "name": "Sarajevo – Ploče international corridor",
+        "type": "international",
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Croatia"
+        ],
+        "status": "active"
+      },
+      "stops": [
+        {
+          "station": "Ploče",
+          "arrival": null,
+          "departure": "15:40",
+          "time": "15:40"
+        },
+        {
+          "station": "Metković",
+          "arrival": "16:18",
+          "departure": "16:18",
+          "time": "16:18"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "16:42",
+          "departure": "16:42",
+          "time": "16:42"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "17:07",
+          "departure": "17:07",
+          "time": "17:07"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "19:07",
+          "departure": null,
+          "time": "19:07"
+        }
+      ],
+      "route_ids": [
+        "r17",
+        "r19"
+      ],
+      "path_points": [
+        "Ploče",
+        "Metković",
+        "Čapljina",
+        "Mostar",
+        "Sarajevo"
+      ],
+      "route_geometry": {
+        "type": "schematic_path_points",
+        "path_points": [
+          "Ploče",
+          "Metković",
+          "Čapljina",
+          "Mostar",
+          "Sarajevo"
+        ]
+      },
+      "is_realtime": false,
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
+    },
+    {
+      "service_id": "zfbh-hzpp-summer-2026-392-ploce-sarajevo",
+      "train_number": "392",
+      "name": "Ploče – Sarajevo seasonal international",
+      "train_type": "intercity",
+      "service_type": "long-distance international",
+      "operator": "ŽFBH / HŽPP",
+      "origin": "Ploče",
+      "destination": "Sarajevo",
+      "departure": "05:05",
+      "arrival": "08:35",
+      "duration": "3h30m",
+      "source": "manual_croatia_ploce_extension",
+      "source_details": {
+        "operator": "ŽFBH / HŽPP",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
+        "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
+      },
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
+      "countries": [
+        "Bosnia and Herzegovina",
+        "Croatia"
+      ],
+      "corridor": {
+        "id": "sarajevo-ploce-international-corridor-summer-2026",
+        "name": "Sarajevo – Ploče international corridor",
+        "type": "international",
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Croatia"
+        ],
+        "status": "active"
+      },
+      "stops": [
+        {
+          "station": "Ploče",
+          "arrival": null,
+          "departure": "05:05",
+          "time": "05:05"
+        },
+        {
+          "station": "Metković",
+          "arrival": "05:43",
+          "departure": "05:43",
+          "time": "05:43"
+        },
+        {
+          "station": "Čapljina",
+          "arrival": "06:03",
+          "departure": "06:03",
+          "time": "06:03"
+        },
+        {
+          "station": "Mostar",
+          "arrival": "06:33",
+          "departure": "06:33",
+          "time": "06:33"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "08:35",
+          "departure": null,
+          "time": "08:35"
+        }
+      ],
+      "route_ids": [
+        "r17",
+        "r19"
+      ],
+      "path_points": [
+        "Ploče",
+        "Metković",
+        "Čapljina",
+        "Mostar",
+        "Sarajevo"
+      ],
+      "route_geometry": {
+        "type": "schematic_path_points",
+        "path_points": [
+          "Ploče",
+          "Metković",
+          "Čapljina",
+          "Mostar",
+          "Sarajevo"
+        ]
+      },
+      "is_realtime": false,
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
+    }
+  ]
+}

@@ -1,0 +1,885 @@
+{
+  "schema_version": 1,
+  "description": "Manual Bosnia and Herzegovina passenger railway timetable collection for JugoRail. This file is intentionally separate from data/services.json until records are validated/imported.",
+  "source": {
+    "operator": "Željeznice FBiH",
+    "source_type": "manual",
+    "validity": "Summer 2026",
+    "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+  },
+  "train_types": {
+    "local": {
+      "description": "Stops at most intermediate stations"
+    },
+    "fast": {
+      "description": "Limited-stop regional/intercity service"
+    },
+    "intercity": {
+      "description": "Long-distance service"
+    }
+  },
+  "notes": [
+    "User-provided collection preserved on 2026-06-17.",
+    "Duplicate repeated entries for trains 2151, 711, and 2157 in the source message were deduplicated by train number, origin, destination, and departure time.",
+    "Train 710 was initially collected as partial through Zenica; it is now extended to Maglaj from the later supplied record.",
+    "Train 710 was extended from the previous partial Sarajevo–Zenica/Maglaj record to the full Sarajevo–Maglaj record supplied later; the existing service was updated instead of duplicated.",
+    "Train 711 was extended from the previous Zenica–Sarajevo record to the full Maglaj–Sarajevo record supplied later; the existing service was updated instead of duplicated."
+  ],
+  "services": [
+    {
+      "service_id": "zfbh-manual-2150-sarajevo-zenica",
+      "train_number": "2150",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Zenica",
+      "departure": "04:44",
+      "arrival": "06:32",
+      "duration": "1h48m",
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "04:44",
+          "time": "04:44"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "04:50",
+          "departure": "04:50",
+          "time": "04:50"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "04:53",
+          "departure": "04:53",
+          "time": "04:53"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "04:56",
+          "departure": "04:56",
+          "time": "04:56"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "04:59",
+          "departure": "04:59",
+          "time": "04:59"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "05:06",
+          "departure": "05:06",
+          "time": "05:06"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "05:10",
+          "departure": "05:10",
+          "time": "05:10"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "05:15",
+          "departure": "05:15",
+          "time": "05:15"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "05:17",
+          "departure": "05:17",
+          "time": "05:17"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "05:21",
+          "departure": "05:21",
+          "time": "05:21"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "05:25",
+          "departure": "05:25",
+          "time": "05:25"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "05:30",
+          "departure": "05:30",
+          "time": "05:30"
+        },
+        {
+          "station": "Porječani",
+          "arrival": "05:35",
+          "departure": "05:35",
+          "time": "05:35"
+        },
+        {
+          "station": "Buzići",
+          "arrival": "05:38",
+          "departure": "05:38",
+          "time": "05:38"
+        },
+        {
+          "station": "Dobrinje",
+          "arrival": "05:46",
+          "departure": "05:46",
+          "time": "05:46"
+        },
+        {
+          "station": "Ćatići",
+          "arrival": "05:52",
+          "departure": "05:52",
+          "time": "05:52"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "05:56",
+          "departure": "05:56",
+          "time": "05:56"
+        },
+        {
+          "station": "Roščevina",
+          "arrival": "05:59",
+          "departure": "05:59",
+          "time": "05:59"
+        },
+        {
+          "station": "Modrinje",
+          "arrival": "06:06",
+          "departure": "06:06",
+          "time": "06:06"
+        },
+        {
+          "station": "Gora",
+          "arrival": "06:09",
+          "departure": "06:09",
+          "time": "06:09"
+        },
+        {
+          "station": "Lašva",
+          "arrival": "06:14",
+          "departure": "06:14",
+          "time": "06:14"
+        },
+        {
+          "station": "Janjići",
+          "arrival": "06:21",
+          "departure": "06:21",
+          "time": "06:21"
+        },
+        {
+          "station": "Drivuša",
+          "arrival": "06:25",
+          "departure": "06:25",
+          "time": "06:25"
+        },
+        {
+          "station": "Zenica",
+          "arrival": "06:32",
+          "departure": null,
+          "time": "06:32"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-2156-sarajevo-zenica",
+      "train_number": "2156",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Zenica",
+      "departure": "15:41",
+      "arrival": "17:30",
+      "duration": "1h49m",
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "15:41",
+          "time": "15:41"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "15:47",
+          "departure": "15:47",
+          "time": "15:47"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "15:50",
+          "departure": "15:50",
+          "time": "15:50"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "15:53",
+          "departure": "15:53",
+          "time": "15:53"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "15:56",
+          "departure": "15:56",
+          "time": "15:56"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "16:03",
+          "departure": "16:03",
+          "time": "16:03"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "16:07",
+          "departure": "16:07",
+          "time": "16:07"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "16:12",
+          "departure": "16:12",
+          "time": "16:12"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "16:14",
+          "departure": "16:14",
+          "time": "16:14"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "16:18",
+          "departure": "16:18",
+          "time": "16:18"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "16:22",
+          "departure": "16:22",
+          "time": "16:22"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "16:32",
+          "departure": "16:32",
+          "time": "16:32"
+        },
+        {
+          "station": "Porječani",
+          "arrival": "16:37",
+          "departure": "16:37",
+          "time": "16:37"
+        },
+        {
+          "station": "Buzići",
+          "arrival": "16:40",
+          "departure": "16:40",
+          "time": "16:40"
+        },
+        {
+          "station": "Dobrinje",
+          "arrival": "16:44",
+          "departure": "16:44",
+          "time": "16:44"
+        },
+        {
+          "station": "Ćatići",
+          "arrival": "16:50",
+          "departure": "16:50",
+          "time": "16:50"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "16:54",
+          "departure": "16:54",
+          "time": "16:54"
+        },
+        {
+          "station": "Roščevina",
+          "arrival": "16:57",
+          "departure": "16:57",
+          "time": "16:57"
+        },
+        {
+          "station": "Modrinje",
+          "arrival": "17:04",
+          "departure": "17:04",
+          "time": "17:04"
+        },
+        {
+          "station": "Gora",
+          "arrival": "17:07",
+          "departure": "17:07",
+          "time": "17:07"
+        },
+        {
+          "station": "Lašva",
+          "arrival": "17:12",
+          "departure": "17:12",
+          "time": "17:12"
+        },
+        {
+          "station": "Janjići",
+          "arrival": "17:19",
+          "departure": "17:19",
+          "time": "17:19"
+        },
+        {
+          "station": "Drivuša",
+          "arrival": "17:23",
+          "departure": "17:23",
+          "time": "17:23"
+        },
+        {
+          "station": "Zenica",
+          "arrival": "17:30",
+          "departure": null,
+          "time": "17:30"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-710-sarajevo-maglaj",
+      "train_number": "710",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Sarajevo",
+      "destination": "Maglaj",
+      "departure": "16:28",
+      "arrival": "19:10",
+      "duration": "2h42m",
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Sarajevo",
+          "arrival": null,
+          "departure": "16:28",
+          "time": "16:28"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "16:50",
+          "departure": "16:50",
+          "time": "16:50"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "16:59",
+          "departure": "16:59",
+          "time": "16:59"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "17:07",
+          "departure": "17:07",
+          "time": "17:07"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "17:24",
+          "departure": "17:24",
+          "time": "17:24"
+        },
+        {
+          "station": "Zenica",
+          "arrival": "17:59",
+          "departure": "17:59",
+          "time": "17:59"
+        },
+        {
+          "station": "Žepče",
+          "arrival": "18:35",
+          "departure": "18:35",
+          "time": "18:35"
+        },
+        {
+          "station": "Zavidovići",
+          "arrival": "18:48",
+          "departure": "18:48",
+          "time": "18:48"
+        },
+        {
+          "station": "Maglaj",
+          "arrival": "19:10",
+          "departure": null,
+          "time": "19:10"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false,
+      "merge_note": "This extends the existing 710 Sarajevo-Zenica service. Do not duplicate it."
+    },
+    {
+      "service_id": "zfbh-manual-2151-zenica-sarajevo",
+      "train_number": "2151",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Zenica",
+      "destination": "Sarajevo",
+      "departure": "04:55",
+      "arrival": "06:39",
+      "duration": null,
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Zenica",
+          "arrival": null,
+          "departure": "04:55",
+          "time": "04:55"
+        },
+        {
+          "station": "Drivuša",
+          "arrival": "05:03",
+          "departure": "05:03",
+          "time": "05:03"
+        },
+        {
+          "station": "Janjići",
+          "arrival": "05:06",
+          "departure": "05:06",
+          "time": "05:06"
+        },
+        {
+          "station": "Lašva",
+          "arrival": "05:14",
+          "departure": "05:14",
+          "time": "05:14"
+        },
+        {
+          "station": "Gora",
+          "arrival": "05:18",
+          "departure": "05:18",
+          "time": "05:18"
+        },
+        {
+          "station": "Modrinje",
+          "arrival": "05:21",
+          "departure": "05:21",
+          "time": "05:21"
+        },
+        {
+          "station": "Roščevina",
+          "arrival": "05:28",
+          "departure": "05:28",
+          "time": "05:28"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "05:32",
+          "departure": "05:32",
+          "time": "05:32"
+        },
+        {
+          "station": "Ćatići",
+          "arrival": "05:35",
+          "departure": "05:35",
+          "time": "05:35"
+        },
+        {
+          "station": "Dobrinje",
+          "arrival": "05:42",
+          "departure": "05:42",
+          "time": "05:42"
+        },
+        {
+          "station": "Buzići",
+          "arrival": "05:45",
+          "departure": "05:45",
+          "time": "05:45"
+        },
+        {
+          "station": "Porječani",
+          "arrival": "05:48",
+          "departure": "05:48",
+          "time": "05:48"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "05:54",
+          "departure": "05:54",
+          "time": "05:54"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "05:58",
+          "departure": "05:58",
+          "time": "05:58"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "06:03",
+          "departure": "06:03",
+          "time": "06:03"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "06:06",
+          "departure": "06:06",
+          "time": "06:06"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "06:08",
+          "departure": "06:08",
+          "time": "06:08"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "06:13",
+          "departure": "06:13",
+          "time": "06:13"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "06:18",
+          "departure": "06:18",
+          "time": "06:18"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "06:24",
+          "departure": "06:24",
+          "time": "06:24"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "06:28",
+          "departure": "06:28",
+          "time": "06:28"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "06:30",
+          "departure": "06:30",
+          "time": "06:30"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "06:34",
+          "departure": "06:34",
+          "time": "06:34"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "06:39",
+          "departure": null,
+          "time": "06:39"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    },
+    {
+      "service_id": "zfbh-manual-711-maglaj-sarajevo",
+      "train_number": "711",
+      "train_type": "fast",
+      "train_type_description": "Limited-stop regional/intercity service",
+      "operator": "Željeznice FBiH",
+      "origin": "Maglaj",
+      "destination": "Sarajevo",
+      "departure": "06:07",
+      "arrival": "08:49",
+      "duration": "2h42m",
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Maglaj",
+          "arrival": null,
+          "departure": "06:07",
+          "time": "06:07"
+        },
+        {
+          "station": "Zavidovići",
+          "arrival": "06:30",
+          "departure": "06:30",
+          "time": "06:30"
+        },
+        {
+          "station": "Žepče",
+          "arrival": "06:44",
+          "departure": "06:44",
+          "time": "06:44"
+        },
+        {
+          "station": "Zenica",
+          "arrival": "07:24",
+          "departure": "07:24",
+          "time": "07:24"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "07:53",
+          "departure": "07:53",
+          "time": "07:53"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "08:10",
+          "departure": "08:10",
+          "time": "08:10"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "08:18",
+          "departure": "08:18",
+          "time": "08:18"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "08:23",
+          "departure": "08:23",
+          "time": "08:23"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "08:49",
+          "departure": null,
+          "time": "08:49"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false,
+      "merge_note": "This extends the existing 711 Zenica-Sarajevo service. Do not duplicate it."
+    },
+    {
+      "service_id": "zfbh-manual-2157-zenica-sarajevo",
+      "train_number": "2157",
+      "train_type": "local",
+      "train_type_description": "Stops at most intermediate stations",
+      "operator": "Željeznice FBiH",
+      "origin": "Zenica",
+      "destination": "Sarajevo",
+      "departure": "15:27",
+      "arrival": "17:38",
+      "duration": null,
+      "source": "manual_zfbh_summer_2026",
+      "source_details": {
+        "operator": "Željeznice FBiH",
+        "source_type": "manual",
+        "validity": "Summer 2026",
+        "disclaimer": "Timetable manually collected from operator journey planner. Service dates may vary. Verify before travel."
+      },
+      "stops": [
+        {
+          "station": "Zenica",
+          "arrival": null,
+          "departure": "15:27",
+          "time": "15:27"
+        },
+        {
+          "station": "Drivuša",
+          "arrival": "15:35",
+          "departure": "15:35",
+          "time": "15:35"
+        },
+        {
+          "station": "Janjići",
+          "arrival": "15:38",
+          "departure": "15:38",
+          "time": "15:38"
+        },
+        {
+          "station": "Lašva",
+          "arrival": "15:46",
+          "departure": "15:46",
+          "time": "15:46"
+        },
+        {
+          "station": "Gora",
+          "arrival": "15:50",
+          "departure": "15:50",
+          "time": "15:50"
+        },
+        {
+          "station": "Modrinje",
+          "arrival": "15:53",
+          "departure": "15:53",
+          "time": "15:53"
+        },
+        {
+          "station": "Roščevina",
+          "arrival": "16:00",
+          "departure": "16:00",
+          "time": "16:00"
+        },
+        {
+          "station": "Kakanj",
+          "arrival": "16:04",
+          "departure": "16:04",
+          "time": "16:04"
+        },
+        {
+          "station": "Ćatići",
+          "arrival": "16:07",
+          "departure": "16:07",
+          "time": "16:07"
+        },
+        {
+          "station": "Dobrinje",
+          "arrival": "16:14",
+          "departure": "16:14",
+          "time": "16:14"
+        },
+        {
+          "station": "Buzići",
+          "arrival": "16:17",
+          "departure": "16:17",
+          "time": "16:17"
+        },
+        {
+          "station": "Porječani",
+          "arrival": "16:20",
+          "departure": "16:20",
+          "time": "16:20"
+        },
+        {
+          "station": "Visoko",
+          "arrival": "16:26",
+          "departure": "16:26",
+          "time": "16:26"
+        },
+        {
+          "station": "Lješevo",
+          "arrival": "16:30",
+          "departure": "16:30",
+          "time": "16:30"
+        },
+        {
+          "station": "Podlugovi",
+          "arrival": "17:02",
+          "departure": "17:02",
+          "time": "17:02"
+        },
+        {
+          "station": "Ilijaš Grad",
+          "arrival": "17:05",
+          "departure": "17:05",
+          "time": "17:05"
+        },
+        {
+          "station": "Stari Ilijaš",
+          "arrival": "17:07",
+          "departure": "17:07",
+          "time": "17:07"
+        },
+        {
+          "station": "Vogošća",
+          "arrival": "17:12",
+          "departure": "17:12",
+          "time": "17:12"
+        },
+        {
+          "station": "Semizovac",
+          "arrival": "17:17",
+          "departure": "17:17",
+          "time": "17:17"
+        },
+        {
+          "station": "Reljevo",
+          "arrival": "17:23",
+          "departure": "17:23",
+          "time": "17:23"
+        },
+        {
+          "station": "Rajlovac",
+          "arrival": "17:27",
+          "departure": "17:27",
+          "time": "17:27"
+        },
+        {
+          "station": "Briješće",
+          "arrival": "17:29",
+          "departure": "17:29",
+          "time": "17:29"
+        },
+        {
+          "station": "Alipašin Most",
+          "arrival": "17:33",
+          "departure": "17:33",
+          "time": "17:33"
+        },
+        {
+          "station": "Sarajevo",
+          "arrival": "17:38",
+          "departure": null,
+          "time": "17:38"
+        }
+      ],
+      "route_geometry": {
+        "type": "unmatched_import",
+        "path_points": []
+      },
+      "is_realtime": false
+    }
+  ],
+  "deduplication_rule": {
+    "match_existing_service_by": [
+      "train_number",
+      "departure_time_at_known_origin",
+      "overlapping_stop_times"
+    ],
+    "action": "extend_existing_service",
+    "do_not_create_duplicate_if": [
+      "same train_number",
+      "same overlapping station times",
+      "same direction"
+    ]
+  }
+}
