@@ -78,7 +78,7 @@
         "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
         "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
       },
-      "service_notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel.",
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
       "countries": [
         "Bosnia and Herzegovina",
         "Croatia"
@@ -187,7 +187,8 @@
         ]
       },
       "is_realtime": false,
-      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included."
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
     },
     {
       "service_id": "zfbh-hzpp-summer-2026-393-sarajevo-ploce",
@@ -209,7 +210,7 @@
         "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
         "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
       },
-      "service_notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel.",
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
       "countries": [
         "Bosnia and Herzegovina",
         "Croatia"
@@ -278,7 +279,8 @@
         ]
       },
       "is_realtime": false,
-      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included."
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
     },
     {
       "service_id": "zfbh-hzpp-summer-2026-390-ploce-sarajevo",
@@ -300,7 +302,7 @@
         "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
         "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
       },
-      "service_notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel.",
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
       "countries": [
         "Bosnia and Herzegovina",
         "Croatia"
@@ -369,7 +371,8 @@
         ]
       },
       "is_realtime": false,
-      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included."
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
     },
     {
       "service_id": "zfbh-hzpp-summer-2026-392-ploce-sarajevo",
@@ -391,7 +394,7 @@
         "scope": "Temporary Croatia extension for the real Sarajevo–Ploče international passenger service only.",
         "notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel."
       },
-      "service_notice": "Seasonal international service. Timetable imported manually from official ŽFBH/HŽPP sources. Valid for Summer 2026. Operating days may vary. Always verify before travel.",
+      "service_notice": "Seasonal international service. Verify current operation before travel.",
       "countries": [
         "Bosnia and Herzegovina",
         "Croatia"
@@ -460,7 +463,8 @@
         ]
       },
       "is_realtime": false,
-      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included."
+      "manual_scope_note": "Temporary Croatia extension only for the real Sarajevo–Ploče service; no other Croatian network is included.",
+      "seasonal": true
     }
   ]
 }

@@ -79,6 +79,21 @@ const serviceTrainLabel = document.querySelector('.service-train-label');
 const routeElements = new Map([...document.querySelectorAll('[data-route-id]')].map((route) => [route.dataset.routeId, route]));
 const svg = document.querySelector('.rail-map');
 const fullViewBox = svg.getAttribute('viewBox');
+const mapLayerModes = {
+  schematic: {
+    label: 'Schematic diagram active',
+    description: 'Current metro-style atlas diagram.'
+  },
+  geographic: {
+    label: 'Geographic view coming soon',
+    description: 'Future layer for real station coordinates.'
+  },
+  railway: {
+    label: 'Railway map coming soon',
+    description: 'Future OpenStreetMap/OpenRailwayMap base layer.'
+  }
+};
+let currentMapLayer = 'schematic';
 let services = [];
 let calendarDates = [];
 let calendarDateIndex = new Map();
@@ -87,6 +102,14 @@ let lastJourneySearchStats = null;
 let isJourneySearchRunning = false;
 let stationConnectivity = new Map();
 let showServiceDirectory = false;
+
+const manualServiceSources = [
+  'data/manual/bosnia-fbih-manual-services.json',
+  'data/manual/bosnia-fbih-visoko-sarajevo-corridor-summer-2026.json',
+  'data/manual/bosnia-fbih-sarajevo-capljina-corridor-summer-2026.json',
+  'data/manual/bosnia-fbih-sarajevo-pazaric-corridor-summer-2026.json',
+  'data/manual/bosnia-croatia-sarajevo-ploce-international-summer-2026.json'
+];
 
 const loadVisitedSet = (key) => {
   try {
@@ -112,6 +135,21 @@ const setZoomDetail = (value) => {
   const zoom = Number(value);
   frame.dataset.zoom = zoom >= 160 ? '160' : zoom >= 120 ? '120' : '100';
   readout.value = zoom >= 160 ? '160% · all stations' : zoom >= 120 ? '120% · secondary stations' : '100% · core labels';
+};
+
+const setMapLayer = (layer) => {
+  if (!mapLayerModes[layer]) return;
+  currentMapLayer = layer;
+  frame.dataset.mapLayer = layer;
+  document.querySelectorAll('[data-map-layer]').forEach((button) => {
+    if (button.matches('button')) button.classList.toggle('active', button.dataset.mapLayer === layer);
+  });
+  const status = document.querySelector('.map-layer-status');
+  if (status) {
+    status.value = mapLayerModes[layer].label;
+    status.textContent = mapLayerModes[layer].label;
+  }
+  console.info('Map layer selected', { layer, ...mapLayerModes[layer], routingLogic: 'unchanged' });
 };
 
 export const getServiceStops = (service) => service.stops.map((stop) => ({
@@ -269,6 +307,7 @@ const indexCalendarDates = () => {
 
 const serviceOperatesOnDate = (service, dateValue) => {
   if (!calendarDates.length) return true;
+  if (!service.service_calendar_id) return true;
   const entries = calendarDateIndex.get(calendarIndexKey(service.service_calendar_id, gtfsDateKey(dateValue))) || [];
   const isCancelled = entries.some((entry) => String(entry.exception_type) === '2');
   const isAdded = entries.some((entry) => String(entry.exception_type) === '1');
@@ -289,7 +328,7 @@ const calendarInfoForDate = (dateValue) => {
   const added = new Set(matches.filter((entry) => String(entry.exception_type) === '1').map((entry) => entry.service_id));
   const cancelled = new Set(matches.filter((entry) => String(entry.exception_type) === '2').map((entry) => entry.service_id));
   const activeServiceIds = new Set([...added].filter((serviceId) => !cancelled.has(serviceId)));
-  const activeServicesOnDate = services.filter((service) => activeServiceIds.has(service.service_calendar_id)).length;
+  const activeServicesOnDate = services.filter((service) => !service.service_calendar_id || activeServiceIds.has(service.service_calendar_id)).length;
   return {
     activeServiceIds,
     activeServicesOnDate,
@@ -299,7 +338,7 @@ const calendarInfoForDate = (dateValue) => {
 };
 
 
-const nearestAvailableDates = (dateValue, limit = 2, { networkScope = 'experimental' } = {}) => {
+const nearestAvailableDates = (dateValue, limit = 2, { networkScope = defaultNetworkCoverage() } = {}) => {
   if (!calendarDates.length) return [];
   const requested = gtfsDateKey(dateValue);
   const serviceIdsForScope = new Set(services
@@ -317,21 +356,19 @@ const nearestAvailableDates = (dateValue, limit = 2, { networkScope = 'experimen
 const routeDateSummary = (calendarInfo, dateValue) => `
   <div class="date-summary">
     <p><strong>Selected date:</strong> ${displayJourneyDate(dateValue)}</p>
-    <p><strong>Active services:</strong> ${calendarInfo.activeServicesOnDate}</p>
-    <p><strong>Filtered services:</strong> ${calendarInfo.filteredServices}</p>
-    <p><strong>Calendar filtering:</strong> ${calendarDates.length ? 'active' : 'not available'}</p>
+    <p><strong>Trains checked:</strong> ${calendarInfo.activeServicesOnDate}</p>
   </div>
 `;
 
 const searchStatsSummary = () => lastJourneySearchStats ? `
   <details class="advanced-details">
-    <summary>Advanced details</summary>
+    <summary>Search details</summary>
     <div class="search-stats">
-      <p><strong>States explored:</strong> ${lastJourneySearchStats.statesExplored}</p>
-      <p><strong>Queue size:</strong> ${lastJourneySearchStats.queueSize}</p>
-      <p><strong>Graph nodes:</strong> ${lastJourneySearchStats.graphNodes}</p>
-      <p><strong>Truncation reason:</strong> ${lastJourneySearchStats.truncationReason || 'none'}</p>
-      <p><strong>Timeout reached:</strong> ${lastJourneySearchStats.timedOut ? 'yes' : 'no'}</p>
+      <p><strong>Stops checked:</strong> ${lastJourneySearchStats.statesExplored}</p>
+      <p><strong>Possible next trains:</strong> ${lastJourneySearchStats.queueSize}</p>
+      <p><strong>Stations in search:</strong> ${lastJourneySearchStats.graphNodes}</p>
+      <p><strong>Search limited:</strong> ${lastJourneySearchStats.truncationReason || 'no'}</p>
+      <p><strong>Time limit reached:</strong> ${lastJourneySearchStats.timedOut ? 'yes' : 'no'}</p>
     </div>
   </details>
 ` : '';
@@ -350,15 +387,55 @@ const listItems = (items, emptyLabel = 'None shown') => items.length
 
 const stationCountries = new Map([
   ['Sarajevo', 'Bosnia and Herzegovina'],
+  ['Alipašin Most', 'Bosnia and Herzegovina'],
+  ['Binježevo', 'Bosnia and Herzegovina'],
+  ['Blažuj', 'Bosnia and Herzegovina'],
+  ['Briješće', 'Bosnia and Herzegovina'],
+  ['Buzići', 'Bosnia and Herzegovina'],
+  ['Buča Potok', 'Bosnia and Herzegovina'],
+  ['Dobrinje', 'Bosnia and Herzegovina'],
+  ['Drivuša', 'Bosnia and Herzegovina'],
+  ['Gora', 'Bosnia and Herzegovina'],
   ['Hadžići', 'Bosnia and Herzegovina'],
+  ['Ilidža', 'Bosnia and Herzegovina'],
+  ['Ilijaš Grad', 'Bosnia and Herzegovina'],
   ['Konjic', 'Bosnia and Herzegovina'],
   ['Jablanica Grad', 'Bosnia and Herzegovina'],
   ['Drežnica Stara', 'Bosnia and Herzegovina'],
+  ['Janjići', 'Bosnia and Herzegovina'],
+  ['Kakanj', 'Bosnia and Herzegovina'],
+  ['Lašva', 'Bosnia and Herzegovina'],
+  ['Lješevo', 'Bosnia and Herzegovina'],
+  ['Modrinje', 'Bosnia and Herzegovina'],
   ['Mostar', 'Bosnia and Herzegovina'],
+  ['Pazarić', 'Bosnia and Herzegovina'],
+  ['Podlugovi', 'Bosnia and Herzegovina'],
+  ['Porječani', 'Bosnia and Herzegovina'],
+  ['Rajlovac', 'Bosnia and Herzegovina'],
+  ['Reljevo', 'Bosnia and Herzegovina'],
+  ['Roščevina', 'Bosnia and Herzegovina'],
+  ['Semizovac', 'Bosnia and Herzegovina'],
+  ['Stari Ilijaš', 'Bosnia and Herzegovina'],
+  ['Visoko', 'Bosnia and Herzegovina'],
+  ['Vogošća', 'Bosnia and Herzegovina'],
+  ['Zavidovići', 'Bosnia and Herzegovina'],
   ['Žitomislići', 'Bosnia and Herzegovina'],
+  ['Žepče', 'Bosnia and Herzegovina'],
   ['Čapljina', 'Bosnia and Herzegovina'],
+  ['Ćatići', 'Bosnia and Herzegovina'],
   ['Metković', 'Croatia'],
   ['Ploče', 'Croatia'],
+  ['Bar', 'Montenegro'],
+  ['Podgorica', 'Montenegro'],
+  ['Golubovci', 'Montenegro'],
+  ['Sutomore', 'Montenegro'],
+  ['Bijelo Polje', 'Montenegro'],
+  ['Kolašin', 'Montenegro'],
+  ['Mojkovac', 'Montenegro'],
+  ['Röszke', 'Hungary'],
+  ['Szeged', 'Hungary'],
+  ['Szentmihálytelek', 'Hungary'],
+  ['Skopje', 'North Macedonia'],
   ['Zenica', 'Bosnia and Herzegovina'],
   ['Doboj', 'Bosnia and Herzegovina'],
   ['Banja Luka', 'Bosnia and Herzegovina'],
@@ -369,15 +446,31 @@ const stationCountries = new Map([
 const stationCountry = (station) => stationCountries.get(station) || 'Serbia';
 
 const serviceCountries = (service) => new Set(stopNames(service).map(stationCountry));
-const serviceInNetworkScope = (service, networkScope = 'experimental') => {
-  if (networkScope === 'experimental') return true;
-  const countries = serviceCountries(service);
-  if (networkScope === 'serbia') return countries.size === 1 && countries.has('Serbia');
-  if (networkScope === 'bosnia') return countries.size === 1 && countries.has('Bosnia and Herzegovina');
-  return true;
+const defaultNetworkCoverage = () => ({
+  countries: new Set(['Serbia', 'Bosnia and Herzegovina', 'Croatia']),
+  includeInternational: true
+});
+const selectedNetworkCoverage = () => ({
+  countries: new Set([...document.querySelectorAll('.network-country:checked')].map((input) => input.value)),
+  includeInternational: document.querySelector('#include-international-services')?.checked ?? true
+});
+const normalizeNetworkScope = (networkScope = defaultNetworkCoverage()) => {
+  if (typeof networkScope !== 'string') return networkScope;
+  if (networkScope === 'serbia') return { countries: new Set(['Serbia']), includeInternational: false };
+  if (networkScope === 'bosnia') return { countries: new Set(['Bosnia and Herzegovina']), includeInternational: false };
+  return defaultNetworkCoverage();
 };
-const isSeasonalPloceService = (service) => service.source === 'manual_croatia_ploce_extension';
-const usesExperimentalNetwork = (option) => option?.segments?.some((segment) => (serviceCountries(segment.service).size > 1 && !isSeasonalPloceService(segment.service)) || segment.service.source === 'manual_bosnia_extension');
+const serviceInNetworkScope = (service, networkScope = defaultNetworkCoverage()) => {
+  const scope = normalizeNetworkScope(networkScope);
+  const countries = serviceCountries(service);
+  if (!scope.includeInternational && countries.size > 1) return false;
+  return [...countries].every((country) => scope.countries.has(country));
+};
+const networkCoverageLabel = (networkScope = defaultNetworkCoverage()) => {
+  const scope = normalizeNetworkScope(networkScope);
+  const countries = [...scope.countries];
+  return `${countries.length ? countries.join(', ') : 'No countries selected'}${scope.includeInternational ? ' · cross-border trains included' : ' · domestic trains only'}`;
+};
 
 const stationRole = (station, stationServices) => {
   if (transferHubs.has(station)) return 'Major railway hub';
@@ -414,12 +507,12 @@ const stationDirectDestinations = (station) => [...(stationConnectivity.get(stat
 const atlasWelcomeState = () => `
   <article class="atlas-welcome-card">
     <p class="panel-eyebrow">Start exploring</p>
-    <h3>Explore the railway atlas</h3>
-    <p>Select a station on the map to view its profile, discover direct destinations, explore transfers and view reachable areas.</p>
+    <h3>Atlas mode</h3>
+    <p>Select a station on the map to open its profile, or use search to find a station, route, corridor or train.</p>
     <ul>
-      <li>Click station labels or circles directly on the map.</li>
-      <li>Use search when you want a specific city, route or train.</li>
-      <li>Open Explore for reachability and travel-time maps.</li>
+      <li>Station profiles show country, routes, departures and connected destinations.</li>
+      <li>Station cards highlight important places in the loaded timetable.</li>
+      <li>Train services stay available as a secondary route layer.</li>
     </ul>
   </article>
 `;
@@ -444,24 +537,15 @@ const renderAtlasDashboard = () => {
   atlasDashboard.innerHTML = `
     <section class="atlas-dashboard-card">
       <div class="atlas-dashboard-header">
-        <span>Explorer mode</span>
+        <span>Atlas mode</span>
         <strong>${stations.length} stations · ${routeCount} corridors</strong>
       </div>
-      <div class="atlas-mission-grid">
-        <div><strong>Station explorer</strong><span>Profiles, direct destinations and hubs</span></div>
-        <div><strong>Route explorer</strong><span>Corridors, services and map highlights</span></div>
-        <div><strong>Connectivity explorer</strong><span>Direct, 1-transfer and 2-transfer reach</span></div>
-        <div><strong>Travel time atlas</strong><span>2h, 4h, 8h and 12h maps</span></div>
+      <div class="atlas-tool-grid">
+        <div><strong>Station search</strong><span>Find stations and open profile cards</span></div>
+        <div><strong>Route search</strong><span>Search corridors or train numbers</span></div>
+        <div><strong>Station information</strong><span>Departures, operators and direct destinations</span></div>
       </div>
       <div class="country-stat-grid">${countryCards}<div><strong>${hubCount}</strong><span>transfer hubs</span></div></div>
-      <details class="secondary-menu">
-        <summary>Visited tracking</summary>
-        <div class="visited-stat-grid">
-          <div><strong>${visitedStations.size}</strong><span>visited stations</span></div>
-          <div><strong>${visitedRoutes.size}</strong><span>visited routes</span></div>
-        </div>
-        <button class="clear-visited" type="button">Reset visited tracking</button>
-      </details>
     </section>
   `;
 };
@@ -518,12 +602,12 @@ const renderStationProfile = (station) => {
         <button type="button" data-station-action="direct" data-station-name="${station}">Show direct destinations</button>
         <button type="button" data-station-action="one-transfer" data-station-name="${station}">Show destinations with 1 transfer</button>
         <button type="button" data-station-action="two-transfer" data-station-name="${station}">Show destinations with 2 transfers</button>
-        <button type="button" data-station-action="travel-time" data-station-name="${station}">Show travel time map</button>
+        <button type="button" data-station-action="travel-time" data-station-name="${station}">Show reachability by time</button>
       </div>
-      <section><h4>Next departures</h4>${listItems(nextDepartures.map(({ service, departure }) => `${departure} · ${service.train_number} · ${service.origin} → ${service.destination}`), 'No timed departures in the loaded dataset.')}</section>
-      <section><h4>Train services through station <span class="secondary-label">secondary timetable layer</span></h4>${listItems(stationServiceList.map((service) => `${service.train_number} · ${service.origin} → ${service.destination}`).slice(0, 16), 'No services in the loaded dataset.')}</section>
-      <section><h4>Direct destinations</h4><p class="connectivity-count">${directDestinations.length} reachable without transfer</p>${listItems(directDestinations, 'No direct destinations in the loaded dataset.')}</section>
-      <section><h4>Transfer routes</h4>${listItems(transferRoutes, 'No transfer routes identified in the loaded dataset.')}</section>
+      <section><h4>Next departures</h4>${listItems(nextDepartures.map(({ service, departure }) => `${departure} · ${service.train_number} · ${service.origin} → ${service.destination}`), 'No departures available right now.')}</section>
+      <section><h4>Trains through this station</h4>${listItems(stationServiceList.map((service) => `${service.train_number} · ${service.origin} → ${service.destination}`).slice(0, 16), 'No trains available for this station.')}</section>
+      <section><h4>Direct destinations</h4><p class="connectivity-count">${directDestinations.length} reachable without transfer</p>${listItems(directDestinations, 'No direct destinations available.')}</section>
+      <section><h4>Transfer routes</h4>${listItems(transferRoutes, 'No transfer routes found.')}</section>
       <section><h4>Connected corridors</h4>${listItems(corridors, 'No corridors mapped for this station.')}</section>
     </article>
   `;
@@ -540,7 +624,7 @@ const renderDetail = (service) => {
       ${service.stops.map((stop) => `<li>${stop.station}<span>arr ${formatTime(stopArrival(stop))} · dep ${formatTime(stopDeparture(stop))}</span></li>`).join('')}
     </ol>
     ${service.service_notice ? `<p class="service-note">${service.service_notice}</p>` : ''}
-    <p class="service-note">Secondary timetable layer for this corridor. Atlas exploration remains centred on stations, corridors and connectivity.</p>
+    <p class="service-note">Use this stop list to understand where the train runs and where transfers may be possible.</p>
   `;
 };
 
@@ -570,10 +654,10 @@ const renderServices = () => {
   const query = serviceSearch.value.trim();
   const shouldShowDirectory = Boolean(query || selectedServiceIds.size || showServiceDirectory);
   if (!shouldShowDirectory) {
-    serviceCount.textContent = 'Station-first atlas mode · click the map or choose a station card.';
+    serviceCount.textContent = 'Atlas mode · click the map or choose a station card.';
     renderStationCards(services, '');
-    serviceList.innerHTML = `<li class="atlas-welcome-list">${atlasWelcomeState()}<p class="service-note">Train services are available as a secondary corridor layer when you search or choose “Show train services”.</p></li>`;
-    serviceDetail.innerHTML = '<p class="service-note">Map-first mode: click a station on the schematic to begin exploring connectivity, reachability and corridors.</p>';
+    serviceList.innerHTML = `<li class="atlas-welcome-list">${atlasWelcomeState()}<p class="service-note">Train services stay secondary; use search or “Show train services” when you need timetable records.</p></li>`;
+    serviceDetail.innerHTML = '<p class="service-note">Atlas mode: click a station on the map to open its railway profile.</p>';
     return;
   }
   const visible = services.filter((service) => serviceMatches(service, query));
@@ -643,14 +727,14 @@ const resetSelection = ({ showDirectory = false } = {}) => {
   renderServices();
 };
 
-const buildTimetableGraph = ({ serviceCalendarIds = null, allowOvernight = false, networkScope = 'experimental' } = {}) => {
+const buildTimetableGraph = ({ serviceCalendarIds = null, allowOvernight = false, networkScope = defaultNetworkCoverage() } = {}) => {
   const graph = new Map();
   const addEdge = (from, edge) => {
     if (!graph.has(from)) graph.set(from, []);
     graph.get(from).push(edge);
   };
   for (const service of services) {
-    if (serviceCalendarIds?.size && !serviceCalendarIds.has(service.service_calendar_id)) continue;
+    if (serviceCalendarIds?.size && service.service_calendar_id && !serviceCalendarIds.has(service.service_calendar_id)) continue;
     if (!serviceInNetworkScope(service, networkScope)) continue;
     for (let index = 0; index < service.stops.length - 1; index += 1) {
       const fromStop = service.stops[index];
@@ -771,7 +855,7 @@ const nextOperatingDepartureMinutes = (edge, minimumAbsoluteMinutes, dateValue) 
   return candidates[0] ?? null;
 };
 
-const findExhaustiveJourneyOptions = async (from, to, limit = 1, { calendarStats = {}, dateValue = todayIsoDate(), networkScope = 'experimental', onProgress = null } = {}) => {
+const findExhaustiveJourneyOptions = async (from, to, limit = 1, { calendarStats = {}, dateValue = todayIsoDate(), networkScope = defaultNetworkCoverage(), onProgress = null } = {}) => {
   console.time('journey-search');
   const searchStartMs = nowMs();
   const graph = buildTimetableGraph({ allowOvernight: true, networkScope });
@@ -857,7 +941,7 @@ const findExhaustiveJourneyOptions = async (from, to, limit = 1, { calendarStats
   }
 };
 
-const findJourneyOptions = async (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate(), networkScope = 'experimental', onProgress = null } = {}) => {
+const findJourneyOptions = async (from, to, limit = 3, { serviceCalendarIds = null, mode = 'fastest', calendarStats = {}, dateValue = todayIsoDate(), networkScope = defaultNetworkCoverage(), onProgress = null } = {}) => {
   if (mode === 'exhaustive') return findExhaustiveJourneyOptions(from, to, 1, { calendarStats, dateValue, networkScope, onProgress });
   console.time('journey-search');
   const searchStartMs = nowMs();
@@ -1091,7 +1175,7 @@ const renderExploreReachability = (origin, maxDepth) => {
     <div class="reachability-legend"><span class="reach-direct">Direct</span><span class="reach-one-transfer">1 transfer</span><span class="reach-two-transfer">2 transfers</span></div>
     ${layers.slice(0, maxDepth + 1).map((layer, depth) => `<section><h4>${reachabilityLabel(depth)}</h4><p>${layer.size} reachable stations</p>${listItems([...layer].sort((a, b) => a.localeCompare(b)), 'No stations found at this level.')}</section>`).join('')}
   `;
-  serviceDetail.innerHTML = '<p>Explore mode highlighted reachable stations. Open a station card for a full station profile.</p>';
+  serviceDetail.innerHTML = '<p>Reachability highlighted stations on the map. Open a station card for a full station profile.</p>';
 };
 
 
@@ -1145,7 +1229,7 @@ const renderExploreTravelTime = (origin, maxMinutes) => {
     <div class="reachability-legend"><span class="time-2h">≤2h</span><span class="time-4h">≤4h</span><span class="time-8h">≤8h</span><span class="time-12h">≤12h</span></div>
     <section><h4>Reachable within ${durationLabel(maxMinutes)}</h4><p>${reachable.length} reachable stations</p>${listItems(reachable.map(([station, minutes]) => `${station} · ${durationLabel(minutes)}`), 'No stations found within this travel time.')}</section>
   `;
-  serviceDetail.innerHTML = '<p>Explore mode highlighted stations reachable within the selected travel-time range.</p>';
+  serviceDetail.innerHTML = '<p>Reachability highlighted stations within the selected travel-time range.</p>';
 };
 
 const transferClass = (transfers) => transfers === 0 ? 'reach-direct' : transfers === 1 ? 'reach-one-transfer' : transfers === 2 ? 'reach-two-transfer' : 'reach-unlimited';
@@ -1217,7 +1301,7 @@ const renderUnifiedReachability = (origin, maxTransfers, maxMinutes) => {
     <div class="reachability-legend"><span class="reach-direct">Direct</span><span class="reach-one-transfer">1 transfer</span><span class="reach-two-transfer">2 transfers</span><span class="reach-unlimited">3+ transfers</span></div>
     <section><h4>Combined reachability</h4><p class="service-note">Reachability ranks by travel time plus a ${reachabilityTransferPenaltyMinutes} minute penalty per transfer, so simpler routes are preferred when timings are similar.</p>${listItems(reachable.map(({ station, minutes, transfers }) => `${station} · ${durationLabel(minutes)} · ${transferCountLabel(transfers)}${reachabilitySanityWarning(transfers)}`), 'No stations match these combined filters.')}</section>
   `;
-  serviceDetail.innerHTML = '<p>Explore mode highlighted stations matching the combined transfer and travel-time filters.</p>';
+  serviceDetail.innerHTML = '<p>Reachability highlighted stations matching the transfer and travel-time filters.</p>';
 };
 
 const runUnifiedReachability = () => {
@@ -1228,7 +1312,7 @@ const runUnifiedReachability = () => {
 };
 
 
-const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = todayIsoDate(), networkScope = 'serbia') => {
+const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = todayIsoDate(), networkScope = defaultNetworkCoverage()) => {
   const resultPanel = document.querySelector('.journey-result');
   if (from === to) {
     resultPanel.innerHTML = '<p>Choose two different stations.</p>';
@@ -1258,17 +1342,17 @@ const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = today
           <p>Searching routes...</p>
           <p>Checking timetable...</p>
           <p>Please wait...</p>
-          <p>States explored: ${statesExplored}</p>
+          <p>Stops checked: ${statesExplored}</p>
           <p>Routes found: ${routesFound}</p>
-          <p>Queue size: ${queueSize}</p>
+          <p>Possible next trains: ${queueSize}</p>
         </div>
       `;
     }
   });
   if (!currentJourneyOptions.length) {
     const limitMessage = lastJourneySearchStats?.truncated
-      ? '<p>No route found within search limits.</p>'
-      : '<p>No valid journey found for this date.</p><p>Try All valid routes, another date, or nearby stations.</p>';
+      ? '<p>We could not find a route quickly enough.</p><p>Try another date, nearby stations, or a broader search.</p>'
+      : '<p>No journey found for this date.</p><p>Try another date or nearby stations.</p>';
     resultPanel.innerHTML = `
       ${limitMessage}
       ${routeDateSummary(calendarInfo, dateValue)}
@@ -1278,16 +1362,11 @@ const renderJourneyResult = async (from, to, mode = 'fastest', dateValue = today
     return;
   }
   drawServices(currentJourneyOptions[0].segments, { stationPath: currentJourneyOptions[0].stations });
-  const experimentalWarning = networkScope === 'experimental' && currentJourneyOptions.some(usesExperimentalNetwork)
-    ? '<p class="network-scope-warning">Experimental network. Some connections do not exist in real-world operations.</p>'
-    : '';
   resultPanel.innerHTML = `
     <h3>${from} → ${to}</h3>
     <p><strong>Journey found</strong></p>
-    <p><strong>Network scope:</strong> ${document.querySelector('#journey-network-scope').selectedOptions[0].textContent}</p>
-    <p><strong>Search mode:</strong> ${searchModeLabel(mode)}</p>
-    ${lastJourneySearchStats?.truncated ? '<p>Search limits were reached; showing partial results found so far.</p>' : ''}
-    ${experimentalWarning}
+    <p><strong>Countries:</strong> ${networkCoverageLabel(networkScope)}</p>
+    ${lastJourneySearchStats?.truncated ? '<p>Showing the best journeys found so far.</p>' : ''}
     ${routeDateSummary(calendarInfo, dateValue)}
     ${searchStatsSummary()}
     ${currentJourneyOptions.map(renderJourneyOption).join('')}
@@ -1319,6 +1398,107 @@ const loadCalendar = async () => {
   }
 };
 
+const serviceMergeKey = (service) => {
+  if (service.service_id) return `id:${service.service_id}`;
+  const firstStop = service.stops?.[0] || {};
+  const firstDeparture = stopDeparture(firstStop) || service.departure || '';
+  return `signature:${service.train_number || service.name}|${firstDeparture}|${stopNames(service).join('>')}`;
+};
+
+const timedStop = (stop) => ({
+  ...stop,
+  time: stopDeparture(stop) || stopArrival(stop) || stop.time || null
+});
+
+const compatibleTrainSegment = (existingService, incomingService) => {
+  if (!existingService.train_number || existingService.train_number !== incomingService.train_number) return false;
+  const existingStops = (existingService.stops || []).map(timedStop);
+  const incomingStops = (incomingService.stops || []).map(timedStop);
+  const existingByStation = new Map(existingStops.map((stop, index) => [stop.station, { ...stop, index }]));
+  const sharedStops = incomingStops
+    .map((stop, index) => ({ incoming: { ...stop, index }, existing: existingByStation.get(stop.station) }))
+    .filter(({ existing }) => existing);
+  if (!sharedStops.length) return false;
+  const hasMatchingTime = sharedStops.some(({ incoming, existing }) => incoming.time && existing.time && incoming.time === existing.time);
+  if (!hasMatchingTime) return false;
+  for (let index = 1; index < sharedStops.length; index += 1) {
+    if (sharedStops[index].existing.index < sharedStops[index - 1].existing.index) return false;
+  }
+  return true;
+};
+
+const mergeCompatibleTrainSegment = (existingService, incomingService) => {
+  const preferredService = incomingService.stops.length > existingService.stops.length ? incomingService : existingService;
+  const secondaryService = preferredService === incomingService ? existingService : incomingService;
+  const stopsByStation = new Map();
+  for (const stop of secondaryService.stops.map(timedStop)) stopsByStation.set(stop.station, stop);
+  for (const stop of preferredService.stops.map(timedStop)) stopsByStation.set(stop.station, stop);
+  const mergedStops = [...stopsByStation.values()].sort((a, b) => (minutesFromMidnight(a.time) ?? 0) - (minutesFromMidnight(b.time) ?? 0));
+  const firstStop = mergedStops[0];
+  const lastStop = mergedStops.at(-1);
+  existingService.service_id ||= incomingService.service_id;
+  existingService.name = `${firstStop.station} – ${lastStop.station}`;
+  existingService.origin = firstStop.station;
+  existingService.destination = lastStop.station;
+  existingService.departure = firstStop.departure || firstStop.time || existingService.departure || incomingService.departure;
+  existingService.arrival = lastStop.arrival || lastStop.time || existingService.arrival || incomingService.arrival;
+  existingService.duration = preferredService.duration || existingService.duration || incomingService.duration;
+  existingService.stops = mergedStops;
+  existingService.path_points = stopNames(existingService);
+  existingService.route_geometry = {
+    ...(existingService.route_geometry || {}),
+    type: existingService.route_geometry?.type || incomingService.route_geometry?.type || 'manual_service_stop_sequence',
+    path_points: existingService.path_points
+  };
+  existingService.merged_segment_service_ids = [
+    ...new Set([
+      ...(existingService.merged_segment_service_ids || [existingService.service_id].filter(Boolean)),
+      incomingService.service_id
+    ].filter(Boolean))
+  ];
+  existingService.source = existingService.source || incomingService.source;
+  existingService.source_details = existingService.source_details || incomingService.source_details;
+  return existingService;
+};
+
+const mergeServices = (baseServices, additionalServices) => {
+  const merged = [...baseServices];
+  const seen = new Set(baseServices.map(serviceMergeKey));
+  for (const service of additionalServices) {
+    const key = serviceMergeKey(service);
+    if (seen.has(key)) continue;
+    const compatibleService = merged.find((candidate) => compatibleTrainSegment(candidate, service));
+    if (compatibleService) {
+      mergeCompatibleTrainSegment(compatibleService, service);
+      seen.add(key);
+      continue;
+    }
+    seen.add(key);
+    merged.push(service);
+  }
+  return merged;
+};
+
+const loadManualServiceSources = async () => {
+  let importedCount = 0;
+  for (const url of manualServiceSources) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      const payload = await response.json();
+      const manualServices = Array.isArray(payload) ? payload : payload.services || [];
+      const beforeCount = services.length;
+      services = mergeServices(services, manualServices);
+      const addedCount = services.length - beforeCount;
+      importedCount += addedCount;
+      console.info('Loaded manual railway services', { source: url, addedCount, totalServices: services.length });
+    } catch (error) {
+      console.warn('Unable to load manual railway services', { source: url, error });
+    }
+  }
+  console.info('Manual railway service merge complete', { importedCount, totalServices: services.length });
+};
+
 const loadServices = async () => {
   const sources = [
     { url: 'data/generated/services.json', label: 'GTFS generated services' },
@@ -1335,6 +1515,7 @@ const loadServices = async () => {
       console.warn(`Unable to load ${source.label}`, { source: source.url, error });
     }
   }
+  await loadManualServiceSources();
   await loadCalendar();
   buildStationConnectivity();
   populateJourneySelectors();
@@ -1369,7 +1550,7 @@ const runJourneySearch = async () => {
       document.querySelector('#to-station').value,
       document.querySelector('#journey-search-mode').value,
       document.querySelector('#journey-date').value || todayIsoDate(),
-      document.querySelector('#journey-network-scope').value
+      selectedNetworkCoverage()
     );
   } finally {
     setSearchLoading(false);
@@ -1394,7 +1575,7 @@ const setAtlasSection = (section = 'atlas') => {
   });
 
   if (section === 'atlas') {
-    serviceCount.textContent = 'Click the map to explore stations and corridors.';
+    serviceCount.textContent = 'Atlas mode · click the map to explore stations and corridors.';
   }
   if (section === 'planner') {
     document.querySelector('#from-station')?.focus();
@@ -1402,7 +1583,7 @@ const setAtlasSection = (section = 'atlas') => {
   if (section === 'explore') {
     document.querySelector('#explore-transfer-limit').value = '2';
     document.querySelector('#explore-time-limit').value = '240';
-    exploreResult.innerHTML = '<p>Select an origin station, transfer limit and travel-time limit to highlight reachable stations.</p>';
+    exploreResult.innerHTML = '<p>Select an origin station, maximum travel time and maximum transfers to highlight reachable stations.</p>';
     document.querySelector('#explore-station')?.focus();
   }
 };
@@ -1410,6 +1591,10 @@ const setAtlasSection = (section = 'atlas') => {
 const attachUiHandlers = () => {
   setZoomDetail(zoomControl.value);
   zoomControl.addEventListener('input', (event) => setZoomDetail(event.target.value));
+  setMapLayer(currentMapLayer);
+  document.querySelectorAll('.map-layer-button').forEach((button) => {
+    button.addEventListener('click', () => setMapLayer(button.dataset.mapLayer));
+  });
   serviceSearch.addEventListener('input', () => {
     showServiceDirectory = false;
     renderServices();
@@ -1457,7 +1642,7 @@ const attachUiHandlers = () => {
     const shortcut = button.dataset.dateShortcut;
     const localToday = todayIsoDate();
     const localTomorrow = addDays(localToday, 1);
-    const networkScope = document.querySelector('#journey-network-scope')?.value || 'serbia';
+    const networkScope = selectedNetworkCoverage();
     console.log('date shortcut clicked', { shortcut, previousDate: dateInput.value, localToday, localTomorrow, networkScope });
     if (shortcut === 'today') dateInput.value = localToday;
     if (shortcut === 'tomorrow') dateInput.value = localTomorrow;
@@ -1465,8 +1650,10 @@ const attachUiHandlers = () => {
     console.log('date shortcut updated date', { shortcut, date: dateInput.value, todayEqualsTomorrow: localToday === localTomorrow, tomorrowDeltaCheck: addDays(localToday, 1) });
     runJourneySearch();
   }));
-  document.querySelector('#journey-network-scope').addEventListener('change', (event) => {
-    document.querySelector('.network-scope-warning').classList.toggle('hidden', event.target.value !== 'experimental');
+  document.querySelectorAll('.network-country, #include-international-services').forEach((input) => {
+    input.addEventListener('change', () => {
+      if (currentJourneyOptions.length) rerunJourneySearch();
+    });
   });
   document.querySelector('#find-route-button').addEventListener('click', runJourneySearch);
   document.querySelector('.stations').addEventListener('click', (event) => {
@@ -1489,7 +1676,7 @@ const attachUiHandlers = () => {
     if (button.dataset.stationAction === 'direct') { document.querySelector('#explore-transfer-limit').value = '0'; document.querySelector('#explore-time-limit').value = '720'; }
     if (button.dataset.stationAction === 'one-transfer') { document.querySelector('#explore-transfer-limit').value = '1'; document.querySelector('#explore-time-limit').value = '720'; }
     if (button.dataset.stationAction === 'two-transfer') { document.querySelector('#explore-transfer-limit').value = '2'; document.querySelector('#explore-time-limit').value = '720'; }
-    if (button.dataset.stationAction === 'travel-time') { document.querySelector('#explore-transfer-limit').value = 'unlimited'; document.querySelector('#explore-time-limit').value = '240'; }
+    if (button.dataset.stationAction === 'travel-time') { document.querySelector('#explore-transfer-limit').value = '2'; document.querySelector('#explore-time-limit').value = '240'; }
     runUnifiedReachability();
   });
   document.querySelector('.journey-result').addEventListener('click', (event) => {

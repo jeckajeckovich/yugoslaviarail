@@ -150,7 +150,7 @@ h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .92; letter-
         <text x="690" y="165">↑ Szeged</text>
         <text x="250" y="1390">↙ Bar</text>
         <text x="74" y="1514">↙ Adriatic</text>
-        <text x="102" y="1586">Ploče</text>
+        <text x="102" y="1586">Ploče seasonal</text>
         <text x="520" y="1630">↓ Skopje</text>
         <text x="802" y="1594">↘ Sofia</text>
       </g>
